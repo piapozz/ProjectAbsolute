@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\student1\\Desktop\\ProjectA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneTitle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\header\\SceneTitle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\header\\SceneManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\header\\SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneTitle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\cpp\\SceneTitle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\cpp\\SceneManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\cpp\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\BaseScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\header\\BaseScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\BaseScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DEC46C9-71FB-4591-A1B4-295D437209A8}|ProjectAbsolute\\ProjectAbsolute.vcxproj|solutionrelative:ProjectAbsolute\\Sources\\cpp\\BaseScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SceneManager.cpp",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneManager.cpp",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\cpp\\SceneManager.cpp",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneManager.cpp",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\cpp\\SceneManager.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAADEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-09T08:23:59.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SceneMain.cpp",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneMain.cpp",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\cpp\\SceneMain.cpp",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneMain.cpp",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\cpp\\SceneMain.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-09T08:23:25.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SceneTitle.cpp",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneTitle.cpp",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\cpp\\SceneTitle.cpp",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\SceneTitle.cpp",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\cpp\\SceneTitle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-09T08:22:49.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BaseScene.h",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\BaseScene.h",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\header\\BaseScene.h",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\BaseScene.h",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\header\\BaseScene.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-09T08:21:34.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BaseScene.cpp",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\BaseScene.cpp",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\cpp\\BaseScene.cpp",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\cpp\\BaseScene.cpp",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\cpp\\BaseScene.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-09T08:21:25.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneTitle.h",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneTitle.h",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\header\\SceneTitle.h",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneTitle.h",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\header\\SceneTitle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-09T08:21:17.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SceneManager.h",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneManager.h",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\header\\SceneManager.h",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneManager.h",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\header\\SceneManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-09T08:21:10.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SceneMain.h",
+              "DocumentMoniker": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneMain.h",
+              "RelativeDocumentMoniker": "ProjectAbsolute\\Sources\\header\\SceneMain.h",
+              "ToolTip": "C:\\Users\\student1\\Desktop\\ProjectA\\ProjectAbsolute\\Sources\\header\\SceneMain.h",
+              "RelativeToolTip": "ProjectAbsolute\\Sources\\header\\SceneMain.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-09T08:21:01.422Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
