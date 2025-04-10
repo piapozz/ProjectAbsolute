@@ -33,21 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\cpp\BaseScene.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneTitle.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\Main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\FaseManager.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
@@ -66,23 +51,35 @@
     <ClCompile Include="Sources\cpp\ResultFase.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseScene.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneMain.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneManager.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneTitle.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\StandbyInput.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SelectInput.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseInput.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\ResultInput.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\Main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\header\BaseScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneTitle.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\Const.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\FaseManager.h">
       <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
@@ -100,6 +97,33 @@
     </ClInclude>
     <ClInclude Include="Sources\header\ResultFase.h">
       <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseScene.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Const.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneMain.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneManager.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneTitle.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseInput.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\StandbyInput.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SelectInput.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\ResultInput.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
