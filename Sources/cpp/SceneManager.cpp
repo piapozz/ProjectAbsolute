@@ -9,7 +9,7 @@ SceneManager::~SceneManager()
 {
 	if (_exitFlag)return;
 
-	delete(_scene);
+	delete _scene;
 }
 
 void SceneManager::Init() 

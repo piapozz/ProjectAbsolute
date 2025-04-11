@@ -63,18 +63,6 @@
     <ClCompile Include="Sources\cpp\SceneTitle.cpp">
       <Filter>ソース ファイル\Sein</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\StandbyInput.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SelectInput.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseInput.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\ResultInput.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -92,6 +80,15 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\BaseSection.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\DataManager.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\GameManager.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\InputManager.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,18 +125,6 @@
     <ClInclude Include="Sources\header\SceneTitle.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\BaseInput.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\StandbyInput.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SelectInput.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\ResultInput.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\ObjectManager.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
@@ -154,6 +139,15 @@
     </ClInclude>
     <ClInclude Include="Sources\header\BaseUI.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\DataManager.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\GameManager.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\InputManager.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
