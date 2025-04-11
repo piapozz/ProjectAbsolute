@@ -1,11 +1,9 @@
 #include "../header/BaseFase.h"
 
-BaseFase::BaseFase()
+void BaseFase::ProcLoop()
 {
-
-}
-
-BaseFase::~BaseFase()
-{
-
+	while (true)
+	{
+		if (Proc()) break;
+	}
 }

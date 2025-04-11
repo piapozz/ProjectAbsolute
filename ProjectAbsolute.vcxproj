@@ -146,18 +146,18 @@
     <ClCompile Include="Sources\cpp\BaseSection.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\FaseMain.cpp" />
     <ClCompile Include="Sources\cpp\FaseManager.cpp" />
+    <ClCompile Include="Sources\cpp\FaseResult.cpp" />
+    <ClCompile Include="Sources\cpp\FaseSelect.cpp" />
+    <ClCompile Include="Sources\cpp\FaseStandby.cpp" />
     <ClCompile Include="Sources\cpp\GameManager.cpp" />
     <ClCompile Include="Sources\cpp\InputManager.cpp" />
     <ClCompile Include="Sources\cpp\Main.cpp" />
-    <ClCompile Include="Sources\cpp\MainFase.cpp" />
     <ClCompile Include="Sources\cpp\ObjectManager.cpp" />
-    <ClCompile Include="Sources\cpp\ResultFase.cpp" />
     <ClCompile Include="Sources\cpp\SceneMain.cpp" />
     <ClCompile Include="Sources\cpp\SceneManager.cpp" />
     <ClCompile Include="Sources\cpp\SceneTitle.cpp" />
-    <ClCompile Include="Sources\cpp\SelectFase.cpp" />
-    <ClCompile Include="Sources\cpp\StandbyFase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
@@ -169,17 +169,17 @@
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\FaseMain.h" />
     <ClInclude Include="Sources\header\FaseManager.h" />
+    <ClInclude Include="Sources\header\FaseResult.h" />
+    <ClInclude Include="Sources\header\FaseSelect.h" />
+    <ClInclude Include="Sources\header\FaseStandby.h" />
     <ClInclude Include="Sources\header\GameManager.h" />
     <ClInclude Include="Sources\header\InputManager.h" />
-    <ClInclude Include="Sources\header\MainFase.h" />
     <ClInclude Include="Sources\header\ObjectManager.h" />
-    <ClInclude Include="Sources\header\ResultFase.h" />
     <ClInclude Include="Sources\header\SceneMain.h" />
     <ClInclude Include="Sources\header\SceneManager.h" />
     <ClInclude Include="Sources\header\SceneTitle.h" />
-    <ClInclude Include="Sources\header\SelectFase.h" />
-    <ClInclude Include="Sources\header\StandbyFase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
