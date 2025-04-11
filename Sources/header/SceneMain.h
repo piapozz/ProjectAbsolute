@@ -1,25 +1,26 @@
 #pragma once
 #include "../header/BaseScene.h"
-
-class SceneMain :
-    public BaseScene
+/*
+* Ishihara
+* ƒƒCƒ“ƒV[ƒ“
+*/
+class SceneMain : public BaseScene
 {
-private:
-
-    int sceneName = BaseScene::SceneName::NONE;
-
 public:
-
     SceneMain();
     ~SceneMain();
 
-
-    void Init();       // ‰Šú‰»
-
-    void Proc();       // ˆ—
-
-    void Draw();       // •`‰æ
-
-    int CheckChangeScene();
+    /// <summary>
+    /// ‰Šú‰»
+    /// </summary>
+    void Init();
+    /// <summary>
+    /// ˆ—
+    /// </summary>
+    void Proc();
+    /// <summary>
+    /// •`‰æ
+    /// </summary>
+    void Draw();
 };
 

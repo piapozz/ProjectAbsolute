@@ -51,18 +51,6 @@
     <ClCompile Include="Sources\cpp\ResultFase.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseScene.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneMain.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneManager.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneTitle.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -90,6 +78,18 @@
     <ClCompile Include="Sources\cpp\InputManager.cpp">
       <Filter>ソース ファイル\Sein</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseScene.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneMain.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneManager.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneTitle.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\FaseManager.h">
@@ -110,19 +110,7 @@
     <ClInclude Include="Sources\header\ResultFase.h">
       <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\BaseScene.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\Const.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneMain.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneManager.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneTitle.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -150,6 +138,18 @@
       <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CommonModule.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseScene.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneMain.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneManager.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneTitle.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
   </ItemGroup>
