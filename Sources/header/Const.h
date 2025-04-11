@@ -108,6 +108,19 @@ enum class SEName
     MAX
 };
 
+// ÉVÅ[ÉìÇÃñºëO
+enum SceneName
+{
+	NONE = -1,
+	GAME_TITLE,
+	GAME_MAIN,
+	GAME_RESULT,
+	GAME_OPTION,
+	GAME_EXIT,
+
+	MAX
+};
+
 enum class UIGraph
 {
     STATUS_DIA_BASE = 0,

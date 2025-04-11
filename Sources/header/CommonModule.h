@@ -90,6 +90,14 @@ public:
 		y = Y;
 	}
 
+	inline static Vector2 zero()
+	{
+		Vector2 temp;
+		temp.x = 0;
+		temp.y = 0;
+		return temp;
+	}
+
 	static float Distance(const Vector2& vec1,const Vector2& vec2)
 	{
 		return Size(vec1 - vec2);

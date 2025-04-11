@@ -1,43 +1,35 @@
 #pragma once
 #include "Const.h"
 #include "DxLib.h"
-
-using namespace std;
-
-// シーンの基本クラス
+#include "functional"
+/*
+* Ishihara
+* シーンの基底
+*/
 class BaseScene 
 {
 protected:
-
+	// コールバック
+	std::function<void(SceneName)> ChangeScene;
 public:
-	// シーンの名前
-	enum SceneName
-	{
-		NONE = 0,
-		GAME_TITLE,
-		GAME_MAIN,
-		GAME_RESULT,
-		GAME_OPTION,
-		GAME_EXIT,
+	BaseScene(){}
+	virtual ~BaseScene(){}
 
-		MAX
-	};
-
-
-	BaseScene();
-	virtual ~BaseScene();
-
-	// 初期化
+	/// <summary>
+	/// シーン変更コールバック設定
+	/// </summary>
+	/// <param name="setCallback"></param>
+	void SetCallback(const std::function<void(SceneName)>& setCallback){ ChangeScene = setCallback; }
+	/// <summary>
+	/// 初期化
+	/// </summary>
 	virtual void Init() = 0;
-
-	// 処理に関連する内容を記述する
+	/// <summary>
+	/// 処理
+	/// </summary>
 	virtual void Proc() = 0;
-
-	// 描画に関連する内容を記述する
+	/// <summary>
+	/// 描画
+	/// </summary>
 	virtual void Draw() = 0;
-
-	// シーンの切り替え
-	virtual int CheckChangeScene() = 0;
-
-	//void DrawString(string text, Vector2 position);
 };

@@ -2,7 +2,7 @@
 
 SceneTitle::SceneTitle()
 {
-    _titleLogoHandle = LoadGraph("Resources/Signal_Logo.png");
+    
 }
 
 SceneTitle::~SceneTitle()
@@ -12,18 +12,12 @@ SceneTitle::~SceneTitle()
 
 void SceneTitle::Init()
 {
-    // ŽžŠÔŒv‘ª—p
-    startTime = GetNowCount();
+  
 }
 
 void SceneTitle::Proc()
 {
 
-}
-
-int SceneTitle::CheckChangeScene() 
-{
-    return 0;
 }
 
 void SceneTitle::Draw()
