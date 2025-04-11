@@ -149,5 +149,8 @@
     <ClInclude Include="Sources\header\InputManager.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\header\CommonModule.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
