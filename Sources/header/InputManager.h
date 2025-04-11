@@ -27,18 +27,30 @@ public:
 	InputManager();
 	~InputManager();
 
-	bool CheckClick(MouseButton button);
+	/// <summary>
+	/// クリックが押されているかを判定
+	/// </summary>
+	/// <param name="button"></param>
+	/// <returns></returns>
+	void OnClick(MouseButton button);
+	/// <summary>
+	/// コールバックで設定された関数を実行
+	/// </summary>
 	void ExecuteCallback();
+	/// <summary>
+	/// カーソル情報の更新
+	/// </summary>
+	/// <param name="mouseStatus"></param>
 	void UpdataMouseCursor(MouseStatus mouseStatus);
 
-	inline MouseStatus GetCursorPos();
-	inline void SetCallback(std::function<void()> callback);
+	inline MouseStatus GetCursorPos(){ return _cursorPos; }
+	inline void SetCallback(std::function<void()> callback){ _ClickAction = callback; }
 
 private:
 	// マウスカーソル座標を保持
-	MouseStatus cursorPos;
+	MouseStatus _cursorPos;
 	// Functionを保持する変数
-	std::function<void()> callbackFunc;
+	std::function<void()> _ClickAction;
 	// マウスの過去の状態を格納
-	int oldMouseInput;
+	int _oldMouseInput;
 };
