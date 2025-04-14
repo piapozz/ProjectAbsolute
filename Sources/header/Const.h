@@ -192,8 +192,6 @@ const float TYPE_ICON_WIDTH = 50.0f;
 const int TEXT_TO_STAR = 10;
 const int STAR_TO_STAR = 20;
 
-const Vector2 TYPE_ICON = { TYPE_ICON_HEIGHT / 2 ,TYPE_ICON_WIDTH / 2 };
-
 // プレイヤー関連
 const float DODGE_COOLTIME = 2000.0f;
 const float DODGE_MOVETIME = 250.0f;
@@ -201,5 +199,4 @@ const float DODGE_MOVETIME = 250.0f;
 const float PLAYER_BOMB_TIME = 1000.0f;
 const int LEVEL_MAX = 10;
 
-extern Vector2 drawAnchorPos;				// ステージのアンカー座標
 extern float drawRatio;
