@@ -20,4 +20,4 @@ void GameManager::Proc()
 
 }
 
-bool GameManager::CheckGameEnd() { return _gameEnd; }
+bool GameManager::GetGameEnd() { return _gameEnd; }
