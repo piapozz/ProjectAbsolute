@@ -167,8 +167,12 @@
     <ClCompile Include="Sources\cpp\SceneMain.cpp" />
     <ClCompile Include="Sources\cpp\SceneManager.cpp" />
     <ClCompile Include="Sources\cpp\SceneTitle.cpp" />
+    <ClCompile Include="Sources\cpp\SectionConnect.cpp" />
+    <ClCompile Include="Sources\cpp\SectionCorridor.cpp" />
+    <ClCompile Include="Sources\cpp\SectionRoom.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
     <ClCompile Include="Sources\cpp\BaseOfficerState.cpp" />
+    <ClCompile Include="Sources\cpp\StageCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
@@ -201,7 +205,11 @@
     <ClInclude Include="Sources\header\SceneMain.h" />
     <ClInclude Include="Sources\header\SceneManager.h" />
     <ClInclude Include="Sources\header\SceneTitle.h" />
+    <ClInclude Include="Sources\header\SectionConnect.h" />
+    <ClInclude Include="Sources\header\SectionCorridor.h" />
+    <ClInclude Include="Sources\header\SectionRoom.h" />
     <ClInclude Include="Sources\header\SecureRoom.h" />
+    <ClInclude Include="Sources\header\StageCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
