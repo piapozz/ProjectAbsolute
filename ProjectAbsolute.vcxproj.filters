@@ -135,6 +135,9 @@
     <ClCompile Include="Sources\cpp\StageCreator.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\Operation.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\PhaseManager.h">
@@ -241,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="Sources\header\StageCreator.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Operation.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

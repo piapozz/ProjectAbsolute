@@ -155,6 +155,7 @@
     <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateMove.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp" />
+    <ClCompile Include="Sources\cpp\Operation.cpp" />
     <ClCompile Include="Sources\cpp\PhaseMain.cpp" />
     <ClCompile Include="Sources\cpp\PhaseManager.cpp" />
     <ClCompile Include="Sources\cpp\PhaseResult.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Sources\header\OfficerStateIdle.h" />
     <ClInclude Include="Sources\header\OfficerStateMove.h" />
     <ClInclude Include="Sources\header\OfficerStatePanic.h" />
+    <ClInclude Include="Sources\header\Operation.h" />
     <ClInclude Include="Sources\header\PhaseMain.h" />
     <ClInclude Include="Sources\header\PhaseManager.h" />
     <ClInclude Include="Sources\header\PhaseResult.h" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "../header/BaseSection.h"
 #include "../header/BaseEntity.h"
+#include "../header/Operation.h"
 
 /*
  * Sakakura
@@ -18,21 +19,23 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-protected:
-
+	/// <summary>
+	/// ステートの設定
+	/// </summary>
+	/// <param name="operation"></param>
+	void SetState(State setState);
 
 private:
-	// 収容室のID
-	int _ID;
-	// 収容室の状態
-	enum class State
-	{
-		NONE,
-		SAFE,
-		EMERGENCY,
-	};
-	State _state;
-	// 収容室のエンティティー
+	// 現在のステート
+	State _currentState;
+	// 収容しているエンティティー
 	BaseEntity* _pEntity;
+	// 作業
+	Operation* _pOperation;
+
+	/// <summary>
+	/// 作業の処理
+	/// </summary>
+	void OperationProc();
 };
 
