@@ -39,18 +39,6 @@
     <ClCompile Include="Sources\cpp\BaseFase.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\SelectFase.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\StandbyFase.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\MainFase.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\ResultFase.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -90,6 +78,18 @@
     <ClCompile Include="Sources\cpp\SceneTitle.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\FaseMain.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\FaseResult.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\FaseSelect.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\FaseStandby.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\FaseManager.h">
@@ -97,21 +97,6 @@
     </ClInclude>
     <ClInclude Include="Sources\header\BaseFase.h">
       <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SelectFase.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\StandbyFase.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\MainFase.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\ResultFase.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\Const.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\ObjectManager.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
@@ -151,6 +136,21 @@
     </ClInclude>
     <ClInclude Include="Sources\header\SceneTitle.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\FaseMain.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\FaseResult.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\FaseSelect.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\FaseStandby.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Const.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
