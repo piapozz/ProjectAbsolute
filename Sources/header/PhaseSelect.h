@@ -5,11 +5,11 @@
  * Sakakura
  * 選択フェーズ
  */
-class FaseSelect : public BaseFase
+class PhaseSelect : public BasePhase
 {
 public:
-	FaseSelect() { Init(); }
-	~FaseSelect() {};
+	PhaseSelect() { Init(); }
+	~PhaseSelect() {};
 
 	void Init() override;
 	bool Proc() override;

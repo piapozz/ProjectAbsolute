@@ -3,13 +3,13 @@
 
 /*
  * Sakakura
- * スタンバイフェーズ
+ * リザルトフェーズ
  */
-class FaseStandby : public BaseFase
+class PhaseResult : public BasePhase
 {
 public:
-	FaseStandby() { Init(); }
-	~FaseStandby() {};
+	PhaseResult() { Init(); }
+	~PhaseResult() {};
 
 	void Init() override;
 	bool Proc() override;

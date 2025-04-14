@@ -1,6 +1,6 @@
 #pragma once
 #include "DxLib.h"
-#include "../header/FaseManager.h"
+#include "../header/PhaseManager.h"
 
 /*
  * Sein
@@ -20,7 +20,7 @@ public:
 	bool GetGameEnd ( );
 
 private:
-	FaseManager _faseManager;
+	PhaseManager _phaseManager;
 	// ƒQ[ƒ€‚ªI—¹‚µ‚½‚©‚ğ•Û
 	bool _gameEnd;
 

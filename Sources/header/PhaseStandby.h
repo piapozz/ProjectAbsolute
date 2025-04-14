@@ -3,13 +3,13 @@
 
 /*
  * Sakakura
- * メインフェーズ
+ * スタンバイフェーズ
  */
-class FaseMain : public BaseFase
+class PhaseStandby : public BasePhase
 {
 public:
-	FaseMain() { Init(); }
-	~FaseMain() {};
+	PhaseStandby() { Init(); }
+	~PhaseStandby() {};
 
 	void Init() override;
 	bool Proc() override;

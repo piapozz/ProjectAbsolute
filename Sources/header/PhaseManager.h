@@ -1,19 +1,19 @@
 #pragma once
 #include <vector>
-#include "FaseSelect.h"
-#include "FaseStandby.h"
-#include "FaseMain.h"
-#include "FaseResult.h"
+#include "PhaseSelect.h"
+#include "PhaseStandby.h"
+#include "PhaseMain.h"
+#include "PhaseResult.h"
 
 /*
  * Sakakura
  * フェーズ管理クラス
  */
-class FaseManager
+class PhaseManager
 {
 public:
-	inline FaseManager() { Init(); }
-	~FaseManager() { Teardown(); }
+	inline PhaseManager() { Init(); }
+	~PhaseManager() { Teardown(); }
 
 	/// <summary>
 	/// 初期化
@@ -30,6 +30,6 @@ public:
 
 private:
 	// フェーズのリスト
-	std::vector<BaseFase*> _faseList;
+	std::vector<BasePhase*> _phaseList;
 };
 
