@@ -1,7 +1,6 @@
 #pragma once
 #include "DxLib.h"
-#include "vector"
-#include "../header/DataManager.h"
+#include "../header/FaseManager.h"
 
 /*
  * Sein
@@ -18,21 +17,13 @@ public:
 	/// ƒƒCƒ“ˆ—
 	/// </summary>
 	void Proc();
+	bool GetGameEnd ( );
 
 private:
-	struct EntityRooms
-	{
-
-	};
-
-	struct DayData
-	{
-		int date;
-		std::vector<EntityRooms> entityRoomList;
-	};
-
+	FaseManager _faseManager;
 	// ƒQ[ƒ€‚ªI—¹‚µ‚½‚©‚ğ•Û
 	bool _gameEnd;
 
-	bool CheckGameEnd();
+	GameManager();
+	~GameManager();
 };

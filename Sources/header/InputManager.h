@@ -44,7 +44,7 @@ public:
 	void UpdataMouseCursor(MouseStatus mouseStatus);
 
 	inline MouseStatus GetCursorPos(){ return _cursorPos; }
-	inline void SetCallback(std::function<void()> callback){ _ClickAction = callback; }
+	inline void SetCallback(std::function<void()> Callback){ _ClickAction = Callback; }
 
 private:
 	// マウスカーソル座標を保持
