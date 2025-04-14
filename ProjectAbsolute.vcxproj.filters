@@ -90,6 +90,12 @@
     <ClCompile Include="Sources\cpp\PhaseStandby.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseEntity.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SecureRoom.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\PhaseManager.h">
@@ -151,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="Sources\header\Const.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseEntity.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SecureRoom.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
