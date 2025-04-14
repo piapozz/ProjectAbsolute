@@ -3,13 +3,13 @@
 
 /*
  * Sakakura
- * リザルトフェーズ
+ * メインフェーズ
  */
-class FaseResult : public BaseFase
+class PhaseMain : public BasePhase
 {
 public:
-	FaseResult() { Init(); }
-	~FaseResult() {};
+	PhaseMain() { Init(); }
+	~PhaseMain() {};
 
 	void Init() override;
 	bool Proc() override;

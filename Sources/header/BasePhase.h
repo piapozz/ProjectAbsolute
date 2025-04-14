@@ -5,11 +5,11 @@
  * Sakakura
  * フェーズの基底
  */
-class BaseFase
+class BasePhase
 {
 public:
-	inline BaseFase(){};
-	inline ~BaseFase(){};
+	inline BasePhase(){};
+	inline ~BasePhase(){};
 
 	/// <summary>
 	/// 初期化

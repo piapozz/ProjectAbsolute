@@ -1,8 +1,8 @@
-#include "../header/FaseSelect.h"
+#include "../header/PhaseSelect.h"
 
 void SelectEntity(int selectNum);
 
-void FaseSelect::Init()
+void PhaseSelect::Init()
 {
 	// 入力受付クラスを生成
 
@@ -19,7 +19,7 @@ void FaseSelect::Init()
 
 }
 
-bool FaseSelect::Proc()
+bool PhaseSelect::Proc()
 {
 	// 入力受付
 
@@ -27,12 +27,12 @@ bool FaseSelect::Proc()
 	return true;
 }
 
-void FaseSelect::SelectEntity(int selectNum)
+void PhaseSelect::SelectEntity(int selectNum)
 {
 	
 }
 
-void FaseSelect::InputProc()
+void PhaseSelect::InputProc()
 {
 	// 入力によって分岐
 	// 選択されたら

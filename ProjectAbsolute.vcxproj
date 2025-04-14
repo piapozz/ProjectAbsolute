@@ -140,17 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
-    <ClCompile Include="Sources\cpp\BaseFase.cpp" />
+    <ClCompile Include="Sources\cpp\BasePhase.cpp" />
     <ClCompile Include="Sources\cpp\BaseObject.cpp" />
     <ClCompile Include="Sources\cpp\BaseScene.cpp" />
     <ClCompile Include="Sources\cpp\BaseSection.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
-    <ClCompile Include="Sources\cpp\FaseMain.cpp" />
-    <ClCompile Include="Sources\cpp\FaseManager.cpp" />
-    <ClCompile Include="Sources\cpp\FaseResult.cpp" />
-    <ClCompile Include="Sources\cpp\FaseSelect.cpp" />
-    <ClCompile Include="Sources\cpp\FaseStandby.cpp" />
+    <ClCompile Include="Sources\cpp\PhaseMain.cpp" />
+    <ClCompile Include="Sources\cpp\PhaseManager.cpp" />
+    <ClCompile Include="Sources\cpp\PhaseResult.cpp" />
+    <ClCompile Include="Sources\cpp\PhaseSelect.cpp" />
+    <ClCompile Include="Sources\cpp\PhaseStandby.cpp" />
     <ClCompile Include="Sources\cpp\GameManager.cpp" />
     <ClCompile Include="Sources\cpp\InputManager.cpp" />
     <ClCompile Include="Sources\cpp\Main.cpp" />
@@ -161,7 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
-    <ClInclude Include="Sources\header\BaseFase.h" />
+    <ClInclude Include="Sources\header\BasePhase.h" />
     <ClInclude Include="Sources\header\BaseObject.h" />
     <ClInclude Include="Sources\header\BaseScene.h" />
     <ClInclude Include="Sources\header\BaseSection.h" />
@@ -169,11 +169,11 @@
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
-    <ClInclude Include="Sources\header\FaseMain.h" />
-    <ClInclude Include="Sources\header\FaseManager.h" />
-    <ClInclude Include="Sources\header\FaseResult.h" />
-    <ClInclude Include="Sources\header\FaseSelect.h" />
-    <ClInclude Include="Sources\header\FaseStandby.h" />
+    <ClInclude Include="Sources\header\PhaseMain.h" />
+    <ClInclude Include="Sources\header\PhaseManager.h" />
+    <ClInclude Include="Sources\header\PhaseResult.h" />
+    <ClInclude Include="Sources\header\PhaseSelect.h" />
+    <ClInclude Include="Sources\header\PhaseStandby.h" />
     <ClInclude Include="Sources\header\GameManager.h" />
     <ClInclude Include="Sources\header\InputManager.h" />
     <ClInclude Include="Sources\header\ObjectManager.h" />
