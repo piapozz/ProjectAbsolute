@@ -123,6 +123,18 @@
     <ClCompile Include="Sources\cpp\BaseOfficerState.cpp">
       <Filter>ソース ファイル\Sein</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\SectionConnect.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SectionCorridor.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SectionRoom.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\StageCreator.cpp">
+      <Filter>ソース ファイル\Ishihara</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\PhaseManager.h">
@@ -217,6 +229,18 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerStatePanic.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SectionConnect.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SectionCorridor.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SectionRoom.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\StageCreator.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
