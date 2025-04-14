@@ -60,6 +60,23 @@ enum class Direction
 
 	MAX
 };
+// ì‹Æ‚Ìí—Ş
+enum class OperationType
+{
+	SATISFY = 0,
+	OBSERVATION,
+	CONTACT,
+	INJURE
+};
+// û—eº‚Ìó‘Ô
+enum class State
+{
+	NONE,
+	IDLE,
+	OPERATE,
+	EMERGENCY,
+};
+
 // F
 const int COLOR_BLACK = GetColor(0, 0, 0);
 const int COLOR_WHITE = GetColor(255, 255, 255);
