@@ -38,7 +38,28 @@ enum class Layer
 
 	MAX
 };
+// •”‰®‚Ìí—Ş
+enum class SectionType
+{
+	INVALID = -1,
+	ROOM,
+	SECURE,
+	CORRIDOR,
+	CONNECT,
 
+	MAX
+};
+// •ûŒü
+enum class Direction
+{
+	INVALID = -1,
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT,
+
+	MAX
+};
 // F
 const int COLOR_BLACK = GetColor(0, 0, 0);
 const int COLOR_WHITE = GetColor(255, 255, 255);
