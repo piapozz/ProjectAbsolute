@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	//// 処理のループ
 	// </summary>
-	inline void ProcLoop();
+	void ProcLoop();
 	/// <summary>
 	/// 処理
 	/// </summary>
@@ -33,18 +33,22 @@ public:
 	/// オブジェクトをセットするコールバック
 	/// </summary>
 	/// <param name="callbackSetObject"></param>
-	inline void SetCallbackSetObject(std::function<void> setObjectCallback) { SetObject = setObjectCallback; }
+	inline void SetCallbackSetObject(std::function<void()> setObjectCallback) {
+		SetObject = setObjectCallback;
+	}
 	/// <summary>
 	/// オブジェクトを削除するコールバック
 	/// </summary>
 	/// <param name="callbackDeleteObject"></param>
-	inline void SetCallbackDeleteObject(std::function<void> deleteObjectCallback) { DeleteObject = deleteObjectCallback; }
+	inline void SetCallbackDeleteObject(std::function<void()> deleteObjectCallback) {
+		DeleteObject = deleteObjectCallback;
+	}
 
 protected:
 	// オブジェクトをセットするコールバック
-	std::function<void> SetObject;
+	std::function<void()> SetObject;
 	// オブジェクトを破棄するコールバック
-	std::function<void> DeleteObject;
+	std::function<void()> DeleteObject;
 
 	/// <summary>
 	/// 入力に応じた処理
