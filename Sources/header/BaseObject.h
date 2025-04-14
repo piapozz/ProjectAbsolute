@@ -20,19 +20,19 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	inline virtual void Init();
+	virtual void Init(){};
 	/// <summary>
 	/// アップデート
 	/// </summary>
-	inline virtual void Proc(){}
+	virtual void Proc(){};
 	/// <summary>
 	/// 描画
 	/// </summary>
-	inline virtual void Draw();
+	virtual void Draw(){};
 	/// <summary>
 	/// 破棄
 	/// </summary>
-	inline virtual void Teardown();
+	virtual void Teardown();
 
 	inline void SetLayer(int setLayer) { layer = setLayer;}
 	inline int GetLayer() { return layer; }
@@ -44,4 +44,3 @@ protected:
 	// 座標
 	Vector2 position;
 };
-

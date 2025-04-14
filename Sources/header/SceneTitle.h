@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseScene.h"
+#include "InputManager.h"
 /*
 * Ishihara
 * タイトルシーン
@@ -7,7 +8,12 @@
 class SceneTitle : public BaseScene
 {
 public:
-    SceneTitle();
+	/// <summary>
+	/// メインゲームシーンに変更
+	/// </summary>
+	void ChangeMainGameScene();
+    
+	SceneTitle();
     ~SceneTitle();
 
     /// <summary>
@@ -22,5 +28,9 @@ public:
     /// 描画
     /// </summary>
     void Draw();
+private:
+	// 入力受付クラス
+	InputManager* _inputManager;
+
 };
 
