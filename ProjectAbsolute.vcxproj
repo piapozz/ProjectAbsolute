@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
+    <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
     <ClCompile Include="Sources\cpp\BasePhase.cpp" />
     <ClCompile Include="Sources\cpp\BaseObject.cpp" />
     <ClCompile Include="Sources\cpp\BaseScene.cpp" />
@@ -158,9 +159,11 @@
     <ClCompile Include="Sources\cpp\SceneMain.cpp" />
     <ClCompile Include="Sources\cpp\SceneManager.cpp" />
     <ClCompile Include="Sources\cpp\SceneTitle.cpp" />
+    <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
+    <ClInclude Include="Sources\header\BaseEntity.h" />
     <ClInclude Include="Sources\header\BasePhase.h" />
     <ClInclude Include="Sources\header\BaseObject.h" />
     <ClInclude Include="Sources\header\BaseScene.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="Sources\header\SceneMain.h" />
     <ClInclude Include="Sources\header\SceneManager.h" />
     <ClInclude Include="Sources\header\SceneTitle.h" />
+    <ClInclude Include="Sources\header\SecureRoom.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
