@@ -96,6 +96,33 @@
     <ClCompile Include="Sources\cpp\SecureRoom.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerMob.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerPlayer.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateDead.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateFight.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateMove.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseOfficer.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseOfficerState.cpp">
+      <Filter>ソース ファイル\Sein</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\PhaseManager.h">
@@ -163,6 +190,33 @@
     </ClInclude>
     <ClInclude Include="Sources\header\SecureRoom.h">
       <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseOfficerState.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseOfficer.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerMob.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerPlayer.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateDead.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateFight.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateIdle.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateMove.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStatePanic.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

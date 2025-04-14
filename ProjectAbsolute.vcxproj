@@ -141,12 +141,20 @@
   <ItemGroup>
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
     <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
+    <ClCompile Include="Sources\cpp\BaseOfficer.cpp" />
     <ClCompile Include="Sources\cpp\BasePhase.cpp" />
     <ClCompile Include="Sources\cpp\BaseObject.cpp" />
     <ClCompile Include="Sources\cpp\BaseScene.cpp" />
     <ClCompile Include="Sources\cpp\BaseSection.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateDead.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateFight.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateMove.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp" />
     <ClCompile Include="Sources\cpp\PhaseMain.cpp" />
     <ClCompile Include="Sources\cpp\PhaseManager.cpp" />
     <ClCompile Include="Sources\cpp\PhaseResult.cpp" />
@@ -160,10 +168,13 @@
     <ClCompile Include="Sources\cpp\SceneManager.cpp" />
     <ClCompile Include="Sources\cpp\SceneTitle.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
+    <ClCompile Include="Sources\cpp\BaseOfficerState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
     <ClInclude Include="Sources\header\BaseEntity.h" />
+    <ClInclude Include="Sources\header\BaseOfficer.h" />
+    <ClInclude Include="Sources\header\BaseOfficerState.h" />
     <ClInclude Include="Sources\header\BasePhase.h" />
     <ClInclude Include="Sources\header\BaseObject.h" />
     <ClInclude Include="Sources\header\BaseScene.h" />
@@ -172,6 +183,13 @@
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\OfficerMob.h" />
+    <ClInclude Include="Sources\header\OfficerPlayer.h" />
+    <ClInclude Include="Sources\header\OfficerStateDead.h" />
+    <ClInclude Include="Sources\header\OfficerStateFight.h" />
+    <ClInclude Include="Sources\header\OfficerStateIdle.h" />
+    <ClInclude Include="Sources\header\OfficerStateMove.h" />
+    <ClInclude Include="Sources\header\OfficerStatePanic.h" />
     <ClInclude Include="Sources\header\PhaseMain.h" />
     <ClInclude Include="Sources\header\PhaseManager.h" />
     <ClInclude Include="Sources\header\PhaseResult.h" />
