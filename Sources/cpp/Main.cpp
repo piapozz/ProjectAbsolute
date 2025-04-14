@@ -24,7 +24,7 @@ int WINAPI WinMain ( HINSTANCE hInstance , HINSTANCE hPrevInstance , LPSTR lpCmd
 	SceneManager* sceneManager = new SceneManager ( );
 
 	// ‰Šú‰»
-	sceneManager->ChangeScene ( SceneName::GAME_TITLE );
+	sceneManager->ChangeScene ( SceneName::TITLE );
 
 	// •`‰ææ‚ğ— ‰æ–Ê‚É‚·‚é
 	SetDrawScreen ( DX_SCREEN_BACK );

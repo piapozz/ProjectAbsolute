@@ -22,7 +22,7 @@ void ObjectManager::Draw()
 	for(BaseObject* obj : _objectList)
 	{
 		if(obj == nullptr) return;
-		if(obj->GetLayer() == (int)Layer::LAYER_NONEDRAW) continue;
+		if(obj->GetLayer() == Layer::NONE_DRAW) continue;
 		obj->Draw();
 	}
 }

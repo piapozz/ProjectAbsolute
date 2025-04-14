@@ -8,9 +8,9 @@ class BaseUI: public BaseObject
 {
 public:
 	BaseUI() {}
-	BaseUI(int setLayer)
+	BaseUI(Layer setLayer)
 		: BaseObject(setLayer) {}
-	BaseUI(int setLayer,int setDrawHandle)
+	BaseUI(Layer setLayer,int setDrawHandle)
 		: BaseObject(setLayer,setDrawHandle) {}
 	BaseUI(const BaseUI& obj)
 		: BaseObject(obj) {}

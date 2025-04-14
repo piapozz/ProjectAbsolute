@@ -3,6 +3,6 @@
 void BaseObject::Teardown()
 {
 	DeleteGraph(drawHandle);
-	layer = -1;
+	layer = Layer::INVALID;
 	position = Vector2::zero();
 }
