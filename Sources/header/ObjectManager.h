@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include "../header/Const.h"
 /*
 * Ishihara
 * オブジェクトの管理
@@ -8,20 +8,6 @@ class BaseObject;
 class ObjectManager
 {
 public:
-	enum Layer
-	{
-		LAYER_NONE = -1,
-		LAYER_NONEDRAW,
-		LAYER_BACKGROUND,
-		LAYER_OBJECT,
-		LAYER_PLAYER,
-		LAYER_ENEMY,
-		LAYER_EFFECT,
-		LAYER_UI,
-
-		LAYER_MAX
-	};
-
 	ObjectManager() {}
 	~ObjectManager() {}
 

@@ -30,7 +30,7 @@ void SceneTitle::Draw()
 
 void SceneTitle::ChangeMainGameScene()
 {
-	SceneName scene = SceneName::GAME_MAIN;
+	SceneName scene = SceneName::MAIN;
 	// シーン変更コールバックを実行
 	if (ChangeScene != nullptr) ChangeScene(scene);
 }

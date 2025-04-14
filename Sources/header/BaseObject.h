@@ -1,6 +1,6 @@
 #pragma once
-#include "CommonModule.h"
-#include "DxLib.h"
+#include "../header/CommonModule.h"
+#include "../header/Const.h"
 /*
 * Ishihara
 * オブジェクトの基底
@@ -9,9 +9,9 @@ class BaseObject
 {
 public:
 	BaseObject(){}
-	BaseObject(int setLayer) 
+	BaseObject(Layer setLayer)
 		: layer(setLayer){}
-	BaseObject(int setLayer, int setDrawHandle) 
+	BaseObject(Layer setLayer, int setDrawHandle)
 		: layer(setLayer),drawHandle(setDrawHandle){}
 	BaseObject(const BaseObject& obj)
 		: layer(obj.layer),drawHandle(obj.drawHandle){}
@@ -34,11 +34,11 @@ public:
 	/// </summary>
 	virtual void Teardown();
 
-	inline void SetLayer(int setLayer) { layer = setLayer;}
-	inline int GetLayer() { return layer; }
+	inline void SetLayer(Layer setLayer) { layer = setLayer;}
+	inline Layer GetLayer() { return layer; }
 protected:
 	// レイヤー
-	int layer;
+	Layer layer;
 	// 描画用のハンドル
 	int drawHandle;
 	// 座標

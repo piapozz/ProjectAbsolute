@@ -8,9 +8,9 @@ class BaseCharacter: public BaseObject
 {
 public:
 	BaseCharacter() {}
-	BaseCharacter(int setLayer)
+	BaseCharacter(Layer setLayer)
 		: BaseObject(setLayer) {}
-	BaseCharacter(int setLayer,int setDrawHandle)
+	BaseCharacter(Layer setLayer,int setDrawHandle)
 		: BaseObject(setLayer,setDrawHandle) {}
 	BaseCharacter(const BaseCharacter& obj)
 		: BaseObject(obj) {}

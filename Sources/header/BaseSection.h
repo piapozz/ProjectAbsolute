@@ -8,9 +8,9 @@ class BaseSection: public BaseObject
 {
 public:
 	BaseSection() {}
-	BaseSection(int setLayer)
+	BaseSection(Layer setLayer)
 		: BaseObject(setLayer) {}
-	BaseSection(int setLayer,int setDrawHandle)
+	BaseSection(Layer setLayer,int setDrawHandle)
 		: BaseObject(setLayer,setDrawHandle) {}
 	BaseSection(const BaseSection& obj)
 		: BaseObject(obj) {}

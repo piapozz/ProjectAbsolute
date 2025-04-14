@@ -27,20 +27,20 @@ void SceneManager::Draw()
 
 void SceneManager::ChangeScene(SceneName scene)
 {
-	if (scene == SceneName::NONE) return;
+	if (scene == SceneName::INVALID) return;
 	// 現在のシーンが空じゃなかったら、シーンの情報を破棄する
 	delete(_scene);
 
 	// 引数のシーンに切り替える
 	switch (scene)
 	{
-	case SceneName::GAME_TITLE:
+	case SceneName::TITLE:
 		_scene = new SceneTitle();
 		break;
-	case SceneName::GAME_MAIN:
+	case SceneName::MAIN:
 		_scene = new SceneMain();
 		break;
-	case SceneName::GAME_EXIT:
+	case SceneName::EXIT:
 		DxLib_End();
 		return;
 	default:
