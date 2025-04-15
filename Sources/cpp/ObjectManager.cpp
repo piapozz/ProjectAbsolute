@@ -1,6 +1,7 @@
 #include "../header/ObjectManager.h"
 #include "../header/BaseObject.h"
 
+std::vector<BaseObject*> ObjectManager::_objectList;
 
 void ObjectManager::Init()
 {
@@ -19,12 +20,19 @@ void ObjectManager::Update()
 
 void ObjectManager::Draw()
 {
+	// 画面のクリア
+	ClearDrawScreen ();
+	clsDx ();
+
 	for(BaseObject* obj : _objectList)
 	{
 		if(obj == nullptr) return;
 		if(obj->GetLayer() == Layer::NONE_DRAW) continue;
 		obj->Draw();
 	}
+
+	// 裏画面の内容を表画面に反映
+	ScreenFlip ();
 }
 
 void ObjectManager::AddObject(BaseObject* obj)

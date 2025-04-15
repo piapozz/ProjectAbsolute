@@ -1,5 +1,6 @@
 #pragma once
 #include<functional>
+#include "ObjectManager.h"
 
 /*
  * Sakakura
@@ -14,7 +15,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	inline virtual void Init() = 0;
+	inline virtual void Init() { ObjectManager::Init();};
 	/// <summary>
 	//// 処理のループ
 	// </summary>
@@ -28,21 +29,6 @@ public:
 	/// 破棄
 	/// </summary>
 	inline virtual void Teardown() = 0;
-
-	/// <summary>
-	/// オブジェクトをセットするコールバック
-	/// </summary>
-	/// <param name="callbackSetObject"></param>
-	inline void SetCallbackSetObject(std::function<void()> setObjectCallback) {
-		SetObject = setObjectCallback;
-	}
-	/// <summary>
-	/// オブジェクトを削除するコールバック
-	/// </summary>
-	/// <param name="callbackDeleteObject"></param>
-	inline void SetCallbackDeleteObject(std::function<void()> deleteObjectCallback) {
-		DeleteObject = deleteObjectCallback;
-	}
 
 protected:
 	// オブジェクトをセットするコールバック

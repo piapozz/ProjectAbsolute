@@ -1,6 +1,7 @@
 #pragma once
 #include "BasePhase.h"
-
+class StageCreator;
+class CameraController;
 /*
  * Sakakura
  * メインフェーズ
@@ -19,6 +20,7 @@ protected:
 	void InputProc() override;
 
 private:
-
+	StageCreator* _stageCreator;
+	CameraController* _cameraController;
 };
 

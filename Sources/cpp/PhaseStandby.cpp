@@ -12,7 +12,7 @@ bool PhaseStandby::Proc()
 
 	// ‘I‘ð‚³‚ê‚½‚ç
 
-	return false;
+	return true;
 }
 
 void PhaseStandby::InputProc()

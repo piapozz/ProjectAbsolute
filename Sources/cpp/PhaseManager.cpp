@@ -1,4 +1,5 @@
 #include "../header/PhaseManager.h"
+#include "../header/ObjectManager.h"
 
 void PhaseManager::Init()
 {
@@ -8,6 +9,9 @@ void PhaseManager::Init()
 	_phaseList.push_back(new PhaseStandby());
 	_phaseList.push_back(new PhaseMain());
 	_phaseList.push_back(new PhaseResult());
+
+	// オブジェクト管理クラス生成
+	_objectManager = new ObjectManager();
 }
 
 void PhaseManager::Proc()

@@ -1,9 +1,11 @@
 #include "../header/BaseSection.h"
 
-void BaseSection::Init()
+void BaseSection::Init(Vector2 setPosition, int setSize)
 {
 	// èâä˙âª
-	BaseObject::Init();
+	sectionType = SectionType::INVALID;
+	position = setPosition;
+	size = setSize;
 }
 
 void BaseSection::Proc()

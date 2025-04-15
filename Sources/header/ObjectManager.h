@@ -1,10 +1,11 @@
 #pragma once
-#include "../header/Const.h"
+#include "Const.h"
+#include <vector>
+#include "BaseObject.h"
 /*
 * Ishihara
 * オブジェクトの管理
 */
-class BaseObject;
 class ObjectManager
 {
 public:
@@ -14,25 +15,24 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init();
+	static void Init();
 	/// <summary>
 	/// 更新
 	/// </summary>
-	void Update();
+	static void Update();
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw();
+	static void Draw();
 	/// <summary>
 	/// オブジェクトの追加
 	/// </summary>
-	void AddObject(BaseObject* obj);
+	static void AddObject(BaseObject* obj);
 	/// <summary>
 	/// オブジェクトの削除
 	/// </summary>
-	void RemoveObject(BaseObject* obj);
-private:
+	static void RemoveObject(BaseObject* obj);
 	// オブジェクトのリスト
-	std::vector<BaseObject*> _objectList;
+	static std::vector<BaseObject*> _objectList;
 };
 
