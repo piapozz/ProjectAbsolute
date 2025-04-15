@@ -49,6 +49,18 @@
     <Filter Include="ソース ファイル\Sakakura\Secure">
       <UniqueIdentifier>{48b2acac-c237-4821-a64d-4f13667a5a86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Sein\Officer">
+      <UniqueIdentifier>{b3f395f2-1302-4aa0-bd6a-2aae14919d71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sein\OfficerState">
+      <UniqueIdentifier>{1edf24dc-87c1-4eed-a5ec-8015216054b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sein\Officer">
+      <UniqueIdentifier>{47800f95-49d2-4297-a234-5c0bc81a5f47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sein\OfficerState">
+      <UniqueIdentifier>{79c76cd8-814c-473b-9354-e744be866ad4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -89,33 +101,6 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\SceneTitle.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerMob.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerPlayer.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerStateDead.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerStateFight.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerStateMove.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseOfficer.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseOfficerState.cpp">
-      <Filter>ソース ファイル\Sein</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\SectionConnect.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
@@ -171,6 +156,36 @@
     <ClCompile Include="Sources\cpp\OperationInjure.cpp">
       <Filter>ソース ファイル\Sakakura\Secure</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseOfficer.cpp">
+      <Filter>ソース ファイル\Sein\Officer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerMob.cpp">
+      <Filter>ソース ファイル\Sein\Officer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerPlayer.cpp">
+      <Filter>ソース ファイル\Sein\Officer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateDead.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateFight.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateMove.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseOfficerState.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateFactory.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -214,33 +229,6 @@
     </ClInclude>
     <ClInclude Include="Sources\header\Const.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\BaseOfficerState.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\BaseOfficer.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerMob.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerPlayer.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerStateDead.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerStateFight.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerStateIdle.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerStateMove.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerStatePanic.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\SectionConnect.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
@@ -295,6 +283,36 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OperationInjure.h">
       <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseOfficer.h">
+      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerMob.h">
+      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerPlayer.h">
+      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateDead.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateFight.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateIdle.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateMove.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStatePanic.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseOfficerState.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateFactory.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

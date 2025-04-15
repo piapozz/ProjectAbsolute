@@ -152,6 +152,7 @@
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateDead.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateFactory.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateFight.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateMove.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Sources\header\OfficerMob.h" />
     <ClInclude Include="Sources\header\OfficerPlayer.h" />
     <ClInclude Include="Sources\header\OfficerStateDead.h" />
+    <ClInclude Include="Sources\header\OfficerStateFactory.h" />
     <ClInclude Include="Sources\header\OfficerStateFight.h" />
     <ClInclude Include="Sources\header\OfficerStateIdle.h" />
     <ClInclude Include="Sources\header\OfficerStateMove.h" />
