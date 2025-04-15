@@ -149,6 +149,7 @@
     <ClCompile Include="Sources\cpp\BaseToolEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateDead.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\OfficerManager.h" />
     <ClInclude Include="Sources\header\OfficerMob.h" />
     <ClInclude Include="Sources\header\OfficerPlayer.h" />
     <ClInclude Include="Sources\header\OfficerStateDead.h" />

@@ -186,6 +186,9 @@
     <ClCompile Include="Sources\cpp\OfficerStateFactory.cpp">
       <Filter>ソース ファイル\Sein\OfficerState</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerManager.cpp">
+      <Filter>ソース ファイル\Sein\Officer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -313,6 +316,9 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerStateFactory.h">
       <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerManager.h">
+      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
