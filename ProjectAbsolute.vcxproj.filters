@@ -31,14 +31,26 @@
     <Filter Include="ヘッダー ファイル\Sein">
       <UniqueIdentifier>{92d953db-0229-4ef4-b513-8b28fa8e7dfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Sakakura\Entity">
+      <UniqueIdentifier>{79239656-3db5-4ee7-b3a3-02dcf49fcf8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sakakura\Phase">
+      <UniqueIdentifier>{37efd5d0-639c-4060-ab97-575f26501c03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sakakura\Entity">
+      <UniqueIdentifier>{f491f3e1-cbd1-4738-9e2f-efa653cb7215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sakakura\Phase">
+      <UniqueIdentifier>{90311496-bb2c-4a90-b741-57b4a33b31f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sakakura\Secure">
+      <UniqueIdentifier>{07bdc5b7-0a9f-402e-8fcb-74ef1715ab39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sakakura\Secure">
+      <UniqueIdentifier>{48b2acac-c237-4821-a64d-4f13667a5a86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\cpp\PhaseManager.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BasePhase.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -77,24 +89,6 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\SceneTitle.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\PhaseMain.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\PhaseResult.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\PhaseSelect.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\PhaseStandby.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseEntity.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SecureRoom.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\OfficerMob.cpp">
       <Filter>ソース ファイル\Sein</Filter>
@@ -135,17 +129,50 @@
     <ClCompile Include="Sources\cpp\StageCreator.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\Operation.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
+    <ClCompile Include="Sources\cpp\BasePhase.cpp">
+      <Filter>ソース ファイル\Sakakura\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\PhaseMain.cpp">
+      <Filter>ソース ファイル\Sakakura\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\PhaseManager.cpp">
+      <Filter>ソース ファイル\Sakakura\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\PhaseResult.cpp">
+      <Filter>ソース ファイル\Sakakura\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\PhaseSelect.cpp">
+      <Filter>ソース ファイル\Sakakura\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\PhaseStandby.cpp">
+      <Filter>ソース ファイル\Sakakura\Phase</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseEntity.cpp">
+      <Filter>ソース ファイル\Sakakura\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseToolEntity.cpp">
+      <Filter>ソース ファイル\Sakakura\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseOperation.cpp">
+      <Filter>ソース ファイル\Sakakura\Secure</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SecureRoom.cpp">
+      <Filter>ソース ファイル\Sakakura\Secure</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OperationSatisfy.cpp">
+      <Filter>ソース ファイル\Sakakura\Secure</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OperationObserbation.cpp">
+      <Filter>ソース ファイル\Sakakura\Secure</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OperationContact.cpp">
+      <Filter>ソース ファイル\Sakakura\Secure</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OperationInjure.cpp">
+      <Filter>ソース ファイル\Sakakura\Secure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\header\PhaseManager.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\BasePhase.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\ObjectManager.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
@@ -185,26 +212,8 @@
     <ClInclude Include="Sources\header\SceneTitle.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\PhaseMain.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\PhaseResult.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\PhaseSelect.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\PhaseStandby.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\Const.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\BaseEntity.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SecureRoom.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\BaseOfficerState.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
@@ -245,8 +254,47 @@
     <ClInclude Include="Sources\header\StageCreator.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\Operation.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    <ClInclude Include="Sources\header\BaseEntity.h">
+      <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BasePhase.h">
+      <Filter>ヘッダー ファイル\Sakakura\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseToolEntity.h">
+      <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\PhaseMain.h">
+      <Filter>ヘッダー ファイル\Sakakura\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\PhaseManager.h">
+      <Filter>ヘッダー ファイル\Sakakura\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\PhaseResult.h">
+      <Filter>ヘッダー ファイル\Sakakura\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\PhaseSelect.h">
+      <Filter>ヘッダー ファイル\Sakakura\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\PhaseStandby.h">
+      <Filter>ヘッダー ファイル\Sakakura\Phase</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseOperation.h">
+      <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SecureRoom.h">
+      <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OperationSatisfy.h">
+      <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OperationObserbation.h">
+      <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OperationContact.h">
+      <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OperationInjure.h">
+      <Filter>ヘッダー ファイル\Sakakura\Secure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
