@@ -3,9 +3,12 @@
 
 /*
  * Sein
- * ƒvƒŒƒCƒ„[‚ª‘€ì‚Å‚«‚éOfficer
+ * Officer‚ÌDeadState
  */
-class OfficerStateDead : BaseOfficerState
+class OfficerStateDead : public BaseOfficerState
 {
-
+public:
+	void Update(Officer* officer) override;
+	void Enter(Officer* officer) override;
+	void Exit(Officer* officer) override;
 };

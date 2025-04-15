@@ -10,7 +10,7 @@ class Officer;
 class BaseOfficerState
 {
 public:
-	virtual void Updata(Officer* officer){}
+	virtual void Update(Officer* officer){}
 	virtual void Enter(Officer* officer){}
 	virtual void Exit(Officer* officer){}
 
