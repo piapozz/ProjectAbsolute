@@ -2,7 +2,10 @@
 
 BaseOfficer::BaseOfficer()
 {
-
+	_pOfficerState = NULL;
+	_officerID = NULL;
+	_armorID = NULL;
+	_weaponID = NULL;
 }
 
 BaseOfficer::~BaseOfficer()

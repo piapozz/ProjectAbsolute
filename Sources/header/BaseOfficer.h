@@ -1,6 +1,6 @@
 #pragma once
 #include "../header/BaseCharacter.h"
-
+#include "../header/BaseOfficerState.h"
 
 /*
  * Sein
@@ -9,16 +9,14 @@
 class BaseOfficer : BaseCharacter
 {
 public:
-
+	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
+	void SetArmor(int armorID){ _armorID = armorID; }
+	void SetWeapon(int weaponID){ _weaponID = weaponID; }
 
 private:
 	BaseOfficer();
 	~BaseOfficer();
-
-	//void Init() override;
-	//void Proc() override;
-	//void Teardown() override;
 
 	virtual void Init();
 	virtual void Proc();
@@ -27,4 +25,6 @@ private:
 	int _officerID;
 	int _armorID;
 	int _weaponID;
+
+	BaseOfficerState* _pOfficerState;
 };
