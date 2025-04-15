@@ -42,10 +42,11 @@ enum class Layer
 enum class SectionType
 {
 	INVALID = -1,
+	NONE,
 	ROOM,
-	SECURE,
 	CORRIDOR,
 	CONNECT,
+	SECURE,
 
 	MAX
 };
@@ -77,6 +78,9 @@ enum class State
 	EMERGENCY,
 };
 
+// ステージ
+const int SECTION_SIZE = 100;
+
 // 色
 const int COLOR_BLACK = GetColor(0, 0, 0);
 const int COLOR_WHITE = GetColor(255, 255, 255);
@@ -86,4 +90,4 @@ const int WINDOW_WIDTH = 1920;
 const int WINDOW_HEIGHT = 1080;
 
 // 便利数字
-const float RAD = (float)(180 / DX_PI);
+const float RAD2DEG = (float)(180 / DX_PI);
