@@ -1,12 +1,19 @@
 #include "../header/PhaseMain.h"
+#include "../header/StageCreator.h"
+#include "../header/CameraController.h"
 
 void PhaseMain::Init()
 {
 	// 入力受付クラスを生成
+
+	_stageCreator = new StageCreator();
+	_stageCreator->CreateStage();
+	_cameraController = new CameraController();
 }
 
 bool PhaseMain::Proc()
 {
+	_cameraController->Update();
 	// 入力受付
 
 	// 選択されたら

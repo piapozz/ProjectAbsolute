@@ -7,11 +7,11 @@
 class BaseSection: public BaseObject
 {
 public:
-	BaseSection() {}
+	BaseSection(): BaseObject() { }
 	BaseSection(Layer setLayer)
 		: BaseObject(setLayer) {}
-	BaseSection(Layer setLayer,int setDrawHandle)
-		: BaseObject(setLayer,setDrawHandle) {}
+	BaseSection(Layer setLayer, int setDrawHandle)
+		: BaseObject(setLayer, setDrawHandle) {}
 	BaseSection(const BaseSection& obj)
 		: BaseObject(obj) {}
 	~BaseSection() {}
@@ -19,7 +19,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init() override;
+ 	virtual void Init(Vector2 setPosition, int setSize);
 	/// <summary>
 	/// アップデート
 	/// </summary>
@@ -32,5 +32,12 @@ public:
 	/// 破棄
 	/// </summary>
 	void Teardown() override;
+protected:
+	// 自分がどの部屋のタイプか
+	SectionType sectionType;
+	// 接続数
+	bool isConnect[static_cast<int>(Direction::MAX)];
+	// サイズ
+	int size;
 };
 

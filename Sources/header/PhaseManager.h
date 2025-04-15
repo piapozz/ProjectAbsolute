@@ -4,7 +4,7 @@
 #include "PhaseStandby.h"
 #include "PhaseMain.h"
 #include "PhaseResult.h"
-
+class ObjectManager;
 /*
  * Sakakura
  * フェーズ管理クラス
@@ -31,5 +31,7 @@ public:
 private:
 	// フェーズのリスト
 	std::vector<BasePhase*> _phaseList;
+	// オブジェクト管理クラス
+	ObjectManager* _objectManager;
 };
 
