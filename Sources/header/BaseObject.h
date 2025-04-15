@@ -18,10 +18,6 @@ public:
 	~BaseObject(){ }
 
 	/// <summary>
-	/// 初期化
-	/// </summary>
-	virtual void Init(){};
-	/// <summary>
 	/// アップデート
 	/// </summary>
 	virtual void Proc(){};

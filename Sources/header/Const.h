@@ -61,21 +61,14 @@ enum class Direction
 
 	MAX
 };
-// 作業の種類
-enum class OperationType
+// 種類
+enum class Type
 {
-	SATISFY = 0,
-	OBSERVATION,
-	CONTACT,
-	INJURE
-};
-// 収容室の状態
-enum class State
-{
-	NONE,
-	IDLE,
-	OPERATE,
-	EMERGENCY,
+	RED = 0,
+	WHITE,
+	BLACK,
+	PALE,
+	MAX
 };
 
 // ステージ

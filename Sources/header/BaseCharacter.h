@@ -36,5 +36,16 @@ public:
 	// UŒ‚
 	// €–S
 	// ì‹Æ
+
+protected:
+	// UŒ‚—Í
+	int attack;
+	// UŒ‚‘®«
+	Type attackType;
+	// –hŒä”{—¦
+	float defenseRatio[(int)Type::MAX];
+	int health;
+	// Å‘å‘Ì—Í
+	int maxHealth;
 };
 

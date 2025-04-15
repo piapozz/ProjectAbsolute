@@ -2,7 +2,13 @@
 
 void SecureRoom::Init()
 {
+	// エンティティーのマスターデータから作業IDを取得し生成
 	// _pOperation = new Operation(_pEntity->GetID());
+	int entityID = 0;
+	_pOperation[0] = new OperationSatisfy(entityID);
+	_pOperation[1] = new OperationObserbation(entityID);
+	_pOperation[2] = new OperationContact(entityID);
+	_pOperation[3] = new OperationInjure(entityID);
 }
 
 void SecureRoom::Proc()
@@ -26,24 +32,30 @@ void SecureRoom::Proc()
 
 void SecureRoom::Draw()
 {
-	// 描画
-	BaseSection::Draw();
+
 }
 
 void SecureRoom::Teardown()
 {
-	// 破棄
-	BaseSection::Teardown();
+
 }
 
-void SecureRoom::SetState(State setState)
+void SecureRoom::StartOperation(Type operation, int operatorID)
 {
-	// ステートを切り替える
-	_currentState = setState;
+	_currentState = State::OPERATE;
+	_currentOperationType = operation;
+	_pOperation[(int)_currentState]->SetOperator(operatorID);
 }
 
 void SecureRoom::OperationProc()
 {
 	// 作業速度に応じて作業を進める
+	if (!_pOperation[(int)_currentState]->OperationProc()) return;
+
+	// 作業が終了したら作業の結果を取得
+	int successCount = _pOperation[(int)_currentState]->GetSuccessCount();
+	// 作業員のパラメーターを増加させる
 	
+	// 作業の結果をエンティティーに通知
+
 }
