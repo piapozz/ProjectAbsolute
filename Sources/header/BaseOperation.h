@@ -5,11 +5,11 @@
  * Sakakura
  * ì‹Æ
  */
-class Operation
+class BaseOperation
 {
 public:
-	Operation(int masterEntityID);
-	~Operation(){}
+	BaseOperation(int masterEntityID);
+	~BaseOperation(){}
 
 private:
 	// ì‹Æ‚Ì•W€ƒtƒŒ[ƒ€

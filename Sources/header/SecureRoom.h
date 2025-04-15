@@ -1,7 +1,7 @@
 #pragma once
 #include "../header/BaseSection.h"
 #include "../header/BaseEntity.h"
-#include "../header/Operation.h"
+#include "../header/BaseOperation.h"
 
 /*
  * Sakakura
@@ -31,7 +31,7 @@ private:
 	// 収容しているエンティティー
 	BaseEntity* _pEntity;
 	// 作業
-	Operation* _pOperation;
+	BaseOperation* _pOperation;
 
 	/// <summary>
 	/// 作業の処理

@@ -146,6 +146,7 @@
     <ClCompile Include="Sources\cpp\BaseObject.cpp" />
     <ClCompile Include="Sources\cpp\BaseScene.cpp" />
     <ClCompile Include="Sources\cpp\BaseSection.cpp" />
+    <ClCompile Include="Sources\cpp\BaseToolEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
@@ -155,7 +156,11 @@
     <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateMove.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp" />
-    <ClCompile Include="Sources\cpp\Operation.cpp" />
+    <ClCompile Include="Sources\cpp\BaseOperation.cpp" />
+    <ClCompile Include="Sources\cpp\OperationContact.cpp" />
+    <ClCompile Include="Sources\cpp\OperationInjure.cpp" />
+    <ClCompile Include="Sources\cpp\OperationObserbation.cpp" />
+    <ClCompile Include="Sources\cpp\OperationSatisfy.cpp" />
     <ClCompile Include="Sources\cpp\PhaseMain.cpp" />
     <ClCompile Include="Sources\cpp\PhaseManager.cpp" />
     <ClCompile Include="Sources\cpp\PhaseResult.cpp" />
@@ -184,6 +189,7 @@
     <ClInclude Include="Sources\header\BaseObject.h" />
     <ClInclude Include="Sources\header\BaseScene.h" />
     <ClInclude Include="Sources\header\BaseSection.h" />
+    <ClInclude Include="Sources\header\BaseToolEntity.h" />
     <ClInclude Include="Sources\header\BaseUI.h" />
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
@@ -195,7 +201,11 @@
     <ClInclude Include="Sources\header\OfficerStateIdle.h" />
     <ClInclude Include="Sources\header\OfficerStateMove.h" />
     <ClInclude Include="Sources\header\OfficerStatePanic.h" />
-    <ClInclude Include="Sources\header\Operation.h" />
+    <ClInclude Include="Sources\header\BaseOperation.h" />
+    <ClInclude Include="Sources\header\OperationContact.h" />
+    <ClInclude Include="Sources\header\OperationInjure.h" />
+    <ClInclude Include="Sources\header\OperationObserbation.h" />
+    <ClInclude Include="Sources\header\OperationSatisfy.h" />
     <ClInclude Include="Sources\header\PhaseMain.h" />
     <ClInclude Include="Sources\header\PhaseManager.h" />
     <ClInclude Include="Sources\header\PhaseResult.h" />
