@@ -17,4 +17,9 @@ void BaseCharacter::Teardown()
 {
 	// ”jŠü
 	BaseObject::Teardown();
+} 
+
+void BaseCharacter::DecreaseHealth(int decreaseValue)
+{
+	health -= decreaseValue;
 }
