@@ -36,7 +36,7 @@ protected:
 	// 自分がどの部屋のタイプか
 	SectionType sectionType;
 	// 接続数
-	bool isConnect[static_cast<int>(Direction::MAX)];
+	bool isConnect[static_cast<int>(DirFour::MAX)];
 	// サイズ
 	int size;
 };
