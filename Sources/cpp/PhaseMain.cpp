@@ -7,8 +7,8 @@ void PhaseMain::Init()
 {
 	// “ü—ÍŽó•tƒNƒ‰ƒX‚ð¶¬
 
-	_stageCreator = new StageCreator();
-	_stageCreator->CreateStage();
+	_stageManager = new StageManager();
+	_stageManager->CreateStage();
 	_cameraController = new CameraController();
 	_pOfficerManager = new OfficerManager();
 	_pOfficerManager->Init();

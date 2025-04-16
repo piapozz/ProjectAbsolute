@@ -1,6 +1,6 @@
 #pragma once
 #include "BasePhase.h"
-class StageCreator;
+class StageManager;
 class CameraController;
 class OfficerManager;
 /*
@@ -21,7 +21,7 @@ protected:
 	void InputProc() override;
 
 private:
-	StageCreator* _stageCreator;
+	StageManager* _stageManager;
 	CameraController* _cameraController;
 	OfficerManager* _pOfficerManager;
 };

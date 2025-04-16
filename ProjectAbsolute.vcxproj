@@ -176,6 +176,7 @@
     <ClCompile Include="Sources\cpp\InputManager.cpp" />
     <ClCompile Include="Sources\cpp\Main.cpp" />
     <ClCompile Include="Sources\cpp\ObjectManager.cpp" />
+    <ClCompile Include="Sources\cpp\RouteSearcher.cpp" />
     <ClCompile Include="Sources\cpp\SceneMain.cpp" />
     <ClCompile Include="Sources\cpp\SceneManager.cpp" />
     <ClCompile Include="Sources\cpp\SceneTitle.cpp" />
@@ -184,7 +185,7 @@
     <ClCompile Include="Sources\cpp\SectionRoom.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
     <ClCompile Include="Sources\cpp\BaseOfficerState.cpp" />
-    <ClCompile Include="Sources\cpp\StageCreator.cpp" />
+    <ClCompile Include="Sources\cpp\StageManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\AcceptInput.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Sources\header\GameManager.h" />
     <ClInclude Include="Sources\header\InputManager.h" />
     <ClInclude Include="Sources\header\ObjectManager.h" />
+    <ClInclude Include="Sources\header\RouteSearcher.h" />
     <ClInclude Include="Sources\header\SceneMain.h" />
     <ClInclude Include="Sources\header\SceneManager.h" />
     <ClInclude Include="Sources\header\SceneTitle.h" />
@@ -233,7 +235,7 @@
     <ClInclude Include="Sources\header\SectionCorridor.h" />
     <ClInclude Include="Sources\header\SectionRoom.h" />
     <ClInclude Include="Sources\header\SecureRoom.h" />
-    <ClInclude Include="Sources\header\StageCreator.h" />
+    <ClInclude Include="Sources\header\StageManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
