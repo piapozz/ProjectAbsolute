@@ -5,7 +5,16 @@
  * Sein
  * ƒvƒŒƒCƒ„[‚ª‘€ì‚Å‚«‚éOfficer
  */
-class OfficerPlayer : BaseOfficer
+class OfficerPlayer : public BaseOfficer
 {
+public:
+	OfficerPlayer();
+	~OfficerPlayer();
 
+	void Init() override;
+	void Proc() override;
+	void Draw() override;
+	void Teardown() override;
+
+private:
 };
