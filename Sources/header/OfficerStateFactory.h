@@ -5,6 +5,7 @@
 #include "../header/OfficerStateFight.h"
 #include "../header/OfficerStatePanic.h"
 #include "../header/OfficerStateDead.h"
+#include "../header/Const.h"
 
 class BaseOfficerState;
 
@@ -15,15 +16,6 @@ class BaseOfficerState;
 class OfficerStateFactory
 {
 public:
-	static enum OfficerStateID
-	{
-		NONE = -1,
-		OFFICER_IDLE,
-		OFFICER_MOVE,
-		OFFICER_FIGHT,
-		OFFICER_PANIC,
-		OFFICER_DEAD,
-	};
-	
-	static BaseOfficerState* ChangeState(OfficerStateID stateID);
+	static BaseOfficerState* CreateState(OfficerStateID stateID);
+
 };

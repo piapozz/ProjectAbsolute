@@ -1,11 +1,5 @@
 #include "../header/BaseCharacter.h"
 
-void BaseCharacter::Init()
-{
-	// 初期化
-	BaseObject::Init();
-}
-
 void BaseCharacter::Proc()
 {
 	// アップデート

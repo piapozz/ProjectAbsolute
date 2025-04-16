@@ -2,8 +2,7 @@
 
 void BaseUI::Init()
 {
-	// ‰Šú‰»
-	BaseObject::Init();
+
 }
 
 void BaseUI::Proc()

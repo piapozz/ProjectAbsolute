@@ -19,7 +19,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init() override;
+	virtual void Init();
 	/// <summary>
 	/// アップデート
 	/// </summary>

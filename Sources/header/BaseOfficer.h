@@ -6,25 +6,35 @@
  * Sein
  * Officer‚ÌŠî’êƒNƒ‰ƒX
  */
-class BaseOfficer : BaseCharacter
+class BaseOfficer : public BaseCharacter
 {
 public:
+	BaseOfficer();
+	virtual ~BaseOfficer();
+
+	virtual void Init();
+	void Proc() override;
+	void Draw() override;
+	void Teardown() override;
+
+	void ChangeState(BaseOfficerState* officerState);
+
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
+	void SetOfficerType(OfficerType type){ _officerType = type; }
+	OfficerType GetOfficerType(){ return _officerType; }
 	void SetArmor(int armorID){ _armorID = armorID; }
 	void SetWeapon(int weaponID){ _weaponID = weaponID; }
 
+	VECTOR position;
+	BaseOfficerState* pOfficerState;
+
 private:
-	BaseOfficer();
-	~BaseOfficer();
 
-	virtual void Init();
-	virtual void Proc();
-	virtual void Teardown();
-
+protected:
 	int _officerID;
 	int _armorID;
 	int _weaponID;
 
-	BaseOfficerState* _pOfficerState;
+	OfficerType _officerType;
 };

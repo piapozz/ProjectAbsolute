@@ -71,6 +71,27 @@ enum class Type
 	MAX
 };
 
+enum class OfficerType
+{
+	NONE = -1,
+	PLAYER,
+	MOB,
+
+	MAX
+};
+
+enum class OfficerStateID
+{
+	NONE = -1,
+	OFFICER_IDLE,
+	OFFICER_MOVE,
+	OFFICER_FIGHT,
+	OFFICER_PANIC,
+	OFFICER_DEAD,
+
+	MAX
+};
+
 // ステージ
 const int SECTION_SIZE = 100;
 
