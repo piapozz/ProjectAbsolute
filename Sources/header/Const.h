@@ -10,6 +10,7 @@ enum class DirFour
     RIGHT,
     DOWN,
     LEFT,
+
     MAX
 };
 // シーンの名前
@@ -50,17 +51,6 @@ enum class SectionType
 
 	MAX
 };
-// 方向
-enum class Direction
-{
-	INVALID = -1,
-	UP,
-	RIGHT,
-	DOWN,
-	LEFT,
-
-	MAX
-};
 // 種類
 enum class Type
 {
@@ -94,6 +84,8 @@ enum class OfficerStateID
 
 // ステージ
 const int SECTION_SIZE = 100;
+// ステージのサイズ
+const int STAGE_SIZE = 7;
 
 // 色
 const int COLOR_BLACK = GetColor(0, 0, 0);

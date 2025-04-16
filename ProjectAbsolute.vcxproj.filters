@@ -111,7 +111,7 @@
     <ClCompile Include="Sources\cpp\SectionRoom.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\StageCreator.cpp">
+    <ClCompile Include="Sources\cpp\StageManager.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\BasePhase.cpp">
@@ -201,6 +201,9 @@
     <ClCompile Include="Sources\cpp\Entity_E000.cpp">
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\RouteSearcher.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -254,7 +257,7 @@
     <ClInclude Include="Sources\header\SectionRoom.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\StageCreator.h">
+    <ClInclude Include="Sources\header\StageManager.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\BaseEntity.h">
@@ -343,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="Sources\header\Entity_E000.h">
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\RouteSearcher.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
