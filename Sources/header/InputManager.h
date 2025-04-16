@@ -44,13 +44,22 @@ public:
 	void UpdataMouseCursor(MouseStatus mouseStatus);
 
 	inline MouseStatus GetCursorPos(){ return _cursorPos; }
-	inline void SetCallback(std::function<void()> Callback){ _ClickAction = Callback; }
+	inline void SetLClickCallback(std::function<void()> Callback){ _LPushAction = Callback; }
+	inline void SetRClickCallback(std::function<void()> Callback){ _RPushAction = Callback; }
+	inline void SetLReleaseCallback(std::function<void()> Callback){ _LReleaseAction = Callback; }
+	inline void SetRReleaseCallback(std::function<void()> Callback){ _RReleaseAction = Callback; }
 
 private:
 	// マウスカーソル座標を保持
 	MouseStatus _cursorPos;
-	// Functionを保持する変数
-	std::function<void()> _ClickAction;
+	// 左クリックを押したときのコールバック
+	std::function<void()> _LPushAction;
+	// 右クリックを押したときのコールバック
+	std::function<void()> _RPushAction;
+	// 左クリックを離したときのコールバック
+	std::function<void()> _LReleaseAction;
+	// 右クリックを離したときのコールバック
+	std::function<void()> _RReleaseAction;
 	// マウスの過去の状態を格納
 	int _oldMouseInput;
 };

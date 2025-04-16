@@ -1,7 +1,7 @@
 #pragma once
 #include<functional>
 #include "ObjectManager.h"
-
+class InputManager;
 /*
  * Sakakura
  * フェーズの基底
@@ -31,13 +31,10 @@ public:
 	inline virtual void Teardown() = 0;
 
 protected:
-	// オブジェクトをセットするコールバック
-	std::function<void()> SetObject;
-	// オブジェクトを破棄するコールバック
-	std::function<void()> DeleteObject;
-
 	/// <summary>
 	/// 入力に応じた処理
 	/// </summary>
 	virtual void InputProc() = 0;
+
+	InputManager* pInputManager;
 };

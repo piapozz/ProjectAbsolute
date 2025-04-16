@@ -23,12 +23,12 @@ void BaseToolEntity::Proc()
 void BaseToolEntity::Use(int userID)
 {
 	interactOfficerID = userID;
-	UseEvent(interactOfficerID);
+	UseEvent();
 }
 
 void BaseToolEntity::Disuse()
 {
-	DisuseEvent(interactOfficerID);
+	DisuseEvent();
 	interactOfficerID = -1;
 }
 

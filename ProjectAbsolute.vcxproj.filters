@@ -195,9 +195,6 @@
     <ClCompile Include="Sources\cpp\BaseEgoEntity.cpp">
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\AcceptInput.cpp">
-      <Filter>ソース ファイル\Sakakura</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\Entity_E000.cpp">
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
@@ -340,9 +337,6 @@
     </ClInclude>
     <ClInclude Include="Sources\header\BaseEgoEntity.h">
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\AcceptInput.h">
-      <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\Entity_E000.h">
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>

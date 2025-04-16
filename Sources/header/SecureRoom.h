@@ -1,6 +1,6 @@
 #pragma once
 #include "../header/BaseSection.h"
-#include "../header/BaseEntity.h"
+class BaseEntity;
 
 /*
  * Sakakura

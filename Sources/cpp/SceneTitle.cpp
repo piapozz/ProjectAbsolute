@@ -14,7 +14,7 @@ void SceneTitle::Init()
 {
 	// “ü—ÍŽó•tƒNƒ‰ƒX‚ð¶¬
 	_inputManager = new InputManager();
-	_inputManager->SetCallback([this](void) { this->ChangeMainGameScene(); });
+	_inputManager->SetLClickCallback([this](void) { this->ChangeMainGameScene(); });
 }
 
 void SceneTitle::Proc()

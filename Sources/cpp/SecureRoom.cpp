@@ -1,4 +1,5 @@
 #include "../header/SecureRoom.h"
+#include "../header/BaseEntity.h"
 
 void SecureRoom::Init(Vector2 position, int size)
 {

@@ -19,7 +19,6 @@ public:
 	~BaseToolEntity(){}
 
 	void Proc() override;
-
 	/// <summary>
 	/// 使用する
 	/// </summary>
@@ -29,6 +28,13 @@ public:
 	/// 使用をやめる
 	/// </summary>
 	void Disuse();
+	inline bool IsTool() override { return true; }
+	inline bool CanMeltdown() override { return interactOfficerID < 0; }
+
+private:
+	// ツールの種類
+	ToolType _toolType;
+
 	/// <summary>
 	/// 使用中の処理
 	/// </summary>
@@ -37,16 +43,10 @@ public:
 	/// 使用開始時のイベント
 	/// </summary>
 	/// <param name="userID"></param>
-	virtual void UseEvent(int userID){};
+	virtual void UseEvent(){}
 	/// <summary>
 	/// 使用中止時のイベント
 	/// </summary>
-	virtual void DisuseEvent(int userID){}
-	inline bool IsTool() override { return true; }
-	inline bool CanMeltdown() override { return interactOfficerID < 0; }
-
-private:
-	// ツールの種類
-	ToolType _toolType;
+	virtual void DisuseEvent(){}
 };
 

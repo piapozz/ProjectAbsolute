@@ -2,10 +2,12 @@
 #include "../header/StageCreator.h"
 #include "../header/OfficerManager.h"
 #include "../header/CameraController.h"
+#include "../header/InputManager.h"
 
 void PhaseMain::Init()
 {
-	// “ü—Íó•tƒNƒ‰ƒX‚ğ¶¬
+	// “ü—Í‚Ì‰Šú‰»
+	pInputManager = new InputManager();
 
 	_stageManager = new StageManager();
 	_stageManager->CreateStage();
