@@ -37,6 +37,9 @@ public:
 	// €–S
 	// ì‹Æ
 
+	virtual void TakeDamege() {};
+	void DecreaseHealth(int decreaseValue);
+
 protected:
 	// UŒ‚—Í
 	int attack;
