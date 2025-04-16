@@ -14,7 +14,8 @@ bool BaseOperation::OperationProc()
 	if (_currentSpeed <= _frameCounter) return false;
 	_currentOperationCount++;
 	// ì‹Æ‚Ì¬Œ÷‚ðƒ‰ƒ“ƒ_ƒ€‚ÉŒˆ‚ß‚é
-	if (_currentProbability * 10 <= GetRand(1000))
+	bool result = _currentProbability * 10 <= GetRand(1000);
+	if (result)
 	{
 		// Ž¸”s
 		// ƒ_ƒ[ƒW‚ð—^‚¦‚é
