@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
     <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
+    <ClCompile Include="Sources\cpp\BaseNormalEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseOfficer.cpp" />
     <ClCompile Include="Sources\cpp\BasePhase.cpp" />
     <ClCompile Include="Sources\cpp\BaseObject.cpp" />
@@ -186,6 +187,7 @@
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
     <ClInclude Include="Sources\header\BaseEntity.h" />
+    <ClInclude Include="Sources\header\BaseNormalEntity.h" />
     <ClInclude Include="Sources\header\BaseOfficer.h" />
     <ClInclude Include="Sources\header\BaseOfficerState.h" />
     <ClInclude Include="Sources\header\BasePhase.h" />

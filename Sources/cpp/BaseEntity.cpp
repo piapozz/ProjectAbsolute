@@ -27,9 +27,7 @@ void BaseEntity::DecreaseRunawayCount()
 {
 	// 暴走カウンターを減少させる
 	_runawayCount--;
-	if (_runawayCount <= 0)
-	{
-		// 暴走カウンターが0になったら、暴走イベントを発生させる
-
-	}
+	// 暴走カウンターが0になったら、暴走イベントを発生させる
+	if (_runawayCount > 0) return;
+	RunawayEvent();
 }
