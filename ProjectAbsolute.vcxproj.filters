@@ -189,6 +189,18 @@
     <ClCompile Include="Sources\cpp\OfficerManager.cpp">
       <Filter>ソース ファイル\Sein\Officer</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\CameraController.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseEgoEntity.cpp">
+      <Filter>ソース ファイル\Sakakura\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\AcceptInput.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\Entity_E000.cpp">
+      <Filter>ソース ファイル\Sakakura\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -319,6 +331,18 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerManager.h">
       <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\CameraController.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseEgoEntity.h">
+      <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\AcceptInput.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Entity_E000.h">
+      <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

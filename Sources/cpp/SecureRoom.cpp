@@ -1,62 +1,39 @@
 #include "../header/SecureRoom.h"
 
-void SecureRoom::Init()
+void SecureRoom::Init(Vector2 position, int size)
 {
-	// エンティティーのマスターデータから作業IDを取得し生成
-	// _pOperation = new Operation(_pEntity->GetID());
-	int entityID = 0;
-	_pOperation[0] = new OperationSatisfy(entityID);
-	_pOperation[1] = new OperationObserbation(entityID);
-	_pOperation[2] = new OperationContact(entityID);
-	_pOperation[3] = new OperationInjure(entityID);
+	BaseSection::Init(position, size);
+	sectionType = SectionType::SECURE;
+	layer = Layer::OBJECT;
 }
 
 void SecureRoom::Proc()
 {
-	// 収容室の状態に応じた処理
-	switch (_currentState)
-	{
-		case State::NONE:
-		case State::IDLE:
-			CountMeltdown();
-			break;
-		case State::OPERATE:
-			// 作業の種類に応じた処理
-			OperationProc();
-			break;
-		case State::EMERGENCY:
-			break;
-		case State::USE:
-			break;
-		default:
-			break;
-	}
+	MeltdownProc();
 }
 
 void SecureRoom::Draw()
 {
+	// 四角を描画
+	int x1 = position.x + SECTION_SIZE / 2;
+	int y1 = position.y + SECTION_SIZE / 2;
+	int x2 = position.x - SECTION_SIZE / 2;
+	int y2 = position.y - SECTION_SIZE / 2;
 
+	VECTOR Pos1 = VGet(x1, y1, 0);
+	VECTOR Pos2 = VGet(x2, y1, 0);
+	VECTOR Pos3 = VGet(x2, y2, 0);
+	VECTOR Pos4 = VGet(x1, y2, 0);
+
+	DrawLine3D(Pos1, Pos2, GetColor(255, 255, 0)) ;
+	DrawLine3D(Pos2, Pos3, GetColor(255, 255, 0)) ;
+	DrawLine3D(Pos3, Pos4, GetColor(255, 255, 0)) ;
+	DrawLine3D(Pos4, Pos1, GetColor(255, 255, 0)) ;
 }
 
 void SecureRoom::Teardown()
 {
-
-}
-
-void SecureRoom::StartOperation(Type operation, int operatorID)
-{
-	// ツール型なら返す
-	BaseToolEntity* pToolEntity = dynamic_cast<BaseToolEntity*>(_pEntity);
-	if (pToolEntity != nullptr) return;
-
-	// 待機状態でないなら返す
-	if (_currentState != State::IDLE) return;
-
-	_currentState = State::OPERATE;
-	_currentOperationType = operation;
-	_pOperation[(int)_currentOperationType]->SetOperator(operatorID);
-	// エンティティの作業開始イベントを発生させる
-	_pEntity->StartOperationEvent();
+	delete _pEntity;
 }
 
 void SecureRoom::StartMeltdown()
@@ -65,22 +42,9 @@ void SecureRoom::StartMeltdown()
 	_meltdownCount = _MELTDOWN_COUNT;
 }
 
-void SecureRoom::OperationProc()
+void SecureRoom::MeltdownProc()
 {
-	// 作業の進行、作業が終了してないなら返す
-	if (!_pOperation[(int)_currentState]->OperationProc()) return;
-
-	// 作業が終了したら作業の結果を取得
-	int successCount = _pOperation[(int)_currentState]->GetSuccessCount();
-	// エンティティの作業終了イベントを発生させる
-	_pEntity->EndOperationEvent(successCount);
-	// 作業員のパラメーターを増加させる
-	
-}
-
-void SecureRoom::CountMeltdown()
-{
-	if (!_isMeltdown) return;
+	if (!_isMeltdown || !_pEntity->CanMeltdown()) return;
 
 	// メルトダウンカウントを減少させる
 	_meltdownCount--;

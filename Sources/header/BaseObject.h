@@ -30,8 +30,9 @@ public:
 	/// </summary>
 	virtual void Teardown();
 
-	inline void SetLayer(Layer setLayer) { layer = setLayer;}
+	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
+	inline bool GetCanInput() { return canInput; }
 protected:
 	// レイヤー
 	Layer layer;
@@ -39,4 +40,6 @@ protected:
 	int drawHandle;
 	// 座標
 	Vector2 position;
+	// 入力を受け付けるか
+	bool canInput;
 };

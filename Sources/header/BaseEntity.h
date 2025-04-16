@@ -8,17 +8,10 @@
 class BaseEntity: public BaseCharacter
 {
 public:
-	enum class Feeling
-	{
-		Good = 0,
-		Normal,
-		Bad,
-	};
-
 	BaseEntity(){}
 	BaseEntity(int ID)
-		:_ID(ID){}
-	~BaseEntity(){}
+		:masterID(ID), interactOfficerID(-1){}
+	virtual ~BaseEntity(){}
 
 	void Init();
 	void Proc() override;
@@ -32,35 +25,27 @@ public:
 	/// 暴走カウンターのセット
 	/// </summary>
 	/// <param name="count"></param>
-	inline void SetRunawayCount(int count){ _runawayCount = count; }
-	// 作業開始時、作業終了時、クリフォトカウンター減少時などの関数
-	// 特定の収容室の前を通過した場合
-	// 特定人数が死亡した時
-	
-	/// <summary>
-	/// 作業開始時イベント
-	/// </summary>
-	virtual void StartOperationEvent(){};
-	/// <summary>
-	/// 作業終了時イベント
-	/// </summary>
-	/// <param name="successCount"></param>
-	virtual void EndOperationEvent(int successCount){};
+	inline void SetRunawayCount(int count){ runawayCount = count; }
 	/// <summary>
 	/// 暴走イベント
 	/// </summary>
 	virtual void RunawayEvent(){};
-	virtual void IsTool() = 0;
+	/// <summary>
+	/// ツールか否か
+	/// </summary>
+	virtual bool IsTool() = 0;
+	virtual bool CanMeltdown() = 0;
 
 protected:
-
-private:
-	int _ID;
+	// マスターID
+	int masterID;
 	// 危険レベル
-	int _hazardLevel;
+	int hazardLevel;
 	// 暴走カウンター
-	int _runawayCount;
+	int runawayCount;
 	// 最大暴走カウンター
-	int _maxRunawayCount;
+	int maxRunawayCount;
+	// インタラクト中の職員ID
+	int interactOfficerID;
 };
 

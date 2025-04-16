@@ -3,9 +3,9 @@
 void BaseEntity::Init()
 {
 	// マスターデータからID参照でパラメーターを取得
-	_hazardLevel = 0;
-	_maxRunawayCount = 3;
-	_runawayCount = _maxRunawayCount;
+	hazardLevel = 0;
+	maxRunawayCount = 3;
+	runawayCount = maxRunawayCount;
 }
 
 void BaseEntity::Proc()
@@ -26,8 +26,8 @@ void BaseEntity::Teardown()
 void BaseEntity::DecreaseRunawayCount()
 {
 	// 暴走カウンターを減少させる
-	_runawayCount--;
+	runawayCount--;
 	// 暴走カウンターが0になったら、暴走イベントを発生させる
-	if (_runawayCount > 0) return;
+	if (runawayCount > 0) return;
 	RunawayEvent();
 }
