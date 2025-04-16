@@ -2,6 +2,7 @@
 #include "BasePhase.h"
 class StageCreator;
 class CameraController;
+class OfficerManager;
 /*
  * Sakakura
  * メインフェーズ
@@ -22,5 +23,6 @@ protected:
 private:
 	StageCreator* _stageCreator;
 	CameraController* _cameraController;
+	OfficerManager* _pOfficerManager;
 };
 

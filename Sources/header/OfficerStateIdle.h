@@ -8,7 +8,7 @@
 class OfficerStateIdle : public BaseOfficerState
 {
 public:
-	void Update(Officer* officer) override;
-	void Enter(Officer* officer) override;
-	void Exit(Officer* officer) override;
+	void Update(BaseOfficer* officer) override;
+	void Enter(BaseOfficer* officer) override;
+	void Exit(BaseOfficer* officer) override;
 };

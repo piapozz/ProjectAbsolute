@@ -12,18 +12,19 @@ OfficerManager::~OfficerManager()
 
 void OfficerManager::Init()
 {
-	for (int i = 0; i < DEFAULT_OFFICER_COUNT; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		AddOfficer(OfficerType::PLAYER);
+	}
+	for (int i = 0; i < DEFAULT_OFFICER_COUNT; i++)
+	{
+		AddOfficer(OfficerType::MOB);
 	}
 }
 
 void OfficerManager::Proc()
 {
-	for (int i = 0, max = _officerList.size(); i < max; i++)
-	{
-		_officerList[i]->Proc();
-	}
+
 }
 
 void OfficerManager::Teardown()
@@ -35,7 +36,7 @@ void OfficerManager::AddOfficer(OfficerType type)
 {
 	int emptyIndex = -1;
 
-	// 空きスロットを探す
+	// 空きを探す
 	for (int i = 0; i < _officerList.size(); ++i)
 	{
 		BaseOfficer* officer = _officerList[i];
@@ -60,8 +61,7 @@ void OfficerManager::AddOfficer(OfficerType type)
 	}
 	if (!officer) return;
 
-	officer->Init();
-
+	officer->Init(DEFAULT_OFFICER_POSITION, emptyIndex);
 	ObjectManager::AddObject(officer);
 
 	// 空きがなかったら新規に追加
@@ -69,7 +69,7 @@ void OfficerManager::AddOfficer(OfficerType type)
 	{
 		_officerList.push_back(officer);
 		return;
-	} 
+	}
 	// 空きスロットに再利用として上書き
 	_officerList[emptyIndex] = officer;
 }

@@ -1,8 +1,9 @@
 #include "../header/BaseOfficer.h"
+#include "../header/OfficerStateFactory.h"
 
 BaseOfficer::BaseOfficer()
 {
-	_pOfficerState = NULL;
+	pOfficerState = NULL;
 	_officerType = OfficerType::NONE;
 	_officerID = NULL;
 	_armorID = NULL;
@@ -14,9 +15,11 @@ BaseOfficer::~BaseOfficer()
 
 }
 
-void BaseOfficer::Init()
+void BaseOfficer::Init(Vector2 setPosition, int setOfficerID)
 {
-
+	position = setPosition;
+	SetOfficerID(setOfficerID);
+	ChangeState(OfficerStateID::OFFICER_IDLE);
 }
 
 void BaseOfficer::Proc()
@@ -34,7 +37,18 @@ void BaseOfficer::Teardown()
 	BaseObject::Teardown();
 }
 
-void BaseOfficer::ChangeState(BaseOfficerState* officerState)
+void BaseOfficer::ChangeState(OfficerStateID stateID)
 {
-	pOfficerState = officerState;
+	if (pOfficerState)
+	{
+		pOfficerState->Exit(this);
+		delete pOfficerState;
+	}
+
+	pOfficerState = OfficerStateFactory::CreateState(stateID);
+
+	if (pOfficerState)
+	{
+		pOfficerState->Enter(this);
+	}
 }
