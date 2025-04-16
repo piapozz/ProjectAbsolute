@@ -1,4 +1,8 @@
 #include "../header/BaseEgoEntity.h"
+#include "../header/OperationSatisfy.h"
+#include "../header/OperationObserbation.h"
+#include "../header/OperationContact.h"
+#include "../header/OperationInjure.h"
 
 void BaseEgoEntity::Init()
 {
@@ -36,7 +40,10 @@ void BaseEgoEntity::OperationProc()
 	// 作業が終了したら作業の結果を取得
 	int successCount = _pOperation[(int)_currentOperationType]->GetSuccessCount();
 	// エンティティの作業終了イベントを発生させる
-	EndOperationEvent(successCount, interactOfficerID);
+	EndOperationEvent(successCount);
+	// ステートを変更
+	_currentState = State::IDLE;
+	interactOfficerID = -1;
 }
 
 void BaseEgoEntity::StartOperation(Type operation, int operatorID)
@@ -49,5 +56,5 @@ void BaseEgoEntity::StartOperation(Type operation, int operatorID)
 	interactOfficerID = operatorID;
 	_pOperation[(int)_currentOperationType]->SetOperator(operatorID);
 	// 作業開始イベントを発生させる
-	StartOperationEvent(interactOfficerID);
+	StartOperationEvent();
 }

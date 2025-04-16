@@ -30,6 +30,6 @@ void InputManager::UpdataMouseCursor(MouseStatus mouseStatus)
 
 void InputManager::ExecuteCallback()
 {
-	if (_ClickAction == NULL) return;
-	_ClickAction();
+	if (_LPushAction == NULL) return;
+	_LPushAction();
 }

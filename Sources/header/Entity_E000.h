@@ -7,6 +7,12 @@
  */
 class Entity_E000: public BaseEgoEntity
 {
+public:
+	Entity_E000(){ Init(); }
+	virtual ~Entity_E000(){}
 
+protected:
+	void Init(){};
+	void EndOperationEvent(int successCount) override;
 };
 

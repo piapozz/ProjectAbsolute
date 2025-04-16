@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\cpp\AcceptInput.cpp" />
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
     <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseEgoEntity.cpp" />
@@ -188,7 +187,6 @@
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\header\AcceptInput.h" />
     <ClInclude Include="Sources\header\BaseCharacter.h" />
     <ClInclude Include="Sources\header\BaseEntity.h" />
     <ClInclude Include="Sources\header\BaseEgoEntity.h" />
