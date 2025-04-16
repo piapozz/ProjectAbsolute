@@ -1,16 +1,16 @@
 #include "../header/OfficerStateDead.h"
 
-void OfficerStateDead::Update(Officer* officer)
+void OfficerStateDead::Update(BaseOfficer* officer)
 {
 
 }
 
-void OfficerStateDead::Enter(Officer* officer)
+void OfficerStateDead::Enter(BaseOfficer* officer)
 {
 
 }
 
-void OfficerStateDead::Exit(Officer* officer)
+void OfficerStateDead::Exit(BaseOfficer* officer)
 {
 
 }

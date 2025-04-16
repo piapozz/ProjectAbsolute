@@ -12,12 +12,12 @@ public:
 	BaseOfficer();
 	virtual ~BaseOfficer();
 
-	virtual void Init();
+	virtual void Init(Vector2 setPosition, int setOfficerID);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
 
-	void ChangeState(BaseOfficerState* officerState);
+	void ChangeState(OfficerStateID stateID);
 
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
@@ -26,7 +26,6 @@ public:
 	void SetArmor(int armorID){ _armorID = armorID; }
 	void SetWeapon(int weaponID){ _weaponID = weaponID; }
 
-	VECTOR position;
 	BaseOfficerState* pOfficerState;
 
 private:

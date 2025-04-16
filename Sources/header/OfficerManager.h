@@ -26,6 +26,7 @@ public:
 private:
 	std::vector<BaseOfficer*> _officerList;
 
+	const Vector2 DEFAULT_OFFICER_POSITION = {0, 0};
 	const int DEFAULT_OFFICER_COUNT = 10;
 
 };

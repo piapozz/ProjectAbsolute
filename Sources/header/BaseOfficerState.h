@@ -1,7 +1,7 @@
 #pragma once
 
 // ëOï˚êÈåæ
-class Officer;
+class BaseOfficer;
 
 /*
  * Sein
@@ -10,8 +10,8 @@ class Officer;
 class BaseOfficerState
 {
 public:
-	virtual void Update(Officer* officer){}
-	virtual void Enter(Officer* officer){}
-	virtual void Exit(Officer* officer){}
+	virtual void Update(BaseOfficer* officer){}
+	virtual void Enter(BaseOfficer* officer){}
+	virtual void Exit(BaseOfficer* officer){}
 
 };
