@@ -1,5 +1,10 @@
 #pragma once
 #include "../header/BaseOperation.h"
+
+/*
+ * Sakakura
+ * ŠÏ@ì‹Æ
+ */
 class OperationObserbation: public BaseOperation
 {
 public:

@@ -42,7 +42,7 @@ void BaseOperation::SetOperator(int _operatorID)
 	// ç°ÇÕÉxÉ^ë≈Çø
 	_operatorLevel = 1;
 	_operatorParameter = 30;
-	_currentSpeed = _DEFAULT_OPERATE_FRAME - (_DEFAULT_OPERATE_FRAME / 2 * _OPERATE_SPEED_RATIO * _operatorParameter);
+	_currentSpeed = _DEFAULT_OPERATE_FRAME - (int)(_DEFAULT_OPERATE_FRAME / 2 * _OPERATE_SPEED_RATIO * _operatorParameter);
 	_currentProbability = operateDefaultProbability[_operatorLevel - 1] + _OPERATE_PROBABILITY_RATIO * _operatorParameter;
 	_frameCounter = 0;
 	_currentOperationCount = 0;

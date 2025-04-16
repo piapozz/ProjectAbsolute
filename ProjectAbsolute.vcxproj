@@ -139,9 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\cpp\AcceptInput.cpp" />
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
     <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
-    <ClCompile Include="Sources\cpp\BaseNormalEntity.cpp" />
+    <ClCompile Include="Sources\cpp\BaseEgoEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseOfficer.cpp" />
     <ClCompile Include="Sources\cpp\BasePhase.cpp" />
     <ClCompile Include="Sources\cpp\BaseObject.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\CameraController.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
@@ -185,9 +187,10 @@
     <ClCompile Include="Sources\cpp\StageCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\header\AcceptInput.h" />
     <ClInclude Include="Sources\header\BaseCharacter.h" />
     <ClInclude Include="Sources\header\BaseEntity.h" />
-    <ClInclude Include="Sources\header\BaseNormalEntity.h" />
+    <ClInclude Include="Sources\header\BaseEgoEntity.h" />
     <ClInclude Include="Sources\header\BaseOfficer.h" />
     <ClInclude Include="Sources\header\BaseOfficerState.h" />
     <ClInclude Include="Sources\header\BasePhase.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\OfficerManager.h" />
     <ClInclude Include="Sources\header\OfficerMob.h" />
     <ClInclude Include="Sources\header\OfficerPlayer.h" />

@@ -9,9 +9,10 @@
 class BaseOperation
 {
 public:
-	BaseOperation(){}
+	BaseOperation()
+		:_operatorParameter(-1), _operatorLevel(-1), _currentSpeed(-1), _currentProbability(-1), _frameCounter(0), _currentOperationCount(-1){}
 	BaseOperation(int masterEntityID);
-	~BaseOperation(){}
+	virtual ~BaseOperation(){}
 
 	/// <summary>
 	/// ì‹Æˆ—
