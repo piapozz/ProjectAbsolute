@@ -3,7 +3,7 @@
 
 CameraController::CameraController()
 {
-	position = VGet(0.0f, 10.0f, -20.0f);
+	position = VGet(100.0f, 0.0f, -200.0f);
 	pitch = 0.0f;
 	yaw = 0.0f;
 	moveSpeed = 0.5f;

@@ -90,6 +90,12 @@ public:
 		y = Y;
 	}
 
+	Vector2(const Vector2& vec)
+	{
+		x = vec.x;
+		y = vec.y;
+	}
+
 	inline static Vector2 zero()
 	{
 		Vector2 temp;

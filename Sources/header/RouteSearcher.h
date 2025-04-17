@@ -11,9 +11,12 @@ class Node
 {
 public:
 	int x, y;
-	int g = 999999;     // スタートからのコスト
-	int h = 0;          // ゴールまでの推定コスト
-	int f = 0;          // 合計コスト f = g + h
+	// スタートからのコスト
+	int g = 999999;   
+	// ゴールまでの推定コスト
+	int h = 0;
+	// 合計コスト f = g + h
+	int f = 0;
 	Node* parent = nullptr;
 
 	Node(int x, int y): x(x), y(y) { }
@@ -38,11 +41,19 @@ const int dy[4] = {-1, 1, 0, 0};
 class RouteSearcher
 {
 public:
-	std::vector<Vector2> RouteSearch(std::vector<std::vector<int>> stageData, Vector2 start, Vector2 goal) {
+	static std::vector<Vector2> RouteSearch(std::vector<std::vector<int>> stageData, Vector2 start, Vector2 goal) {
 		int startX = (int)(start.x / SECTION_SIZE);
 		int startY = (int)(-start.y / SECTION_SIZE);
 		int goalX = (int)(goal.x / SECTION_SIZE);
 		int goalY = (int)(-goal.y / SECTION_SIZE);
+
+		if (startX < 0 || startX > STAGE_SIZE || startY < 0 || startY > STAGE_SIZE ||
+			goalX < 0 || goalX > STAGE_SIZE || goalY < 0 || goalY > STAGE_SIZE) {
+			// 範囲外の場合は空のベクターを返す
+			return std::vector<Vector2>();
+		}
+		// ステージデータが空の場合は空のベクターを返す
+		if (stageData.empty()) return std::vector<Vector2>(); 
 
 		std::vector<std::vector<Node*>> nodes(STAGE_SIZE, std::vector<Node*>(STAGE_SIZE, nullptr));
 		std::priority_queue<Node*, std::vector<Node*>, CompareNode> openSet;
@@ -93,7 +104,6 @@ public:
 				}
 			}
 		}
-
 		// メモリ解放
 		for (auto& row : nodes)
 			for (auto& n : row)
