@@ -7,31 +7,17 @@
 #include "../header/ObjectManager.h"
 #include "../header/CommonModule.h"
 #include "../header/RouteSearcher.h"
+#include "../header/PhaseMain.h"
+
+std::vector<std::vector<int>> StageManager::_stageData;
 
 StageManager::~StageManager() 
 {
-	// 二次元ベクターをクリア
-	for (auto& row : _stageData){ row.clear(); }
-	_stageData.clear();
-	for (auto& row : _visited){ row.clear(); }
-	_visited.clear();
-
-	delete _routeSearcher;
 }
 
-void StageManager::Init(){  
-   // ステージデータの初期化  
-   _stageData = std::vector<std::vector<int>>{ // 修正: std::vector を使用して二次元配列を初期化  
-       {1, 2, 2, 2, 2, 2, 1},  
-       {3, 4, 0, 0, 0, 0, 3},  
-       {3, 0, 0, 0, 0, 0, 3},  
-       {1, 2, 2, 0, 2, 2, 1},  
-       {3, 0, 0, 0, 0, 0, 3},  
-       {3, 0, 0, 0, 0, 0, 3},  
-       {1, 2, 2, 2, 2, 2, 1},  
-   };  
-
-   _routeSearcher = new RouteSearcher();
+void StageManager::Init()
+{  
+   
 }
   
 void StageManager::CreateStage()
@@ -85,15 +71,9 @@ void StageManager::CreateStage()
 			}
 		}
 	}
+
 }
 
-/// <summary>
-/// いくつつながっているかを調べる
-/// </summary>
-/// <param name="x"></param>
-/// <param name="y"></param>
-/// <param name="type"></param>
-/// <returns></returns>
 int StageManager::CheckSectionSize(int x, int y, SectionType type)
 {
 	// 範囲外チェック
@@ -106,15 +86,16 @@ int StageManager::CheckSectionSize(int x, int y, SectionType type)
 
 	int count = 1;
 	// 上下左右に再帰
-	count += CheckSectionSize(x, y - 1, type); // 上
-	count += CheckSectionSize(x, y + 1, type); // 下
-	count += CheckSectionSize(x - 1, y, type); // 左
-	count += CheckSectionSize(x + 1, y, type); // 右
+	count += CheckSectionSize(x, y - 1, type);
+	count += CheckSectionSize(x, y + 1, type);
+	count += CheckSectionSize(x - 1, y, type);
+	count += CheckSectionSize(x + 1, y, type);
 
 	return count;
 }
 
 std::vector<Vector2> StageManager::FindPath(Vector2 start, Vector2 goal)
 {
-	return _routeSearcher->RouteSearch(_stageData, start, goal);
+	// ステージデータの初期化
+	return RouteSearcher::RouteSearch(_stageData, start, goal);
 }
