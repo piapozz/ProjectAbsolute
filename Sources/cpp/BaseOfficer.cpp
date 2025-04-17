@@ -19,12 +19,17 @@ void BaseOfficer::Init(Vector2 setPosition, int setOfficerID)
 {
 	position = setPosition;
 	SetOfficerID(setOfficerID);
-	ChangeState(OfficerStateID::OFFICER_IDLE);
+	ChangeState(OfficerStateID::OFFICER_IDLE, nullptr);
 }
 
 void BaseOfficer::Proc()
 {
 	BaseObject::Proc();
+
+	if (health <= 0) ChangeState(OfficerStateID::OFFICER_DEAD, nullptr);
+	if (mental <= 0) ChangeState(OfficerStateID::OFFICER_PANIC, nullptr);
+
+	pOfficerState->Update(this);
 }
 
 void BaseOfficer::Draw()
@@ -37,7 +42,14 @@ void BaseOfficer::Teardown()
 	BaseObject::Teardown();
 }
 
-void BaseOfficer::ChangeState(OfficerStateID stateID)
+int BaseOfficer::TakeDamege(int strength, Type damageType)
+{
+	float index;
+	index = strength * defenseRatio[(int)damageType];
+	return ceil(index);
+}
+
+void BaseOfficer::ChangeState(OfficerStateID stateID, StateArgs* args)
 {
 	if (pOfficerState)
 	{
@@ -45,7 +57,7 @@ void BaseOfficer::ChangeState(OfficerStateID stateID)
 		delete pOfficerState;
 	}
 
-	pOfficerState = OfficerStateFactory::CreateState(stateID);
+	pOfficerState = OfficerStateFactory::CreateState(stateID ,args);
 
 	if (pOfficerState)
 	{

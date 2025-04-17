@@ -12,13 +12,22 @@ OfficerManager::~OfficerManager()
 
 void OfficerManager::Init()
 {
-	for (int i = 0; i < 3; i++)
-	{
-		AddOfficer(OfficerType::PLAYER);
-	}
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	AddOfficer(OfficerType::PLAYER);
+	//}
 	for (int i = 0; i < DEFAULT_OFFICER_COUNT; i++)
 	{
 		AddOfficer(OfficerType::MOB);
+	}
+
+	for (int i = 0; i < _officerList.size(); i++)
+	{
+		float positionX = GetRand(500);
+		Vector2 indexVector = {positionX, 0};
+		_officerList[i]->SetHealth(100);
+		_officerList[i]->SetMental(100);
+		_officerList[i]->SetPosition(indexVector);
 	}
 }
 
@@ -37,7 +46,7 @@ void OfficerManager::AddOfficer(OfficerType type)
 	int emptyIndex = -1;
 
 	// ‹ó‚«‚ð’T‚·
-	for (int i = 0; i < _officerList.size(); ++i)
+	for (int i = 0; i < _officerList.size(); i++)
 	{
 		BaseOfficer* officer = _officerList[i];
 		if (officer == nullptr || officer->GetOfficerType() == OfficerType::NONE)

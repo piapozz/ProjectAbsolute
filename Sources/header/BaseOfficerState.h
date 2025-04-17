@@ -1,4 +1,8 @@
 #pragma once
+#include <DxLib.h>
+#include <vector>
+#include "../header/CommonModule.h"
+#include "../header/Const.h"
 
 // ëOï˚êÈåæ
 class BaseOfficer;
@@ -10,8 +14,14 @@ class BaseOfficer;
 class BaseOfficerState
 {
 public:
-	virtual void Update(BaseOfficer* officer){}
-	virtual void Enter(BaseOfficer* officer){}
-	virtual void Exit(BaseOfficer* officer){}
+	virtual void Update(BaseOfficer* officer){};
+	virtual void Enter(BaseOfficer* officer){};
+	virtual void Exit(BaseOfficer* officer){};
 
+	unsigned int NONE = GetColor(0, 255, 255);		
+	unsigned int IDLE = GetColor(255, 255, 255);	// îí
+	unsigned int MOVE = GetColor(0, 255, 0);		// óŒ
+	unsigned int FIGHT = GetColor(255, 150, 0);		// ÉIÉåÉìÉW
+	unsigned int PANIC = GetColor(255, 0, 255);		// éá
+	unsigned int DEAD = GetColor(255, 0, 0);		// ê‘
 };

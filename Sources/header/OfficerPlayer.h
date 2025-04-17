@@ -16,5 +16,7 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
+	void MoveToTargetPos(std::vector<std::vector<int>> stageData, Vector2 start, Vector2 goal);
+
 private:
 };

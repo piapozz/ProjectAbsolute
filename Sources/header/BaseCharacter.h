@@ -37,8 +37,21 @@ public:
 	// €–S
 	// ì‹Æ
 
-	virtual void TakeDamege() {};
+	/// <summary>
+	/// ƒ_ƒ[ƒWˆ—
+	/// </summary>
+	/// <param name="strength"></param>
+	/// <param name="damageType"></param>
+	/// <returns></returns>
+	virtual int TakeDamege(int strength, Type damageType) { return -1; }
+	/// <summary>
+	/// ‘Ì—ÍŒ¸­ˆ—
+	/// </summary>
+	/// <param name="decreaseValue"></param>
 	void DecreaseHealth(int decreaseValue);
+
+	int GetHealth(){ return health; }
+	void SetHealth(int value){ health = value; }
 
 protected:
 	// UŒ‚—Í
@@ -47,6 +60,7 @@ protected:
 	Type attackType;
 	// –hŒä”{—¦
 	float defenseRatio[(int)Type::MAX];
+	// ‘Ì—Í
 	int health;
 	// Å‘å‘Ì—Í
 	int maxHealth;

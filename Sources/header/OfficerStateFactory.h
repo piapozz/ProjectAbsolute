@@ -1,10 +1,12 @@
 #pragma once
+#include <vector>
 #include "../header/BaseOfficerState.h"
 #include "../header/OfficerStateIdle.h"
 #include "../header/OfficerStateMove.h"
 #include "../header/OfficerStateFight.h"
 #include "../header/OfficerStatePanic.h"
 #include "../header/OfficerStateDead.h"
+#include "../header/StateArgs.h"
 #include "../header/Const.h"
 
 class BaseOfficerState;
@@ -16,6 +18,8 @@ class BaseOfficerState;
 class OfficerStateFactory
 {
 public:
-	static BaseOfficerState* CreateState(OfficerStateID stateID);
+	std::vector<Vector2> targetPosList;
+
+	static BaseOfficerState* CreateState(OfficerStateID stateID, StateArgs* args = nullptr);
 
 };

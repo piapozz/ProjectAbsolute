@@ -234,6 +234,7 @@
     <ClInclude Include="Sources\header\SectionRoom.h" />
     <ClInclude Include="Sources\header\SecureRoom.h" />
     <ClInclude Include="Sources\header\StageManager.h" />
+    <ClInclude Include="Sources\header\StateArgs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
