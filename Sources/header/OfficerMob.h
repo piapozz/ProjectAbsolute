@@ -8,6 +8,9 @@
 class OfficerMob : public BaseOfficer
 {
 public:
+	int startTime;
+	int now;
+
 	OfficerMob();
 	~OfficerMob();
 

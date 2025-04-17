@@ -1,6 +1,10 @@
 #pragma once
+#include <DxLib.h>
 #include "../header/BaseCharacter.h"
-#include "../header/BaseOfficerState.h"
+#include "../header/RouteSearcher.h"
+#include "../header/StateArgs.h"
+
+class BaseOfficerState;
 
 /*
  * Sein
@@ -16,17 +20,23 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+	int TakeDamege(int strength, Type damageType) override;
 
-	void ChangeState(OfficerStateID stateID);
+	void ChangeState(OfficerStateID stateID, StateArgs* args = nullptr);
 
+	void SetPosition(Vector2 setPosition){ position = setPosition; }
+	Vector2 GetPosition(){ return position; }
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
 	void SetOfficerType(OfficerType type){ _officerType = type; }
 	OfficerType GetOfficerType(){ return _officerType; }
 	void SetArmor(int armorID){ _armorID = armorID; }
 	void SetWeapon(int weaponID){ _weaponID = weaponID; }
+	int GetMental(){ return mental; }
+	void SetMental(int value) { mental = value; }
 
 	BaseOfficerState* pOfficerState;
+	unsigned int color;
 
 private:
 
@@ -34,6 +44,8 @@ protected:
 	int _officerID;
 	int _armorID;
 	int _weaponID;
+
+	int mental;
 
 	OfficerType _officerType;
 };

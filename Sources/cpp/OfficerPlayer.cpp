@@ -1,4 +1,5 @@
 #include "../header/OfficerPlayer.h"
+#include "../header/BaseOfficerState.h"
 
 OfficerPlayer::OfficerPlayer()
 {
@@ -30,10 +31,17 @@ void OfficerPlayer::Draw()
 	spherePosition.x = position.x;
 	spherePosition.y = position.y;
 	spherePosition.z = 0;
-	DrawSphere3D(spherePosition, 50, 32, GetColor(255, 0, 0), GetColor(0, 0, 0), FALSE);
+	DrawSphere3D(spherePosition, 10, 32, color, GetColor(0, 0, 0), FALSE);
 }
 
 void OfficerPlayer::Teardown()
 {
 	BaseOfficer::Teardown();
+}
+
+void OfficerPlayer::MoveToTargetPos(std::vector<std::vector<int>> stageData, Vector2 start, Vector2 goal)
+{
+	StateArgs* args = new StateArgs();
+	args->targetPosList = RouteSearcher::RouteSearch(stageData, start, goal);
+	ChangeState(OfficerStateID::OFFICER_MOVE, args);
 }

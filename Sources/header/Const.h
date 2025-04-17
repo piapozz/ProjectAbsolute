@@ -97,3 +97,7 @@ const int WINDOW_HEIGHT = 1080;
 
 // 便利数字
 const float RAD2DEG = (float)(180 / DX_PI);
+
+// ステータス関係
+const int MINIMUM_HEALTH = 0;
+const int MINIMUM_MENTAL = 0;
