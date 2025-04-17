@@ -32,7 +32,7 @@ void PhaseSelect::SelectEntity(int selectNum)
 	
 }
 
-void PhaseSelect::InputProc()
+void PhaseSelect::LClickInputProc(Vector2 pos, Vector2 oldPos)
 {
 	// “ü—Í‚É‚æ‚Á‚Ä•ªŠò
 	// ‘I‘ð‚³‚ê‚½‚ç

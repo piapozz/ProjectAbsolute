@@ -1,6 +1,7 @@
 #pragma once
 #include "DxLib.h"
 #include "functional"
+#include "../header/CommonModule.h"
 
 /*
  * Sein
@@ -9,57 +10,47 @@
 class InputManager
 {
 public:
-	// マウス情報を管理
-	struct MouseStatus
-	{
-		int CURSOR_POS_X;
-		int CURSOR_POS_Y;
-	};
-
-	// マウスのボタンの種類定義
-	enum MouseButton
-	{
-		NONE = -1,
-		LEFT_CLICK = MOUSE_INPUT_LEFT,
-		RIGHT_CLICK = MOUSE_INPUT_RIGHT ,
-	};
-
 	InputManager();
 	~InputManager();
 
 	/// <summary>
-	/// クリックが押されているかを判定
+	/// クリックされたかを取得
 	/// </summary>
 	/// <param name="button"></param>
+	/// <param name="isPush"></param>
 	/// <returns></returns>
-	void OnClick(MouseButton button);
+	bool IsClick(int button);
 	/// <summary>
 	/// コールバックで設定された関数を実行
 	/// </summary>
 	void ExecuteCallback();
 	/// <summary>
-	/// カーソル情報の更新
+	/// カーソルのスクリーン座標の取得
 	/// </summary>
 	/// <param name="mouseStatus"></param>
-	void UpdataMouseCursor(MouseStatus mouseStatus);
+	Vector2 GetCursorScreenPos();
+	/// <summary>
+	/// カーソルのスクリーン座標からワールド座標の取得
+	/// </summary>
+	/// <returns></returns>
+	Vector2 GetCursorWorldPos(Vector2 screenPos);
 
-	inline MouseStatus GetCursorPos(){ return _cursorPos; }
-	inline void SetLClickCallback(std::function<void()> Callback){ _LPushAction = Callback; }
-	inline void SetRClickCallback(std::function<void()> Callback){ _RPushAction = Callback; }
-	inline void SetLReleaseCallback(std::function<void()> Callback){ _LReleaseAction = Callback; }
-	inline void SetRReleaseCallback(std::function<void()> Callback){ _RReleaseAction = Callback; }
+	inline void SetLClickCallback(std::function<void(Vector2 pos, Vector2 oldPos)> Callback){ _LClickAction = Callback; }
+	inline void SetRClickCallback(std::function<void(Vector2 pos, Vector2 oldPos)> Callback){ _RClickAction = Callback; }
+	inline void SetWheelRotCallback(std::function<void(Vector2 pos, int rot)> Callback){ _WheelRotAction = Callback; }
+	inline void SetEscapeCallback(std::function<void()> Callback){ _EscapePushAction = Callback; }
 
 private:
-	// マウスカーソル座標を保持
-	MouseStatus _cursorPos;
-	// 左クリックを押したときのコールバック
-	std::function<void()> _LPushAction;
-	// 右クリックを押したときのコールバック
-	std::function<void()> _RPushAction;
-	// 左クリックを離したときのコールバック
-	std::function<void()> _LReleaseAction;
-	// 右クリックを離したときのコールバック
-	std::function<void()> _RReleaseAction;
-	// マウスの過去の状態を格納
-	int _oldMouseInput;
+	// 左クリックしたときのコールバック
+	std::function<void(Vector2 pos, Vector2 oldPos)> _LClickAction;
+	// 右クリックしたときのコールバック
+	std::function<void(Vector2 pos, Vector2 oldPos)> _RClickAction;
+	// ホイールを回転したときのコールバック
+	std::function<void(Vector2 pos, int rot)> _WheelRotAction;
+	// Escapeキーを押したときのコールバック
+	std::function<void()> _EscapePushAction;
+	// 左クリックが押されたスクリーン座標
+	Vector2 _oldLClickScreenPos;
+	// 右クリックが押されたスクリーン座標
+	Vector2 _oldRClickScreenPos;
 };

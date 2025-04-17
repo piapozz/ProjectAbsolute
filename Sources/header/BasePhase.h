@@ -32,9 +32,21 @@ public:
 
 protected:
 	/// <summary>
-	/// 入力に応じた処理
+	/// 左クリックしたときの処理
 	/// </summary>
-	virtual void InputProc() = 0;
+	virtual void LClickInputProc(Vector2 pos, Vector2 oldPos){};
+	/// <summary>
+	/// 右クリックしたときの処理
+	/// </summary>
+	virtual void RClickInputProc(Vector2 pos, Vector2 oldPos){};
+	/// <summary>
+	/// ホイールを回転したときの処理
+	/// </summary>
+	virtual void WheelRotInputProc(Vector2 pos, int rot){};
+	/// <summary>
+	/// Escapeキーを押したときの処理
+	/// </summary>
+	virtual void EscapeInputProc(){};
 
 	InputManager* pInputManager;
 };
