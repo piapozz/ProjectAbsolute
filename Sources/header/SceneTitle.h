@@ -8,11 +8,6 @@
 class SceneTitle : public BaseScene
 {
 public:
-	/// <summary>
-	/// メインゲームシーンに変更
-	/// </summary>
-	void ChangeMainGameScene();
-    
 	SceneTitle();
     ~SceneTitle();
 
@@ -32,5 +27,9 @@ private:
 	// 入力受付クラス
 	InputManager* _inputManager;
 
+	/// <summary>
+	/// 左クリックの入力処理
+	/// </summary>
+	void LClickInputProc(Vector2 pos, Vector2 oldPos);
 };
 

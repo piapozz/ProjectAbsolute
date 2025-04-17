@@ -35,10 +35,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	// カメラのクリッピング距離を設定
 	SetCameraNearFar (16.0f, 10000.0f);
 
-	// 正射影カメラをセットアップする
-	// SetupCamera_Ortho(2000) ;
-
-	// 背景の色を灰色にする
+	// 背景の色を黒にする
 	SetBackgroundColor (0, 0, 0);
 
 	// Zバッファを使用する

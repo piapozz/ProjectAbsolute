@@ -3,7 +3,7 @@
 
 CameraController::CameraController()
 {
-	position = VGet(100.0f, 0.0f, -200.0f);
+	position = VGet(10.0f, 10.0f, -20.0f);
 	pitch = 0.0f;
 	yaw = 0.0f;
 	moveSpeed = 0.5f;
@@ -11,6 +11,14 @@ CameraController::CameraController()
 
 	isRightButtonPressed = false;
 	GetMousePoint(&prevMouseX, &prevMouseY);
+
+	// 正射影カメラをセットアップする
+	heightSize = 1000;
+	SetupCamera_Ortho(heightSize);
+	// カメラの位置と向きを設定
+	SetCameraPositionAndTarget_UpVecY(position, VGet(10.0f, 10.0f, 0));
+	// カメラのクリッピング距離を設定
+	SetCameraNearFar(1.0f, 30.0f);
 }
 
 void CameraController::Update()
@@ -52,8 +60,9 @@ void CameraController::HandleMouse()
 	int wheel = GetMouseWheelRotVol();
 	if (wheel != 0)
 	{
-		VECTOR forward = VNorm(VGet(cosf(yaw) * cosf(pitch), sinf(pitch), sinf(yaw) * cosf(pitch)));
-		position = VAdd(position, VScale(forward, wheel * 0.01f));
+		/*VECTOR forward = VNorm(VGet(cosf(yaw) * cosf(pitch), sinf(pitch), sinf(yaw) * cosf(pitch)));
+		position = VAdd(position, VScale(forward, wheel * 0.01f));*/
+		SetCameraOrtho(wheel);
 	}
 }
 
@@ -78,4 +87,13 @@ void CameraController::UpdateCamera()
 	VECTOR dir = VNorm(VGet(cosf(yaw) * cosf(pitch), sinf(pitch), sinf(yaw) * cosf(pitch)));
 	VECTOR target = VAdd(position, dir);
 	SetCameraPositionAndTarget_UpVecY(position, target);
+}
+
+void CameraController::SetCameraOrtho(int wheel)
+{
+	if (wheel > 0)
+		heightSize -= 100;
+	else if (wheel < 0)
+		heightSize += 100;
+	SetupCamera_Ortho(heightSize);
 }
