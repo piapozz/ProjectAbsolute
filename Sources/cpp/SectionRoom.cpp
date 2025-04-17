@@ -1,5 +1,6 @@
 #include "../header/SectionRoom.h"
 #include "../header/Const.h"
+#include <math.h>
 
 void SectionRoom::Init(Vector2 setPosition, int setSize)
 {
@@ -21,8 +22,8 @@ void SectionRoom::Draw()
 	BaseSection::Draw();
 
 	// ŽlŠp‚ð•`‰æ
-	int x1 = position.x + SECTION_SIZE / 2;
-	int y1 = position.y + SECTION_SIZE / 2;
+	int x1 = position.x + SECTION_SIZE / 2 + (SECTION_SIZE * (size / 2 - 1));
+	int y1 = position.y + SECTION_SIZE / 2 + (SECTION_SIZE * (size / 2 - 1));
 	int x2 = position.x - SECTION_SIZE / 2;
 	int y2 = position.y - SECTION_SIZE / 2;
 

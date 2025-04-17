@@ -25,7 +25,7 @@ void SectionConnect::Draw()
 	int x1 = position.x + SECTION_SIZE / 2;
 	int y1 = position.y + SECTION_SIZE / 2;
 	int x2 = position.x - SECTION_SIZE / 2;
-	int y2 = position.y - SECTION_SIZE / 2;
+	int y2 = position.y - SECTION_SIZE / 2 - (SECTION_SIZE * (size - 1));
 
 	VECTOR Pos1 = VGet(x1, y1, 0);
 	VECTOR Pos2 = VGet(x2, y1, 0);
