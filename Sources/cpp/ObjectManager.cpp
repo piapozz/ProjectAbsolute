@@ -18,7 +18,7 @@ void ObjectManager::Update()
 	{
 		for (BaseObject* obj : _objectList[i])
 		{
-			if (obj == nullptr) return;
+			if (obj == nullptr) continue;
 			obj->Proc();
 		}
 	}
@@ -33,7 +33,7 @@ void ObjectManager::Draw()
 	{
 		for (BaseObject* obj : _objectList[i])
 		{
-			if (obj == nullptr) return;
+			if (obj == nullptr) continue;
 			if (obj->GetLayer() == Layer::NONE_DRAW) continue;
 			obj->Draw();
 		}
