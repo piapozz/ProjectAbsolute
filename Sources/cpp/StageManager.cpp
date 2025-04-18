@@ -62,16 +62,12 @@ void StageManager::CreateStage()
 			else if (_stageData[i][j] == 4)
 			{
 				// 収容所を生成
-				/*SecureRoom* secure = new SecureRoom();
+				SecureRoom* secure = new SecureRoom();
 				secure->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), 1);
-				ObjectManager::AddObject(secure);*/
-				SectionRoom* room = new SectionRoom();
-				room->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), 0);
-				ObjectManager::AddObject(room);
+				ObjectManager::AddObject(secure);
 			}
 		}
 	}
-
 }
 
 int StageManager::CheckSectionSize(int x, int y, SectionType type)
@@ -98,4 +94,21 @@ std::vector<Vector2> StageManager::FindPath(Vector2 start, Vector2 goal)
 {
 	// ステージデータの初期化
 	return RouteSearcher::RouteSearch(_stageData, start, goal);
+}
+
+bool StageManager::CheckPosOnStage(Vector2 pos)
+{
+	// ステージの範囲外の場合は false を返す
+	if (pos.x < 0 || pos.x >= STAGE_SIZE * SECTION_SIZE ||
+		pos.y < -STAGE_SIZE * SECTION_SIZE || pos.y > 0)
+	{
+		return false;
+	}
+	// 区画が存在しない、または接続部は false
+	if (_stageData[(int)(-pos.y / SECTION_SIZE)][(int)(pos.x / SECTION_SIZE)] == (int)SectionType::CONNECT || 
+		_stageData[(int)(-pos.y / SECTION_SIZE)][(int)(pos.x / SECTION_SIZE)] == (int)SectionType::NONE)
+	{
+		return false;
+	}
+	return true;
 }
