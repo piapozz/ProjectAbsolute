@@ -199,7 +199,7 @@
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\RouteSearcher.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -341,11 +341,11 @@
     <ClInclude Include="Sources\header\Entity_E000.h">
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\RouteSearcher.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\StateArgs.h">
       <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\RouteSearcher.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

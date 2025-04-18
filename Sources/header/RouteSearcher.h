@@ -72,7 +72,7 @@ public:
 
 			if (current->x == goalX && current->y == goalY) {
 				while (current != nullptr) {
-					path.push_back(Vector2(current->x * SECTION_SIZE, -current->y * SECTION_SIZE));
+					path.push_back(Vector2(current->x * SECTION_SIZE, (-current->y * SECTION_SIZE) - (SECTION_SIZE / 2)));
 					current = current->parent;
 				}
 				break;

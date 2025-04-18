@@ -11,7 +11,8 @@ class Vector2;
 class StageManager
 {
 public:
-	// ステージの情報
+	// ステージデータ
+	static std::vector<std::vector<int>> _stageData;
 	
 	StageManager() { Init(); }
 	~StageManager();
@@ -44,9 +45,12 @@ public:
 	/// </summary>
 	/// <param name="stageData"></param>
 	void SetStageData(std::vector<std::vector<int>> stageData) { _stageData = stageData; }
-	// ステージデータ
-	static std::vector<std::vector<int>> _stageData;
-
+	/// <summary>
+	/// ステージがあるかどうか
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <returns></returns>
+	bool CheckPosOnStage(Vector2 pos);
 private:
 	// 事前に初期化された訪問フラグ
 	std::vector<std::vector<bool>> _visited;
