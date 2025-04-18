@@ -32,7 +32,16 @@ public:
 	/// オブジェクトの削除
 	/// </summary>
 	static void RemoveObject(BaseObject* obj);
+	/// <summary>
+	/// オブジェクトの全削除
+	/// </summary>
+	static void AllClear();
+	/// <summary>
+	/// オブジェクトの検索
+	/// </summary>
+	/// <returns></returns>
+	static BaseObject* FindPosObject(Vector2 pos, ObjectType type);
 	// オブジェクトのリスト
-	static std::vector<BaseObject*> _objectList;
+	static std::vector<std::vector<BaseObject*>> _objectList;
 };
 

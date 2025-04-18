@@ -1,21 +1,23 @@
 #include "../header/ObjectManager.h"
 #include "../header/BaseObject.h"
 
-std::vector<BaseObject*> ObjectManager::_objectList;
+std::vector<std::vector<BaseObject*>> _objectList;
 
 void ObjectManager::Init()
 {
-	_objectList.clear();
+	AllClear();
 }
 
 void ObjectManager::Update()
 {
-	for(BaseObject* obj : _objectList)
+	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
 	{
-		if(obj == nullptr) return;
-		obj->Proc();
+		for (BaseObject* obj : _objectList[i])
+		{
+			if (obj == nullptr) return;
+			obj->Proc();
+		}
 	}
-	_objectList[1]->Proc();
 }
 
 void ObjectManager::Draw()
@@ -23,14 +25,15 @@ void ObjectManager::Draw()
 	// 画面のクリア
 	ClearDrawScreen ();
 	clsDx ();
-
-	for(BaseObject* obj : _objectList)
+	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
 	{
-		if(obj == nullptr) return;
-		if(obj->GetLayer() == Layer::NONE_DRAW) continue;
-		obj->Draw();
+		for (BaseObject* obj : _objectList[i])
+		{
+			if (obj == nullptr) return;
+			if (obj->GetLayer() == Layer::NONE_DRAW) continue;
+			obj->Draw();
+		}
 	}
-
 	// 裏画面の内容を表画面に反映
 	ScreenFlip ();
 }
@@ -38,20 +41,51 @@ void ObjectManager::Draw()
 void ObjectManager::AddObject(BaseObject* obj)
 {
 	if(obj == nullptr) return;
-	_objectList.push_back(obj);
+	ObjectType type = obj->GetType();
+	_objectList[(int)type].push_back(obj);
 }
 
 void ObjectManager::RemoveObject(BaseObject* obj)
 {
-	if(obj == nullptr) return;
-	for(auto it = _objectList.begin(); it != _objectList.end(); ++it)
+	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
 	{
-		if(*it == obj)
+		for (auto it = _objectList[i].begin(); it != _objectList[i].end(); ++it)
 		{
-			obj->Teardown();
-			delete *it;
-			_objectList.erase(it);
-			break;
+			if (*it == obj)
+			{
+				obj->Teardown();
+				delete *it;
+				_objectList[i].erase(it);
+				break;
+			}
 		}
 	}
+}
+
+void ObjectManager::AllClear()
+{
+	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	{
+		for (BaseObject* obj : _objectList[i])
+		{
+			if (obj == nullptr) return;
+			obj->Teardown();
+			delete obj;
+		}
+	}
+	_objectList.clear();
+}
+
+BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
+{
+	for (BaseObject* obj : _objectList[(int)type])
+	{
+		if (obj == nullptr) return nullptr;
+		if (obj->GetLayer() == Layer::NONE_DRAW) continue;
+		if (obj->IsSamePos(pos))
+		{
+			return obj;
+		}
+	}
+	return nullptr;
 }

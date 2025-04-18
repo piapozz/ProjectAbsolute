@@ -3,6 +3,14 @@
 #include <string>
 #include "DxLib.h"
 
+enum class ObjectType{
+	INVALID = -1,
+	SECTION,
+	CHARACTER,
+	UI,
+
+	MAX
+};
 // Žl•ûŒü
 enum class DirFour
 {
