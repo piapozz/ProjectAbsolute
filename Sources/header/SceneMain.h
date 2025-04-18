@@ -1,6 +1,6 @@
 #pragma once
 #include "../header/BaseScene.h"
-class PhaseManager;
+class GameManager;
 /*
 * Ishihara
 * ƒƒCƒ“ƒV[ƒ“
@@ -25,6 +25,6 @@ public:
     void Draw();
 
 private:
-	PhaseManager* _phaseManager;
+	GameManager* _pGamemanager;
 };
 

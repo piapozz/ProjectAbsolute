@@ -9,6 +9,10 @@
 class GameManager
 {
 public:
+
+	GameManager();
+	~GameManager();
+
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>
@@ -20,10 +24,7 @@ public:
 	bool GetGameEnd ( );
 
 private:
-	PhaseManager _phaseManager;
+	PhaseManager* _pPhaseManager;
 	// ƒQ[ƒ€‚ªI—¹‚µ‚½‚©‚ğ•Û
 	bool _gameEnd;
-
-	GameManager();
-	~GameManager();
 };
