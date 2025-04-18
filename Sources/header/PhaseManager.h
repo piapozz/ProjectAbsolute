@@ -12,8 +12,8 @@ class ObjectManager;
 class PhaseManager
 {
 public:
-	inline PhaseManager() { Init(); }
-	~PhaseManager() { Teardown(); }
+	inline PhaseManager() {}
+	~PhaseManager() {}
 
 	/// <summary>
 	/// ‰Šú‰»

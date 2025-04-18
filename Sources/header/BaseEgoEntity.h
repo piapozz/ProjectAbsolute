@@ -25,7 +25,7 @@ public:
 		RUNAWAY,
 	};
 
-	BaseEgoEntity(){ Init(); }
+	BaseEgoEntity(){}
 	virtual ~BaseEgoEntity(){}
 
 	void Init();

@@ -26,35 +26,16 @@ void CameraController::Update()
 
 void CameraController::HandleMouse()
 {
-	int mouseX, mouseY;
-	GetMousePoint(&mouseX, &mouseY);
-
-	if ((GetMouseInput() & MOUSE_INPUT_RIGHT) != 0)
+	if (isRightButtonPressed)
 	{
-		if (!isRightButtonPressed)
-		{
-			prevMouseX = -mouseX;
-			prevMouseY = -mouseY;
-			isRightButtonPressed = true;
-		}
-
-		int dx = -mouseX - prevMouseX;
-		int dy = -mouseY - prevMouseY;
+		int dx = -_clickPos.x - prevMouseX;
+		int dy = -_clickPos.y - prevMouseY;
 		float screenRatio = heightSize / WINDOW_HEIGHT;
 		position = VGet(position.x + dx * screenRatio, position.y - dy * screenRatio, -100.0f);
-
-		prevMouseX = -mouseX;
-		prevMouseY = -mouseY;
-	}
-	else
-	{
-		isRightButtonPressed = false;
 	}
 
-	// ホイールで前後移動
-	int wheel = GetMouseWheelRotVol();
-	if (wheel != 0)
-		SetCameraOrtho(wheel);
+	prevMouseX = -_clickPos.x;
+	prevMouseY = -_clickPos.y;
 }
 
 void CameraController::UpdateCamera()
@@ -65,9 +46,25 @@ void CameraController::UpdateCamera()
 
 void CameraController::SetCameraOrtho(int wheel)
 {
-	if (wheel > 0)
+	if (wheel > 0 && heightSize > MIN_HEIGHT_SIZE)
 		heightSize -= 100;
-	else if (wheel < 0)
+	else if (wheel < 0 && heightSize < MAX_HEIGHT_SIZE)
 		heightSize += 100;
 	SetupCamera_Ortho(heightSize);
+}
+
+void CameraController::RPushEvent(Vector2 screenPos)
+{
+	isRightButtonPressed = true;
+	_clickPos = screenPos;
+}
+
+void CameraController::RReleaseEvent()
+{
+	isRightButtonPressed = false;
+}
+
+void CameraController::WheelEvent(int up)
+{
+	SetCameraOrtho(up);
 }

@@ -16,7 +16,6 @@ public:
 	void Teardown() override {};
 
 protected:
-	void LClickInputProc(Vector2 pos, Vector2 oldPoss) override;
 
 private:
 

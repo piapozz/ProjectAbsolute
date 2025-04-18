@@ -32,13 +32,27 @@ public:
 
 protected:
 	/// <summary>
-	/// 左クリックしたときの処理
+	/// 左クリックを押したときの処理
 	/// </summary>
-	virtual void LClickInputProc(Vector2 pos, Vector2 oldPos){};
+	/// <param name="pos"></param>
+	virtual void LPushInputProc(Vector2 pos){}
 	/// <summary>
-	/// 右クリックしたときの処理
+	/// 右クリックを押したときの処理
 	/// </summary>
-	virtual void RClickInputProc(Vector2 pos, Vector2 oldPos){};
+	/// <param name="pos"></param>
+	virtual void RPushInputProc(Vector2 pos){}
+	/// <summary>
+	/// 左クリックを離したときの処理
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="oldPos"></param>
+	virtual void LReleaseInputProc(Vector2 pos, Vector2 oldPos){}
+	/// <summary>
+	/// 右クリックを離したときの処理
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="oldPos"></param>
+	virtual void RReleaseInputProc(Vector2 pos, Vector2 oldPos){}
 	/// <summary>
 	/// ホイールを回転したときの処理
 	/// </summary>

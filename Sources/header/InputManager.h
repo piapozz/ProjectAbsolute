@@ -35,16 +35,22 @@ public:
 	/// <returns></returns>
 	Vector2 GetCursorWorldPos(Vector2 screenPos);
 
-	inline void SetLClickCallback(std::function<void(Vector2 pos, Vector2 oldPos)> Callback){ _LClickAction = Callback; }
-	inline void SetRClickCallback(std::function<void(Vector2 pos, Vector2 oldPos)> Callback){ _RClickAction = Callback; }
+	inline void SetLPushCallback(std::function<void(Vector2 pos)> Callback){ _LPushAction = Callback; }
+	inline void SetRPushCallback(std::function<void(Vector2 pos)> Callback){ _RPushAction = Callback; }
+	inline void SetLReleaseCallback(std::function<void(Vector2 pos, Vector2 oldPos)> Callback){ _LReleaseAction = Callback; }
+	inline void SetRReleaseCallback(std::function<void(Vector2 pos, Vector2 oldPos)> Callback){ _RReleaseAction = Callback; }
 	inline void SetWheelRotCallback(std::function<void(Vector2 pos, int rot)> Callback){ _WheelRotAction = Callback; }
 	inline void SetEscapeCallback(std::function<void()> Callback){ _EscapePushAction = Callback; }
 
 private:
-	// 左クリックしたときのコールバック
-	std::function<void(Vector2 pos, Vector2 oldPos)> _LClickAction;
-	// 右クリックしたときのコールバック
-	std::function<void(Vector2 pos, Vector2 oldPos)> _RClickAction;
+	// 左クリックを押したときのコールバック
+	std::function<void(Vector2 pos)> _LPushAction;
+	// 右クリックを押したときのコールバック
+	std::function<void(Vector2 pos)> _RPushAction;
+	// 左クリックを離したときのコールバック
+	std::function<void(Vector2 pos, Vector2 oldPos)> _LReleaseAction;
+	// 右クリックを離したときのコールバック
+	std::function<void(Vector2 pos, Vector2 oldPos)> _RReleaseAction;
 	// ホイールを回転したときのコールバック
 	std::function<void(Vector2 pos, int rot)> _WheelRotAction;
 	// Escapeキーを押したときのコールバック
