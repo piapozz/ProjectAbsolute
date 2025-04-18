@@ -1,7 +1,7 @@
 #include "../header/ObjectManager.h"
 #include "../header/BaseObject.h"
 
-std::vector<std::vector<BaseObject*>> _objectList;
+std::vector<std::vector<BaseObject*>> ObjectManager::_objectList;
 
 void ObjectManager::Init()
 {

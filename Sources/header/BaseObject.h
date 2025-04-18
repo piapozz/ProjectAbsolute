@@ -20,21 +20,23 @@ public:
 	/// <summary>
 	/// アップデート
 	/// </summary>
-	virtual void Proc() = 0;
+	virtual void Proc(){};
 	/// <summary>
 	/// 描画
 	/// </summary>
-	virtual void Draw() = 0;
+	virtual void Draw(){
+	};
 	/// <summary>
 	/// 破棄
 	/// </summary>
 	virtual void Teardown();
-	virtual void ClickEvent() = 0;
+	virtual void ClickEvent(){
+	};
 
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
-	inline bool IsSamePos(Vector2 pos);
+	bool IsSamePos(Vector2 pos);
 protected:
 	// レイヤー
 	Layer layer;

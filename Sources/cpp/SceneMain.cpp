@@ -1,5 +1,5 @@
 #include "../header/SceneMain.h"
-#include "../header/PhaseManager.h"
+#include "../header/GameManager.h"
 
 SceneMain::SceneMain()
 {
@@ -8,18 +8,19 @@ SceneMain::SceneMain()
 
 SceneMain::~SceneMain()
 {
-
+	delete _pGamemanager;
 }
 
 void SceneMain::Init()
 {
-	_phaseManager = new PhaseManager();
+	_pGamemanager = new GameManager();
+	_pGamemanager->Init();
 }
 
 void SceneMain::Proc()
 {
 	DrawString (0, 0, "Main", GetColor (255, 255, 255));
-	_phaseManager->Proc();
+	_pGamemanager->Proc();
 }
 
 void SceneMain::Draw()
