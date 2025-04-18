@@ -1,8 +1,9 @@
 #pragma once
 #include "Const.h"
 #include <vector>
-#include "../header/CommonModule.h"
-#include "../header/RouteSearcher.h"
+#include "RouteSearcher.h"
+#include "SecureRoom.h"
+#include "BaseEntity.h"
 class Vector2;
 /*
 * Ishihara
@@ -51,7 +52,15 @@ public:
 	/// <param name="pos"></param>
 	/// <returns></returns>
 	bool CheckPosOnStage(Vector2 pos);
+	/// <summary>
+	/// “G‚Ìİ’è
+	/// </summary>
+	/// <param name="entity"></param>
+	/// <param name="index"></param>
+	void SetEntity(BaseEntity& entity, int index){_secureRoomList[index]->SetEntity(&entity); }
 private:
 	// –‘O‚É‰Šú‰»‚³‚ê‚½–K–âƒtƒ‰ƒO
 	std::vector<std::vector<bool>> _visited;
+	std::vector<SecureRoom*> _secureRoomList;
+
 };

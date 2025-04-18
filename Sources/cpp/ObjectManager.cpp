@@ -5,7 +5,11 @@ std::vector<std::vector<BaseObject*>> ObjectManager::_objectList;
 
 void ObjectManager::Init()
 {
-	AllClear();
+	_objectList = std::vector<std::vector<BaseObject*>>(
+		(int)ObjectType::MAX,
+		std::vector<BaseObject*>((int)ObjectType::MAX,
+		nullptr)
+	);
 }
 
 void ObjectManager::Update()
@@ -68,7 +72,7 @@ void ObjectManager::AllClear()
 	{
 		for (BaseObject* obj : _objectList[i])
 		{
-			if (obj == nullptr) return;
+			if (obj == nullptr) continue;
 			obj->Teardown();
 			delete obj;
 		}

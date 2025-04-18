@@ -14,8 +14,10 @@ GameManager::~GameManager()
 
 void GameManager::Init()
 {
+	ObjectManager::Init();
 	_gameEnd = false;
 	_pPhaseManager = new PhaseManager();
+	_pPhaseManager->Init();
 }
 
 void GameManager::Proc()

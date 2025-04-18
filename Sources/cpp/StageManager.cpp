@@ -13,19 +13,27 @@ std::vector<std::vector<int>> StageManager::_stageData;
 
 StageManager::~StageManager() 
 {
+	//収容所データの解放
+	for (BaseObject* secure : _secureRoomList)
+	{		
+		secure->Teardown();
+		delete secure;
+	}
 }
 
 void StageManager::Init()
 {  
-   
+	_secureRoomList.clear();
 }
   
 void StageManager::CreateStage()
 {
 	// 使用前に visited を初期化
 	_visited = std::vector<std::vector<bool>>(
-		STAGE_SIZE, // _stageData の行数に合わせる
-		std::vector<bool>(STAGE_SIZE, false) // _stageData の列数に合わせる
+		// _stageData の行数に合わせる
+		STAGE_SIZE,
+		// _stageData の列数に合わせる
+		std::vector<bool>(STAGE_SIZE, false) 
 		);
 
 	// ステージの生成
@@ -65,6 +73,8 @@ void StageManager::CreateStage()
 				SecureRoom* secure = new SecureRoom();
 				secure->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), 1);
 				ObjectManager::AddObject(secure);
+				// 収容所のリストに追加
+				_secureRoomList.push_back(secure);
 			}
 		}
 	}
