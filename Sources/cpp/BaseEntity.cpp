@@ -15,7 +15,7 @@ void BaseEntity::Proc()
 
 void BaseEntity::Draw()
 {
-	
+	DrawSphere3D(VGet(position.x, position.y, 0), 10, 32, GetColor(255, 0, 0), GetColor(0, 0, 0), FALSE);
 }
 
 void BaseEntity::Teardown()

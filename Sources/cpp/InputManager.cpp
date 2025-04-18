@@ -49,11 +49,17 @@ void InputManager::ExecuteCallback()
 	Vector2 cursorScreenPos = GetCursorScreenPos();
 
 	// 左クリックを押したときの処理
-	if (_LClickAction != NULL && IsClick(MOUSE_INPUT_LEFT))
-		_LClickAction(cursorScreenPos, _oldLClickScreenPos);
+	if (_LPushAction != NULL && IsClick(MOUSE_INPUT_LEFT))
+		_LPushAction(cursorScreenPos);
 	// 右クリックを押したときの処理
-	if (_RClickAction != NULL && IsClick(MOUSE_INPUT_RIGHT))
-		_RClickAction(cursorScreenPos, _oldRClickScreenPos);
+	if (_RPushAction != NULL && IsClick(MOUSE_INPUT_RIGHT))
+		_RPushAction(cursorScreenPos);
+	// 左クリックを離したときの処理
+	if (_LReleaseAction != NULL && IsClick(MOUSE_INPUT_LEFT))
+		_LReleaseAction(cursorScreenPos, _oldLClickScreenPos);
+	// 右クリックを離したときの処理
+	if (_RReleaseAction != NULL && IsClick(MOUSE_INPUT_RIGHT))
+		_RReleaseAction(cursorScreenPos, _oldRClickScreenPos);
 	// ホイールを回転させたときの処理
 	int wheelRot = GetMouseWheelRotVol();
 	if (_WheelRotAction != NULL && wheelRot != 0)

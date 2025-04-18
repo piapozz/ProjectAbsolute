@@ -13,8 +13,3 @@ bool PhaseResult::Proc()
 
 	return false;
 }
-
-void PhaseResult::LClickInputProc(Vector2 pos, Vector2 oldPos)
-{
-	// “ü—Íˆ—
-}

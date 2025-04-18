@@ -31,11 +31,3 @@ void PhaseSelect::SelectEntity(int selectNum)
 {
 	
 }
-
-void PhaseSelect::LClickInputProc(Vector2 pos, Vector2 oldPos)
-{
-	// 入力によって分岐
-	// 選択されたら
-	// エンティティーリストに追加
-	SelectEntity(-1);
-}

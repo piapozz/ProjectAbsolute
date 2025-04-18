@@ -14,7 +14,7 @@ void SceneTitle::Init()
 {
 	// 入力受付クラスを生成
 	_inputManager = new InputManager();
-	_inputManager->SetLClickCallback([this](Vector2 pos, Vector2 oldPos) { this->LClickInputProc(pos, oldPos); });
+	_inputManager->SetLPushCallback([this](Vector2 pos) { this->LReleaseInputProc(pos); });
 }
 
 void SceneTitle::Proc()
@@ -28,7 +28,7 @@ void SceneTitle::Draw()
 
 }
 
-void SceneTitle::LClickInputProc(Vector2 pos, Vector2 oldPos)
+void SceneTitle::LReleaseInputProc(Vector2 pos)
 {
 	// シーン変更コールバックを実行
 	if (ChangeScene != nullptr) ChangeScene(SceneName::MAIN);
