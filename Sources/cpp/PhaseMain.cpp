@@ -31,7 +31,7 @@ bool PhaseMain::Proc()
 	pInputManager->ExecuteCallback();
 
 	return false;
-0}
+}
 
 void PhaseMain::LPushInputProc(Vector2 pos)
 {
