@@ -20,19 +20,21 @@ public:
 	/// <summary>
 	/// アップデート
 	/// </summary>
-	virtual void Proc(){};
+	virtual void Proc() = 0;
 	/// <summary>
 	/// 描画
 	/// </summary>
-	virtual void Draw(){};
+	virtual void Draw() = 0;
 	/// <summary>
 	/// 破棄
 	/// </summary>
 	virtual void Teardown();
+	virtual void ClickEvent() = 0;
 
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
-	inline bool GetCanInput() { return canInput; }
+	inline ObjectType GetType() { return objectType; }
+	inline bool IsSamePos(Vector2 pos);
 protected:
 	// レイヤー
 	Layer layer;
@@ -40,6 +42,8 @@ protected:
 	int drawHandle;
 	// 座標
 	Vector2 position;
-	// 入力を受け付けるか
-	bool canInput;
+	// どのタイプか
+	ObjectType objectType;
+	// サイズ
+	Vector2 objectSize;
 };
