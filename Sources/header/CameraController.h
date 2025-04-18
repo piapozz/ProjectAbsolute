@@ -12,17 +12,12 @@ public:
 
 private:
 	VECTOR position;
-	float pitch; // è„â∫
-	float yaw;   // ç∂âE
-	float moveSpeed;
-	float rotateSpeed;
 	float heightSize;
 
 	int prevMouseX, prevMouseY;
 	bool isRightButtonPressed;
 
 	void HandleMouse();
-	void HandleKeyboard();
 	void UpdateCamera();
 	void SetCameraOrtho(int wheel);
 };

@@ -32,10 +32,8 @@ void PhaseMain::LClickInputProc(Vector2 pos, Vector2 oldPos)
 	// ワールド座標に変更
 	Vector2 worldPos = GetScreen2StagePos(pos);
 	Vector2 worldOldPos = GetScreen2StagePos(oldPos);
-	// デバッグ表示
-	int color = GetColor(255, 0, 0);
-	DrawSphere3D(VGet(worldPos.x, worldPos.y, 0), 50, 32, color, color, false);
-	DrawSphere3D(VGet(worldOldPos.x, worldOldPos.y, 0), 50, 32, color, color, false);
+
+
 }
 
 void PhaseMain::RClickInputProc(Vector2 pos, Vector2 oldPos)
@@ -55,8 +53,9 @@ Vector2 PhaseMain::GetScreen2StagePos(Vector2 screenPos)
 	Vector2 centorPos = _pCameraController->GetCameraPos();
 	// 中心座標＝ステージ座標
 
-	float ratio = WINDOW_HEIGHT / heightSize;
+	float ratio = heightSize / WINDOW_HEIGHT;
 	Vector2 screenCentor = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT) / 2;
+	Vector2 screenDistance = Vector2(screenPos.x - screenCentor.x, screenCentor.y - screenPos.y);
 
-	return Vector2(centorPos + (screenPos - screenCentor) * ratio);
+	return Vector2(centorPos + screenDistance * ratio);
 }
