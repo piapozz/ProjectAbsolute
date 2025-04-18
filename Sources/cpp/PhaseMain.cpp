@@ -16,6 +16,7 @@ void PhaseMain::Init()
 	pInputManager->SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
 	_pStageManager = new StageManager();
+	_pStageManager->Init();
 	_pStageManager->SetStageData(_stageData);
 	_pStageManager->CreateStage();
 	_pCameraController = new CameraController();
@@ -30,7 +31,7 @@ bool PhaseMain::Proc()
 	pInputManager->ExecuteCallback();
 
 	return false;
-}
+0}
 
 void PhaseMain::LPushInputProc(Vector2 pos)
 {

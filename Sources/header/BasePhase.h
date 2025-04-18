@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// ”jŠü
 	/// </summary>
-	inline virtual void Teardown() = 0;
+	inline virtual void Teardown() { ObjectManager::AllClear(); };
 
 protected:
 	/// <summary>
