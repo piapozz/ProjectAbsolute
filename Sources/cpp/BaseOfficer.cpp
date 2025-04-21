@@ -1,13 +1,12 @@
 #include "../header/BaseOfficer.h"
 #include "../header/OfficerStateFactory.h"
+#include "../header/OfficerInitData.h"
 
 BaseOfficer::BaseOfficer()
 {
-	pOfficerState = NULL;
 	_officerType = OfficerType::NONE;
-	_officerID = NULL;
-	_armorID = NULL;
-	_weaponID = NULL;
+	_officerID = -1;
+	pOfficerState = NULL;
 }
 
 BaseOfficer::~BaseOfficer()
@@ -15,9 +14,13 @@ BaseOfficer::~BaseOfficer()
 
 }
 
-void BaseOfficer::Init(Vector2 setPosition, int setOfficerID)
+void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 {
-	position = setPosition;
+	health = data.health;
+	mental = data.mental;
+	_armorID = data.armorID;
+	_weaponID = data.weaponID;
+
 	SetOfficerID(setOfficerID);
 	ChangeState(OfficerStateID::OFFICER_IDLE, nullptr);
 }
@@ -35,6 +38,12 @@ void BaseOfficer::Proc()
 void BaseOfficer::Draw()
 {
 	BaseObject::Draw();
+
+	VECTOR spherePosition;
+	spherePosition.x = position.x;
+	spherePosition.y = position.y;
+	spherePosition.z = 0;
+	DrawSphere3D(spherePosition, 10, 32, color, GetColor(0, 0, 0), TRUE);
 }
 
 void BaseOfficer::Teardown()

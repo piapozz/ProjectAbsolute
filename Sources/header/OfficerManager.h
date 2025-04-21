@@ -5,6 +5,8 @@
 #include "../header/ObjectManager.h"
 #include <vector>
 
+class OfficerInitData;
+
 /*
  * Sein
  * Officerä«óùÉNÉâÉX
@@ -19,7 +21,8 @@ public:
 	void Proc();
 	void Teardown();
 
-	void AddOfficer(OfficerType type);
+	BaseOfficer* AddOfficer(OfficerType type, OfficerInitData data);
+	void MoveSelectedPlayer(std::vector<int> officerNumber);
 
 	std::vector<BaseOfficer*> GetOfficerList() { return _officerList; }
 

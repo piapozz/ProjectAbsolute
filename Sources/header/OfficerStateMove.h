@@ -16,4 +16,5 @@ public:
 private:
 	std::vector<Vector2> _routeList;
 	int _arrayCount;
+	int speed = 2;
 };

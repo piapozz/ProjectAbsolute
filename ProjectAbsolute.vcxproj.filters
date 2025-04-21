@@ -377,5 +377,8 @@
     <ClInclude Include="Sources\header\BaseSection.h">
       <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\header\OfficerInitData.h">
+      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -205,6 +205,7 @@
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
     <ClInclude Include="Sources\header\Entity_E000.h" />
+    <ClInclude Include="Sources\header\OfficerInitData.h" />
     <ClInclude Include="Sources\header\OfficerManager.h" />
     <ClInclude Include="Sources\header\OfficerMob.h" />
     <ClInclude Include="Sources\header\OfficerPlayer.h" />

@@ -5,6 +5,7 @@
 #include "../header/StateArgs.h"
 
 class BaseOfficerState;
+class OfficerInitData;
 
 /*
  * Sein
@@ -16,7 +17,7 @@ public:
 	BaseOfficer();
 	virtual ~BaseOfficer();
 
-	virtual void Init(Vector2 setPosition, int setOfficerID);
+	virtual void Init(OfficerInitData data, int setOfficerID);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
