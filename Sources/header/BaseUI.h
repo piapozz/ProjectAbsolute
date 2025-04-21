@@ -32,5 +32,21 @@ public:
 	/// ”jŠü
 	/// </summary>
 	void Teardown() override;
+	/// <summary>
+	/// •\¦‚ÌØ‚è‘Ö‚¦
+	/// </summary>
+	/// <param name="active"></param>
+	void SetActive(bool active);
+	/// <summary>
+	/// ‰æ–Ê‚É’Ç]‚³‚¹‚é‚©‚Ç‚¤‚©
+	/// </summary>
+	/// <param name="is2D"></param>
+	void Set2D(bool is2D) { _is2D = is2D; }
+protected:
+	int fontHandle;
+	int textGraph;;
+private:
+	// "2D‚©3D‚©
+	bool _is2D;
 };
 

@@ -8,6 +8,7 @@
 #include "../header/CommonModule.h"
 #include "../header/RouteSearcher.h"
 #include "../header/PhaseMain.h"
+#include "../header/UIButton.h"
 
 std::vector<std::vector<int>> StageManager::_stageData;
 
@@ -36,6 +37,11 @@ void StageManager::CreateStage()
 		std::vector<bool>(STAGE_SIZE, false) 
 		);
 
+	SectionRoom* room = new SectionRoom();
+	Vector2 pos = Vector2(0, 0);
+	room->Init(pos, Vector2(0, 0));
+	ObjectManager::AddObject(room);
+
 	// ステージの生成
 	for (int i = 0; i < STAGE_SIZE; ++i)
 	{
@@ -48,34 +54,73 @@ void StageManager::CreateStage()
 				// 部屋を生成
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				SectionRoom* room = new SectionRoom();
-				room->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(size, size));
+				Vector2 pos = Vector2(j + size / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
+				room->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
 				ObjectManager::AddObject(room);
+				UIButton* button = new UIButton();
+				button->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
+				button->SetActive(true);
+				button->SetButtonText("部屋");
+				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
 				// 廊下を生成
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
 				SectionCorridor* corrider = new SectionCorridor();
-				corrider->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(size, 1));
+				Vector2 pos = Vector2(j + size / 2.0f, -(i + 1 / 2.0f)) * SECTION_SIZE;
+				corrider->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
 				ObjectManager::AddObject(corrider);
+				UIButton* button = new UIButton();
+				button->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
+				button->SetActive(true);
+				button->SetButtonText("廊下");
+				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
 				// 接合部を生成
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
 				SectionConnect* connect = new SectionConnect();
-				connect->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(1, size));
+				Vector2 pos = Vector2(j + 1 / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
+				connect->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
 				ObjectManager::AddObject(connect);
+				UIButton* button = new UIButton();
+				button->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
+				button->SetActive(true);
+				button->SetButtonText("接続部");
+				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{
 				// 収容所を生成
 				int size = CheckSectionSize(j, i, SectionType::SECURE);
 				SecureRoom* secure = new SecureRoom();
-				secure->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(size, size));
+				Vector2 pos = Vector2(j + size / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
+				secure->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
 				ObjectManager::AddObject(secure);
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);
+				UIButton* button1 = new UIButton();
+				button1->Init(Vector2(pos.x - SECTION_SIZE / 4, pos.y + SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
+				button1->SetActive(true);
+				button1->SetButtonText("本能");
+				ObjectManager::AddObject(button1);
+				UIButton* button2 = new UIButton();
+				button2->Init(Vector2(pos.x + SECTION_SIZE / 4, pos.y + SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
+				button2->SetActive(true);
+				button2->SetButtonText("洞察");
+				ObjectManager::AddObject(button2);
+				UIButton* button3 = new UIButton();
+				button3->Init(Vector2(pos.x - SECTION_SIZE / 4, pos.y - SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
+				button3->SetActive(true);
+				button3->SetButtonText("愛着");
+				ObjectManager::AddObject(button3);
+				UIButton* button4 = new UIButton();
+				button4->Init(Vector2(pos.x + SECTION_SIZE / 4, pos.y - SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
+				button4->SetActive(true);
+				button4->SetButtonText("抑圧");
+				ObjectManager::AddObject(button4);
 			}
 		}
 	}
