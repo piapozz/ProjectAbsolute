@@ -16,6 +16,7 @@ BaseOfficer::~BaseOfficer()
 
 void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 {
+	BaseCharacter::Init();
 	health = data.health;
 	mental = data.mental;
 	_armorID = data.armorID;

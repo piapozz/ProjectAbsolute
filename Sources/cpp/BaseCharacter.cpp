@@ -1,5 +1,11 @@
 #include "../header/BaseCharacter.h"
 
+void BaseCharacter::Init()
+{
+	objectType = ObjectType::CHARACTER;
+	objectSize = Vector2(50, 50);
+}
+
 void BaseCharacter::Proc()
 {
 	// アップデート

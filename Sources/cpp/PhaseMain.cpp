@@ -35,9 +35,6 @@ bool PhaseMain::Proc()
 
 void PhaseMain::LPushInputProc(Vector2 pos)
 {
-	// ワールド座標に変更
-	Vector2 worldPos = GetScreen2StagePos(pos);
-
 	// UIの入力
 
 
@@ -68,7 +65,38 @@ void PhaseMain::RDrackInputProc(Vector2 pos)
 
 void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 {
+	// ワールド座標に変更
+	Vector2 worldPos = GetScreen2StagePos(pos);
 
+	// UI
+
+
+	// キャラクター
+	// 職員の取得
+	BaseObject* officer = ObjectManager::FindPosObject(worldPos, ObjectType::CHARACTER);
+	if (officer != nullptr)
+	{
+		_pPlayerOfficerList.push_back(static_cast<OfficerPlayer*>(officer));
+		officer->ClickEvent();
+		return;
+	}
+
+	// ステージの取得
+	BaseObject* section = ObjectManager::FindPosObject(worldPos, ObjectType::CHARACTER);
+	if (section != nullptr)
+	{
+		_pPlayerOfficerList.push_back(static_cast<OfficerPlayer*>(section));
+		section->ClickEvent();
+		return;
+	}
+	else if (!_pPlayerOfficerList.empty())
+	{
+		// 移動
+		std::vector<Vector2> routeList = StageManager::FindPath(_pPlayerOfficerList[0]->GetPosition(), worldPos);
+		StateArgs* args = new StateArgs();
+		args->targetPosList = routeList;
+		_pPlayerOfficerList[0]->ChangeState(OfficerStateID::OFFICER_MOVE, args);
+	}
 }
 
 void PhaseMain::RReleaseInputProc(Vector2 pos, Vector2 oldPos)
