@@ -1,12 +1,11 @@
 #include "../header/BaseSection.h"
 
-void BaseSection::Init(Vector2 setPosition, int setSize)
+void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 {
 	// èâä˙âª
 	sectionType = SectionType::INVALID;
 	position = setPosition;
-	size = setSize;
-	objectSize = Vector2(SECTION_SIZE * size, SECTION_SIZE * size);
+	objectSize = setSize;
 	objectType = ObjectType::SECTION;
 }
 

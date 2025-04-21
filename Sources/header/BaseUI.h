@@ -19,7 +19,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	virtual void Init();
+	virtual void Init(Vector2 setPosition, Vector2 setSize);
 	/// <summary>
 	/// アップデート
 	/// </summary>

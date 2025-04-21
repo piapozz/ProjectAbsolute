@@ -48,7 +48,7 @@ void StageManager::CreateStage()
 				// 部屋を生成
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				SectionRoom* room = new SectionRoom();
-				room->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), size);
+				room->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(size, size));
 				ObjectManager::AddObject(room);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
@@ -56,7 +56,7 @@ void StageManager::CreateStage()
 				// 廊下を生成
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
 				SectionCorridor* corrider = new SectionCorridor();
-				corrider->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), size);
+				corrider->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(size, 1));
 				ObjectManager::AddObject(corrider);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
@@ -64,14 +64,15 @@ void StageManager::CreateStage()
 				// 接合部を生成
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
 				SectionConnect* connect = new SectionConnect();
-				connect->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), size);
+				connect->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(1, size));
 				ObjectManager::AddObject(connect);
 			} 
-			else if (_stageData[i][j] == 4)
+			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{
 				// 収容所を生成
+				int size = CheckSectionSize(j, i, SectionType::SECURE);
 				SecureRoom* secure = new SecureRoom();
-				secure->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), 1);
+				secure->Init(Vector2(j * SECTION_SIZE, i * -SECTION_SIZE), Vector2(size, size));
 				ObjectManager::AddObject(secure);
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);

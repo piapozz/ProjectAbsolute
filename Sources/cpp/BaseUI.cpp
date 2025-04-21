@@ -1,6 +1,6 @@
 #include "../header/BaseUI.h"
 
-void BaseUI::Init()
+void BaseUI::Init(Vector2 setPosition, Vector2 setSize)
 {
 
 }

@@ -3,7 +3,7 @@
 #include <math.h>
 #include <algorithm> // std::max を使用するために必要
 
-void SectionRoom::Init(Vector2 setPosition, int setSize)
+void SectionRoom::Init(Vector2 setPosition, Vector2 setSize)
 {
 	// 初期化
 	BaseSection::Init(setPosition, setSize);
@@ -23,14 +23,16 @@ void SectionRoom::Draw()
    // 描画
    BaseSection::Draw();
 
-   int value = SECTION_SIZE * ((size / 2) - 1);
-   if (value < 0) value = 0;
+   float valueX = (SECTION_SIZE) * (objectSize.x - 1);
+   float valueY = (SECTION_SIZE) * (objectSize.y - 1);
+   if (valueX < 0) valueX = 0;
+   if (valueY < 0) valueY = 0;
 
    // 四角を描画
-   int x1 = position.x + SECTION_SIZE / 2 + value;
-   int y1 = position.y + SECTION_SIZE / 2 + value;
+   int x1 = position.x + SECTION_SIZE / 2 + valueX;
+   int y1 = position.y + SECTION_SIZE / 2;
    int x2 = position.x - SECTION_SIZE / 2;
-   int y2 = position.y - SECTION_SIZE / 2;
+   int y2 = position.y - SECTION_SIZE / 2 - valueY;
 
    VECTOR Pos1 = VGet(x1, y1, 0);
    VECTOR Pos2 = VGet(x2, y1, 0);

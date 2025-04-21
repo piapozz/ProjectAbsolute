@@ -15,7 +15,7 @@ public:
 		:_pEntity(pEntity), _isMeltdown(false), _meltdownCount(0){}
 	~SecureRoom(){ Teardown(); }
 
-	void Init(Vector2 position, int size) override;
+	void Init(Vector2 position, Vector2 size) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
