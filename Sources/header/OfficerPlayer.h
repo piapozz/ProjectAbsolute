@@ -11,12 +11,13 @@ public:
 	OfficerPlayer();
 	~OfficerPlayer();
 
-	void Init(Vector2 setPosition, int setOfficerID) override;
+	void Init(OfficerInitData data, int setOfficerID) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+	void ClickEvent() override;
 
-	void MoveToTargetPos(std::vector<std::vector<int>> stageData, Vector2 start, Vector2 goal);
+	void MoveToTargetPos(std::vector<Vector2> routeList);
 
 private:
 };

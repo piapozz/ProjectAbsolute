@@ -28,7 +28,7 @@ void OfficerStateMove::Update(BaseOfficer* officer)
 
 	// ³‹K‰»
 	Vector2 move = dir / distance;
-	Vector2 indexVector = move * 3;
+	Vector2 indexVector = move * speed;
 	current = indexVector + current;
 
 	officer->SetPosition(current);
@@ -38,10 +38,10 @@ void OfficerStateMove::Enter(BaseOfficer* officer)
 {
 	officer->color = MOVE;
 	_arrayCount = 0;
-	_routeList.clear();
 }
 
 void OfficerStateMove::Exit(BaseOfficer* officer)
 {
 	officer->color = IDLE;
+	_routeList.clear();
 }
