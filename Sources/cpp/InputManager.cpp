@@ -2,7 +2,8 @@
 
 InputManager::InputManager()
 {
-	
+	_isLPressed = false;
+	_isRPressed = false;
 }
 
 InputManager::~InputManager()
@@ -10,23 +11,35 @@ InputManager::~InputManager()
 
 }
 
-bool InputManager::IsClick(int button)
+int InputManager::CheckClickState()
 {
-	// 無効値の場合即座に処理を抜ける
-	if (button != MOUSE_INPUT_LEFT && button != MOUSE_INPUT_RIGHT) return false;
 	// マウスの状態を取得
-	int mouseInput, posX, posY, isUp;
-	GetMouseInputLog2(&mouseInput, &posX, &posY, &isUp, TRUE);
-	// 押されたときのカーソル座標を保持
-	if (!isUp)
+	int mouseInput, posX, posY, isUp = -1;
+	if (GetMouseInputLog2(&mouseInput, &posX, &posY, &isUp, TRUE) < 0) return -1;
+	// クリック情報を保持
+	if (mouseInput == MOUSE_INPUT_LEFT)
 	{
-		if (mouseInput == MOUSE_INPUT_LEFT)
+		_LClickState = isUp;
+		if (isUp == MOUSE_INPUT_LOG_DOWN)
+		{
+			_isLPressed = true;
 			_oldLClickScreenPos = Vector2((float)posX, (float)posY);
-		else if (mouseInput == MOUSE_INPUT_RIGHT)
-			_oldRClickScreenPos = Vector2((float)posX, (float)posY);
+		}
+		else if (isUp == MOUSE_INPUT_LOG_UP)
+			_isLPressed = false;
 	}
-
-	return button == mouseInput && isUp;
+	else if (mouseInput == MOUSE_INPUT_RIGHT)
+	{
+		_RClickState = isUp;
+		if (isUp == MOUSE_INPUT_LOG_DOWN)
+		{
+			_isRPressed = true;
+			_oldRClickScreenPos = Vector2((float)posX, (float)posY);
+		}
+		else if (isUp == MOUSE_INPUT_LOG_UP)
+			_isRPressed = false;
+	}
+	return mouseInput;
 }
 
 Vector2 InputManager::GetCursorScreenPos()
@@ -36,30 +49,37 @@ Vector2 InputManager::GetCursorScreenPos()
 	return Vector2((float)posx, (float)posy);
 }
 
-Vector2 InputManager::GetCursorWorldPos(Vector2 screenPos)
-{
-	VECTOR screenVec = VGet(screenPos.x, screenPos.y, 0.5f);
-	VECTOR worldVec = ConvScreenPosToWorldPos(screenVec);
-	return Vector2(worldVec.x, worldVec.y);
-}
-
 void InputManager::ExecuteCallback()
 {
 	// カーソル座標の取得
 	Vector2 cursorScreenPos = GetCursorScreenPos();
+	// クリックの状態を確認
+	int currentMouseInput = CheckClickState();
 
-	// 左クリックを押したときの処理
-	if (_LPushAction != NULL && IsClick(MOUSE_INPUT_LEFT))
-		_LPushAction(cursorScreenPos);
-	// 右クリックを押したときの処理
-	if (_RPushAction != NULL && IsClick(MOUSE_INPUT_RIGHT))
-		_RPushAction(cursorScreenPos);
-	// 左クリックを離したときの処理
-	if (_LReleaseAction != NULL && IsClick(MOUSE_INPUT_LEFT))
-		_LReleaseAction(cursorScreenPos, _oldLClickScreenPos);
-	// 右クリックを離したときの処理
-	if (_RReleaseAction != NULL && IsClick(MOUSE_INPUT_RIGHT))
-		_RReleaseAction(cursorScreenPos, _oldRClickScreenPos);
+	// 左クリック
+	if (currentMouseInput == MOUSE_INPUT_LEFT)
+	{
+		if (_LPushAction != NULL && _LClickState == MOUSE_INPUT_LOG_DOWN)
+			_LPushAction(cursorScreenPos);
+		else if (_LReleaseAction != NULL && _LClickState == MOUSE_INPUT_LOG_UP)
+			_LReleaseAction(cursorScreenPos, _oldLClickScreenPos);
+	}
+	// ドラックしているとき
+	if (_LDrackAction != NULL && _isLPressed)
+		_LDrackAction(cursorScreenPos);
+
+	// 右クリック
+	if (currentMouseInput == MOUSE_INPUT_RIGHT)
+	{
+		if (_RPushAction != NULL && _RClickState == MOUSE_INPUT_LOG_DOWN)
+			_RPushAction(cursorScreenPos);
+		else if (_RReleaseAction != NULL && _RClickState == MOUSE_INPUT_LOG_UP)
+			_RReleaseAction(cursorScreenPos, _oldRClickScreenPos);
+	}
+	// ドラックしているとき
+	if (_RDrackAction != NULL && _isRPressed)
+		_RDrackAction(cursorScreenPos);
+
 	// ホイールを回転させたときの処理
 	int wheelRot = GetMouseWheelRotVol();
 	if (_WheelRotAction != NULL && wheelRot != 0)
@@ -68,3 +88,4 @@ void InputManager::ExecuteCallback()
 	if (_EscapePushAction != NULL && CheckHitKey(KEY_INPUT_ESCAPE))
 		_EscapePushAction();
 }
+

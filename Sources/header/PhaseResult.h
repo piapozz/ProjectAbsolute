@@ -8,7 +8,7 @@
 class PhaseResult : public BasePhase
 {
 public:
-	PhaseResult() { Init(); }
+	PhaseResult() {}
 	~PhaseResult() {};
 
 	void Init() override;

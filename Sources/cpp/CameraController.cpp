@@ -4,64 +4,48 @@
 
 CameraController::CameraController()
 {
-	position = VGet(100.0f, 100.0f, -100.0f);
-
-	isRightButtonPressed = false;
-	GetMousePoint(&prevMouseX, &prevMouseY);
+	_position = VGet(100.0f, 100.0f, -100.0f);
 
 	// 正射影カメラをセットアップする
-	heightSize = 1000;
-	SetupCamera_Ortho(heightSize);
+	_heightSize = 1000;
+	SetupCamera_Ortho(_heightSize);
 	// カメラの位置と向きを設定
-	SetCameraPositionAndTarget_UpVecY(position, VGet(100.0f, 100.0f, 100.0f));
+	SetCameraPositionAndTarget_UpVecY(_position, VGet(100.0f, 100.0f, 100.0f));
 	// カメラのクリッピング距離を設定
 	SetCameraNearFar(1.0f, 1000.0f);
 }
 
-void CameraController::Update()
-{
-	HandleMouse();
-	UpdateCamera();
-}
-
-void CameraController::HandleMouse()
-{
-	if (isRightButtonPressed)
-	{
-		int dx = -_clickPos.x - prevMouseX;
-		int dy = -_clickPos.y - prevMouseY;
-		float screenRatio = heightSize / WINDOW_HEIGHT;
-		position = VGet(position.x + dx * screenRatio, position.y - dy * screenRatio, -100.0f);
-	}
-
-	prevMouseX = -_clickPos.x;
-	prevMouseY = -_clickPos.y;
-}
-
 void CameraController::UpdateCamera()
 {
-	VECTOR target = VGet(position.x, position.y, 100.0f);
-	SetCameraPositionAndTarget_UpVecY(position, target);
+	VECTOR target = VGet(_position.x, _position.y, 100.0f);
+	SetCameraPositionAndTarget_UpVecY(_position, target);
 }
 
 void CameraController::SetCameraOrtho(int wheel)
 {
-	if (wheel > 0 && heightSize > MIN_HEIGHT_SIZE)
-		heightSize -= 100;
-	else if (wheel < 0 && heightSize < MAX_HEIGHT_SIZE)
-		heightSize += 100;
-	SetupCamera_Ortho(heightSize);
+	if (wheel > 0 && _heightSize > MIN_HEIGHT_SIZE)
+		_heightSize -= 100;
+	else if (wheel < 0 && _heightSize < MAX_HEIGHT_SIZE)
+		_heightSize += 100;
+	SetupCamera_Ortho(_heightSize);
 }
 
 void CameraController::RPushEvent(Vector2 screenPos)
 {
-	isRightButtonPressed = true;
-	_clickPos = screenPos;
+	_pushPos = screenPos;
+	_prevCursorPos = _pushPos;
 }
 
-void CameraController::RReleaseEvent()
+void CameraController::RDrackEvent(Vector2 screenPos)
 {
-	isRightButtonPressed = false;
+	int dx = _prevCursorPos.x - screenPos.x;
+	int dy = _prevCursorPos.y - screenPos.y;
+	float screenRatio = _heightSize / WINDOW_HEIGHT;
+	_position = VGet(_position.x + dx * screenRatio, _position.y - dy * screenRatio, -100.0f);
+
+	_prevCursorPos = screenPos;
+
+	UpdateCamera();
 }
 
 void CameraController::WheelEvent(int up)

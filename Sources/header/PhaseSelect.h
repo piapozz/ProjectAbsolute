@@ -8,7 +8,7 @@
 class PhaseSelect : public BasePhase
 {
 public:
-	PhaseSelect() { Init(); }
+	PhaseSelect() {}
 	~PhaseSelect() {};
 
 	void Init() override;
