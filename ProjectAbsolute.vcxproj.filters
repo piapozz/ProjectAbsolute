@@ -61,6 +61,24 @@
     <Filter Include="ソース ファイル\Sein\OfficerState">
       <UniqueIdentifier>{79c76cd8-814c-473b-9354-e744be866ad4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Ishihara\UI">
+      <UniqueIdentifier>{2fe50148-f3e0-4d80-b33c-e6c491a3d538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Ishihara\Section">
+      <UniqueIdentifier>{a04f34e4-46a4-4db7-815a-ee5eeea58448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Ishihara\Scene">
+      <UniqueIdentifier>{0f996fb5-08c5-4c14-9071-e664a33bfedd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Ishihara\UI">
+      <UniqueIdentifier>{00dc677a-258c-47fe-9888-d2741c0711a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Ishihara\Section">
+      <UniqueIdentifier>{d5231985-0f52-436c-9c18-85a89d5845df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Ishihara\Scene">
+      <UniqueIdentifier>{9f0bbde8-e719-4174-9568-50f77228cc20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -75,12 +93,6 @@
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseUI.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseSection.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\DataManager.cpp">
       <Filter>ソース ファイル\Sein</Filter>
     </ClCompile>
@@ -89,30 +101,6 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\InputManager.cpp">
       <Filter>ソース ファイル\Sein</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseScene.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneMain.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneManager.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SceneTitle.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SectionConnect.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SectionCorridor.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\SectionRoom.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\StageManager.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\BasePhase.cpp">
       <Filter>ソース ファイル\Sakakura\Phase</Filter>
@@ -198,8 +186,44 @@
     <ClCompile Include="Sources\cpp\Entity_E000.cpp">
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\UISlider.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIButton.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SectionRoom.cpp">
+      <Filter>ソース ファイル\Ishihara\Section</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SectionConnect.cpp">
+      <Filter>ソース ファイル\Ishihara\Section</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SectionCorridor.cpp">
+      <Filter>ソース ファイル\Ishihara\Section</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseSection.cpp">
+      <Filter>ソース ファイル\Ishihara\Section</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneMain.cpp">
+      <Filter>ソース ファイル\Ishihara\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneManager.cpp">
+      <Filter>ソース ファイル\Ishihara\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SceneTitle.cpp">
+      <Filter>ソース ファイル\Ishihara\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\StageManager.cpp">
+      <Filter>ソース ファイル\Ishihara\Section</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\cpp\RouteSearcher.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
+      <Filter>ソース ファイル\Ishihara\Section</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseUI.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseScene.cpp">
+      <Filter>ソース ファイル\Ishihara\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,12 +236,6 @@
     <ClInclude Include="Sources\header\BaseCharacter.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\BaseSection.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\BaseUI.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\DataManager.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
@@ -227,35 +245,8 @@
     <ClInclude Include="Sources\header\InputManager.h">
       <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\CommonModule.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\BaseScene.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneMain.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneManager.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SceneTitle.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\Const.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SectionConnect.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SectionCorridor.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\SectionRoom.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\StageManager.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\BaseEntity.h">
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
@@ -344,8 +335,47 @@
     <ClInclude Include="Sources\header\StateArgs.h">
       <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\header\UIButton.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UISlider.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseUI.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SectionConnect.h">
+      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SectionCorridor.h">
+      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SectionRoom.h">
+      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\StageManager.h">
+      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
+    </ClInclude>
     <ClInclude Include="Sources\header\RouteSearcher.h">
-      <Filter>ヘッダー ファイル\Ishihara</Filter>
+      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\CommonModule.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneTitle.h">
+      <Filter>ヘッダー ファイル\Ishihara\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneManager.h">
+      <Filter>ヘッダー ファイル\Ishihara\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SceneMain.h">
+      <Filter>ヘッダー ファイル\Ishihara\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseScene.h">
+      <Filter>ヘッダー ファイル\Ishihara\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseSection.h">
+      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

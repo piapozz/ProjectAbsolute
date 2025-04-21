@@ -185,6 +185,8 @@
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
     <ClCompile Include="Sources\cpp\BaseOfficerState.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
+    <ClCompile Include="Sources\cpp\UIButton.cpp" />
+    <ClCompile Include="Sources\cpp\UISlider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\BaseCharacter.h" />
@@ -235,6 +237,8 @@
     <ClInclude Include="Sources\header\SecureRoom.h" />
     <ClInclude Include="Sources\header\StageManager.h" />
     <ClInclude Include="Sources\header\StateArgs.h" />
+    <ClInclude Include="Sources\header\UIButton.h" />
+    <ClInclude Include="Sources\header\UISlider.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
