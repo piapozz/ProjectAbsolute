@@ -24,7 +24,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init(Vector2 setPosition, int setSize) override;
+	void Init(Vector2 setPosition, Vector2 setSize) override;
 	/// <summary>
 	/// アップデート
 	/// </summary>

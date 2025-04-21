@@ -2,7 +2,7 @@
 
 #include "../header/Const.h"
 
-void SectionConnect::Init(Vector2 setPosition, int setSize)
+void SectionConnect::Init(Vector2 setPosition, Vector2 setSize)
 {
 	// èâä˙âª
 	BaseSection::Init(setPosition, setSize);
@@ -21,11 +21,16 @@ void SectionConnect::Draw()
 	// ï`âÊ
 	BaseSection::Draw();
 
+	float valueX = (SECTION_SIZE) * (objectSize.x - 1);
+	float valueY = (SECTION_SIZE) * (objectSize.y - 1);
+	if (valueX < 0) valueX = 0;
+	if (valueY < 0) valueY = 0;
+
 	// éläpÇï`âÊ
-	int x1 = position.x + SECTION_SIZE / 2;
+	int x1 = position.x + SECTION_SIZE / 2 + valueX;
 	int y1 = position.y + SECTION_SIZE / 2;
 	int x2 = position.x - SECTION_SIZE / 2;
-	int y2 = position.y - SECTION_SIZE / 2 - (SECTION_SIZE * (size - 1));
+	int y2 = position.y - SECTION_SIZE / 2 - valueY;
 
 	VECTOR Pos1 = VGet(x1, y1, 0);
 	VECTOR Pos2 = VGet(x2, y1, 0);
