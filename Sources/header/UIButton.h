@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseUI.h"
 #include <string>
+#include <functional>
 
 class UIButton: public BaseUI
 {
@@ -17,26 +18,23 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+	void ClickEvent() override {_callback();}
 
-	/// <summary>
-	/// 表示の切り替え
-	/// </summary>
-	/// <param name="active"></param>
-	void SetActive(bool active);
 	/// <summary>
 	/// テキストの設定
 	/// </summary>
 	/// <param name="text"></param>
 	void SetButtonText(const std::string& text) { _buttonText = text; }
 	/// <summary>
-	/// 画面に追従させるかどうか
+	/// コールバックの設定
 	/// </summary>
-	/// <param name="is2D"></param>
-	void Set2D(bool is2D) { _is2D = is2D; }
+	/// <param name="callback"></param>
+	void SetCallback(std::function<void()> callback) {_callback = callback;}
 private:
 	// ボタンの文字
 	std::string _buttonText;
-	// "2Dか3Dか
-	bool _is2D;
+	std::string prevText = "";
+	// コールバック
+	std::function<void()> _callback;
 };
 
