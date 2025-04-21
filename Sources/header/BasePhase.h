@@ -42,6 +42,16 @@ protected:
 	/// <param name="pos"></param>
 	virtual void RPushInputProc(Vector2 pos){}
 	/// <summary>
+	/// 左クリックをドラックしているときの処理
+	/// </summary>
+	/// <param name="pos"></param>
+	virtual void LDrackInputProc(Vector2 pos){}
+	/// <summary>
+	/// 右クリックをドラックしているときの処理
+	/// </summary>
+	/// <param name="pos"></param>
+	virtual void RDrackInputProc(Vector2 pos){}
+	/// <summary>
 	/// 左クリックを離したときの処理
 	/// </summary>
 	/// <param name="pos"></param>

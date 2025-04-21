@@ -7,26 +7,26 @@
 void PhaseMain::Init()
 {
 	// 入力の初期化
+	_pCameraController = new CameraController();
 	pInputManager = new InputManager();
 	pInputManager->SetLPushCallback([this](Vector2 pos){ this->LPushInputProc(pos); });
+	pInputManager->SetLDrackCallback([this](Vector2 pos){ this->LDrackInputProc(pos); });
 	pInputManager->SetLReleaseCallback([this](Vector2 pos, Vector2 oldPos){ this->LReleaseInputProc(pos, oldPos); });
 	pInputManager->SetRPushCallback([this](Vector2 pos){ this->RPushInputProc(pos); });
+	pInputManager->SetRDrackCallback([this](Vector2 pos){ this->RDrackInputProc(pos); });
 	pInputManager->SetRReleaseCallback([this](Vector2 pos, Vector2 oldPos){ this->RReleaseInputProc(pos, oldPos); });
 	pInputManager->SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	pInputManager->SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
 	_pStageManager = new StageManager();
-	_pStageManager->Init();
 	_pStageManager->SetStageData(_stageData);
 	_pStageManager->CreateStage();
-	_pCameraController = new CameraController();
 	_pOfficerManager = new OfficerManager();
 	_pOfficerManager->Init();
 }
 
 bool PhaseMain::Proc()
 {
-	_pCameraController->Update();
 	// 入力処理
 	pInputManager->ExecuteCallback();
 
@@ -42,10 +42,10 @@ void PhaseMain::LPushInputProc(Vector2 pos)
 
 
 	// キャラクターの入力
-	
+
 
 	// ステージの入力
-	
+
 }
 
 void PhaseMain::RPushInputProc(Vector2 pos)
@@ -56,6 +56,16 @@ void PhaseMain::RPushInputProc(Vector2 pos)
 
 }
 
+void PhaseMain::LDrackInputProc(Vector2 pos)
+{
+
+}
+
+void PhaseMain::RDrackInputProc(Vector2 pos)
+{
+	_pCameraController->RDrackEvent(pos);
+}
+
 void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 {
 
@@ -63,7 +73,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 
 void PhaseMain::RReleaseInputProc(Vector2 pos, Vector2 oldPos)
 {
-	_pCameraController->RReleaseEvent();
+
 }
 
 void PhaseMain::WheelRotInputProc(Vector2 pos, int rot)

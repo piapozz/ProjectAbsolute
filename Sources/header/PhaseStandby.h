@@ -8,7 +8,7 @@
 class PhaseStandby : public BasePhase
 {
 public:
-	PhaseStandby() { Init(); }
+	PhaseStandby() {}
 	~PhaseStandby() {};
 
 	void Init() override;

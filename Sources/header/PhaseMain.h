@@ -22,6 +22,8 @@ public:
 protected:
 	void LPushInputProc(Vector2 pos) override;
 	void RPushInputProc(Vector2 pos) override;
+	void LDrackInputProc(Vector2 pos) override;
+	void RDrackInputProc(Vector2 pos) override;
 	void LReleaseInputProc(Vector2 pos, Vector2 oldPos) override;
 	void RReleaseInputProc(Vector2 pos, Vector2 oldPos) override;
 	void WheelRotInputProc(Vector2 pos, int rot) override;

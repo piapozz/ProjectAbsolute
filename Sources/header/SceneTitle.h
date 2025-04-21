@@ -30,6 +30,6 @@ private:
 	/// <summary>
 	/// ¶ƒNƒŠƒbƒN‚Ì“ü—Íˆ—
 	/// </summary>
-	void LReleaseInputProc(Vector2 pos);
+	void LPushInputProc(Vector2 pos);
 };
 

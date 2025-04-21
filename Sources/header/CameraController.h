@@ -8,24 +8,21 @@ public:
 	CameraController();
 	virtual ~CameraController(){}
 
-	void Update();
-	inline float GetHeightSize(){ return heightSize; }
-	inline Vector2 GetCameraPos(){ return Vector2(position.x, position.y); };
+	inline float GetHeightSize(){ return _heightSize; }
+	inline Vector2 GetCameraPos(){ return Vector2(_position.x, _position.y); };
 	void RPushEvent(Vector2 screenPos);
-	void RReleaseEvent();
+	void RDrackEvent(Vector2 screenPos);
 	void WheelEvent(int up);
 
 private:
 	const int MIN_HEIGHT_SIZE = 100;
 	const int MAX_HEIGHT_SIZE = 1000;
 
-	VECTOR position;
-	float heightSize;
-	int prevMouseX, prevMouseY;
-	bool isRightButtonPressed;
-	Vector2 _clickPos;
+	VECTOR _position;
+	float _heightSize;
+	Vector2 _prevCursorPos;
+	Vector2 _pushPos;
 
-	void HandleMouse();
 	void UpdateCamera();
 	void SetCameraOrtho(int wheel);
 };
