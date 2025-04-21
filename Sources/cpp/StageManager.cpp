@@ -101,26 +101,6 @@ void StageManager::CreateStage()
 				ObjectManager::AddObject(secure);
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);
-				UIButton* button1 = new UIButton();
-				button1->Init(Vector2(pos.x - SECTION_SIZE / 4, pos.y + SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
-				button1->SetActive(true);
-				button1->SetButtonText("本能");
-				ObjectManager::AddObject(button1);
-				UIButton* button2 = new UIButton();
-				button2->Init(Vector2(pos.x + SECTION_SIZE / 4, pos.y + SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
-				button2->SetActive(true);
-				button2->SetButtonText("洞察");
-				ObjectManager::AddObject(button2);
-				UIButton* button3 = new UIButton();
-				button3->Init(Vector2(pos.x - SECTION_SIZE / 4, pos.y - SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
-				button3->SetActive(true);
-				button3->SetButtonText("愛着");
-				ObjectManager::AddObject(button3);
-				UIButton* button4 = new UIButton();
-				button4->Init(Vector2(pos.x + SECTION_SIZE / 4, pos.y - SECTION_SIZE / 4), Vector2(size * SECTION_SIZE / 2, size * SECTION_SIZE / 2));
-				button4->SetActive(true);
-				button4->SetButtonText("抑圧");
-				ObjectManager::AddObject(button4);
 			}
 		}
 	}
