@@ -8,7 +8,9 @@
 class BaseObject
 {
 public:
-	BaseObject(){}
+	BaseObject(){
+		objectType = ObjectType::INVALID;
+	 }
 	BaseObject(Layer setLayer)
 		: layer(setLayer){}
 	BaseObject(Layer setLayer, int setDrawHandle)
