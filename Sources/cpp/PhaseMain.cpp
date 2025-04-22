@@ -69,7 +69,13 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	Vector2 worldPos = GetScreen2StagePos(pos);
 
 	// UI
-
+	// UIの取得
+	BaseObject* UI = ObjectManager::FindPosObject(worldPos, ObjectType::UI);
+	if (UI != nullptr)
+	{
+		UI->ClickEvent();
+		return;
+	}
 
 	// キャラクター
 	// 職員の取得
@@ -82,21 +88,23 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	}
 
 	// ステージの取得
-	BaseObject* section = ObjectManager::FindPosObject(worldPos, ObjectType::CHARACTER);
-	if (section != nullptr)
+	BaseObject* section = ObjectManager::FindPosObject(worldPos, ObjectType::SECTION);
+	if (_pPlayerOfficerList.empty()) return;
+	
+	if (static_cast<SecureRoom*>(section) != nullptr)
 	{
-		_pPlayerOfficerList.push_back(static_cast<OfficerPlayer*>(section));
-		section->ClickEvent();
+		// 収容所の取得
+		SecureRoom* secureRoom = static_cast<SecureRoom*>(section);
+		secureRoom->ClickEvent();
+		//_pPlayerOfficerList[0]->SetSecureRoom(secureRoom);
 		return;
 	}
-	else if (!_pPlayerOfficerList.empty())
-	{
-		// 移動
-		std::vector<Vector2> routeList = StageManager::FindPath(_pPlayerOfficerList[0]->GetPosition(), worldPos);
-		StateArgs* args = new StateArgs();
-		args->targetPosList = routeList;
-		_pPlayerOfficerList[0]->ChangeState(OfficerStateID::OFFICER_MOVE, args);
-	}
+	// 移動
+	if (!_pStageManager->CheckPosOnStage(worldPos)) return;
+	std::vector<Vector2> routeList = StageManager::FindPath(_pPlayerOfficerList[0]->GetPosition(), worldPos);
+	StateArgs* args = new StateArgs();
+	args->targetPosList = routeList;
+	_pPlayerOfficerList[0]->ChangeState(OfficerStateID::OFFICER_MOVE, args);
 }
 
 void PhaseMain::RReleaseInputProc(Vector2 pos, Vector2 oldPos)

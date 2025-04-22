@@ -91,5 +91,6 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 			return obj;
 		}
 	}
+
 	return nullptr;
 }

@@ -140,9 +140,12 @@ bool StageManager::CheckPosOnStage(Vector2 pos)
 	{
 		return false;
 	}
-	// 区画が存在しない、または接続部は false
-	if (_stageData[(int)(-pos.y / SECTION_SIZE)][(int)(pos.x / SECTION_SIZE)] == (int)SectionType::CONNECT || 
-		_stageData[(int)(-pos.y / SECTION_SIZE)][(int)(pos.x / SECTION_SIZE)] == (int)SectionType::NONE)
+	int y = (int)(pos.x / SECTION_SIZE);
+	int x = (int)(-pos.y / SECTION_SIZE);
+	// 区画が存在しない、または接続部、収容所は false
+	if (_stageData[x][y] == (int)SectionType::CONNECT || 
+		_stageData[x][y] == (int)SectionType::NONE ||
+		_stageData[x][y] == (int)SectionType::SECURE)
 	{
 		return false;
 	}
