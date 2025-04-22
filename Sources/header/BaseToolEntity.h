@@ -18,6 +18,7 @@ public:
 		:_toolType(setType){}
 	~BaseToolEntity(){}
 
+	void Init();
 	void Proc() override;
 	/// <summary>
 	/// 使用する
@@ -29,7 +30,6 @@ public:
 	/// </summary>
 	void Disuse();
 	inline bool IsTool() override { return true; }
-	inline bool CanMeltdown() override { return interactOfficerID < 0; }
 
 private:
 	// ツールの種類

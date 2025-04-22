@@ -1,4 +1,5 @@
 #include "../header/BaseOperation.h"
+#include "../header/OfficerPlayer.h"
 
 BaseOperation::BaseOperation(int masterEntityID)
 {
@@ -36,7 +37,7 @@ bool BaseOperation::OperationProc()
 	return true;
 }
 
-void BaseOperation::SetOperator(int _operatorID)
+void BaseOperation::SetOperator(OfficerPlayer* setOfficer)
 {
 	// 作業者のIDからレベルとパラメーターを取得
 	// 今はベタ打ち

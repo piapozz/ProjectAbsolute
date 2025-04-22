@@ -18,6 +18,7 @@ BaseOfficer::~BaseOfficer()
 void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 {
 	BaseCharacter::Init();
+	position = data.position;
 	health = data.health;
 	mental = data.mental;
 	_armorID = data.armorID;
@@ -99,8 +100,8 @@ void BaseOfficer::ChangeState(OfficerStateID stateID, StateArgs* args)
 
 void BaseOfficer::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
 {
-	// ˆÚ“®
-	std::vector<Vector2> routeList = StageManager::FindPath(GetPosition(), targetPos);
+	std::vector<Vector2> routeList;
+	routeList = StageManager::FindPath(position, targetPos);
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;
 	if (secureRoom != nullptr)

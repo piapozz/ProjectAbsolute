@@ -4,7 +4,7 @@
 
 struct OfficerInitData
 {
-	Vector2 position;
+	Vector2 position = Vector2(0, 0);
 	int health = 100;
 	int mental = 100;
 
