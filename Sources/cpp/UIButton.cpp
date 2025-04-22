@@ -19,15 +19,19 @@ void UIButton::Proc()
 		int texW = w + 50;
 		int texH = h + 50;
 
+		int screen;
 		textGraph = MakeScreen(texW, texH, TRUE);
 
+		screen = GetDrawScreen();
 		SetDrawScreen(textGraph);
 		ClearDrawScreen();
 
 		int drawX = texW / 2 - w / 2;
 		int drawY = texH / 2 - h / 2;
 		DrawStringToHandle(drawX, drawY, _buttonText.c_str(), GetColor(255, 255, 255), fontHandle);
-		SetDrawScreen(DX_SCREEN_BACK);
+
+		ScreenFlip();
+		SetDrawScreen(screen);
 
 		prevText = _buttonText; 
 	}

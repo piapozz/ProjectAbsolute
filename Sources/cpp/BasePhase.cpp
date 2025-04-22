@@ -5,9 +5,8 @@ void BasePhase::ProcLoop()
 {
 	while (!CheckHitKey(KEY_INPUT_ESCAPE))
 	{
-		if (Proc()) break;
-
 		ObjectManager::Update();
+		if (Proc()) break;
 		ObjectManager::Draw();
 	}
 }
