@@ -1,4 +1,5 @@
 #include "../header/BaseUI.h"
+#include "../header/ObjectManager.h"
 
 void BaseUI::Init(Vector2 setPosition, Vector2 setSize)
 {
@@ -8,6 +9,7 @@ void BaseUI::Init(Vector2 setPosition, Vector2 setSize)
 	objectSize = setSize;
 	objectType = ObjectType::UI;
 	layer = Layer::OBJECT;
+	ObjectManager::AddObject(this);
 }
 
 void BaseUI::Proc()

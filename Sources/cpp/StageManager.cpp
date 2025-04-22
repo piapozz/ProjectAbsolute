@@ -4,7 +4,6 @@
 #include "../header/SectionConnect.h"
 #include "../header/SecureRoom.h"
 #include "../header/Const.h"
-#include "../header/ObjectManager.h"
 #include "../header/CommonModule.h"
 #include "../header/RouteSearcher.h"
 #include "../header/PhaseMain.h"
@@ -37,11 +36,6 @@ void StageManager::CreateStage()
 		std::vector<bool>(STAGE_SIZE, false) 
 		);
 
-	SectionRoom* room = new SectionRoom();
-	Vector2 pos = Vector2(0, 0);
-	room->Init(pos, Vector2(0, 0));
-	ObjectManager::AddObject(room);
-
 	// ステージの生成
 	for (int i = 0; i < STAGE_SIZE; ++i)
 	{
@@ -56,13 +50,11 @@ void StageManager::CreateStage()
 				SectionRoom* room = new SectionRoom();
 				Vector2 pos = Vector2(j + size / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
 				room->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
-				ObjectManager::AddObject(room);
 				UIButton* button = new UIButton();
 				button->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
 				button->SetActive(true);
 				button->SetButtonText("部屋");
 				button->SetLayer(Layer::DEBUG);
-				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
@@ -71,13 +63,11 @@ void StageManager::CreateStage()
 				SectionCorridor* corrider = new SectionCorridor();
 				Vector2 pos = Vector2(j + size / 2.0f, -(i + 1 / 2.0f)) * SECTION_SIZE;
 				corrider->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
-				ObjectManager::AddObject(corrider);
 				UIButton* button = new UIButton();
 				button->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
 				button->SetActive(true);
 				button->SetButtonText("廊下");
 				button->SetLayer(Layer::DEBUG);
-				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
@@ -86,13 +76,11 @@ void StageManager::CreateStage()
 				SectionConnect* connect = new SectionConnect();
 				Vector2 pos = Vector2(j + 1 / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
 				connect->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
-				ObjectManager::AddObject(connect);
 				UIButton* button = new UIButton();
 				button->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
 				button->SetActive(true);
 				button->SetButtonText("接続部");
 				button->SetLayer(Layer::DEBUG);
-				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{
@@ -101,7 +89,6 @@ void StageManager::CreateStage()
 				SecureRoom* secure = new SecureRoom();
 				Vector2 pos = Vector2(j + size / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
 				secure->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
-				ObjectManager::AddObject(secure);
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);
 			}

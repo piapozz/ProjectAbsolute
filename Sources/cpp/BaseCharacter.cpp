@@ -1,9 +1,11 @@
 #include "../header/BaseCharacter.h"
+#include "../header/ObjectManager.h"
 
 void BaseCharacter::Init()
 {
 	objectType = ObjectType::CHARACTER;
 	objectSize = Vector2(50, 50);
+	ObjectManager::AddObject(this);
 }
 
 void BaseCharacter::Proc()

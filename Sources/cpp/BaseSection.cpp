@@ -1,4 +1,5 @@
 #include "../header/BaseSection.h"
+#include "../header/ObjectManager.h"
 
 void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 {
@@ -8,6 +9,7 @@ void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 	objectSize = setSize;
 	objectType = ObjectType::SECTION;
 	layer = Layer::OBJECT;
+	ObjectManager::AddObject(this);
 }
 
 void BaseSection::Proc()
