@@ -33,6 +33,7 @@ bool PhaseMain::Proc()
 {
 	// “ü—Íˆ—
 	pInputManager->ExecuteCallback();
+	_pCameraController->UpdateCamera();
 
 	return false;
 }

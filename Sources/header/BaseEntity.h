@@ -44,7 +44,7 @@ public:
 	/// </summary>
 	virtual bool IsTool() = 0;
 	inline void SetOperation(Type setOperation){ _currentOperationType = setOperation; }
-	inline void SetRunawayUI(UIButton* setUI){ _pRunawayUI = setUI;}
+	void SetRunawayUI(UIButton* setUI);
 
 protected:
 	// マスターID
