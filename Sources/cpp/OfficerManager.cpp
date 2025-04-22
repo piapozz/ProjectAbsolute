@@ -59,10 +59,9 @@ BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data)
 	officer->Init(data, indexToUse);
 	ObjectManager::AddObject(officer);
 
-	if (emptyIndex == -1)
-		_officerList.push_back(officer);
-	else
-		_officerList[emptyIndex] = officer;
+	if (emptyIndex == -1) _officerList.push_back(officer);
+	
+	else _officerList[emptyIndex] = officer;
 
 	return officer;
 }

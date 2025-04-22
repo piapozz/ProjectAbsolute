@@ -1,4 +1,4 @@
-#include "../header/OfficerStateMove.h"
+﻿#include "../header/OfficerStateMove.h"
 #include "../header/BaseOfficer.h"
 
 OfficerStateMove::OfficerStateMove(std::vector<Vector2> targePostList)
@@ -8,28 +8,40 @@ OfficerStateMove::OfficerStateMove(std::vector<Vector2> targePostList)
 
 void OfficerStateMove::Update(BaseOfficer* officer)
 {
-	if (_arrayCount >= _routeList.size()) 
+	// もし目的地に到達していたら処理を終了
+	if (_arrayCount >= _routeList.size())
 	{
 		officer->ChangeState(OfficerStateID::OFFICER_IDLE);
 		return;
 	}
 
-	Vector2 target = _routeList[_arrayCount];
 	Vector2 current = officer->GetPosition();
+	Vector2 target = _routeList[_arrayCount];
 
-	Vector2 dir = target - current;
-	float distance = sqrt(dir.x * dir.x + dir.y * dir.y);
+	// まずx方向の移動を完了させる
+	float dx = target.x - current.x;
+	float distance = std::abs(dx);
 
-	if (distance < 1.0f) 
+	if (distance < 1.0f)
 	{
+		current.x = target.x;
+		officer->SetPosition(current);
 		_arrayCount++;
+
+		while (_arrayCount + 1 < _routeList.size() && _routeList[_arrayCount].x == _routeList[_arrayCount + 1].x)
+		{
+			_arrayCount++;
+		}
+
 		return;
 	}
 
-	// ���K��
-	Vector2 move = dir / distance;
-	Vector2 indexVector = move * speed;
-	current = indexVector + current;
+	// x移動を滑らかに進める
+	float moveX = (dx / distance) * speed;
+	current.x += moveX;
+
+	// まだy移動しない
+	current.y = target.y;
 
 	officer->SetPosition(current);
 }
