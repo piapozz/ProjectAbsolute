@@ -11,6 +11,7 @@ void OfficerStateMove::Update(BaseOfficer* officer)
 	// もし目的地に到達していたら処理を終了
 	if (_arrayCount >= _routeList.size())
 	{
+		officer->SetPosition(_routeList.back());
 		officer->ChangeState(OfficerStateID::OFFICER_IDLE);
 		return;
 	}
@@ -27,11 +28,6 @@ void OfficerStateMove::Update(BaseOfficer* officer)
 		current.x = target.x;
 		officer->SetPosition(current);
 		_arrayCount++;
-
-		while (_arrayCount + 1 < _routeList.size() && _routeList[_arrayCount].x == _routeList[_arrayCount + 1].x)
-		{
-			_arrayCount++;
-		}
 
 		return;
 	}
