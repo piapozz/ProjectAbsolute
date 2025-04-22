@@ -42,6 +42,9 @@ public:
 	/// </summary>
 	/// <param name="is2D"></param>
 	void Set2D(bool is2D) { _is2D = is2D; }
+	void SetPos(Vector2 setPos) {
+		position = setPos;
+	}
 protected:
 	int fontHandle;
 	int textGraph;;
