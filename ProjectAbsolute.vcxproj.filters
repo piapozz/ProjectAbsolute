@@ -231,6 +231,9 @@
     <ClCompile Include="Sources\cpp\BaseScene.cpp">
       <Filter>ソース ファイル\Ishihara\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateOperationMove.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\cpp\OfficerStateOperation.cpp">
       <Filter>ソース ファイル\Sein\OfficerState</Filter>
     </ClCompile>
@@ -388,6 +391,9 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerPlayer.h">
       <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateOperationMove.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerStateOperation.h">
       <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>

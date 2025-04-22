@@ -40,11 +40,6 @@ void BaseOfficer::Draw()
 {
 	BaseObject::Draw();
 
-	VECTOR spherePosition;
-	spherePosition.x = position.x;
-	spherePosition.y = position.y;
-	spherePosition.z = 0;
-	//DrawSphere3D(spherePosition, 10, 32, color, GetColor(0, 0, 0), TRUE);
 	int temp = 0 * 360 / 100;
 	float radian = (float)temp * DX_PI / 180.0f;
 	float x = cosf(radian) * 10;
@@ -73,6 +68,16 @@ int BaseOfficer::TakeDamege(int strength, Type damageType)
 	float index;
 	index = strength * defenseRatio[(int)damageType];
 	return ceil(index);
+}
+
+void BaseOfficer::TowardsNotice()
+{
+
+}
+
+void BaseOfficer::ArriveNotice()
+{
+
 }
 
 void BaseOfficer::ChangeState(OfficerStateID stateID, StateArgs* args)

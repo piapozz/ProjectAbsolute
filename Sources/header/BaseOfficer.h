@@ -23,6 +23,8 @@ public:
 	void Teardown() override;
 	int TakeDamege(int strength, Type damageType) override;
 
+	void TowardsNotice();
+	void ArriveNotice();
 	void ChangeState(OfficerStateID stateID, StateArgs* args = nullptr);
 
 	void SetPosition(Vector2 setPosition){ position = setPosition; }
