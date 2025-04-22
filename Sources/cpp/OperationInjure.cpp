@@ -1,8 +1,7 @@
 #include "../header/OperationInjure.h"
 
-OperationInjure::OperationInjure(int masterEntityID, UIButton* setUI)
+OperationInjure::OperationInjure(int masterEntityID, UIButton* setUI):BaseOperation(masterEntityID, setUI)
 {
-	BaseOperation::BaseOperation(masterEntityID, setUI);
 	// マスターデータから作業成功確率、作業回数を取得
 	// 今はベタ打ち
 	operateCount = 10;

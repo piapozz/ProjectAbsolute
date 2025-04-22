@@ -16,6 +16,9 @@ class UIButton;
 class SecureRoom: public BaseSection
 {
 public:
+	static std::function<void(int)> EndOperation;
+	static inline void SetEndOperationCallback(std::function<void(int)> setCallback){ EndOperation = setCallback; }
+
 	enum class State
 	{
 		IDLE = 0,
@@ -53,7 +56,6 @@ public:
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
-	inline void SetEndOperationCallback(std::function<void(int)> setCallback){ _EndOperation = setCallback; }
 
 private:
 	// メルトダウンのカウント数
@@ -80,7 +82,6 @@ private:
 	Vector2 _operationUIOffsetList[(int)Type::MAX];
 	Vector2 _operationCountOffset;
 	Vector2 _runawayCountOffset;
-	std::function<void(int)> _EndOperation;
 
 	/// <summary>
 	/// メルトダウンのカウントをする

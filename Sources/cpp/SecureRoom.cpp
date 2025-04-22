@@ -125,7 +125,7 @@ void SecureRoom::OperationProc()
 	_pInteractOfficer->ChangeMoveState(_pInteractOfficer->GetPastPosition());
 	// ƒ^ƒXƒN‚ğ¬Œ÷•ª‘‚â‚·
 	//_EndOperation(successCount);
-	_pInteractOfficer = nullptr;
+	//_pInteractOfficer = nullptr;
 }
 
 void SecureRoom::StartOperation()
