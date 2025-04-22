@@ -3,6 +3,7 @@
 #include "../header/OfficerManager.h"
 #include "../header/CameraController.h"
 #include "../header/InputManager.h"
+#include "../header/Entity_E000.h"
 
 void PhaseMain::Init()
 {
@@ -23,6 +24,9 @@ void PhaseMain::Init()
 	_pStageManager->CreateStage();
 	_pOfficerManager = new OfficerManager();
 	_pOfficerManager->Init();
+	BaseEntity* addEntity = new Entity_E000();
+	addEntity->Init();
+	_pStageManager->SetEntity(addEntity, 0);
 }
 
 bool PhaseMain::Proc()

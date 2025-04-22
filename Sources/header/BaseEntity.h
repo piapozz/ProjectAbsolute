@@ -1,5 +1,6 @@
 #pragma once
 #include "../header/BaseCharacter.h"
+class UIButton;
 
 /*
  * Sakakura
@@ -13,7 +14,7 @@ public:
 		:masterID(ID){}
 	virtual ~BaseEntity(){}
 
-	void Init();
+	void Init() override;
 	void Draw() override;
 	void Teardown() override;
 	/// <summary>
@@ -43,6 +44,7 @@ public:
 	/// </summary>
 	virtual bool IsTool() = 0;
 	inline void SetOperation(Type setOperation){ _currentOperationType = setOperation; }
+	inline void SetRunawayUI(UIButton* setUI){ _pRunawayUI = setUI;}
 
 protected:
 	// マスターID
@@ -54,5 +56,6 @@ protected:
 	// 最大暴走カウンター
 	int maxRunawayCount;
 	Type _currentOperationType;
+	UIButton* _pRunawayUI;
 };
 

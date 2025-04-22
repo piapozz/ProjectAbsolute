@@ -110,6 +110,8 @@ void BaseOfficer::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
 	{
 		args->secureRoom = secureRoom;
 		ChangeState(OfficerStateID::OFFICER_OPERATION_MOVE, args);
+		_pastPosition = routeList[0];
+		return;
 	}
 	ChangeState(OfficerStateID::OFFICER_MOVE, args);
 	// ‰ß‹Ž‚ÌˆÊ’u‚ð•Û‘¶

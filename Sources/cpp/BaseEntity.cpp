@@ -1,4 +1,6 @@
 #include "../header/BaseEntity.h"
+#include "../header/UIButton.h"
+#include <cmath>
 
 void BaseEntity::Init()
 {
@@ -11,7 +13,14 @@ void BaseEntity::Init()
 
 void BaseEntity::Draw()
 {
-	DrawSphere3D(VGet(position.x, position.y, 0), 10, 32, GetColor(255, 0, 0), GetColor(0, 0, 0), FALSE);
+	VECTOR pos[3];
+	for (int i = 0; i < 3; i++)
+	{
+		float angle = 2.0f / 3.0f * DX_PI * i;
+		pos[i] = VGet(position.x + cos(angle) * 30, position.y + sin(angle) * 30, 0);
+	}
+
+	DrawTriangle3D(pos[0], pos[1], pos[2], GetColor(255, 255, 255), false);
 }
 
 void BaseEntity::Teardown()
@@ -23,6 +32,7 @@ void BaseEntity::DecreaseRunawayCount()
 {
 	// 暴走カウンターを減少させる
 	runawayCount--;
+	_pRunawayUI->SetButtonText(std::to_string(runawayCount));
 	// 暴走カウンターが0になったら、暴走イベントを発生させる
 	if (runawayCount > 0) return;
 	RunawayEvent();

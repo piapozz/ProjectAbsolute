@@ -53,14 +53,13 @@ void OfficerStateOperationMove::Update(BaseOfficer* officer)
 void OfficerStateOperationMove::Enter(BaseOfficer* officer)
 {
 	// 作業を行いに行く通知を出す
-	_secureRoom->StartOperation();
 	officer->color = OPERATION_MOVE;
 }
 
 void OfficerStateOperationMove::Exit(BaseOfficer* officer)
 {
 	// 収容所に到着した通知を出す
-	_secureRoom->StartMeltdown();
+	_secureRoom->StartOperation();
 	_routeList.clear();
 	officer->color = IDLE;
 

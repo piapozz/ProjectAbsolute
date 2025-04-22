@@ -1,10 +1,12 @@
 #include "../header/BaseOperation.h"
 #include "../header/OfficerPlayer.h"
+#include "../header/UIButton.h"
 
-BaseOperation::BaseOperation(int masterEntityID)
+BaseOperation::BaseOperation(int masterEntityID, UIButton* setUI)
 {
 	// 作業状態の初期化
-	_operationResultList = std::vector<Result>(operateCount, Result::Invalid);
+	_operationResultList = std::vector<Result>(operateCount, Result::INVALID);
+	_pOperationUI = setUI;
 }
 
 bool BaseOperation::OperationProc()
@@ -22,13 +24,17 @@ bool BaseOperation::OperationProc()
 		// ダメージを与える
 
 		// 失敗を記録
-		_operationResultList[_currentOperationCount - 1] = Result::Failure;
+		_operationResultList[_currentOperationCount - 1] = Result::FAILURE;
 	}
 	else
 	{
 		// 成功
-		_operationResultList[_currentOperationCount - 1] = Result::Success;
+		_operationResultList[_currentOperationCount - 1] = Result::SUCCESS;
 	}
+
+	// UIを更新
+	std::string str = std::to_string(_currentOperationCount);
+	_pOperationUI->SetButtonText(str);
 
 	_frameCounter = 0;
 	// 終了を確認
@@ -47,6 +53,9 @@ void BaseOperation::SetOperator(OfficerPlayer* setOfficer)
 	_currentProbability = operateDefaultProbability[_operatorLevel - 1] + _OPERATE_PROBABILITY_RATIO * _operatorParameter;
 	_frameCounter = 0;
 	_currentOperationCount = 0;
+	// 作業状態の初期化
+	operateCount = 10;
+	_operationResultList = std::vector<Result>(10, Result::INVALID);
 }
 
 int BaseOperation::GetSuccessCount()
@@ -55,7 +64,7 @@ int BaseOperation::GetSuccessCount()
 	int result = 0;
 	for (int i = 0; i < operateCount; i++)
 	{
-		if (_operationResultList[i] == Result::Success) result++;
+		if (_operationResultList[i] == Result::SUCCESS) result++;
 	}
 	return result;
 }

@@ -9,7 +9,7 @@ class OperationInjure: public BaseOperation
 {
 public:
 	OperationInjure(){}
-	OperationInjure(int masterEntityID);
+	OperationInjure(int masterEntityID, UIButton* setUI);
 	~OperationInjure(){}
 };
 
