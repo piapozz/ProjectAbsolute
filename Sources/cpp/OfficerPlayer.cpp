@@ -53,12 +53,3 @@ void OfficerPlayer::MoveToTargetPos(std::vector<Vector2> routeList)
 	args->targetPosList = routeList;
 	ChangeState(OfficerStateID::OFFICER_MOVE, args);
 }
-
-void DrawHpBar(int x, int y, int width, int height, int hp, int maxHp)
-{
-	int hpWidth = (int)((float)hp / maxHp * width);
-
-	DrawBox(x, y, x + width, y + height, GetColor(100, 100, 100), TRUE);
-	DrawBox(x, y, x + hpWidth, y + height, GetColor(255, 0, 0), TRUE);
-	DrawBox(x - 1, y - 1, x + width + 1, y + height + 1, GetColor(255, 255, 255), FALSE);
-}

@@ -79,6 +79,12 @@
     <Filter Include="ヘッダー ファイル\Ishihara\Scene">
       <UniqueIdentifier>{9f0bbde8-e719-4174-9568-50f77228cc20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Sein\Item">
+      <UniqueIdentifier>{eef01305-6712-44e8-a079-260e227c5ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sein\Item">
+      <UniqueIdentifier>{965f083d-56f9-4acc-8fdd-dd97fc4c91ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -225,6 +231,9 @@
     <ClCompile Include="Sources\cpp\BaseScene.cpp">
       <Filter>ソース ファイル\Ishihara\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateOperation.cpp">
+      <Filter>ソース ファイル\Sein\OfficerState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -294,9 +303,6 @@
       <Filter>ヘッダー ファイル\Sein\Officer</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerMob.h">
-      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\OfficerPlayer.h">
       <Filter>ヘッダー ファイル\Sein\Officer</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerStateDead.h">
@@ -379,6 +385,12 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerInitData.h">
       <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerPlayer.h">
+      <Filter>ヘッダー ファイル\Sein\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateOperation.h">
+      <Filter>ヘッダー ファイル\Sein\OfficerState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
