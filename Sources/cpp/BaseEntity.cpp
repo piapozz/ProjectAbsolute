@@ -2,15 +2,11 @@
 
 void BaseEntity::Init()
 {
+	BaseCharacter::Init();
 	// マスターデータからID参照でパラメーターを取得
 	hazardLevel = 0;
 	maxRunawayCount = 3;
 	runawayCount = maxRunawayCount;
-}
-
-void BaseEntity::Proc()
-{
-	
 }
 
 void BaseEntity::Draw()

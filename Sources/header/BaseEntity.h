@@ -10,11 +10,10 @@ class BaseEntity: public BaseCharacter
 public:
 	BaseEntity(){}
 	BaseEntity(int ID)
-		:masterID(ID), interactOfficerID(-1){}
+		:masterID(ID){}
 	virtual ~BaseEntity(){}
 
 	void Init();
-	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
 	/// <summary>
@@ -31,10 +30,19 @@ public:
 	/// </summary>
 	virtual void RunawayEvent(){};
 	/// <summary>
+	/// 作業開始時イベント
+	/// </summary>
+	virtual void StartOperationEvent(){}
+	/// <summary>
+	/// 作業終了時イベント
+	/// </summary>
+	/// <param name="successCount"></param>
+	virtual void EndOperationEvent(int successCount){}
+	/// <summary>
 	/// ツールか否か
 	/// </summary>
 	virtual bool IsTool() = 0;
-	virtual bool CanMeltdown() = 0;
+	inline void SetOperation(Type setOperation){ _currentOperationType = setOperation; }
 
 protected:
 	// マスターID
@@ -45,7 +53,6 @@ protected:
 	int runawayCount;
 	// 最大暴走カウンター
 	int maxRunawayCount;
-	// インタラクト中の職員ID
-	int interactOfficerID;
+	Type _currentOperationType;
 };
 

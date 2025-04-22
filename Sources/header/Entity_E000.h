@@ -8,7 +8,7 @@
 class Entity_E000: public BaseEgoEntity
 {
 public:
-	Entity_E000(){ Init(); }
+	Entity_E000(){}
 	virtual ~Entity_E000(){}
 
 protected:

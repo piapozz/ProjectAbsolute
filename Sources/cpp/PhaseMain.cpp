@@ -96,15 +96,11 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		// û—eŠ‚Ìæ“¾
 		SecureRoom* secureRoom = static_cast<SecureRoom*>(section);
 		secureRoom->ClickEvent();
-		//_pPlayerOfficerList[0]->SetSecureRoom(secureRoom);
-		return;
+		secureRoom->SetInteractOfficer(_pPlayerOfficerList[0]);
 	}
 	// ˆÚ“®
 	if (!_pStageManager->CheckPosOnStage(worldPos)) return;
-	std::vector<Vector2> routeList = StageManager::FindPath(_pPlayerOfficerList[0]->GetPosition(), worldPos);
-	StateArgs* args = new StateArgs();
-	args->targetPosList = routeList;
-	_pPlayerOfficerList[0]->ChangeState(OfficerStateID::OFFICER_MOVE, args);
+	_pPlayerOfficerList[0]->ChangeMoveState(worldPos);
 }
 
 void PhaseMain::RReleaseInputProc(Vector2 pos, Vector2 oldPos)

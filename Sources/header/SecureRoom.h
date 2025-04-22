@@ -1,6 +1,12 @@
 #pragma once
+#include <vector>
+#include <string>
+#include "../header/Const.h"
 #include "../header/BaseSection.h"
 class BaseEntity;
+class BaseOperation;
+class OfficerPlayer;
+class UIButton;
 
 /*
  * Sakakura
@@ -9,6 +15,13 @@ class BaseEntity;
 class SecureRoom: public BaseSection
 {
 public:
+	enum class State
+	{
+		IDLE = 0,
+		INTERACT,
+		RUNAWAY
+	};
+
 	SecureRoom()
 		:_isMeltdown(false), _meltdownCount(0){};
 	SecureRoom(BaseEntity* pEntity)
@@ -19,11 +32,26 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+	void ClickEvent() override;
+	/// <summary>
+	/// 作業を開始する
+	/// </summary>
+	void StartOperation();
 	/// <summary>
 	/// メルトダウンの開始
 	/// </summary>
 	void StartMeltdown();
+	/// <summary>
+	/// エンティティの割り当て
+	/// </summary>
+	/// <param name="pEntity"></param>
 	void SetEntity(BaseEntity* pEntity){ _pEntity = pEntity; }
+	/// <summary>
+	/// インタラクトする職員の割り当て
+	/// </summary>
+	/// <param name="officerID"></param>
+	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
+	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
 
 private:
 	// メルトダウンのカウント数
@@ -32,10 +60,27 @@ private:
 	BaseEntity* _pEntity;
 	bool _isMeltdown;
 	int _meltdownCount;
-
+	// 作業
+	BaseOperation* _pOperationList[(int)Type::MAX];
+	// インタラクト中の職員
+	OfficerPlayer* _pInteractOfficer;
+	// 現在のステート
+	State _currentState;
+	// 選択された作業
+	Type _selectOperation;
+	// 作業の名前
+	std::string _operationNameList[(int)Type::MAX];
+	// UIのオフセット
+	Vector2 _operationUIOffsetList[(int)Type::MAX];
+	UIButton* _pButtonList[(int)Type::MAX];
+	
 	/// <summary>
 	/// メルトダウンのカウントをする
 	/// </summary>
 	void MeltdownProc();
+	/// <summary>
+	/// 作業の処理
+	/// </summary>
+	int OperationProc();
 };
 

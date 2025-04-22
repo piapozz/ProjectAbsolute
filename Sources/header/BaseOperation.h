@@ -1,6 +1,7 @@
 #pragma once
 #include "../header/Const.h"
 #include <vector>
+class OfficerPlayer;
 
 /*
  * Sakakura
@@ -23,7 +24,7 @@ public:
 	/// ì‹ÆÒ‚ÌID‚ğƒZƒbƒg
 	/// </summary>
 	/// <param name="_operatorID"></param>
-	void SetOperator(int _operatorID);
+	void SetOperator(OfficerPlayer* setOfficer);
 	/// <summary>
 	/// ¬Œ÷”‚ğæ“¾
 	/// </summary>

@@ -1,9 +1,13 @@
 #include "../header/BaseToolEntity.h"
 
+void BaseToolEntity::Init()
+{
+	BaseEntity::Init();
+}
+
 void BaseToolEntity::Proc()
 {
 	// ツールが使用中なら処理を行う
-	if (interactOfficerID < 0) return;
 
 	// 種類によって処理を分ける
 	switch (_toolType)
@@ -22,13 +26,11 @@ void BaseToolEntity::Proc()
 
 void BaseToolEntity::Use(int userID)
 {
-	interactOfficerID = userID;
 	UseEvent();
 }
 
 void BaseToolEntity::Disuse()
 {
 	DisuseEvent();
-	interactOfficerID = -1;
 }
 

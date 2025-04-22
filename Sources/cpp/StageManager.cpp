@@ -61,6 +61,7 @@ void StageManager::CreateStage()
 				button->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
 				button->SetActive(true);
 				button->SetButtonText("•”‰®");
+				button->SetLayer(Layer::DEBUG);
 				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
@@ -75,6 +76,7 @@ void StageManager::CreateStage()
 				button->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
 				button->SetActive(true);
 				button->SetButtonText("˜L‰º");
+				button->SetLayer(Layer::DEBUG);
 				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
@@ -89,6 +91,7 @@ void StageManager::CreateStage()
 				button->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
 				button->SetActive(true);
 				button->SetButtonText("Ú‘±•”");
+				button->SetLayer(Layer::DEBUG);
 				ObjectManager::AddObject(button);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
