@@ -2,6 +2,7 @@
 #include "../header/Const.h"
 #include <vector>
 class OfficerPlayer;
+class UIButton;
 
 /*
  * Sakakura
@@ -12,7 +13,7 @@ class BaseOperation
 public:
 	BaseOperation()
 		:_operatorParameter(-1), _operatorLevel(-1), _currentSpeed(-1), _currentProbability(-1), _frameCounter(0), _currentOperationCount(-1){}
-	BaseOperation(int masterEntityID);
+	BaseOperation(int masterEntityID, UIButton* setUI);
 	virtual ~BaseOperation(){}
 
 	/// <summary>
@@ -41,9 +42,9 @@ private:
 	// ì‹Æ‚ÌŒ‹‰Ê
 	enum class Result
 	{
-		Invalid = -1,
-		Success,
-		Failure
+		INVALID = -1,
+		SUCCESS,
+		FAILURE
 	};
 
 	// ì‹Æ‚Ì•W€ƒtƒŒ[ƒ€
@@ -65,5 +66,6 @@ private:
 	int _frameCounter;
 	// Œ»İ‚Ìì‹Æ‰ñ”
 	int _currentOperationCount;
+	UIButton* _pOperationUI;
 };
 

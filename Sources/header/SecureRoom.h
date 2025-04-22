@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "functional"
 #include "../header/Const.h"
 #include "../header/BaseSection.h"
 class BaseEntity;
@@ -45,13 +46,14 @@ public:
 	/// エンティティの割り当て
 	/// </summary>
 	/// <param name="pEntity"></param>
-	void SetEntity(BaseEntity* pEntity){ _pEntity = pEntity; }
+	void SetEntity(BaseEntity* pEntity);
 	/// <summary>
 	/// インタラクトする職員の割り当て
 	/// </summary>
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
+	inline void SetEndOperationCallback(std::function<void(int)> setCallback){ _EndOperation = setCallback; }
 
 private:
 	// メルトダウンのカウント数
@@ -70,10 +72,16 @@ private:
 	Type _selectOperation;
 	// 作業の名前
 	std::string _operationNameList[(int)Type::MAX];
+	// UI
+	UIButton* _pOperationUIList[(int)Type::MAX];
+	UIButton* _pOperationCountUI;
+	UIButton* _pRunawayCountUI;
 	// UIのオフセット
 	Vector2 _operationUIOffsetList[(int)Type::MAX];
-	UIButton* _pButtonList[(int)Type::MAX];
-	
+	Vector2 _operationCountOffset;
+	Vector2 _runawayCountOffset;
+	std::function<void(int)> _EndOperation;
+
 	/// <summary>
 	/// メルトダウンのカウントをする
 	/// </summary>
@@ -81,6 +89,6 @@ private:
 	/// <summary>
 	/// 作業の処理
 	/// </summary>
-	int OperationProc();
+	void OperationProc();
 };
 

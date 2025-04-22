@@ -57,7 +57,7 @@ public:
 	/// </summary>
 	/// <param name="entity"></param>
 	/// <param name="index"></param>
-	void SetEntity(BaseEntity& entity, int index){_secureRoomList[index]->SetEntity(&entity); }
+	void SetEntity(BaseEntity* entity, int index){_secureRoomList[index]->SetEntity(entity); }
 private:
 	// –‘O‚É‰Šú‰»‚³‚ê‚½–K–âƒtƒ‰ƒO
 	std::vector<std::vector<bool>> _visited;

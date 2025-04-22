@@ -1,5 +1,10 @@
 #include "../header/Entity_E000.h"
 
+void Entity_E000::Init()
+{
+	BaseEgoEntity::Init();
+}
+
 void Entity_E000::EndOperationEvent(int successCount)
 {
 	// Âì‹Æ‚È‚çˆ—

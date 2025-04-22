@@ -9,7 +9,7 @@ class OperationObserbation: public BaseOperation
 {
 public:
 	OperationObserbation(){}
-	OperationObserbation(int masterEntityID);
+	OperationObserbation(int masterEntityID, UIButton* setUI):BaseOperation(masterEntityID, setUI){};
 	~OperationObserbation(){}
 };
 

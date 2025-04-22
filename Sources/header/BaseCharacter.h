@@ -49,7 +49,8 @@ public:
 	/// </summary>
 	/// <param name="decreaseValue"></param>
 	void DecreaseHealth(int decreaseValue);
-
+	void SetPosition(Vector2 setPosition){ position = setPosition; }
+	Vector2 GetPosition(){ return position; }
 	int GetHealth(){ return health; }
 	void SetHealth(int value){ health = value; }
 

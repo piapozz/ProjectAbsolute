@@ -12,7 +12,7 @@ public:
 	virtual ~Entity_E000(){}
 
 protected:
-	void Init(){};
+	void Init() override;
 	void EndOperationEvent(int successCount) override;
 };
 

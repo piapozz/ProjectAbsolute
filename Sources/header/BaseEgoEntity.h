@@ -20,7 +20,7 @@ public:
 	BaseEgoEntity(){}
 	virtual ~BaseEgoEntity(){}
 
-	void Init();
+	void Init() override;
 	void Proc() override;
 	inline bool IsTool() override { return false; }
 };
