@@ -23,6 +23,7 @@ public:
 	unsigned int MOVE = GetColor(0, 255, 0);		// —Î
 	unsigned int FIGHT = GetColor(255, 150, 0);		// ƒIƒŒƒ“ƒW
 	unsigned int OPERATION = GetColor(0, 0, 255);		// Â
+	unsigned int OPERATION_MOVE = GetColor(100, 100, 255);		// Â
 	unsigned int PANIC = GetColor(255, 0, 255);		// ‡
 	unsigned int DEAD = GetColor(255, 0, 0);		// Ô
 };

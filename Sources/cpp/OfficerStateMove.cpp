@@ -1,9 +1,9 @@
 ﻿#include "../header/OfficerStateMove.h"
 #include "../header/BaseOfficer.h"
 
-OfficerStateMove::OfficerStateMove(std::vector<Vector2> targePostList)
+OfficerStateMove::OfficerStateMove(std::vector<Vector2> targetPosList)
 {
-	_routeList = targePostList;
+	_routeList = targetPosList;
 }
 
 void OfficerStateMove::Update(BaseOfficer* officer)

@@ -5,7 +5,7 @@
  * Sein
  * Officer‚ÌOperationState
  */
-class OfficerStateOperation : public BaseOfficerState
+class OfficerStateOperation: public BaseOfficerState
 {
 public:
 	void Update(BaseOfficer* officer) override;

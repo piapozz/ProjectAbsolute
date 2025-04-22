@@ -161,6 +161,7 @@
     <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateMove.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStateOperation.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateOperationMove.cpp" />
     <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp" />
     <ClCompile Include="Sources\cpp\BaseOperation.cpp" />
     <ClCompile Include="Sources\cpp\OperationContact.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="Sources\header\OfficerStateIdle.h" />
     <ClInclude Include="Sources\header\OfficerStateMove.h" />
     <ClInclude Include="Sources\header\OfficerStateOperation.h" />
+    <ClInclude Include="Sources\header\OfficerStateOperationMove.h" />
     <ClInclude Include="Sources\header\OfficerStatePanic.h" />
     <ClInclude Include="Sources\header\BaseOperation.h" />
     <ClInclude Include="Sources\header\OperationContact.h" />
