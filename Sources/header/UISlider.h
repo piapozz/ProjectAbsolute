@@ -21,7 +21,7 @@ public:
 	/// テキストの設定
 	/// </summary>
 	/// <param name="text"></param>
-	void SetButtonText(const std::string& text) {
+	void SetSliderText(const std::string& text) {
 		_buttonText = text;
 	}
 	/// <summary>

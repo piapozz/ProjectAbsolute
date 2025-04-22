@@ -30,14 +30,15 @@ public:
 
 	void SetPosition(Vector2 setPosition){ position = setPosition; }
 	Vector2 GetPosition(){ return position; }
+	Vector2 GetPastPosition(){ return _pastPosition; }
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
 	void SetOfficerType(OfficerType type){ _officerType = type; }
 	OfficerType GetOfficerType(){ return _officerType; }
 	void SetArmor(int armorID){ _armorID = armorID; }
 	void SetWeapon(int weaponID){ _weaponID = weaponID; }
-	int GetMental(){ return mental; }
-	void SetMental(int value) { mental = value; }
+	int GetMental(){ return _mental; }
+	void SetMental(int value) { _mental = value; }
 
 	BaseOfficerState* pOfficerState;
 	unsigned int color;
@@ -48,8 +49,8 @@ protected:
 	int _officerID;
 	int _armorID;
 	int _weaponID;
+	int _mental;
 
-	int mental;
-
+	Vector2 _pastPosition;
 	OfficerType _officerType;
 };
