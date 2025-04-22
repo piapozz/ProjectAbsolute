@@ -53,7 +53,7 @@ void UISlider::Draw()
 		pos2,
 		pos3,
 		pos1,
-		pos2,
+		pos3,
 		pos4
 	};
 

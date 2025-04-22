@@ -43,25 +43,25 @@ void OfficerStateOperationMove::Update(BaseOfficer* officer)
 	current.y = target.y;
 
 	officer->SetPosition(current);
+
+	if (_arrayCount == _routeList.size())
+	{
+		officer->ChangeState(OfficerStateID::OFFICER_OPERATION);
+	}
 }
 
 void OfficerStateOperationMove::Enter(BaseOfficer* officer)
 {
 	// 作業を行いに行く通知を出す
-
+	_secureRoom->StartOperation();
 	officer->color = OPERATION_MOVE;
 }
 
 void OfficerStateOperationMove::Exit(BaseOfficer* officer)
 {
-	if (_arrayCount == _routeList.size())
-	{
-		// 収容所に到着した通知を出す
-
-		officer->ChangeState(OfficerStateID::OFFICER_OPERATION);
-	}
+	// 収容所に到着した通知を出す
+	_secureRoom->StartMeltdown();
 	_routeList.clear();
-	return;
 	officer->color = IDLE;
 
 }

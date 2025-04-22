@@ -19,8 +19,10 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 {
 	BaseCharacter::Init();
 	position = data.position;
+	_pastPosition = position;
 	health = data.health;
-	mental = data.mental;
+	maxHealth = health;
+	_mental = data.mental;
 	_armorID = data.armorID;
 	_weaponID = data.weaponID;
 
@@ -33,7 +35,7 @@ void BaseOfficer::Proc()
 	BaseObject::Proc();
 
 	if (health <= 0) ChangeState(OfficerStateID::OFFICER_DEAD, nullptr);
-	if (mental <= 0) ChangeState(OfficerStateID::OFFICER_PANIC, nullptr);
+	if (_mental <= 0) ChangeState(OfficerStateID::OFFICER_PANIC, nullptr);
 
 	pOfficerState->Update(this);
 }
@@ -110,4 +112,6 @@ void BaseOfficer::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
 		ChangeState(OfficerStateID::OFFICER_OPERATION_MOVE, args);
 	}
 	ChangeState(OfficerStateID::OFFICER_MOVE, args);
+	// ‰ß‹Ž‚ÌˆÊ’u‚ð•Û‘¶
+	_pastPosition = routeList[0];
 }

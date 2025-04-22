@@ -3,6 +3,7 @@
 #include "../header/BaseOfficerState.h"
 #include "../header/OfficerStateIdle.h"
 #include "../header/OfficerStateMove.h"
+#include "../header/OfficerStateOperation.h"
 #include "../header/OfficerStateOperationMove.h"
 #include "../header/OfficerStateFight.h"
 #include "../header/OfficerStatePanic.h"

@@ -1,5 +1,6 @@
 #pragma once
 #include "../header/BaseOfficer.h"
+#include "../header/UISlider.h"
 
 /*
  * Sein
@@ -20,4 +21,6 @@ public:
 	void MoveToTargetPos(std::vector<Vector2> routeList);
 
 private:
+	// スライダー
+	UISlider* slider;
 };
