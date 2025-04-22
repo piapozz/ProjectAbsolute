@@ -33,7 +33,6 @@ void UIButton::Proc()
 	}
 }
 
-
 void UIButton::Draw()
 {
 	// •`‰æ
@@ -56,9 +55,9 @@ void UIButton::Teardown()
 	// ”jŠü
 	BaseUI::Teardown();
 
-	if (textGraph != -1) {
+	if (textGraph != -1) 
+	{
 		DeleteGraph(textGraph);
 		textGraph = -1;
 	}
-	BaseUI::Teardown();
 }
