@@ -13,6 +13,7 @@ public:
 	void RPushEvent(Vector2 screenPos);
 	void RDrackEvent(Vector2 screenPos);
 	void WheelEvent(int up);
+	void UpdateCamera();
 
 private:
 	const int MIN_HEIGHT_SIZE = 100;
@@ -23,6 +24,5 @@ private:
 	Vector2 _prevCursorPos;
 	Vector2 _pushPos;
 
-	void UpdateCamera();
 	void SetCameraOrtho(int wheel);
 };

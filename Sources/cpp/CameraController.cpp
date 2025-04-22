@@ -19,6 +19,7 @@ void CameraController::UpdateCamera()
 {
 	VECTOR target = VGet(_position.x, _position.y, 100.0f);
 	SetCameraPositionAndTarget_UpVecY(_position, target);
+	SetupCamera_Ortho(_heightSize);
 }
 
 void CameraController::SetCameraOrtho(int wheel)

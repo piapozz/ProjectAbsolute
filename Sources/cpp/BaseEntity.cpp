@@ -37,3 +37,9 @@ void BaseEntity::DecreaseRunawayCount()
 	if (runawayCount > 0) return;
 	RunawayEvent();
 }
+
+void BaseEntity::SetRunawayUI(UIButton* setUI)
+{
+	_pRunawayUI = setUI;
+	_pRunawayUI->SetButtonText(std::to_string(runawayCount));
+}

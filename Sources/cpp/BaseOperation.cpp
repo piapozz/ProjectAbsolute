@@ -14,7 +14,7 @@ bool BaseOperation::OperationProc()
 	// 作業の進行
 	_frameCounter++;
 	// 作業するフレームになったら処理
-	if (_currentSpeed <= _frameCounter) return false;
+	if (_currentSpeed >= _frameCounter) return false;
 	_currentOperationCount++;
 	// 作業の成功をランダムに決める
 	bool result = _currentProbability * 10 <= GetRand(1000);
