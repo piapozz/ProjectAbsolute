@@ -26,6 +26,7 @@ public:
 	void TowardsNotice();
 	void ArriveNotice();
 	void ChangeState(OfficerStateID stateID, StateArgs* args = nullptr);
+	void ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom = nullptr);
 
 	void SetPosition(Vector2 setPosition){ position = setPosition; }
 	Vector2 GetPosition(){ return position; }

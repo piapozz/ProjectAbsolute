@@ -1,6 +1,7 @@
 #include "../header/BaseOfficer.h"
 #include "../header/OfficerStateFactory.h"
 #include "../header/OfficerInitData.h"
+#include "../header/StageManager.h"
 
 BaseOfficer::BaseOfficer()
 {
@@ -94,4 +95,18 @@ void BaseOfficer::ChangeState(OfficerStateID stateID, StateArgs* args)
 	{
 		pOfficerState->Enter(this);
 	}
+}
+
+void BaseOfficer::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
+{
+	// ˆÚ“®
+	std::vector<Vector2> routeList = StageManager::FindPath(GetPosition(), targetPos);
+	StateArgs* args = new StateArgs();
+	args->targetPosList = routeList;
+	if (secureRoom != nullptr)
+	{
+		args->secureRoom = secureRoom;
+		ChangeState(OfficerStateID::OFFICER_OPERATION_MOVE, args);
+	}
+	ChangeState(OfficerStateID::OFFICER_MOVE, args);
 }
