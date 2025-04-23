@@ -5,6 +5,7 @@ class StageManager;
 class CameraController;
 class OfficerManager;
 class OfficerPlayer;
+class EventManager;
 /*
  * Sakakura
  * メインフェーズ
@@ -34,6 +35,7 @@ private:
 	CameraController* _pCameraController;
 	OfficerManager* _pOfficerManager;
 	std::vector<OfficerPlayer*> _pPlayerOfficerList;
+	EventManager* _pEventManager;
 
 	/// <summary>
 	/// スクリーン座標からステージ座標の取得

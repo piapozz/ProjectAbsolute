@@ -48,14 +48,14 @@ void BaseOperation::SetOperator(OfficerPlayer* setOfficer)
 	// 作業者のIDからレベルとパラメーターを取得
 	// 今はベタ打ち
 	_operatorLevel = 1;
-	_operatorParameter = 30;
-	_currentSpeed = _DEFAULT_OPERATE_FRAME - (int)(_DEFAULT_OPERATE_FRAME / 2 * _OPERATE_SPEED_RATIO * _operatorParameter);
+	_operatorParameter = 100;
+	_currentSpeed = _DEFAULT_OPERATE_FRAME - (int)(_DEFAULT_OPERATE_FRAME / 1.5  * _operatorParameter / 100);
 	_currentProbability = operateDefaultProbability[_operatorLevel - 1] + _OPERATE_PROBABILITY_RATIO * _operatorParameter;
 	_frameCounter = 0;
 	_currentOperationCount = 0;
 	// 作業状態の初期化
-	operateCount = 10;
-	_operationResultList = std::vector<Result>(10, Result::INVALID);
+	operateCount = 30;
+	_operationResultList = std::vector<Result>(operateCount, Result::INVALID);
 }
 
 int BaseOperation::GetSuccessCount()
