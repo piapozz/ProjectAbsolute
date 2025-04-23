@@ -4,10 +4,9 @@ OperationInjure::OperationInjure(int masterEntityID, UIButton* setUI):BaseOperat
 {
 	// マスターデータから作業成功確率、作業回数を取得
 	// 今はベタ打ち
-	operateCount = 10;
-	operateDefaultProbability[0] = 50.0f;
-	operateDefaultProbability[1] = 30.0f;
-	operateDefaultProbability[2] = 10.0f;
-	operateDefaultProbability[3] = 5.0f;
-	operateDefaultProbability[4] = 1.0f;
+	operateDefaultProbability[0] = 40.0f;
+	operateDefaultProbability[1] = 40.0f;
+	operateDefaultProbability[2] = 40.0f;
+	operateDefaultProbability[3] = 40.0f;
+	operateDefaultProbability[4] = 40.0f;
 }
