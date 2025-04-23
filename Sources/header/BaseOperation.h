@@ -48,7 +48,7 @@ private:
 	};
 
 	// ì‹Æ‚Ì•W€ƒtƒŒ[ƒ€
-	const int _DEFAULT_OPERATE_FRAME = 180;
+	const int _DEFAULT_OPERATE_FRAME = 60;
 	const float _OPERATE_SPEED_RATIO = 0.01f;
 	const float _OPERATE_PROBABILITY_RATIO = 0.2f;
 

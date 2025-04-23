@@ -9,6 +9,8 @@
 #include "../header/OperationInjure.h"
 #include "../header/OfficerPlayer.h"
 
+std::function<void(int)> SecureRoom::EndOperation;
+
 void SecureRoom::Init(Vector2 position, Vector2 size)
 {
 	BaseSection::Init(position, size);
@@ -132,7 +134,7 @@ void SecureRoom::OperationProc()
 	// 職員に終わったことを通知
 	_pInteractOfficer->ChangeMoveState(_pInteractOfficer->GetPastPosition());
 	// タスクを成功分増やす
-	//_EndOperation(successCount);
+	EndOperation(successCount);
 	//_pInteractOfficer = nullptr;
 }
 

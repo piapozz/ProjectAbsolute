@@ -4,6 +4,7 @@
 #include "../header/CameraController.h"
 #include "../header/InputManager.h"
 #include "../header/Entity_E000.h"
+#include "../header/EventManager.h"
 
 void PhaseMain::Init()
 {
@@ -27,6 +28,13 @@ void PhaseMain::Init()
 	BaseEntity* addEntity = new Entity_E000();
 	addEntity->Init();
 	_pStageManager->SetEntity(addEntity, 0);
+	_pEventManager = new EventManager();
+	_pEventManager->Init();
+	SecureRoom::EndOperation = [this](int successCount)
+	{
+		// 作業が終了したら、エネルギーを追加
+		_pEventManager->AddEnergy(successCount);
+	};
 }
 
 bool PhaseMain::Proc()
