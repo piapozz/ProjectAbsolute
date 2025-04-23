@@ -9,7 +9,7 @@ BaseOfficerState* OfficerStateFactory::CreateState(OfficerStateID stateID, State
 		case OfficerStateID::OFFICER_MOVE:
 			return new OfficerStateMove(args->targetPosList);
 		case OfficerStateID::OFFICER_OPERATION:
-			return new OfficerStateOperation();
+			return new OfficerStateOperation(args->secureRoom);
 		case OfficerStateID::OFFICER_OPERATION_MOVE:
 			return new OfficerStateOperationMove(args->targetPosList, args->secureRoom);
 		case OfficerStateID::OFFICER_FIGHT:

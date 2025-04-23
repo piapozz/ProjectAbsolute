@@ -105,6 +105,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	}
 	// ˆÚ“®
 	if (!_pStageManager->CheckPosOnStage(worldPos)) return;
+	if (!_pPlayerOfficerList[0]->canOrder) return;
 	_pPlayerOfficerList[0]->ChangeMoveState(worldPos);
 }
 
