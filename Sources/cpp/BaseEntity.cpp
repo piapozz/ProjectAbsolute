@@ -35,6 +35,7 @@ void BaseEntity::DecreaseRunawayCount()
 	_pRunawayUI->SetButtonText(std::to_string(runawayCount));
 	// 暴走カウンターが0になったら、暴走イベントを発生させる
 	if (runawayCount > 0) return;
+	runawayCount = 0;
 	RunawayEvent();
 }
 
