@@ -11,42 +11,33 @@ OfficerStateOperationMove::OfficerStateOperationMove(std::vector<Vector2> target
 
 void OfficerStateOperationMove::Update(BaseOfficer* officer)
 {
-	// もし目的地に到達していたら処理を終了
-	if (_arrayCount >= _routeList.size())
-	{
-		officer->SetPosition(_routeList.back());
-		officer->ChangeState(OfficerStateID::OFFICER_IDLE);
-		return;
-	}
-
 	Vector2 current = officer->GetPosition();
 	Vector2 target = _routeList[_arrayCount];
+	int i = _routeList.size();
 
-	// まずx方向の移動を完了させる
+	// x方向の移動
 	float dx = target.x - current.x;
 	float distance = std::abs(dx);
+
+	float moveX = (dx / distance) * speed;
+	current.x += moveX;
+	current.y = target.y;
+
+	officer->SetPosition(current);
 
 	if (distance < 1.0f)
 	{
 		current.x = target.x;
 		officer->SetPosition(current);
 		_arrayCount++;
-
-		return;
 	}
 
-	// x移動を滑らかに進める
-	float moveX = (dx / distance) * speed;
-	current.x += moveX;
-
-	// まだy移動しない
-	current.y = target.y;
-
-	officer->SetPosition(current);
-
+	// すべてのルートに到達したらステート遷移
 	if (_arrayCount == _routeList.size())
 	{
-		officer->ChangeState(OfficerStateID::OFFICER_OPERATION);
+		StateArgs* args = new StateArgs();
+		args->secureRoom = _secureRoom;
+		officer->ChangeState(OfficerStateID::OFFICER_OPERATION, args);
 	}
 }
 
@@ -58,8 +49,6 @@ void OfficerStateOperationMove::Enter(BaseOfficer* officer)
 
 void OfficerStateOperationMove::Exit(BaseOfficer* officer)
 {
-	// 収容所に到着した通知を出す
-	_secureRoom->StartOperation();
 	_routeList.clear();
 	officer->color = IDLE;
 

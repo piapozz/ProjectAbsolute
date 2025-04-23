@@ -24,6 +24,8 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	slider->SetSliderText("HP");
 	slider->SetLayer(Layer::DEBUG);
 	slider->SetColor(255, 0, 0);
+
+	canOrder = true;
 }
 
 void OfficerPlayer::Proc()

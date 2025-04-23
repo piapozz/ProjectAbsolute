@@ -26,6 +26,8 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 	_armorID = data.armorID;
 	_weaponID = data.weaponID;
 
+	canOrder = false;
+
 	SetOfficerID(setOfficerID);
 	ChangeState(OfficerStateID::OFFICER_IDLE, nullptr);
 }

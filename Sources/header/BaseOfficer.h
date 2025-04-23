@@ -40,6 +40,7 @@ public:
 
 	BaseOfficerState* pOfficerState;
 	unsigned int color;
+	bool canOrder;
 
 private:
 
