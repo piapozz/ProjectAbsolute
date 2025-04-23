@@ -9,7 +9,7 @@ class OperationSatisfy: public BaseOperation
 {
 public:
 	OperationSatisfy(){}
-	OperationSatisfy(int masterEntityID, UIButton* setUI):BaseOperation(masterEntityID, setUI){}
+	OperationSatisfy(int masterEntityID, UIButton* setUI);
 	~OperationSatisfy(){}
 };
 

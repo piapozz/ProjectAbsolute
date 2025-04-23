@@ -9,7 +9,7 @@ class OperationContact: public BaseOperation
 {
 public:
 	OperationContact(){}
-	OperationContact(int masterEntityID, UIButton* setUI):BaseOperation(masterEntityID, setUI){}
+	OperationContact(int masterEntityID, UIButton* setUI);
 	~OperationContact(){}
 };
 
