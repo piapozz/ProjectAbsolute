@@ -36,6 +36,11 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 		_pOperationUIList[i]->SetButtonText(_operationNameList[i]);
 		_pOperationUIList[i]->SetCallback([this, i, position]()
 		{
+			// UI‚ğ”ñ•\¦
+			for (int j = 0; j < (int)Type::MAX; j++)
+			{
+				_pOperationUIList[j]->SetActive(false);
+			}
 			_selectOperation = (Type)i;
 			_pInteractOfficer->ChangeMoveState(position, this);
 		});
@@ -76,6 +81,9 @@ void SecureRoom::Teardown()
 
 void SecureRoom::ClickEvent()
 {
+	// ì‹Æ’†‚È‚ç•Ô‚·
+	if (_currentState == State::INTERACT) return;
+
 	// ì‹ÆUI‚Ì•\¦
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
