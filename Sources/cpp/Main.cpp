@@ -1,77 +1,69 @@
 #include "DxLib.h"
 #include "../header/SceneManager.h"
 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
 // プログラム開始
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	// ウインドウモードで起動
-	ChangeWindowMode (true);
+	// このコードは標準入力と標準出力を用いたサンプルコードです。
+ // このコードは好きなように編集・削除してもらって構いません。
 
-	SetFullScreenResolutionMode (DX_FSRESOLUTIONMODE_MAXIMUM);
+	int daysInMonth = 18;
+	int daysInYear = 1783;
+	int daysInWeek = 20;
+	int year = 2013 ;
+	int month = 1;
+	int day = 1;
 
-	// 解像度を設定
-	SetGraphMode (WINDOW_WIDTH, WINDOW_HEIGHT, 32);
-	SetWindowSize (WINDOW_WIDTH, WINDOW_HEIGHT);
+	vector<vector<vector<string>>> years;
 
-	// ＤＸライブラリ初期化処理
-	if (DxLib_Init () == -1)
+	char dash1, dash2;
+
+	cin >> daysInYear >> daysInMonth >> daysInWeek >> year >> dash1 >> month  >> dash2 >> day;
+
+	// 一年に何月あるか
+	int monthOfYear = daysInYear / daysInMonth;
+	// 一年に何日余るか
+	int stockValue = daysInYear % daysInMonth;
+	// 無効な月日
+	float temp =  daysInYear / daysInMonth;
+	if (month < 1 || month > daysInYear / daysInMonth) return -1;
+	if (day < 1 || day > daysInMonth) return -1;
+
+	vector<int> leapYear;
+	int stock = 0;
+	for (int i = 1; i <= year; i++)
 	{
-		// エラーが起きたら直ちに終了
-		return -1;
-	}
-
-	// シーンマネージャー生成
-	SceneManager* sceneManager = new SceneManager ();
-
-	// 初期化
-	sceneManager->ChangeScene (SceneName::TITLE);
-
-	// 描画先を裏画面にする
-	SetDrawScreen (DX_SCREEN_BACK);
-
-	// カメラの位置と向きを設定
-	SetCameraPositionAndTarget_UpVecY (VGet (0.0f, 250.0f, -250.0f), VGet (0.0f, 0.0f, 0.0f));
-
-	// カメラのクリッピング距離を設定
-	SetCameraNearFar (16.0f, 10000.0f);
-
-	// 背景の色を黒にする
-	SetBackgroundColor (0, 0, 0);
-
-	// Zバッファを使用する
-	SetUseZBufferFlag (true);
-	SetWriteZBufferFlag (true);
-
-	// メインループ(何かキーが押されたらループを抜ける)
-	while (ProcessMessage () == 0 && CheckHitKey (KEY_INPUT_ESCAPE) == 0)
-	{
-		// 現在のカウントを取得する
-		int time = GetNowCount ();
-
-		// 画面のクリア
-		ClearDrawScreen ();
-		clsDx ();
-
-		// シーン内処理
-		sceneManager->Proc ();
-
-		// シーンの描画
-		sceneManager->Draw ();
-
-		// 裏画面の内容を表画面に反映
-		ScreenFlip ();
-
-		// １７ミリ秒(約秒間６０フレームだった時の１フレームあたりの経過時間)
-		// 経過するまでここで待つ
-		while (GetNowCount () - time < 17)
+		// うるう月を計算
+		stock += stockValue;
+		if (stock >= daysInMonth)
 		{
+			leapYear.push_back(i);
+			stock -= daysInMonth;
 		}
 	}
 
-	// シーンマネージャーの削除
-	delete sceneManager;
+	// 判定する月がうるう月が判定
+	if (month == (daysInYear / daysInMonth) + 1)
+	{
+		auto it = find(leapYear.begin(), leapYear.end(), year);
+		if (it == leapYear.end()) return -1;
+		else leapYear.erase(it);
+	}
 
-	DxLib_End ();				// ＤＸライブラリ使用の終了処理
+	// 経過日数
+	long long result = 0;
+	result += static_cast<long long>(year) * monthOfYear * daysInMonth;
+	result += static_cast<long long>(month - 1) * daysInMonth;
+	result += (day - 1);
+	result += static_cast<long long>(leapYear.size()) * daysInMonth;
 
-	return 0;				// ソフトの終了 
+	int week = static_cast<int>(result % daysInWeek);
+	cout << static_cast<char>(week + 'A');
+
+	return 0;
 }

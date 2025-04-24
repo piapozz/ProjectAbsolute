@@ -48,10 +48,10 @@ void StageManager::CreateStage()
 				// 部屋を生成
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				SectionRoom* room = new SectionRoom();
-				Vector2 pos = Vector2(j + size / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
-				room->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
+				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+				room->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
+				button->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetButtonText("部屋");
 				button->SetLayer(Layer::DEBUG);
@@ -61,10 +61,10 @@ void StageManager::CreateStage()
 				// 廊下を生成
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
 				SectionCorridor* corrider = new SectionCorridor();
-				Vector2 pos = Vector2(j + size / 2.0f, -(i + 1 / 2.0f)) * SECTION_SIZE;
-				corrider->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
+				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
+				corrider->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
 				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(size * SECTION_SIZE, SECTION_SIZE));
+				button->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetButtonText("廊下");
 				button->SetLayer(Layer::DEBUG);
@@ -74,10 +74,10 @@ void StageManager::CreateStage()
 				// 接合部を生成
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
 				SectionConnect* connect = new SectionConnect();
-				Vector2 pos = Vector2(j + 1 / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
-				connect->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
+				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+				connect->Init(pos, Vector2(SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(SECTION_SIZE, size * SECTION_SIZE));
+				button->Init(pos, Vector2(SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetButtonText("接続部");
 				button->SetLayer(Layer::DEBUG);
@@ -87,8 +87,8 @@ void StageManager::CreateStage()
 				// 収容所を生成
 				int size = CheckSectionSize(j, i, SectionType::SECURE);
 				SecureRoom* secure = new SecureRoom();
-				Vector2 pos = Vector2(j + size / 2.0f, -(i + size / 2.0f)) * SECTION_SIZE;
-				secure->Init(pos, Vector2(size * SECTION_SIZE, size * SECTION_SIZE));
+				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+				secure->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);
 			}
@@ -125,13 +125,13 @@ std::vector<Vector2> StageManager::FindPath(Vector2 start, Vector2 goal)
 bool StageManager::CheckPosOnStage(Vector2 pos)
 {
 	// ステージの範囲外の場合は false を返す
-	if (pos.x < 0 || pos.x >= STAGE_SIZE * SECTION_SIZE ||
-		pos.y < -STAGE_SIZE * SECTION_SIZE || pos.y > 0)
+	if (pos.x < 0 || pos.x >= STAGE_SIZE * SECTION_SIZE_X ||
+		pos.y < -STAGE_SIZE * SECTION_SIZE_Y || pos.y > 0)
 	{
 		return false;
 	}
-	int y = (int)(pos.x / SECTION_SIZE);
-	int x = (int)(-pos.y / SECTION_SIZE);
+	int y = (int)(pos.x / SECTION_SIZE_X);
+	int x = (int)(-pos.y / SECTION_SIZE_Y);
 	// 区画が存在しない、または接続部、収容所は false
 	if (_stageData[x][y] == (int)SectionType::CONNECT || 
 		_stageData[x][y] == (int)SectionType::NONE ||
