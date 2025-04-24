@@ -9,7 +9,7 @@ void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 	objectSize = setSize;
 	objectType = ObjectType::SECTION;
 	layer = Layer::OBJECT;
-	ObjectManager::AddObject(this);
+	ObjectManager::instance->AddObject(this);
 }
 
 void BaseSection::Proc()

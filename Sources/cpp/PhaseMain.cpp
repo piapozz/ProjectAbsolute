@@ -83,7 +83,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 
 	// UI
 	// UIの取得
-	BaseObject* UI = ObjectManager::FindPosObject(worldPos, ObjectType::UI);
+	BaseObject* UI = ObjectManager::instance->FindPosObject(worldPos, ObjectType::UI);
 	if (UI != nullptr)
 	{
 		UI->ClickEvent();
@@ -92,7 +92,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 
 	// キャラクター
 	// 職員の取得
-	BaseObject* officer = ObjectManager::FindPosObject(worldPos, ObjectType::CHARACTER);
+	BaseObject* officer = ObjectManager::instance->FindPosObject(worldPos, ObjectType::CHARACTER);
 	if (officer != nullptr)
 	{
 		_pPlayerOfficerList.push_back(static_cast<OfficerPlayer*>(officer));
@@ -101,7 +101,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	}
 
 	// ステージの取得
-	BaseObject* section = ObjectManager::FindPosObject(worldPos, ObjectType::SECTION);
+	BaseObject* section = ObjectManager::instance->FindPosObject(worldPos, ObjectType::SECTION);
 	if (_pPlayerOfficerList.empty()) return;
 	
 	if (static_cast<SecureRoom*>(section) != nullptr)
