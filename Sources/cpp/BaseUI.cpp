@@ -9,7 +9,7 @@ void BaseUI::Init(Vector2 setPosition, Vector2 setSize)
 	objectSize = setSize;
 	objectType = ObjectType::UI;
 	layer = Layer::OBJECT;
-	ObjectManager::AddObject(this);
+	ObjectManager::instance->AddObject(this);
 	_textSize = 100;
 }
 

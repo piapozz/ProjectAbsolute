@@ -25,6 +25,7 @@ public:
 
 private:
 	PhaseManager* _pPhaseManager;
+	ObjectManager* _pObjectManager;
 	// ƒQ[ƒ€‚ªI—¹‚µ‚½‚©‚ğ•Û
 	bool _gameEnd;
 };

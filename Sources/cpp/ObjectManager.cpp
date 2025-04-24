@@ -1,10 +1,11 @@
 #include "../header/ObjectManager.h"
 #include "../header/BaseObject.h"
 
-std::vector<std::vector<BaseObject*>> ObjectManager::_objectList;
+ObjectManager* ObjectManager::instance;
 
 void ObjectManager::Init()
 {
+	instance = this;
 	_objectList = std::vector<std::vector<BaseObject*>>(
 		(int)ObjectType::MAX,
 		std::vector<BaseObject*>((int)ObjectType::MAX,

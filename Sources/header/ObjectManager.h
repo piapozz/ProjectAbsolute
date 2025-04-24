@@ -9,39 +9,41 @@
 class ObjectManager
 {
 public:
+	static ObjectManager* instance;
+
 	ObjectManager() {}
 	~ObjectManager() {}
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	static void Init();
+	void Init();
 	/// <summary>
 	/// 更新
 	/// </summary>
-	static void Update();
+	void Update();
 	/// <summary>
 	/// 描画
 	/// </summary>
-	static void Draw();
+	void Draw();
 	/// <summary>
 	/// オブジェクトの追加
 	/// </summary>
-	static void AddObject(BaseObject* obj);
+	void AddObject(BaseObject* obj);
 	/// <summary>
 	/// オブジェクトの削除
 	/// </summary>
-	static void RemoveObject(BaseObject* obj);
+	void RemoveObject(BaseObject* obj);
 	/// <summary>
 	/// オブジェクトの全削除
 	/// </summary>
-	static void AllClear();
+	void AllClear();
 	/// <summary>
 	/// オブジェクトの検索
 	/// </summary>
 	/// <returns></returns>
-	static BaseObject* FindPosObject(Vector2 pos, ObjectType type);
+	BaseObject* FindPosObject(Vector2 pos, ObjectType type);
 	// オブジェクトのリスト
-	static std::vector<std::vector<BaseObject*>> _objectList;
+	std::vector<std::vector<BaseObject*>> _objectList;
 };
 

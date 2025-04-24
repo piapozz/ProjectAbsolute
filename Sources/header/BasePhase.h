@@ -15,7 +15,7 @@ public:
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>
-	inline virtual void Init() { ObjectManager::Init();};
+	inline virtual void Init(){};
 	/// <summary>
 	//// ˆ—‚Ìƒ‹[ƒv
 	// </summary>
@@ -28,7 +28,8 @@ public:
 	/// <summary>
 	/// ”jŠü
 	/// </summary>
-	inline virtual void Teardown() { ObjectManager::AllClear(); };
+	inline virtual void Teardown() {
+		ObjectManager::instance->AllClear(); };
 
 protected:
 	/// <summary>
