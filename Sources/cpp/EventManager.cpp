@@ -6,7 +6,6 @@ void EventManager::Init()
 	_pEnergySlider = new UISlider();
 	_pEnergySlider->Init(Vector2(-100, 100), Vector2(500, 50));
 	_pEnergySlider->SetLayer(Layer::DEBUG);
-	_pEnergySlider->Set2D(true);
 	_pEnergySlider->SetValue(_energy);
 	_pEnergySlider->SetColor(0, 255, 0);
 }
