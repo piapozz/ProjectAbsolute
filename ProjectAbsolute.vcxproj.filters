@@ -240,6 +240,18 @@
     <ClCompile Include="Sources\cpp\EventManager.cpp">
       <Filter>ソース ファイル\Ishihara</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\UIScreenButton.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIScreenSlider.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIScreenText.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIText.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -403,6 +415,18 @@
     </ClInclude>
     <ClInclude Include="Sources\header\EventManager.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIScreenButton.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIScreenSlider.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIScreenText.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIText.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

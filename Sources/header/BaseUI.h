@@ -38,18 +38,14 @@ public:
 	/// <param name="active"></param>
 	void SetActive(bool active);
 	/// <summary>
-	/// âÊñ Ç…í«è]Ç≥ÇπÇÈÇ©Ç«Ç§Ç©
+	/// ç¿ïWÇÃïœçX
 	/// </summary>
-	/// <param name="is2D"></param>
-	void Set2D(bool is2D) { _is2D = is2D; }
+	/// <param name="setPos"></param>
 	void SetPos(Vector2 setPos) {
 		position = setPos;
 	}
 protected:
 	int fontHandle;
-	int textGraph;;
-private:
-	// "2DÇ©3DÇ©
-	bool _is2D;
+	int textGraph;
 };
 
