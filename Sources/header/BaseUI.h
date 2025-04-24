@@ -44,8 +44,26 @@ public:
 	void SetPos(Vector2 setPos) {
 		position = setPos;
 	}
-protected:
-	int fontHandle;
-	int textGraph;
+	/// <summary>
+	/// 大きさの変更
+	/// </summary>
+	/// <param name="setSize"></param>
+	void SetSize(int setSize){
+		_textSize = setSize;
+	}
+	/// <summary>
+	/// テキストの設定
+	/// </summary>
+	/// <param name="text"></param>
+	void SetText(const std::string& text) {
+		_text = text;
+	}
+private:
+	int _fontHandle;
+	int _textGraph;
+	int _textSize;
+	// ボタンの文字
+	std::string _text;
+	std::string prevText = "";
 };
 

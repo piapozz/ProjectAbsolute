@@ -38,7 +38,7 @@ enum class Layer
 {
 	INVALID = -1,
 	NONE_DRAW,
-	DEBUG,
+	NONE_INTERACT,
 	BACK_GROUND,
 	OBJECT,
 	PLAYER,
