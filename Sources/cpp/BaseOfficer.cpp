@@ -1,5 +1,5 @@
 #include "../header/BaseOfficer.h"
-#include "../header/OfficerStateFactory.h"
+#include "../header/CharacterStateFactory.h"
 #include "../header/OfficerInitData.h"
 #include "../header/StageManager.h"
 
@@ -7,7 +7,7 @@ BaseOfficer::BaseOfficer()
 {
 	_officerType = OfficerType::NONE;
 	_officerID = -1;
-	pOfficerState = NULL;
+	pCharacterState = NULL;
 }
 
 BaseOfficer::~BaseOfficer()
@@ -26,7 +26,7 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 	_armorID = data.armorID;
 	_weaponID = data.weaponID;
 
-	canOrder = false;
+	SetImpossible(true);
 
 	SetOfficerID(setOfficerID);
 	ChangeState(OfficerStateID::OFFICER_IDLE, nullptr);
@@ -39,7 +39,7 @@ void BaseOfficer::Proc()
 	if (health <= 0) ChangeState(OfficerStateID::OFFICER_DEAD, nullptr);
 	if (_mental <= 0) ChangeState(OfficerStateID::OFFICER_PANIC, nullptr);
 
-	pOfficerState->Update(this);
+	pCharacterState->Update(this);
 }
 
 void BaseOfficer::Draw()
@@ -74,48 +74,4 @@ int BaseOfficer::TakeDamege(int strength, Type damageType)
 	float index;
 	index = strength * defenseRatio[(int)damageType];
 	return ceil(index);
-}
-
-void BaseOfficer::TowardsNotice()
-{
-
-}
-
-void BaseOfficer::ArriveNotice()
-{
-
-}
-
-void BaseOfficer::ChangeState(OfficerStateID stateID, StateArgs* args)
-{
-	if (pOfficerState)
-	{
-		pOfficerState->Exit(this);
-		delete pOfficerState;
-	}
-
-	pOfficerState = OfficerStateFactory::CreateState(stateID ,args);
-
-	if (pOfficerState)
-	{
-		pOfficerState->Enter(this);
-	}
-}
-
-void BaseOfficer::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
-{
-	std::vector<Vector2> routeList;
-	routeList = StageManager::FindPath(position, targetPos);
-	StateArgs* args = new StateArgs();
-	args->targetPosList = routeList;
-	if (secureRoom != nullptr)
-	{
-		args->secureRoom = secureRoom;
-		ChangeState(OfficerStateID::OFFICER_OPERATION_MOVE, args);
-		_pastPosition = routeList[0];
-		return;
-	}
-	ChangeState(OfficerStateID::OFFICER_MOVE, args);
-	// ‰ß‹Ž‚ÌˆÊ’u‚ð•Û‘¶
-	_pastPosition = routeList[0];
 }

@@ -1,5 +1,10 @@
 #pragma once
 #include "BaseObject.h"
+#include "../header/RouteSearcher.h"
+#include "../header/StateArgs.h"
+
+class BaseCharacterState;
+
 /*
 * Ishihara
 * キャラクターの基底
@@ -49,10 +54,22 @@ public:
 	/// </summary>
 	/// <param name="decreaseValue"></param>
 	void DecreaseHealth(int decreaseValue);
+	void ChangeState(OfficerStateID stateID, StateArgs* args = nullptr);
+	void ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom = nullptr);
+	bool CharacterMove(std::vector<Vector2> targetPosList, float speed);
+
 	void SetPosition(Vector2 setPosition){ position = setPosition; }
 	Vector2 GetPosition(){ return position; }
+	Vector2 GetPastPosition(){ return _pastPosition; }
 	int GetHealth(){ return health; }
 	void SetHealth(int value){ health = value; }
+	void SetImpossible(bool flag) { impossible = flag; }
+	bool GetImpossible(){ return impossible; }
+
+	// 過去の位置
+	Vector2 _pastPosition;
+	BaseCharacterState* pCharacterState;
+	unsigned int color;
 
 protected:
 	// 攻撃力
@@ -65,5 +82,11 @@ protected:
 	int health;
 	// 最大体力
 	int maxHealth;
+	// ステートを遷移できるか
+	bool impossible;
+
+private:
+	int _moveListIndex;
+
 };
 

@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\cpp\AttackNormal.cpp" />
+    <ClCompile Include="Sources\cpp\BaseAttack.cpp" />
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
     <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseEgoEntity.cpp" />
@@ -156,14 +158,14 @@
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateDead.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateFactory.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateFight.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateMove.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateOperation.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateOperationMove.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStatePanic.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateDead.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateFactory.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateFight.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateIdle.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateMove.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateOperation.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateOperationMove.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStatePanic.cpp" />
     <ClCompile Include="Sources\cpp\BaseOperation.cpp" />
     <ClCompile Include="Sources\cpp\OperationContact.cpp" />
     <ClCompile Include="Sources\cpp\OperationInjure.cpp" />
@@ -186,7 +188,6 @@
     <ClCompile Include="Sources\cpp\SectionCorridor.cpp" />
     <ClCompile Include="Sources\cpp\SectionRoom.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
-    <ClCompile Include="Sources\cpp\BaseOfficerState.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
     <ClCompile Include="Sources\cpp\UIButton.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenButton.cpp" />
@@ -196,11 +197,13 @@
     <ClCompile Include="Sources\cpp\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\header\AttackNormal.h" />
+    <ClInclude Include="Sources\header\BaseAttack.h" />
     <ClInclude Include="Sources\header\BaseCharacter.h" />
     <ClInclude Include="Sources\header\BaseEntity.h" />
     <ClInclude Include="Sources\header\BaseEgoEntity.h" />
     <ClInclude Include="Sources\header\BaseOfficer.h" />
-    <ClInclude Include="Sources\header\BaseOfficerState.h" />
+    <ClInclude Include="Sources\header\BaseCharacterState.h" />
     <ClInclude Include="Sources\header\BasePhase.h" />
     <ClInclude Include="Sources\header\BaseObject.h" />
     <ClInclude Include="Sources\header\BaseScene.h" />
@@ -217,14 +220,14 @@
     <ClInclude Include="Sources\header\OfficerManager.h" />
     <ClInclude Include="Sources\header\OfficerMob.h" />
     <ClInclude Include="Sources\header\OfficerPlayer.h" />
-    <ClInclude Include="Sources\header\OfficerStateDead.h" />
-    <ClInclude Include="Sources\header\OfficerStateFactory.h" />
-    <ClInclude Include="Sources\header\OfficerStateFight.h" />
-    <ClInclude Include="Sources\header\OfficerStateIdle.h" />
-    <ClInclude Include="Sources\header\OfficerStateMove.h" />
-    <ClInclude Include="Sources\header\OfficerStateOperation.h" />
-    <ClInclude Include="Sources\header\OfficerStateOperationMove.h" />
-    <ClInclude Include="Sources\header\OfficerStatePanic.h" />
+    <ClInclude Include="Sources\header\CharacterStateDead.h" />
+    <ClInclude Include="Sources\header\CharacterStateFactory.h" />
+    <ClInclude Include="Sources\header\CharacterStateFight.h" />
+    <ClInclude Include="Sources\header\CharacterStateIdle.h" />
+    <ClInclude Include="Sources\header\CharacterStateMove.h" />
+    <ClInclude Include="Sources\header\CharacterStateOperation.h" />
+    <ClInclude Include="Sources\header\CharacterStateOperationMove.h" />
+    <ClInclude Include="Sources\header\CharacterStatePanic.h" />
     <ClInclude Include="Sources\header\BaseOperation.h" />
     <ClInclude Include="Sources\header\OperationContact.h" />
     <ClInclude Include="Sources\header\OperationInjure.h" />

@@ -5,18 +5,18 @@
 #include "../header/Const.h"
 
 // ‘O•ûéŒ¾
-class BaseOfficer;
+class BaseCharacter;
 
 /*
  * Sein
  * Officer‚ÌState‚ÌŠî’êƒNƒ‰ƒX
  */
-class BaseOfficerState
+class BaseCharacterState
 {
 public:
-	virtual void Update(BaseOfficer* officer){};
-	virtual void Enter(BaseOfficer* officer){};
-	virtual void Exit(BaseOfficer* officer){};
+	virtual void Update(BaseCharacter* character){};
+	virtual void Enter(BaseCharacter* character){};
+	virtual void Exit(BaseCharacter* character){};
 
 	unsigned int NONE = GetColor(0, 255, 255);		
 	unsigned int IDLE = GetColor(255, 255, 255);	// ”’
