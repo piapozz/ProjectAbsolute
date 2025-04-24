@@ -11,16 +11,20 @@ void ObjectManager::Init()
 		std::vector<BaseObject*>((int)ObjectType::MAX,
 		nullptr)
 	);
+	_gameSpeed = 1;
 }
 
 void ObjectManager::Update()
 {
-	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	for (int i = 0; i < _gameSpeed; i++)
 	{
-		for (BaseObject* obj : _objectList[i])
+		for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
 		{
-			if (obj == nullptr) continue;
-			obj->Proc();
+			for (BaseObject* obj : _objectList[i])
+			{
+				if (obj == nullptr) continue;
+				obj->Proc();
+			}
 		}
 	}
 }
