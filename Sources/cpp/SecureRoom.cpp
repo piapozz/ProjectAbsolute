@@ -23,18 +23,18 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	_operationNameList[3] = "危害";
 
 	// オフセットを初期化
-	_operationUIOffsetList[0] = Vector2(-SECTION_SIZE / 4, SECTION_SIZE / 4);
-	_operationUIOffsetList[1] = Vector2(SECTION_SIZE / 4, SECTION_SIZE / 4);
-	_operationUIOffsetList[2] = Vector2(-SECTION_SIZE / 4, -SECTION_SIZE / 4);
-	_operationUIOffsetList[3] = Vector2(SECTION_SIZE / 4, -SECTION_SIZE / 4);
-	_operationCountOffset = Vector2(0, -SECTION_SIZE / 1.5f);
-	_runawayCountOffset = Vector2(-SECTION_SIZE / 3, -SECTION_SIZE / 1.5f);
+	_operationUIOffsetList[0] = Vector2(-SECTION_SIZE_X / 4, SECTION_SIZE_Y / 4);
+	_operationUIOffsetList[1] = Vector2(SECTION_SIZE_X / 4, SECTION_SIZE_Y / 4);
+	_operationUIOffsetList[2] = Vector2(-SECTION_SIZE_X / 4, -SECTION_SIZE_Y / 4);
+	_operationUIOffsetList[3] = Vector2(SECTION_SIZE_X / 4, -SECTION_SIZE_Y / 4);
+	_operationCountOffset = Vector2(0, -SECTION_SIZE_Y / 1.5f);
+	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 3, -SECTION_SIZE_Y / 1.5f);
 
 	// UIの生成
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
 		_pOperationUIList[i] = new UIButton();
-		_pOperationUIList[i]->Init(position + _operationUIOffsetList[i], Vector2(SECTION_SIZE / 2, SECTION_SIZE / 2));
+		_pOperationUIList[i]->Init(position + _operationUIOffsetList[i], Vector2(SECTION_SIZE_X / 2, SECTION_SIZE_Y / 2));
 		_pOperationUIList[i]->SetButtonText(_operationNameList[i]);
 		_pOperationUIList[i]->SetCallback([this, i, position]()
 		{

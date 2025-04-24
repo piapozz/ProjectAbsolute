@@ -23,7 +23,7 @@ void OfficerStateMove::Update(BaseOfficer* officer)
 	float dx = target.x - current.x;
 	float distance = std::abs(dx);
 
-	if (distance < 1.0f)
+	if (distance < 2.0f)
 	{
 		current.x = target.x;
 		officer->SetPosition(current);

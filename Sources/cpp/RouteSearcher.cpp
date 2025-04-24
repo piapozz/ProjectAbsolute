@@ -3,33 +3,33 @@
 
 std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> stageData, Vector2 start, Vector2 goal)
 {
-	int startX = (int)(start.x / SECTION_SIZE);
-	int startY = (int)(-start.y / SECTION_SIZE);
-	int goalX = (int)(goal.x / SECTION_SIZE);
-	int goalY = (int)(-goal.y / SECTION_SIZE);
+	int startX = (int)(start.x / SECTION_SIZE_X);
+	int startY = (int)(-start.y / SECTION_SIZE_Y);
+	int goalX = (int)(goal.x / SECTION_SIZE_X);
+	int goalY = (int)(-goal.y / SECTION_SIZE_Y);
 
 	if (startX < 0 || startX >= STAGE_SIZE || startY < 0 || startY >= STAGE_SIZE ||
 		goalX < 0 || goalX >= STAGE_SIZE || goalY < 0 || goalY >= STAGE_SIZE) 
 	{
 		// 範囲外の場合は空のベクターを返す
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE / 2 + (startX * SECTION_SIZE), (-startY * SECTION_SIZE) - (SECTION_SIZE / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
 	}
 	// ステージデータが空の場合は空のベクターを返す
 	if (stageData.empty()) return std::vector<Vector2>();
 	// スタートとゴールのタイルが通れない場合は空のベクターを返す
 	if (stageData[startY][startX] == (int)SectionType::NONE || stageData[goalY][goalX] == (int)SectionType::NONE)
 	{
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE / 2 + (startX * SECTION_SIZE), (-startY * SECTION_SIZE) - (SECTION_SIZE / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
 	}
 	// スタートとゴールのタイルが同じ場合はスタートを返す
 	if (startX == goalX && startY == goalY)
 	{
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE / 2 + (startX * SECTION_SIZE), (-startY * SECTION_SIZE) - (SECTION_SIZE / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
 	}
 	// スタートとゴールのタイルが接続部の場合は空のベクターを返す
 	if (stageData[startY][startX] == (int)SectionType::CONNECT || stageData[goalY][goalX] == (int)SectionType::CONNECT)
 	{
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE / 2 + (startX * SECTION_SIZE), (-startY * SECTION_SIZE) - (SECTION_SIZE / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
 	}
 
 	std::vector<std::vector<Node*>> nodes(STAGE_SIZE, std::vector<Node*>(STAGE_SIZE, nullptr));
@@ -52,7 +52,7 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 		{
 			while (current != nullptr)
 			{
-				path.push_back(Vector2(SECTION_SIZE / 2 + (current->x * SECTION_SIZE), (-current->y * SECTION_SIZE) - (SECTION_SIZE / 2)));
+				path.push_back(Vector2(SECTION_SIZE_X / 2 + (current->x * SECTION_SIZE_X), (-current->y * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)));
 				current = current->parent;
 			}
 			break;

@@ -94,7 +94,8 @@ enum class OfficerStateID
 };
 
 // ステージ
-const int SECTION_SIZE = 100;
+const int SECTION_SIZE_X = 150;
+const int SECTION_SIZE_Y = 100;
 // ステージのサイズ
 const int STAGE_SIZE = 7;
 
