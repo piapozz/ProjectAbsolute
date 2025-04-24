@@ -1,10 +1,7 @@
 #pragma once
 #include <DxLib.h>
 #include "../header/BaseCharacter.h"
-#include "../header/RouteSearcher.h"
-#include "../header/StateArgs.h"
 
-class BaseOfficerState;
 class OfficerInitData;
 
 /*
@@ -23,12 +20,6 @@ public:
 	void Teardown() override;
 	int TakeDamege(int strength, Type damageType) override;
 
-	void TowardsNotice();
-	void ArriveNotice();
-	void ChangeState(OfficerStateID stateID, StateArgs* args = nullptr);
-	void ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom = nullptr);
-
-	Vector2 GetPastPosition(){ return _pastPosition; }
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
 	void SetOfficerType(OfficerType type){ _officerType = type; }
@@ -38,10 +29,6 @@ public:
 	int GetMental(){ return _mental; }
 	void SetMental(int value) { _mental = value; }
 
-	BaseOfficerState* pOfficerState;
-	unsigned int color;
-	bool canOrder;
-
 private:
 
 protected:
@@ -50,6 +37,5 @@ protected:
 	int _weaponID;
 	int _mental;
 
-	Vector2 _pastPosition;
 	OfficerType _officerType;
 };

@@ -1,5 +1,5 @@
 #include "../header/OfficerPlayer.h"
-#include "../header/BaseOfficerState.h"
+#include "../header/BaseCharacterState.h"
 #include "../header/OfficerInitData.h"
 
 OfficerPlayer::OfficerPlayer()
@@ -25,7 +25,7 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	slider->SetLayer(Layer::NONE_INTERACT);
 	slider->SetColor(255, 0, 0);
 
-	canOrder = true;
+	SetImpossible(true);
 }
 
 void OfficerPlayer::Proc()
@@ -55,11 +55,4 @@ void OfficerPlayer::ClickEvent()
 	// ç∂è„Ç…UIÇï`âÊ
 
 
-}
-
-void OfficerPlayer::MoveToTargetPos(std::vector<Vector2> routeList)
-{
-	StateArgs* args = new StateArgs();
-	args->targetPosList = routeList;
-	ChangeState(OfficerStateID::OFFICER_MOVE, args);
 }

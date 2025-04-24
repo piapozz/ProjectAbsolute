@@ -18,8 +18,6 @@ public:
 	void Teardown() override;
 	void ClickEvent() override;
 
-	void MoveToTargetPos(std::vector<Vector2> routeList);
-
 private:
 	// スライダー
 	UISlider* slider;
