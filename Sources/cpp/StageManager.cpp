@@ -10,6 +10,7 @@
 #include "../header/UIButton.h"
 
 std::vector<std::vector<int>> StageManager::_stageData;
+std::vector<SecureRoom*> StageManager::_secureRoomList;
 
 StageManager::~StageManager() 
 {

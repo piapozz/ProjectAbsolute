@@ -43,7 +43,17 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	BaseObject* FindPosObject(Vector2 pos, ObjectType type);
+	/// <summary>
+	/// ゲーム速度の変更
+	/// </summary>
+	/// <param name="setGameSpeed"></param>
+	void ChangeGameSpeed(int setGameSpeed){
+		_gameSpeed = setGameSpeed;
+	}
+private:
 	// オブジェクトのリスト
 	std::vector<std::vector<BaseObject*>> _objectList;
+	// ゲームスピード
+	int _gameSpeed;
 };
 
