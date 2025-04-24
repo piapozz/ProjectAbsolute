@@ -86,7 +86,7 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 	{
 		if (obj == nullptr) continue;
 		if (obj->GetLayer() == Layer::NONE_DRAW ||
-			obj->GetLayer() == Layer::DEBUG) continue;
+			obj->GetLayer() == Layer::NONE_INTERACT) continue;
 		if (obj->IsSamePos(pos))
 		{
 			return obj;

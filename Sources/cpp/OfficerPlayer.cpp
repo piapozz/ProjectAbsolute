@@ -21,8 +21,8 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	Vector2 pos(position.x, position.y + (objectSize.y / 2));
 	slider->Init(pos, Vector2(objectSize.x, objectSize.y/4));
 	slider->SetActive(true);
-	slider->SetSliderText("HP");
-	slider->SetLayer(Layer::DEBUG);
+	slider->SetText("HP");
+	slider->SetLayer(Layer::NONE_INTERACT);
 	slider->SetColor(255, 0, 0);
 
 	canOrder = true;

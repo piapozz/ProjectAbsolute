@@ -34,7 +34,7 @@ bool BaseOperation::OperationProc()
 
 	// UIを更新
 	std::string str = std::to_string(_currentOperationCount);
-	_pOperationUI->SetButtonText(str);
+	_pOperationUI->SetText(str);
 
 	_frameCounter = 0;
 	// 終了を確認

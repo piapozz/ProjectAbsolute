@@ -53,8 +53,8 @@ void StageManager::CreateStage()
 				UIButton* button = new UIButton();
 				button->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
-				button->SetButtonText("•”‰®");
-				button->SetLayer(Layer::DEBUG);
+				button->SetText("•”‰®");
+				button->SetLayer(Layer::NONE_INTERACT);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
@@ -66,8 +66,8 @@ void StageManager::CreateStage()
 				UIButton* button = new UIButton();
 				button->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
 				button->SetActive(true);
-				button->SetButtonText("˜L‰º");
-				button->SetLayer(Layer::DEBUG);
+				button->SetText("˜L‰º");
+				button->SetLayer(Layer::NONE_INTERACT);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
@@ -79,8 +79,8 @@ void StageManager::CreateStage()
 				UIButton* button = new UIButton();
 				button->Init(pos, Vector2(SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
-				button->SetButtonText("Ú‘±•”");
-				button->SetLayer(Layer::DEBUG);
+				button->SetText("Ú‘±•”");
+				button->SetLayer(Layer::NONE_INTERACT);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{

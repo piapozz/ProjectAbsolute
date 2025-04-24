@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseUI.h"
-#include <string>
 #include <functional>
-
+/*
+* Ishihara
+* UIボタン
+*/
 class UIButton: public BaseUI
 {
 public:
@@ -21,19 +23,11 @@ public:
 	void ClickEvent() override {_callback();}
 
 	/// <summary>
-	/// テキストの設定
-	/// </summary>
-	/// <param name="text"></param>
-	void SetButtonText(const std::string& text) { _buttonText = text; }
-	/// <summary>
 	/// コールバックの設定
 	/// </summary>
 	/// <param name="callback"></param>
 	void SetCallback(std::function<void()> callback) {_callback = callback;}
 private:
-	// ボタンの文字
-	std::string _buttonText;
-	std::string prevText = "";
 	// コールバック
 	std::function<void()> _callback;
 };

@@ -35,7 +35,7 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	{
 		_pOperationUIList[i] = new UIButton();
 		_pOperationUIList[i]->Init(position + _operationUIOffsetList[i], Vector2(SECTION_SIZE_X / 2, SECTION_SIZE_Y / 2));
-		_pOperationUIList[i]->SetButtonText(_operationNameList[i]);
+		_pOperationUIList[i]->SetText(_operationNameList[i]);
 		_pOperationUIList[i]->SetCallback([this, i, position]()
 		{
 			// UIを非表示
@@ -50,12 +50,12 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	}
 	_pOperationCountUI = new UIButton();
 	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(30, 30));
-	_pOperationCountUI->SetButtonText(std::to_string(0));
-	_pOperationCountUI->SetLayer(Layer::DEBUG);
+	_pOperationCountUI->SetText(std::to_string(0));
+	_pOperationCountUI->SetLayer(Layer::NONE_INTERACT);
 	_pRunawayCountUI = new UIButton();
 	_pRunawayCountUI->Init(position + _runawayCountOffset, Vector2(30, 30));
-	_pRunawayCountUI->SetButtonText(std::to_string(0));
-	_pRunawayCountUI->SetLayer(Layer::DEBUG);
+	_pRunawayCountUI->SetText(std::to_string(0));
+	_pRunawayCountUI->SetLayer(Layer::NONE_INTERACT);
 	// エンティティーのマスターデータから作業IDを取得し生成
 	// _pOperation = new Operation(_pEntity->GetID());
 	int entityID = 0;
