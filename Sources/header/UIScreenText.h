@@ -1,22 +1,23 @@
 #pragma once
-#include "BaseUI.h"
+#include "../header/BaseUIScreen.h"
+
 /*
 * ishihara
 * UIスクリーンテキスト
 */
-class UIScreenText : public BaseUI
+class UIScreenText : public BaseUIScreen
 {
 public:
 	UIScreenText() {
 	}
 	UIScreenText(Layer setLayer)
-		: BaseUI(setLayer) {
+		: BaseUIScreen(setLayer) {
 	}
 	UIScreenText(Layer setLayer, int setDrawHandle)
-		: BaseUI(setLayer, setDrawHandle) {
+		: BaseUIScreen(setLayer, setDrawHandle) {
 	}
 	UIScreenText(const UIScreenText& obj)
-		: BaseUI(obj) {
+		: BaseUIScreen(obj) {
 	}
 	~UIScreenText() {
 	}

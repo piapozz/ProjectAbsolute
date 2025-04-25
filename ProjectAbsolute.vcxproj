@@ -151,6 +151,7 @@
     <ClCompile Include="Sources\cpp\BaseSection.cpp" />
     <ClCompile Include="Sources\cpp\BaseToolEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
+    <ClCompile Include="Sources\cpp\BaseUIScreen.cpp" />
     <ClCompile Include="Sources\cpp\CameraController.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Sources\header\BaseSection.h" />
     <ClInclude Include="Sources\header\BaseToolEntity.h" />
     <ClInclude Include="Sources\header\BaseUI.h" />
+    <ClInclude Include="Sources\header\BaseUIScreen.h" />
     <ClInclude Include="Sources\header\CameraController.h" />
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />

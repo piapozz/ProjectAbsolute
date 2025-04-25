@@ -37,12 +37,6 @@ private:
 	std::vector<OfficerPlayer*> _pPlayerOfficerList;
 	EventManager* _pEventManager;
 
-	/// <summary>
-	/// スクリーン座標からステージ座標の取得
-	/// </summary>
-	/// <returns></returns>
-	Vector2 GetScreen2StagePos(Vector2 screenPos);
-
 	std::vector<std::vector<int>> _stageData ={
 		{1, 2, 2, 2, 2, 2, 1}, 
 		{3, 4, 0, 0, 0, 0, 3},

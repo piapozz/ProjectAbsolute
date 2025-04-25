@@ -1,25 +1,17 @@
 #pragma once
-#include "BaseUI.h"
+#include "../header/BaseUIScreen.h"
 /*
 * ishihara
 * UIスクリーンスライダー
 */
-class UIScreenSlider : public BaseUI
+class UIScreenSlider : public BaseUIScreen
 {
 public:
-	UIScreenSlider() {
-	}
-	UIScreenSlider(Layer setLayer)
-		: BaseUI(setLayer) {
-	}
-	UIScreenSlider(Layer setLayer, int setDrawHandle)
-		: BaseUI(setLayer, setDrawHandle) {
-	}
-	UIScreenSlider(const UIScreenSlider& obj)
-		: BaseUI(obj) {
-	}
-	~UIScreenSlider() {
-	}
+	UIScreenSlider() {}
+	UIScreenSlider(Layer setLayer): BaseUIScreen(setLayer) {}
+	UIScreenSlider(Layer setLayer, int setDrawHandle): BaseUIScreen(setLayer, setDrawHandle) {}
+	UIScreenSlider(const UIScreenSlider& obj): BaseUIScreen(obj) {}
+	~UIScreenSlider() {}
 	void Init(Vector2 setPosition, Vector2 setSize) override;
 	void Proc() override;
 	void Draw() override;
@@ -34,12 +26,14 @@ public:
 	/// <summary>
 	/// 色の設定
 	/// </summary>
-	void SetColor(int r = 255, int g = 255, int b = 255, int a = 255) {
-		color = GetColorU8(r, g, b, a);
+	void SetColor(int r = 255, int g = 255, int b = 255) {
+		_color = GetColor(r, g, b);
 	}
 private:
 	// スライダーの値
 	float _value;
 	// スライダーの色
-	COLOR_U8 color;
+	int _color;
+	// スクリーン座標
+	Vector2 _screenPos;
 };

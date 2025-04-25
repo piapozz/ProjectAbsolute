@@ -16,8 +16,10 @@ class UIButton;
 class SecureRoom: public BaseSection
 {
 public:
-	static std::function<void(int)> EndOperation;
-	static inline void SetEndOperationCallback(std::function<void(int)> setCallback){ EndOperation = setCallback; }
+	// 作業開始時のコールバック
+	static std::function<void()> StartOperationEvent;
+	// 作業終了時のコールバック
+	static std::function<void(int)> EndOperationEvent;
 
 	enum class State
 	{
@@ -59,7 +61,13 @@ public:
 
 private:
 	// メルトダウンのカウント数
-	int _MELTDOWN_COUNT = 60 * 60;
+	const int _MELTDOWN_COUNT = 60 * 60;
+	// エンティティのオフセット
+	const float _ENTITY_OFFSET_POS_X = -SECTION_SIZE_X / 4;
+	const float _ENTITY_OFFSET_POS_Y = -SECTION_SIZE_Y / 4;
+	// UIのサイズ
+	const float _UI_SIZE = SECTION_SIZE_X / 10;
+
 	// 収容しているエンティティー
 	BaseEntity* _pEntity;
 	bool _isMeltdown;
