@@ -1,5 +1,6 @@
 #pragma once
 #include "../header/BaseEntity.h"
+#include "../header/BaseCharacterState.h"
 class BaseOperation;
 
 /*
