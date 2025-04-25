@@ -11,6 +11,11 @@ void BaseEntity::Init()
 	runawayCount = maxRunawayCount;
 }
 
+void BaseEntity::Proc()
+{
+	BaseCharacter::Proc();
+}
+
 void BaseEntity::Draw()
 {
 	VECTOR pos[3];

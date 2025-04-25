@@ -24,5 +24,8 @@ public:
 	void Init() override;
 	void Proc() override;
 	inline bool IsTool() override { return false; }
+
+protected:
+	bool isRunaway;
 };
 
