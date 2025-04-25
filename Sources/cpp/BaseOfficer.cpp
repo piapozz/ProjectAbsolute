@@ -29,15 +29,15 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 	SetImpossible(true);
 
 	SetOfficerID(setOfficerID);
-	ChangeState(OfficerStateID::OFFICER_IDLE, nullptr);
+	ChangeState(CharacterStateID::IDLE, nullptr);
 }
 
 void BaseOfficer::Proc()
 {
 	BaseObject::Proc();
 
-	if (health <= 0) ChangeState(OfficerStateID::OFFICER_DEAD, nullptr);
-	if (_mental <= 0) ChangeState(OfficerStateID::OFFICER_PANIC, nullptr);
+	if (health <= 0) ChangeState(CharacterStateID::DEAD, nullptr);
+	if (_mental <= 0) ChangeState(CharacterStateID::PANIC, nullptr);
 
 	pCharacterState->Update(this);
 }
@@ -69,9 +69,32 @@ void BaseOfficer::Teardown()
 	BaseObject::Teardown();
 }
 
-int BaseOfficer::TakeDamege(int strength, Type damageType)
+void BaseOfficer::TakeDamege(int strength, Type damageType)
 {
 	float index;
 	index = strength * defenseRatio[(int)damageType];
-	return ceil(index);
+	int damage = ceil(index);
+
+	switch (damageType)
+	{
+		case Type::RED:
+			DecreaseHealth(damage);
+			break;
+		case Type::WHITE:
+			DecreaseMental(damage);
+			break;
+		case Type::BLACK:
+			DecreaseHealth(damage);
+			DecreaseMental(damage);
+			break;
+		case Type::PALE:
+			int paleDamage = health * (damage / 100);
+			DecreaseHealth(ceil(paleDamage));
+			break;
+	}
+}
+
+void BaseOfficer::DecreaseMental(int decreaseValue)
+{
+	_mental -= decreaseValue;
 }

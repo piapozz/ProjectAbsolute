@@ -10,12 +10,13 @@ void CharacterStatePanic::Update(BaseCharacter* character)
 	routeList.push_back({-100, 100});
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;
-	character->ChangeState(OfficerStateID::OFFICER_MOVE, args);
+	character->ChangeState(CharacterStateID::MOVE, args);
 }
 
 void CharacterStatePanic::Enter(BaseCharacter* character)
 {
 	character->color = PANIC;
+	character->stateID = CharacterStateID::PANIC;
 }
 
 void CharacterStatePanic::Exit(BaseCharacter* character)

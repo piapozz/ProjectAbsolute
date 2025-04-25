@@ -34,7 +34,7 @@ void CharacterStateOperationMove::Update(BaseCharacter* character)
 
 	character->SetPosition(current);
 
-	if (distance < 1.0f)
+	if (distance < 2.0f)
 	{
 		current.x = target.x;
 		character->SetPosition(current);
@@ -46,7 +46,7 @@ void CharacterStateOperationMove::Update(BaseCharacter* character)
 	{
 		StateArgs* args = new StateArgs();
 		args->secureRoom = _secureRoom;
-		character->ChangeState(OfficerStateID::OFFICER_OPERATION, args);
+		character->ChangeState(CharacterStateID::OPERATION, args);
 	}
 }
 
@@ -54,6 +54,7 @@ void CharacterStateOperationMove::Enter(BaseCharacter* character)
 {
 	// 作業を行いに行く通知を出す
 	character->color = OPERATION_MOVE;
+	character->stateID = CharacterStateID::OPERATION_MOVE;
 }
 
 void CharacterStateOperationMove::Exit(BaseCharacter* character)

@@ -10,6 +10,7 @@ void BaseCharacter::Init()
 	layer = Layer::OBJECT;
 	objectSize = Vector2(50, 50);
 	ObjectManager::instance->AddObject(this);
+
 }
 
 void BaseCharacter::Proc()
@@ -36,7 +37,7 @@ void BaseCharacter::DecreaseHealth(int decreaseValue)
 	health -= decreaseValue;
 }
 
-void BaseCharacter::ChangeState(OfficerStateID stateID, StateArgs* args)
+void BaseCharacter::ChangeState(CharacterStateID stateID, StateArgs* args)
 {
 	if (pCharacterState)
 	{
@@ -61,44 +62,44 @@ void BaseCharacter::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
 	if (secureRoom != nullptr)
 	{
 		args->secureRoom = secureRoom;
-		ChangeState(OfficerStateID::OFFICER_OPERATION_MOVE, args);
+		ChangeState(CharacterStateID::OPERATION_MOVE, args);
 		_pastPosition = routeList[0];
 		return;
 	}
-	ChangeState(OfficerStateID::OFFICER_MOVE, args);
+	ChangeState(CharacterStateID::MOVE, args);
 	// 過去の位置を保存
 	_pastPosition = routeList[0];
 }
 
-bool BaseCharacter::CharacterMove(std::vector<Vector2> targetPosList, float speed)
-{
-	Vector2 current = GetPosition();
-	Vector2 target = targetPosList[_moveListIndex];
-
-	// x方向の移動
-	float dx = target.x - current.x;
-	float distance = std::abs(dx);
-
-	float moveX = (dx / distance) * speed;
-	current.x += moveX;
-	current.y = target.y;
-
-	SetPosition(current);
-
-	// 目的地に到着したら次の目的地へ移動
-	if (distance < 2.0f)
-	{
-		current.x = target.x;
-		SetPosition(current);
-		_moveListIndex++;
-	}
-
-	// すべてのルートに到達したらステート遷移
-	if (_moveListIndex == targetPosList.size())
-	{
-		_moveListIndex = 0;
-		return true;
-	}
-
-	return false;
-}
+//bool BaseCharacter::CharacterMove(std::vector<Vector2> targetPosList, float speed)
+//{
+//	Vector2 current = GetPosition();
+//	Vector2 target = targetPosList[_moveListIndex];
+//
+//	// x方向の移動
+//	float dx = target.x - current.x;
+//	float distance = std::abs(dx);
+//
+//	float moveX = (dx / distance) * speed;
+//	current.x += moveX;
+//	current.y = target.y;
+//
+//	SetPosition(current);
+//
+//	// 目的地に到着したら次の目的地へ移動
+//	if (distance < 2.0f)
+//	{
+//		current.x = target.x;
+//		SetPosition(current);
+//		_moveListIndex++;
+//	}
+//
+//	// すべてのルートに到達したらステート遷移
+//	if (_moveListIndex == targetPosList.size())
+//	{
+//		_moveListIndex = 0;
+//		return true;
+//	}
+//
+//	return false;
+//}

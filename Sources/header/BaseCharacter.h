@@ -12,6 +12,14 @@ class BaseCharacterState;
 class BaseCharacter: public BaseObject
 {
 public:
+	struct AttackStatus
+	{
+		// 攻撃力
+		int attack;
+		// 攻撃属性
+		Type damageType;
+	};
+
 	BaseCharacter() {}
 	BaseCharacter(Layer setLayer)
 		: BaseObject(setLayer) {}
@@ -48,34 +56,51 @@ public:
 	/// <param name="strength"></param>
 	/// <param name="damageType"></param>
 	/// <returns></returns>
-	virtual int TakeDamege(int strength, Type damageType) { return -1; }
+	virtual void TakeDamege(int strength, Type damageType)
+	{
+		float index;
+		index = strength * defenseRatio[(int)damageType];
+		DecreaseHealth(ceil(index));
+	}
 	/// <summary>
 	/// 体力減少処理
 	/// </summary>
 	/// <param name="decreaseValue"></param>
 	void DecreaseHealth(int decreaseValue);
-	void ChangeState(OfficerStateID stateID, StateArgs* args = nullptr);
+	/// <summary>
+	/// キャラクターのステートの切り替え
+	/// </summary>
+	/// <param name="stateID"></param>
+	/// <param name="args"></param>
+	void ChangeState(CharacterStateID stateID, StateArgs* args = nullptr);
+	/// <summary>
+	/// 移動ステートを簡単に切り替える関数
+	/// </summary>
+	/// <param name="targetPos"></param>
+	/// <param name="secureRoom"></param>
 	void ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom = nullptr);
-	bool CharacterMove(std::vector<Vector2> targetPosList, float speed);
 
 	void SetPosition(Vector2 setPosition){ position = setPosition; }
 	Vector2 GetPosition(){ return position; }
 	Vector2 GetPastPosition(){ return _pastPosition; }
-	int GetHealth(){ return health; }
+	void SetAttackStatus(AttackStatus attackStatus){ _attackStatus = attackStatus; }
+	AttackStatus GetAttackStatus() { return _attackStatus; }
 	void SetHealth(int value){ health = value; }
-	void SetImpossible(bool flag) { impossible = flag; }
+	int GetHealth(){ return health; }
+	void SetImpossible(bool flag){ impossible = flag; }
 	bool GetImpossible(){ return impossible; }
+	void SetGroup(CharacterGroup groupType){ _groupType = groupType; }
+	CharacterGroup GetGroup(){ return _groupType; }
 
 	// 過去の位置
 	Vector2 _pastPosition;
 	BaseCharacterState* pCharacterState;
+	CharacterStateID stateID;
 	unsigned int color;
 
 protected:
-	// 攻撃力
-	int attack;
-	// 攻撃属性
-	Type attackType;
+	// 攻撃の情報
+	AttackStatus _attackStatus;
 	// 防御倍率
 	float defenseRatio[(int)Type::MAX];
 	// 体力
@@ -84,9 +109,10 @@ protected:
 	int maxHealth;
 	// ステートを遷移できるか
 	bool impossible;
+	// キャラクターの陣営
+	CharacterGroup _groupType;
 
 private:
-	int _moveListIndex;
 
 };
 

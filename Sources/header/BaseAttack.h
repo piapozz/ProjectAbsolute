@@ -17,4 +17,5 @@ public:
 	/// <param name="attackSize"></param>
 	void Attack(BaseCharacter* chara, Vector2 attackPos, Vector2 attackSize);
 private:
+	std::vector<BaseCharacter*> targetList;
 };

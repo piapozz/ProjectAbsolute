@@ -18,6 +18,7 @@ void CharacterStateOperation::Enter(BaseCharacter* character)
 	_secureRoom->StartOperation();
 	character->color = OPERATION;
 	character->SetImpossible(false);
+	character->stateID = CharacterStateID::OPERATION;
 }
 
 void CharacterStateOperation::Exit(BaseCharacter* character)
