@@ -30,7 +30,7 @@ void PhaseMain::Init()
 	_pStageManager->SetEntity(addEntity, 0);
 	_pEventManager = new EventManager();
 	_pEventManager->Init();
-	SecureRoom::EndOperation = [this](int successCount)
+	SecureRoom::EndOperationEvent = [this](int successCount)
 	{
 		// 作業が終了したら、エネルギーを追加
 		_pEventManager->AddEnergy(successCount);
@@ -79,7 +79,7 @@ void PhaseMain::RDrackInputProc(Vector2 pos)
 void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 {
 	// ワールド座標に変更
-	Vector2 worldPos = GetScreen2StagePos(pos);
+	Vector2 worldPos = _pCameraController->GetScreen2StagePos(pos);
 
 	// UI
 	// UIの取得
@@ -103,8 +103,8 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	// ステージの取得
 	BaseObject* section = ObjectManager::instance->FindPosObject(worldPos, ObjectType::SECTION);
 	if (_pPlayerOfficerList.empty()) return;
-	
-	if (static_cast<SecureRoom*>(section) != nullptr)
+
+	if (dynamic_cast<SecureRoom*>(section) != nullptr)
 	{
 		// 収容所の取得
 		SecureRoom* secureRoom = static_cast<SecureRoom*>(section);
@@ -130,16 +130,4 @@ void PhaseMain::WheelRotInputProc(Vector2 pos, int rot)
 void PhaseMain::EscapeInputProc()
 {
 
-}
-
-Vector2 PhaseMain::GetScreen2StagePos(Vector2 screenPos)
-{
-	// 拡縮と中心座標から変換
-	float heightSize = _pCameraController->GetHeightSize();
-	Vector2 stageCentorPos = _pCameraController->GetCameraPos();
-	float ratio = heightSize / WINDOW_HEIGHT;
-	Vector2 screenCentor = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT) / 2;
-	// スクリーンの中心座標からの距離に拡縮をかけてステージの中心座標から求める
-	Vector2 screenDistance = Vector2(screenPos.x - screenCentor.x, screenCentor.y - screenPos.y);
-	return Vector2(stageCentorPos + screenDistance * ratio);
 }
