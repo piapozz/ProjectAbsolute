@@ -44,6 +44,11 @@ public:
 	/// <returns></returns>
 	BaseObject* FindPosObject(Vector2 pos, ObjectType type);
 	/// <summary>
+	/// オブジェクトの検索
+	/// </summary>
+	/// <returns></returns>
+	std::vector<BaseObject*> FindRectObject(Vector2 pos, Vector2 size, ObjectType type);
+	/// <summary>
 	/// ゲーム速度の変更
 	/// </summary>
 	/// <param name="setGameSpeed"></param>
