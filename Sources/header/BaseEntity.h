@@ -15,6 +15,7 @@ public:
 	virtual ~BaseEntity(){}
 
 	void Init() override;
+	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
 	/// <summary>
