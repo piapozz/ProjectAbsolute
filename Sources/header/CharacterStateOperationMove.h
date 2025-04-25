@@ -19,6 +19,7 @@ public:
 private:
 	std::vector<Vector2> _routeList;
 	SecureRoom* _secureRoom;
+	int _arrayCount = 0;
 	int speed = 2;
 
 };

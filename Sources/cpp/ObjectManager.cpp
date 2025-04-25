@@ -100,3 +100,19 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 
 	return nullptr;
 }
+
+std::vector<BaseObject*> ObjectManager::FindRectObject(Vector2 pos, Vector2 size, ObjectType type)
+{
+	std::vector<BaseObject*> objs;
+	for (BaseObject* obj : _objectList[(int)type])
+	{
+		if (obj == nullptr) continue;
+		if (obj->GetLayer() == Layer::NONE_DRAW ||
+			obj->GetLayer() == Layer::NONE_INTERACT) continue;
+		if (obj->IsSameRect(pos, size))
+		{
+			objs.push_back(obj);
+		}
+	}
+	return objs;
+}

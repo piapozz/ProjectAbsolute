@@ -38,7 +38,19 @@ public:
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
+	/// <summary>
+	/// オブジェクトが重なっているかどうか
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	bool IsSamePos(Vector2 pos);
+	/// <summary>
+	/// オブジェクトが範囲内かどうか
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="size"></param>
+	/// <returns></returns>
+	bool IsSameRect(Vector2 pos, Vector2 size);
 protected:
 	// レイヤー
 	Layer layer;
