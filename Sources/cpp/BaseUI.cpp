@@ -3,14 +3,14 @@
 
 void BaseUI::Init(Vector2 setPosition, Vector2 setSize)
 {
-	_fontHandle = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", 24, 1);
-	_textGraph = MakeScreen(128, 32, TRUE); 
+	fontHandle = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", 24, 1);
+	textGraph = MakeScreen(128, 32, TRUE); 
 	position = setPosition;
 	objectSize = setSize;
 	objectType = ObjectType::UI;
 	layer = Layer::OBJECT;
 	ObjectManager::instance->AddObject(this);
-	_textSize = 100;
+	textSize = 100;
 }
 
 void BaseUI::Proc()
@@ -18,29 +18,29 @@ void BaseUI::Proc()
 	// ÉAÉbÉvÉfÅ[Ég
 	BaseObject::Proc();
 
-	if (prevText != _text)
+	if (prevText != text)
 	{
-		int w = GetDrawStringWidthToHandle(_text.c_str(), strlen(_text.c_str()), _fontHandle);
-		int h = GetFontSizeToHandle(_fontHandle);
+		int w = GetDrawStringWidthToHandle(text.c_str(), strlen(text.c_str()), fontHandle);
+		int h = GetFontSizeToHandle(fontHandle);
 
 		int texW = w + 50;
 		int texH = h + 50;
 
 		int screen;
-		_textGraph = MakeScreen(texW, texH, TRUE);
+		textGraph = MakeScreen(texW, texH, TRUE);
 
 		screen = GetDrawScreen();
-		SetDrawScreen(_textGraph);
+		SetDrawScreen(textGraph);
 		ClearDrawScreen();
 
 		int drawX = texW / 2 - w / 2;
 		int drawY = texH / 2 - h / 2;
-		DrawStringToHandle(drawX, drawY, _text.c_str(), GetColor(255, 255, 255), _fontHandle);
+		DrawStringToHandle(drawX, drawY, text.c_str(), GetColor(255, 255, 255), fontHandle);
 
 		ScreenFlip();
 		SetDrawScreen(screen);
 
-		prevText = _text;
+		prevText = text;
 	}
 }
 
@@ -70,9 +70,9 @@ void BaseUI::Draw()
 	DrawBillboard3D(
 		pos,
 		0.5f, 0.5f,
-		_textSize,
+		textSize,
 		0,
-		_textGraph,
+		textGraph,
 		TRUE
 	);
 }
@@ -82,11 +82,12 @@ void BaseUI::Teardown()
 	// îjä¸
 	BaseObject::Teardown();
 
-	if (_textGraph != -1)
+	if (textGraph != -1)
 	{
-		DeleteGraph(_textGraph);
-		_textGraph = -1;
+		DeleteGraph(textGraph);
+		textGraph = -1;
 	}
+	DeleteFontToHandle(fontHandle);
 }
 
 void BaseUI::SetActive(bool active)

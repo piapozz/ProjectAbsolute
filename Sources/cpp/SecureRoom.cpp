@@ -9,7 +9,7 @@
 #include "../header/OperationInjure.h"
 #include "../header/OfficerPlayer.h"
 
-std::function<void(int)> SecureRoom::EndOperation;
+std::function<void(int)> SecureRoom::EndOperationEvent;
 
 void SecureRoom::Init(Vector2 position, Vector2 size)
 {
@@ -27,8 +27,8 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	_operationUIOffsetList[1] = Vector2(SECTION_SIZE_X / 4, SECTION_SIZE_Y / 4);
 	_operationUIOffsetList[2] = Vector2(-SECTION_SIZE_X / 4, -SECTION_SIZE_Y / 4);
 	_operationUIOffsetList[3] = Vector2(SECTION_SIZE_X / 4, -SECTION_SIZE_Y / 4);
-	_operationCountOffset = Vector2(0, -SECTION_SIZE_Y / 1.5f);
-	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 3, -SECTION_SIZE_Y / 1.5f);
+	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _UI_SIZE / 2, SECTION_SIZE_Y / 2 - _UI_SIZE / 2);
+	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _UI_SIZE / 2, SECTION_SIZE_Y / 2 - _UI_SIZE / 2);
 
 	// UIの生成
 	for (int i = 0; i < (int)Type::MAX; i++)
@@ -49,11 +49,11 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 		_pOperationUIList[i]->SetActive(false);
 	}
 	_pOperationCountUI = new UIButton();
-	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(30, 30));
+	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(_UI_SIZE, _UI_SIZE));
 	_pOperationCountUI->SetText(std::to_string(0));
 	_pOperationCountUI->SetLayer(Layer::NONE_INTERACT);
 	_pRunawayCountUI = new UIButton();
-	_pRunawayCountUI->Init(position + _runawayCountOffset, Vector2(30, 30));
+	_pRunawayCountUI->Init(position + _runawayCountOffset, Vector2(_UI_SIZE, _UI_SIZE));
 	_pRunawayCountUI->SetText(std::to_string(0));
 	_pRunawayCountUI->SetLayer(Layer::NONE_INTERACT);
 	// エンティティーのマスターデータから作業IDを取得し生成
@@ -78,7 +78,7 @@ void SecureRoom::Draw()
 
 void SecureRoom::Teardown()
 {
-	
+
 }
 
 void SecureRoom::ClickEvent()
@@ -96,7 +96,7 @@ void SecureRoom::ClickEvent()
 void SecureRoom::SetEntity(BaseEntity* setEntity)
 {
 	_pEntity = setEntity;
-	_pEntity->SetPosition(position);
+	_pEntity->SetPosition(position + Vector2(_ENTITY_OFFSET_POS_X, _ENTITY_OFFSET_POS_Y));
 	_pEntity->SetRunawayUI(_pRunawayCountUI);
 }
 
@@ -134,7 +134,7 @@ void SecureRoom::OperationProc()
 	// 職員に終わったことを通知
 	_pInteractOfficer->ChangeMoveState(_pInteractOfficer->GetPastPosition());
 	// タスクを成功分増やす
-	EndOperation(successCount);
+	EndOperationEvent(successCount);
 	//_pInteractOfficer = nullptr;
 }
 

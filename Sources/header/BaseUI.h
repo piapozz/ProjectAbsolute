@@ -49,21 +49,31 @@ public:
 	/// </summary>
 	/// <param name="setSize"></param>
 	void SetSize(int setSize){
-		_textSize = setSize;
+		textSize = setSize;
 	}
 	/// <summary>
 	/// テキストの設定
 	/// </summary>
 	/// <param name="text"></param>
-	void SetText(const std::string& text) {
-		_text = text;
+	void SetText(const std::string& setText) {
+		text = setText;
 	}
+	/// <summary>
+	/// フォントの設定
+	/// </summary>
+	/// <param name="setFont"></param>
+	/// <param name="size"></param>
+	/// <param name="thick"></param>
+	void SetFontHandle(const char* setFont, int size, int thick){
+		fontHandle = CreateFontToHandle(setFont, size, thick, DX_FONTTYPE_ANTIALIASING);
+	}
+protected:
+	std::string text;
+	int textGraph;
+	int textSize;
+	int fontHandle;
 private:
-	int _fontHandle;
-	int _textGraph;
-	int _textSize;
 	// ボタンの文字
-	std::string _text;
 	std::string prevText = "";
 };
 

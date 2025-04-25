@@ -1,9 +1,13 @@
 #include "../header/UIScreenButton.h"
+#include "../header/CameraController.h"
 
 void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize)
 {
+	_screenPos = setPosition;
+	// ステージ座標に変換
+	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
 	// 初期化
-	BaseUI::Init(setPosition, setSize);
+	BaseUI::Init(stagePos, setSize);
 }
 
 void UIScreenButton::Proc()
@@ -14,9 +18,11 @@ void UIScreenButton::Proc()
 
 void UIScreenButton::Draw()
 {
-	// 描画
-	// テキスト
+	DrawUIBox();
+	DrawUIText();
 
+	// ステージ座標に変換
+	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
 }
 
 void UIScreenButton::Teardown()
