@@ -73,7 +73,7 @@ protected:
 	int textSize;
 	int fontHandle;
 private:
-	// ƒ{ƒ^ƒ“‚Ì•¶Žš
+	// •¶Žš
 	std::string prevText = "";
 };
 
