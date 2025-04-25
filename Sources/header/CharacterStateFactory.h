@@ -23,6 +23,6 @@ public:
 	std::vector<Vector2> targetPosList;
 	SecureRoom* secureRoom;
 
-	static BaseCharacterState* CreateState(OfficerStateID stateID, StateArgs* args = nullptr);
+	static BaseCharacterState* CreateState(CharacterStateID stateID, StateArgs* args = nullptr);
 
 };

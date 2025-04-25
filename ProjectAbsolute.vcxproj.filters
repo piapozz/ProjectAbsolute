@@ -82,14 +82,14 @@
     <Filter Include="ソース ファイル\Sein\CharacterState">
       <UniqueIdentifier>{79c76cd8-814c-473b-9354-e744be866ad4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Sein\CharacterData">
-      <UniqueIdentifier>{1edf24dc-87c1-4eed-a5ec-8015216054b1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Sein\Attack">
       <UniqueIdentifier>{c4eac3df-7eba-4586-b464-99e8cdb5fdac}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Sein\Attack">
       <UniqueIdentifier>{99422be4-6ad5-432b-b7ad-dcc5ce5c118a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sein\CharacterState">
+      <UniqueIdentifier>{1edf24dc-87c1-4eed-a5ec-8015216054b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +261,9 @@
     <ClCompile Include="Sources\cpp\BaseAttack.cpp">
       <Filter>ソース ファイル\Sein\Attack</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseUIScreen.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -342,7 +345,7 @@
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\StateArgs.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\UIButton.h">
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
@@ -408,40 +411,43 @@
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\BaseCharacterState.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\CameraController.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateDead.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateFactory.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateFight.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateIdle.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateMove.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateOperation.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateOperationMove.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStatePanic.h">
-      <Filter>ヘッダー ファイル\Sein\CharacterData</Filter>
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\AttackNormal.h">
       <Filter>ヘッダー ファイル\Sein\Attack</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\BaseAttack.h">
       <Filter>ヘッダー ファイル\Sein\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseUIScreen.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\CameraController.h">
+      <Filter>ヘッダー ファイル\Sein</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

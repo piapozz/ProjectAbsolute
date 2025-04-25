@@ -1,22 +1,22 @@
 #include "../header/CharacterStateFactory.h"
 
-BaseCharacterState* CharacterStateFactory::CreateState(OfficerStateID stateID, StateArgs* args)
+BaseCharacterState* CharacterStateFactory::CreateState(CharacterStateID stateID, StateArgs* args)
 {
 	switch (stateID)
 	{
-		case OfficerStateID::OFFICER_IDLE:
+		case CharacterStateID::IDLE:
 			return new CharacterStateIdle();
-		case OfficerStateID::OFFICER_MOVE:
+		case CharacterStateID::MOVE:
 			return new CharacterStateMove(args->targetPosList);
-		case OfficerStateID::OFFICER_OPERATION:
+		case CharacterStateID::OPERATION:
 			return new CharacterStateOperation(args->secureRoom);
-		case OfficerStateID::OFFICER_OPERATION_MOVE:
+		case CharacterStateID::OPERATION_MOVE:
 			return new CharacterStateOperationMove(args->targetPosList, args->secureRoom);
-		case OfficerStateID::OFFICER_FIGHT:
+		case CharacterStateID::FIGHT:
 			return new CharacterStateFight();
-		case OfficerStateID::OFFICER_PANIC:
+		case CharacterStateID::PANIC:
 			return new CharacterStatePanic();
-		case OfficerStateID::OFFICER_DEAD:
+		case CharacterStateID::DEAD:
 			return new CharacterStateDead();
 		default:
 			return nullptr;

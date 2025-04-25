@@ -9,6 +9,7 @@ void CharacterStateDead::Update(BaseCharacter* character)
 void CharacterStateDead::Enter(BaseCharacter* character)
 {
 	character->color = DEAD;
+	character->stateID = CharacterStateID::DEAD;
 }
 
 void CharacterStateDead::Exit(BaseCharacter* character)

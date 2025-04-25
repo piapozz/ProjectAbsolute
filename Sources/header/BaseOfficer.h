@@ -18,7 +18,8 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
-	int TakeDamege(int strength, Type damageType) override;
+	void TakeDamege(int strength, Type damageType) override;
+	void DecreaseMental(int decreaseValue);
 
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }

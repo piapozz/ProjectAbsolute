@@ -16,7 +16,7 @@ void CharacterStateMove::Update(BaseCharacter* character)
 	if (_arrayCount >= _routeList.size())
 	{
 		character->SetPosition(_routeList.back());
-		character->ChangeState(OfficerStateID::OFFICER_IDLE);
+		character->ChangeState(CharacterStateID::IDLE);
 		return;
 	}
 
@@ -50,6 +50,7 @@ void CharacterStateMove::Enter(BaseCharacter* character)
 {
 	character->color = MOVE;
 	_arrayCount = 0;
+	character->stateID = CharacterStateID::MOVE;
 }
 
 void CharacterStateMove::Exit(BaseCharacter* character)

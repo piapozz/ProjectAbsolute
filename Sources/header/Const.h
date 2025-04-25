@@ -63,7 +63,8 @@ enum class SectionType
 // 種類
 enum class Type
 {
-	RED = 0,
+	INVALID = -1,
+	RED,
 	WHITE,
 	BLACK,
 	PALE,
@@ -79,18 +80,26 @@ enum class OfficerType
 	MAX
 };
 
-enum class OfficerStateID
+enum class CharacterStateID
 {
 	NONE = -1,
-	OFFICER_IDLE,
-	OFFICER_MOVE,
-	OFFICER_OPERATION,
-	OFFICER_OPERATION_MOVE,
-	OFFICER_FIGHT,
-	OFFICER_PANIC,
-	OFFICER_DEAD,
+	IDLE,
+	MOVE,
+	OPERATION,
+	OPERATION_MOVE,
+	FIGHT,
+	PANIC,
+	DEAD,
 
 	MAX
+};
+
+enum class CharacterGroup
+{
+	INVALID = -1,
+	OFFICER,
+	ENTITY,
+	OTHER,
 };
 
 // ステージ
