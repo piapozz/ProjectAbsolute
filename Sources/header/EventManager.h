@@ -1,5 +1,5 @@
 #pragma once
-#include "UISlider.h"
+#include "UIScreenSlider.h"
 /*
 * ishihara
 * イベント管理
@@ -20,13 +20,17 @@ public:
 private:
 	// エネルギー最大値
 	const int _MAX_ENERGY = 100;
-	// エネルギー
-	int _energy;
 	// メルトダウン最大値
 	const int _MELT_MAX = 2;
+	// 暴走レベル
+	const int _MELT_LEVEL_MAX = 10;
+	// エネルギー
+	int _energy;
 	// メルトダウンカウンター
 	int _melt;
+	// 暴走レベル
+	int meltLevel;
 	// スライダー
-	UISlider* _pEnergySlider;
+	UIScreenSlider* _pEnergySlider;
 };
 

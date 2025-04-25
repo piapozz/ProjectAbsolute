@@ -31,6 +31,11 @@ void UIScreenSlider::Draw()
 	DrawUIBox();
 	DrawUIText();
 
+	// テキスト
+	int anchorX = position.x;
+	int anchorY = position.y;
+	//DrawFormatStringToHandle(anchorX, anchorY, GetColor(255,255,255), fontHandle, "あいう");
+
 	// ステージ座標に変換
 	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
 }

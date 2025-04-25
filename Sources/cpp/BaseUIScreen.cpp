@@ -44,7 +44,7 @@ void BaseUIScreen::DrawUIBox()
 
 void BaseUIScreen::DrawUIText()
 {
-	if (_text == "") return;
+	//if (_text == "") return;
 	// テキスト
 	int anchorX = position.x;
 	int anchorY = position.y;
