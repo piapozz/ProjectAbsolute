@@ -15,7 +15,10 @@ public:
 	/// <param name="chara"></param>
 	/// <param name="attackPos"></param>
 	/// <param name="attackSize"></param>
-	void Attack(BaseCharacter* chara, Vector2 attackPos, Vector2 attackSize);
+	void Attack(BaseCharacter* chara);
+protected:
+	Vector2 hitBoxSize;
+
 private:
 	std::vector<BaseCharacter*> targetList;
 };
