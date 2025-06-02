@@ -81,6 +81,15 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	// ワールド座標に変更
 	Vector2 worldPos = _pCameraController->GetScreen2StagePos(pos);
 
+	// スクリーンUI
+	// UIの取得
+	BaseObject* ScreenUI = ObjectManager::instance->FindPosObject(pos, ObjectType::SCREEN_UI);
+	if (ScreenUI != nullptr)
+	{
+		ScreenUI->ClickEvent();
+		return;
+	}
+
 	// UI
 	// UIの取得
 	BaseObject* UI = ObjectManager::instance->FindPosObject(worldPos, ObjectType::UI);

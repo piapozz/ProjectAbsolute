@@ -3,30 +3,23 @@
 
 void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize)
 {
-	_screenPos = setPosition;
-	// ステージ座標に変換
-	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
 	// 初期化
-	BaseUI::Init(setPosition, setSize);
+	BaseUIScreen::Init(setPosition, setSize);
 }
 
 void UIScreenButton::Proc()
 {
 	// アップデート
-	BaseUI::Proc();
+	BaseUIScreen::Proc();
 }
 
 void UIScreenButton::Draw()
 {
-	DrawUIBox();
-	DrawUIText();
-
-	// ステージ座標に変換
-	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
+	BaseUIScreen::Draw();
 }
 
 void UIScreenButton::Teardown()
 {
 	// 破棄
-	BaseUI::Teardown();
+	BaseUIScreen::Teardown();
 }

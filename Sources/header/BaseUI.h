@@ -33,11 +33,6 @@ public:
 	/// </summary>
 	void Teardown() override;
 	/// <summary>
-	/// •\¦‚ÌØ‚è‘Ö‚¦
-	/// </summary>
-	/// <param name="active"></param>
-	void SetActive(bool active);
-	/// <summary>
 	/// À•W‚Ì•ÏX
 	/// </summary>
 	/// <param name="setPos"></param>

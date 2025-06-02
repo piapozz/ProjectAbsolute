@@ -8,6 +8,7 @@ enum class ObjectType{
 	SECTION,
 	CHARACTER,
 	UI,
+	SCREEN_UI,
 
 	MAX
 };
