@@ -7,7 +7,7 @@ void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize)
 	// ステージ座標に変換
 	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
 	// 初期化
-	BaseUI::Init(stagePos, setSize);
+	BaseUI::Init(setPosition, setSize);
 }
 
 void UIScreenButton::Proc()

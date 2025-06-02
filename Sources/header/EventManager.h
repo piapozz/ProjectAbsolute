@@ -1,5 +1,6 @@
 #pragma once
 #include "UIScreenSlider.h"
+#include "UIScreenButton.h"
 /*
 * ishihara
 * イベント管理
@@ -22,7 +23,7 @@ private:
 	const int _MAX_ENERGY = 100;
 	// メルトダウン最大値
 	const int _MELT_MAX = 2;
-	// 暴走レベル
+	// 暴走レベル最大値
 	const int _MELT_LEVEL_MAX = 10;
 	// エネルギー
 	int _energy;
@@ -30,7 +31,12 @@ private:
 	int _melt;
 	// 暴走レベル
 	int meltLevel;
-	// スライダー
+	// 進捗スライダー
 	UIScreenSlider* _pEnergySlider;
+	// 停止ボタン
+	UIScreenButton* _pStopButton;
+	// 通常再生ボタン
+	UIScreenButton* _pNormalSpeedButton;
+	// 倍速再生ボタン
+	UIScreenButton* _pFastSpeedButton;
 };
-
