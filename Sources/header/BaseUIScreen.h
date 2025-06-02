@@ -22,8 +22,9 @@ public:
 	void Teardown() override;
 	void SetTextColor(int r = 255, int g = 255, int b = 255){ _textColor = GetColor(r, g, b); }
 	void SetText(const std::string& setText){ _text = setText; }
+	void OnCursor() override;
 protected:
-	void DrawUIBox();
+	void DrawUIBox(int color = NULL);
 	void DrawUIText();
 	std::string text;
 	int textGraph;

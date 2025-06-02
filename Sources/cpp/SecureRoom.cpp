@@ -1,6 +1,7 @@
 #include "../header/SecureRoom.h"
 #include "../header/BaseEntity.h"
 #include "../header/ObjectManager.h"
+#include "../header/UIScreenButton.h"
 #include "../header/UIButton.h"
 #include "../header/BaseOperation.h"
 #include "../header/OperationSatisfy.h"
@@ -23,18 +24,19 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	_operationNameList[3] = "危害";
 
 	// オフセットを初期化
-	_operationUIOffsetList[0] = Vector2(-SECTION_SIZE_X / 4, SECTION_SIZE_Y / 4);
-	_operationUIOffsetList[1] = Vector2(SECTION_SIZE_X / 4, SECTION_SIZE_Y / 4);
-	_operationUIOffsetList[2] = Vector2(-SECTION_SIZE_X / 4, -SECTION_SIZE_Y / 4);
-	_operationUIOffsetList[3] = Vector2(SECTION_SIZE_X / 4, -SECTION_SIZE_Y / 4);
-	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _UI_SIZE / 2, SECTION_SIZE_Y / 2 - _UI_SIZE / 2);
-	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _UI_SIZE / 2, SECTION_SIZE_Y / 2 - _UI_SIZE / 2);
+	Vector2 uiCenter = Vector2(0, WINDOW_HEIGHT) + Vector2(_SCREEN_UI_SIZE_X / 2, -_SCREEN_UI_SIZE_Y / 2);
+	_operationUIOffsetList[0] = Vector2(-_SCREEN_UI_SIZE_X / 4, -_SCREEN_UI_SIZE_Y / 4);
+	_operationUIOffsetList[1] = Vector2(_SCREEN_UI_SIZE_X / 4, -_SCREEN_UI_SIZE_Y / 4);
+	_operationUIOffsetList[2] = Vector2(-_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
+	_operationUIOffsetList[3] = Vector2(_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
+	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
+	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 
 	// UIの生成
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		_pOperationUIList[i] = new UIButton();
-		_pOperationUIList[i]->Init(position + _operationUIOffsetList[i], Vector2(SECTION_SIZE_X / 2, SECTION_SIZE_Y / 2));
+		_pOperationUIList[i] = new UIScreenButton();
+		_pOperationUIList[i]->Init(uiCenter + _operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2));
 		_pOperationUIList[i]->SetText(_operationNameList[i]);
 		_pOperationUIList[i]->SetCallback([this, i, position]()
 		{
@@ -44,16 +46,17 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 				_pOperationUIList[j]->SetActive(false);
 			}
 			_selectOperation = (Type)i;
-			_pInteractOfficer->ChangeMoveState(position, this);
+			Vector2 setPos = Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y);
+			_pInteractOfficer->ChangeMoveState(position + setPos, this);
 		});
 		_pOperationUIList[i]->SetActive(false);
 	}
 	_pOperationCountUI = new UIButton();
-	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(_UI_SIZE, _UI_SIZE));
+	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
 	_pOperationCountUI->SetText(std::to_string(0));
 	_pOperationCountUI->SetLayer(Layer::NONE_INTERACT);
 	_pRunawayCountUI = new UIButton();
-	_pRunawayCountUI->Init(position + _runawayCountOffset, Vector2(_UI_SIZE, _UI_SIZE));
+	_pRunawayCountUI->Init(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
 	_pRunawayCountUI->SetText(std::to_string(0));
 	_pRunawayCountUI->SetLayer(Layer::NONE_INTERACT);
 	// エンティティーのマスターデータから作業IDを取得し生成

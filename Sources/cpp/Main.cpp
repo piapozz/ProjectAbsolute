@@ -39,8 +39,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetBackgroundColor(0, 0, 0);
 
 	// Zバッファを使用する
-	SetUseZBufferFlag(true);
-	SetWriteZBufferFlag(true);
+	SetUseZBufferFlag(false);
+	SetWriteZBufferFlag(false);
 
 	// メインループ(何かキーが押されたらループを抜ける)
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
