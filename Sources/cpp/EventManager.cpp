@@ -1,5 +1,7 @@
 #include "../header/EventManager.h"
 #include "../header//StageManager.h"
+#include "../header/ObjectManager.h"
+#include "../header/UIButton.h"
 #include<random>
 
 void EventManager::Init()
@@ -15,6 +17,56 @@ void EventManager::Init()
 	std::string str = std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY);
 	_pEnergySlider->SetText(str.c_str());
 	_pEnergySlider->SetTextColor();
+
+	UIButton* _pEnergyButton = new UIButton();
+	_pEnergyButton->Init(Vector2(100, 1050), Vector2(500, 50));
+	_pEnergyButton->SetLayer(Layer::UI);
+	_pEnergyButton->SetText("エネルギー");
+	_pEnergyButton->SetCallback([this]()
+	{
+		// エネルギーの表示/非表示切り替え
+		if (_pEnergySlider->GetLayer() != Layer::NONE_DRAW)
+		{
+			_pEnergySlider->SetActive(false);
+		} else
+		{
+			_pEnergySlider->SetActive(true);
+		}
+	});
+
+	// 停止ボタン
+	_pStopButton = new UIScreenButton();
+	_pStopButton->Init(Vector2(100, 1050), Vector2(200, 50));
+	_pStopButton->SetLayer(Layer::UI);
+	_pStopButton->SetText("停止");
+	_pStopButton->SetCallback([this]()
+	{
+		// 停止ボタンが押されたときの処理
+		ObjectManager::instance->ChangeGameSpeed(0);
+	});
+	_pStopButton->SetTextColor();
+	// 通常速度ボタン
+	_pNormalSpeedButton = new UIScreenButton();
+	_pNormalSpeedButton->Init(Vector2(300, 1050), Vector2(200, 50));
+	_pNormalSpeedButton->SetLayer(Layer::UI);
+	_pNormalSpeedButton->SetText("通常");
+	_pNormalSpeedButton->SetCallback([this]()
+	{
+		// 通常速度ボタンが押されたときの処理
+		ObjectManager::instance->ChangeGameSpeed(1);
+	});
+	_pNormalSpeedButton->SetTextColor();
+	// 倍速ボタン
+	_pFastSpeedButton = new UIScreenButton();
+	_pFastSpeedButton->Init(Vector2(500, 1050), Vector2(200, 50));
+	_pFastSpeedButton->SetLayer(Layer::UI);
+	_pFastSpeedButton->SetText("倍速");
+	_pFastSpeedButton->SetCallback([this]()
+	{
+		// 倍速ボタンが押されたときの処理
+		ObjectManager::instance->ChangeGameSpeed(2);
+	});
+	_pFastSpeedButton->SetTextColor();
 }
 
 void EventManager::AddEnergy(int value)
@@ -24,7 +76,7 @@ void EventManager::AddEnergy(int value)
 	if (_energy > _MAX_ENERGY) _energy = _MAX_ENERGY;
 	if (_energy < 0) _energy = 0;
 	// スライダーの更新
-	_pEnergySlider->SetValue(_energy / _MAX_ENERGY);
+	_pEnergySlider->SetValue(static_cast<float>(_energy) / static_cast<float>(_MAX_ENERGY));
 	_pEnergySlider->SetText((std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY)).c_str());
 }
 
