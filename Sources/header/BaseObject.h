@@ -51,6 +51,11 @@ public:
 	/// <param name="size"></param>
 	/// <returns></returns>
 	bool IsSameRect(Vector2 pos, Vector2 size);
+	/// <summary>
+	/// •\¦‚ÌØ‚è‘Ö‚¦
+	/// </summary>
+	/// <param name="active"></param>
+	void SetActive(bool active);
 protected:
 	// ƒŒƒCƒ„[
 	Layer layer;

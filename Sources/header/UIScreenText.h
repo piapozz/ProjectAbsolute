@@ -21,7 +21,7 @@ public:
 	}
 	~UIScreenText() {
 	}
-	void Init(Vector2 setPosition, Vector2 setSize) override;
+	void Init(Vector2 setPosition, Vector2 setSize);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

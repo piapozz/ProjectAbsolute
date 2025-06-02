@@ -16,7 +16,7 @@ public:
 	UIScreenButton(const UIScreenButton& obj)
 		: BaseUIScreen(obj) {}
 	~UIScreenButton() {}
-	void Init(Vector2 setPosition, Vector2 setSize) override;
+	void Init(Vector2 setPosition, Vector2 setSize);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
@@ -29,6 +29,4 @@ public:
 private:
 	// コールバック
 	std::function<void()> _callback;
-	// スクリーン座標
-	Vector2 _screenPos;
 };

@@ -31,7 +31,5 @@ public:
 private:
 	// フェーズのリスト
 	std::vector<BasePhase*> _phaseList;
-	// オブジェクト管理クラス
-	ObjectManager* _objectManager;
 };
 

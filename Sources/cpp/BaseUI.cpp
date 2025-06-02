@@ -89,15 +89,3 @@ void BaseUI::Teardown()
 	}
 	DeleteFontToHandle(fontHandle);
 }
-
-void BaseUI::SetActive(bool active)
-{
-	if (active)
-	{
-		layer = Layer::UI;
-	}
-	else
-	{
-		layer = Layer::NONE_DRAW;
-	}
-}

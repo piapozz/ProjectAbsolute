@@ -1,34 +1,37 @@
 #pragma once
-#include "BaseUI.h"
-class BaseUIScreen:public BaseUI
+#include "BaseObject.h"
+class BaseUIScreen:public BaseObject
 {
 public:
 	BaseUIScreen() {
 	}
 	BaseUIScreen(Layer setLayer)
-		: BaseUI(setLayer) {
+		: BaseObject(setLayer) {
 	}
 	BaseUIScreen(Layer setLayer, int setDrawHandle)
-		: BaseUI(setLayer, setDrawHandle) {
+		: BaseObject(setLayer, setDrawHandle) {
 	}
-	BaseUIScreen(const BaseUI& obj)
-		: BaseUI(obj) {
+	BaseUIScreen(const BaseUIScreen& obj)
+		: BaseObject(obj) {
 	}
 	~BaseUIScreen() {}
 
-	void Init(Vector2 setPosition, Vector2 setSize) override;
+	void Init(Vector2 setPosition, Vector2 setSize);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
 	void SetTextColor(int r = 255, int g = 255, int b = 255){ _textColor = GetColor(r, g, b); }
-	void SetText(const char* setText){ _text = setText; }
+	void SetText(const std::string& setText){ _text = setText; }
 protected:
 	void DrawUIBox();
 	void DrawUIText();
+	std::string text;
+	int textGraph;
+	int textSize;
+	int fontHandle;
 private:
-	// スクリーン座標
 	Vector2 _screenPos;
-	const char* _text;
+	std::string _text;
 	int _textColor;
 };
 

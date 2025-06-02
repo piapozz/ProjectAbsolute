@@ -3,18 +3,13 @@
 
 void UIScreenSlider::Init(Vector2 setPosition, Vector2 setSize)
 {
-	_screenPos = setPosition;
-	_color = -1;
-	// ステージ座標に変換
-	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
-	// 初期化
-	BaseUI::Init(setPosition, setSize);
+	BaseUIScreen::Init(setPosition, setSize);
 }
 
 void UIScreenSlider::Proc()
 {
 	// アップデート
-	BaseUI::Proc();
+	BaseUIScreen::Proc();
 }
 
 void UIScreenSlider::Draw()
@@ -25,23 +20,13 @@ void UIScreenSlider::Draw()
 	int x2 = x1 + (objectSize.x * _value);
 	int y2 = position.y + objectSize.y / 2;
 
-	// 2D表示
-	DrawBoxAA(x1, y1, x2, y2, _color, true);
+	DrawBoxAA(x1, y1, x2, y2, _color, TRUE);
 
-	DrawUIBox();
-	DrawUIText();
-
-	// テキスト
-	int anchorX = position.x;
-	int anchorY = position.y;
-	//DrawFormatStringToHandle(anchorX, anchorY, GetColor(255,255,255), fontHandle, "あいう");
-
-	// ステージ座標に変換
-	Vector2 stagePos = CameraController::GetScreen2StagePos(_screenPos);
+	BaseUIScreen::Draw();
 }
 
 void UIScreenSlider::Teardown()
 {
 	// 破棄
-	BaseUI::Teardown();
+	BaseUIScreen::Teardown();
 }
