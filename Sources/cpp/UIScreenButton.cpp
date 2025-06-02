@@ -15,6 +15,8 @@ void UIScreenButton::Proc()
 
 void UIScreenButton::Draw()
 {
+	DrawUIBox(GetColor(128, 128, 128));
+	DrawUIText();
 	BaseUIScreen::Draw();
 }
 

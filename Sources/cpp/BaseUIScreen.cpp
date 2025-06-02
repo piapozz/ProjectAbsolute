@@ -29,8 +29,6 @@ void BaseUIScreen::Draw()
 {
 	// •`‰æ
 	BaseObject::Draw();
-	DrawUIBox();
-	DrawUIText();
 }
 
 void BaseUIScreen::Teardown()
@@ -39,7 +37,7 @@ void BaseUIScreen::Teardown()
 	BaseObject::Teardown();
 }
 
-void BaseUIScreen::DrawUIBox()
+void BaseUIScreen::DrawUIBox(int color)
 {
 	// ŽlŠp‚ð•`‰æ
 	int x1 = position.x + objectSize.x / 2;
@@ -47,7 +45,10 @@ void BaseUIScreen::DrawUIBox()
 	int x2 = position.x - objectSize.x / 2;
 	int y2 = position.y - objectSize.y / 2;
 
-	DrawBoxAA(x1, y1, x2, y2, GetColor(255, 255, 255), FALSE) ;
+	if (color == NULL)
+		DrawBoxAA(x1, y1, x2, y2, GetColor(255, 255, 255), false);
+	else
+		DrawBoxAA(x1, y1, x2, y2, color, true);
 }
 
 void BaseUIScreen::DrawUIText()
@@ -57,4 +58,10 @@ void BaseUIScreen::DrawUIText()
 	int anchorX = position.x;
 	int anchorY = position.y;
 	DrawFormatStringToHandle(anchorX, anchorY, _textColor, fontHandle, _text.c_str());
+}
+
+void BaseUIScreen::OnCursor()
+{
+	beforeOnCursor = true;
+	DrawUIBox();
 }

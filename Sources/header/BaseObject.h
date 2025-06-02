@@ -32,8 +32,8 @@ public:
 	/// 破棄
 	/// </summary>
 	virtual void Teardown();
-	virtual void ClickEvent(){
-	};
+	virtual void ClickEvent(){};
+	virtual void OnCursor(){};
 
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
@@ -67,4 +67,6 @@ protected:
 	ObjectType objectType;
 	// サイズ
 	Vector2 objectSize;
+	// カーソルが乗っていたか
+	bool beforeOnCursor;
 };

@@ -8,6 +8,7 @@ class BaseEntity;
 class BaseOperation;
 class OfficerPlayer;
 class UIButton;
+class UIScreenButton;
 
 /*
  * Sakakura
@@ -65,8 +66,13 @@ private:
 	// エンティティのオフセット
 	const float _ENTITY_OFFSET_POS_X = -SECTION_SIZE_X / 4;
 	const float _ENTITY_OFFSET_POS_Y = -SECTION_SIZE_Y / 4;
+	// 職員のオフセット
+	const float _OFFICER_OFFSET_POS_X = SECTION_SIZE_X / 4;
+	const float _OFFICER_OFFSET_POS_Y = -SECTION_SIZE_Y / 4;
 	// UIのサイズ
-	const float _UI_SIZE = SECTION_SIZE_X / 10;
+	const float _COUNT_UI_SIZE = SECTION_SIZE_X / 10;
+	const float _SCREEN_UI_SIZE_X = WINDOW_WIDTH / 6;
+	const float _SCREEN_UI_SIZE_Y = WINDOW_HEIGHT / 3;
 
 	// 収容しているエンティティー
 	BaseEntity* _pEntity;
@@ -83,7 +89,7 @@ private:
 	// 作業の名前
 	std::string _operationNameList[(int)Type::MAX];
 	// UI
-	UIButton* _pOperationUIList[(int)Type::MAX];
+	UIScreenButton* _pOperationUIList[(int)Type::MAX];
 	UIButton* _pOperationCountUI;
 	UIButton* _pRunawayCountUI;
 	// UIのオフセット
