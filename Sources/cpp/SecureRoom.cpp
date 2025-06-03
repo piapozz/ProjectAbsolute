@@ -86,8 +86,9 @@ void SecureRoom::Teardown()
 
 void SecureRoom::ClickEvent()
 {
-	// 作業中なら返す
-	if (_currentState == State::INTERACT) return;
+	// 待機でないなら返す
+	if (_currentState != State::IDLE) return;
+	_currentState = State::SELECT;
 
 	// 作業UIの表示
 	for (int i = 0; i < (int)Type::MAX; i++)
@@ -143,9 +144,8 @@ void SecureRoom::OperationProc()
 
 void SecureRoom::StartOperation()
 {
-	// 待機状態でないなら返す
-	if (_currentState != State::IDLE) return;
-
+	// 選択状態でないなら返す
+	if (_currentState != State::SELECT) return;
 	_currentState = State::INTERACT;
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
 	_pEntity->SetOperation(_selectOperation);
