@@ -6,10 +6,10 @@
 
 enum class ObjectType{
 	INVALID = -1,
-	SECTION,
-	CHARACTER,
-	UI,
 	SCREEN_UI,
+	UI,
+	CHARACTER,
+	SECTION,
 
 	MAX
 };

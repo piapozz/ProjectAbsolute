@@ -34,8 +34,7 @@ void PhaseMain::Init()
 	_pStageManager->CreateStage();
 	_pOfficerManager = new OfficerManager();
 	_pOfficerManager->Init();
-	BaseEntity* addEntity = new Entity_E000();
-	addEntity->Init();
+	BaseEntity* addEntity = ObjectFactory::Instance().Create<Entity_E000>();
 	_pStageManager->SetEntity(addEntity, 0);
 	_pEventManager = new EventManager();
 	_pEventManager->Init();
@@ -126,8 +125,12 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	if (pInputManager->IsLeftClick(pos))
 	{
 		// スクリーンUI
-		// UIの取得
-		BaseObject* object = ObjectManager::Instance().FindPosObject(worldPos);
+		BaseObject* object = ObjectManager::Instance().FindPosObject(pos);
+		// スクリーンUIがないならワールド座標を渡してオブジェクト取得
+		if (object == nullptr)
+		{
+			object = ObjectManager::Instance().FindPosObject(worldPos);
+		}
 		if (object != nullptr)
 		{
 			object->ClickEvent();
@@ -137,6 +140,8 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		if (!_pStageManager->CheckPosOnStage(worldPos))
 		{
 			_pSelectOfficerList.clear();
+			_pUIManager->SetActiveOperationUI(false);
+
 			return;
 		}
 	}

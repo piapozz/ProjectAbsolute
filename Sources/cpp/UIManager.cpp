@@ -2,9 +2,6 @@
 #include "../header/UIScreenButton.h"
 #include "../header/ObjectFactory.h"
 
-std::vector<UIScreenButton*> UIManager::GetOperationUIList(){
-	return _pOperationUIList;
-}
 std::vector<UIScreenButton*> UIManager::_pOperationUIList;
 
 UIManager::UIManager()
@@ -21,9 +18,23 @@ UIManager::UIManager()
 	// UIÇÃê∂ê¨
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-
 		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true);
 		button->SetActive(false);
 		_pOperationUIList.push_back(button);
+	}
+}
+std::vector<UIScreenButton*> UIManager::GetOperationUIList()
+{
+	return _pOperationUIList;
+}
+
+void UIManager::SetActiveOperationUI(bool active)
+{
+	for (int i = 0; i < (int)Type::MAX; i++)
+	{
+		if (active)
+			_pOperationUIList[i]->SetLayer(Layer::OBJECT);
+		else
+			_pOperationUIList[i]->SetLayer(Layer::NONE_DRAW);
 	}
 }

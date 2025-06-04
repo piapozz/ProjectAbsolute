@@ -9,6 +9,7 @@ public:
 	~UIManager(){}
 
 	static std::vector<UIScreenButton*> GetOperationUIList();
+	static void SetActiveOperationUI(bool active);
 
 private:
 	static std::vector<UIScreenButton*> _pOperationUIList;

@@ -8,7 +8,7 @@
 class Entity_E000: public BaseEgoEntity
 {
 public:
-	Entity_E000(){}
+	Entity_E000(){Init(); }
 	virtual ~Entity_E000(){}
 	static std::string StaticTypeName() {
 		return "Entity_E000";
