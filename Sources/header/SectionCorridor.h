@@ -21,6 +21,10 @@ public:
 	~SectionCorridor() {
 	}
 
+	static std::string StaticTypeName() {
+		return "SectionCorridor";
+	}
+
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>

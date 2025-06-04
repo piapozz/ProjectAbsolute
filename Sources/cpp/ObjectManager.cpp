@@ -1,5 +1,7 @@
 #include "../header/ObjectManager.h"
 #include "../header/BaseObject.h"
+#include "../header/ObjectFactory.h"
+#include "../header/MemoryAllocator.h"
 
 ObjectManager* ObjectManager::instance;
 
@@ -62,8 +64,7 @@ void ObjectManager::RemoveObject(BaseObject* obj)
 		{
 			if (*it == obj)
 			{
-				obj->Teardown();
-				delete *it;
+				ObjectFactory::Instance().Destroy(obj);
 				_objectList[i].erase(it);
 				break;
 			}
@@ -78,8 +79,7 @@ void ObjectManager::AllClear()
 		for (BaseObject* obj : _objectList[i])
 		{
 			if (obj == nullptr) continue;
-			obj->Teardown();
-			delete obj;
+			ObjectFactory::Instance().Destroy(obj);
 		}
 	}
 	_objectList.clear();

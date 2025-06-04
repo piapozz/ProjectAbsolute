@@ -264,9 +264,6 @@
     <ClCompile Include="Sources\cpp\BaseUIScreen.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\MemoryAllocator.cpp">
-      <Filter>ソース ファイル\Ishihara</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -453,6 +450,12 @@
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\MemoryAllocator.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\ObjectFactory.h">
+      <Filter>ヘッダー ファイル\Ishihara</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\AutoTypeNameObject.h">
       <Filter>ヘッダー ファイル\Ishihara</Filter>
     </ClInclude>
   </ItemGroup>
