@@ -9,6 +9,8 @@ class SectionConnect: public BaseSection
 public:
 	SectionConnect() {
 	}
+	SectionConnect(Vector2 pos, Vector2 size): BaseSection(pos, size) {
+	}
 	SectionConnect(Layer setLayer)
 		: BaseSection(setLayer) {
 	}
@@ -24,11 +26,6 @@ public:
 	static std::string StaticTypeName() {
 		return "SectionConnect";
 	}
-
-	std::string GetTypeName() const override {
-		return StaticTypeName();
-	}
-
 
 	/// <summary>
 	/// èâä˙âª

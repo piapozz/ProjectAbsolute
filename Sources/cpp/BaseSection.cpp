@@ -1,5 +1,6 @@
 #include "../header/BaseSection.h"
 #include "../header/ObjectManager.h"
+#include "../header/BaseCharacter.h"
 
 void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 {
@@ -9,7 +10,6 @@ void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 	objectSize = setSize;
 	objectType = ObjectType::SECTION;
 	layer = Layer::OBJECT;
-	ObjectManager::instance->AddObject(this);
 }
 
 void BaseSection::Proc()
@@ -44,4 +44,19 @@ void BaseSection::Teardown()
 {
 	// 破棄
 	BaseObject::Teardown();
+}
+
+std::vector<BaseCharacter*> BaseSection::GetCharacters() const
+{
+	// キャラクターの取得
+	auto charas = ObjectManager::Instance().FindRectObject(position, objectSize, ObjectType::CHARACTER);
+	std::vector<BaseCharacter*> characters;
+	for (BaseObject* obj : charas)
+	{
+		if (obj->GetType() == ObjectType::CHARACTER)
+		{
+			characters.push_back(static_cast<BaseCharacter*>(obj));
+		}
+	}
+	return characters;
 }

@@ -8,6 +8,9 @@ class UIScreenSlider : public BaseUIScreen
 {
 public:
 	UIScreenSlider() {}
+	UIScreenSlider(Vector2 setPosition, Vector2 setSize, bool fill) {
+		Init(setPosition, setSize, fill);
+	}
 	UIScreenSlider(Layer setLayer): BaseUIScreen(setLayer) {}
 	UIScreenSlider(Layer setLayer, int setDrawHandle): BaseUIScreen(setLayer, setDrawHandle) {}
 	UIScreenSlider(const UIScreenSlider& obj): BaseUIScreen(obj) {}
@@ -16,6 +19,10 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	static std::string StaticTypeName() {
+		return "UIScreenSlider";
+	}
 	/// <summary>
 	/// ílÇÃê›íË
 	/// </summary>

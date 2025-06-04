@@ -6,6 +6,7 @@ void SectionConnect::Init(Vector2 setPosition, Vector2 setSize)
 {
 	// èâä˙âª
 	BaseSection::Init(setPosition, setSize);
+	layer = Layer::NONE_INTERACT;
 }
 
 void SectionConnect::Proc()

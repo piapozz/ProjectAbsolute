@@ -53,9 +53,7 @@ void StageManager::CreateStage()
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
 				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				room->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
+				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetText("部屋");
 				button->SetLayer(Layer::NONE_INTERACT);
@@ -64,11 +62,9 @@ void StageManager::CreateStage()
 			{
 				// 廊下を生成
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
-				SectionCorridor* corrider = new SectionCorridor();
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
-				corrider->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
-				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
+				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetText("廊下");
 				button->SetLayer(Layer::NONE_INTERACT);
@@ -77,11 +73,9 @@ void StageManager::CreateStage()
 			{
 				// 接合部を生成
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
-				SectionConnect* connect = new SectionConnect();
 				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				connect->Init(pos, Vector2(SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetText("接続部");
 				button->SetLayer(Layer::NONE_INTERACT);
@@ -90,9 +84,8 @@ void StageManager::CreateStage()
 			{
 				// 収容所を生成
 				int size = CheckSectionSize(j, i, SectionType::SECURE);
-				SecureRoom* secure = new SecureRoom();
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				secure->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);
 			}

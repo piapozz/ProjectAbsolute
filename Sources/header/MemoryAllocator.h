@@ -6,7 +6,7 @@
 template<typename T>
 class MemoryAllocator
 {
-	public:
+public:
 	MemoryAllocator(size_t capacity = 100) 
 	{
 		_pool.reserve(capacity);
@@ -51,7 +51,7 @@ class MemoryAllocator
 		_freeIndices.push(index);
 	}
 
-	private:
+private:
 	std::vector<T*> _pool;
 	std::stack<size_t> _freeIndices;
 };

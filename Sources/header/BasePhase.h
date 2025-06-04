@@ -29,7 +29,7 @@ public:
 	/// ”jŠü
 	/// </summary>
 	inline virtual void Teardown() {
-		ObjectManager::instance->AllClear(); };
+		ObjectManager::Instance().AllClear(); };
 
 protected:
 	/// <summary>

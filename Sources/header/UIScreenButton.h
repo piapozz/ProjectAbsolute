@@ -9,6 +9,9 @@ class UIScreenButton : public BaseUIScreen
 {
 public:
 	UIScreenButton() {}
+	UIScreenButton(Vector2 setPosition, Vector2 setSize, bool fill) {
+		Init(setPosition, setSize, fill);
+	}
 	UIScreenButton(Layer setLayer)
 		: BaseUIScreen(setLayer) {}
 	UIScreenButton(Layer setLayer, int setDrawHandle)
@@ -21,6 +24,11 @@ public:
 	void Draw() override;
 	void Teardown() override;
 	void ClickEvent() override { _callback(); }
+
+	static std::string StaticTypeName() {
+		return "UIScreenButton";
+	}
+
 	/// <summary>
 	/// コールバックの設定
 	/// </summary>

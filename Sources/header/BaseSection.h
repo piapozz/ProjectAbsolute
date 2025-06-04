@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseObject.h"
+
+class BaseCharacter;
 /*
 * Ishihara
 * 部屋の基底
@@ -35,6 +37,11 @@ public:
 	/// 破棄
 	/// </summary>
 	void Teardown() override;
+	/// <summary>
+	/// キャラクターの取得
+	/// </summary>
+	/// <returns></returns>
+	std::vector<BaseCharacter*> GetCharacters() const;
 protected:
 	// 自分がどの部屋のタイプか
 	SectionType sectionType;

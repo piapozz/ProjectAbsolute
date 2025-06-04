@@ -13,29 +13,53 @@ class BaseAllocatorWrapper;
 template<typename T>
 class AllocatorWrapper;
 
+// オブジェクトの生成と削除を管理するファクトリークラス
 class ObjectFactory {
 public:
 	static ObjectFactory& Instance() {
 		static ObjectFactory instance;
 		return instance;
 	}
-
-	template<typename T>
-	void Register(const std::string& key = T::StaticTypeName());
-
-	template<typename T, typename... Args>
-	void RegisterWithArgs();
-
-	template<typename T, typename... Args>
-	T* CreateWithArgs(Args&&... args);
-
+	/// <summary>
+	/// オブジェクトの生成（引数なし）
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <returns></returns>
 	template<typename T>
 	T* Create();
-
+	/// <summary>
+	/// オブジェクトの生成（引数あり）
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="...Args"></typeparam>
+	/// <param name="...args"></param>
+	/// <returns></returns>
+	template<typename T, typename... Args>
+	T* CreateWithArgs(Args&&... args);
+	/// <summary>
+	/// オブジェクトの削除
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="obj"></param>
 	template<typename T>
 	void Destroy(T* obj);
 
 private:
+	/// <summary>
+	/// クラスの登録
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="key"></param>
+	template<typename T>
+	void Register(const std::string& key = T::StaticTypeName());
+	/// <summary>
+	/// クラスの登録（引数あり）
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="...Args"></typeparam>
+	template<typename T, typename... Args>
+	void RegisterWithArgs();
+
 	std::unordered_map<std::string, std::function<BaseObject*()>> _creators;
 	std::unordered_map<std::string, std::unique_ptr<BaseAllocatorWrapper>> _allocators;
 };
@@ -45,7 +69,6 @@ template<typename T>
 void ObjectFactory::Register(const std::string& key)
 {
 	if (_allocators.find(key) != _allocators.end()) return;
-
 	_allocators[key] = std::make_unique<AllocatorWrapper<T>>();
 	_creators[key] = [this, key]() -> BaseObject*
 	{
@@ -59,13 +82,10 @@ template<typename T, typename... Args>
 void ObjectFactory::RegisterWithArgs()
 {
 	static_assert(std::is_base_of<BaseObject, T>::value, "T must derive from BaseObject");
-
 	std::string key = T::StaticTypeName();
 	if (_allocators.find(key) == _allocators.end())
-	{
 		_allocators[key] = std::make_unique<AllocatorWrapper<T>>();
-	}
-
+	
 	_creators[key] = [this, key]() -> BaseObject*
     {
         auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
@@ -77,17 +97,13 @@ template<typename T, typename... Args>
 T* ObjectFactory::CreateWithArgs(Args&&... args)
 {
 	static_assert(std::is_base_of<BaseObject, T>::value, "T must derive from BaseObject");
-
 	const std::string key = T::StaticTypeName();
 	if (_allocators.find(key) == _allocators.end())
-	{
 		RegisterWithArgs<T, Args...>();
-	}
-
+	
 	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
 	T* obj = allocatorWrapper->Allocate(std::forward<Args>(args)...);
-
-	ObjectManager::instance->AddObject(obj);
+	ObjectManager::Instance().AddObject(obj);
 	return obj;
 }
 
@@ -106,17 +122,13 @@ void ObjectFactory::Destroy(T* obj)
 {
 	if (!obj) return;
 
-	ObjectManager::instance->RemoveObject(obj);
-
+	ObjectManager::Instance().RemoveObject(obj);
 	const std::string key = T::StaticTypeName();
 	auto it = _allocators.find(key);
-	if (it != _allocators.end())
-	{
+	if (it != _allocators.end())	
 		it->second->DeallocateBase(obj);
-	} else
-	{
+	else	
 		delete obj;
-	}
 }
 
 class BaseAllocatorWrapper {
@@ -127,7 +139,6 @@ public:
 	virtual void DeallocateBase(BaseObject* obj) = 0;
 };
 
-// テンプレート派生クラスで型安全に扱う
 template<typename T>
 class AllocatorWrapper: public BaseAllocatorWrapper {
 public:

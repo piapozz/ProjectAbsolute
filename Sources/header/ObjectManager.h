@@ -9,7 +9,10 @@
 class ObjectManager
 {
 public:
-	static ObjectManager* instance;
+	static ObjectManager& Instance() {
+		static ObjectManager instance;
+		return instance;
+	}
 
 	ObjectManager() {}
 	~ObjectManager() {}

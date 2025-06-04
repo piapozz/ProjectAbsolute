@@ -8,6 +8,9 @@ class BaseUI: public BaseObject
 {
 public:
 	BaseUI() {}
+	BaseUI(Vector2 setPosition, Vector2 setSize) {
+		Init(setPosition, setSize);
+	}
 	BaseUI(Layer setLayer)
 		: BaseObject(setLayer) {}
 	BaseUI(Layer setLayer,int setDrawHandle)

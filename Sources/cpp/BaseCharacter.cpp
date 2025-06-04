@@ -9,7 +9,6 @@ void BaseCharacter::Init()
 	objectType = ObjectType::CHARACTER;
 	layer = Layer::OBJECT;
 	objectSize = Vector2(50, 50);
-	ObjectManager::instance->AddObject(this);
 
 }
 

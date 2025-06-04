@@ -16,7 +16,6 @@ void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill)
 	objectSize = setSize;
 	objectType = ObjectType::SCREEN_UI;
 	layer = Layer::OBJECT;
-	ObjectManager::instance->AddObject(this);
 	textSize = 100;
 	_outLineColor = GetColor(255, 255, 255);
 }

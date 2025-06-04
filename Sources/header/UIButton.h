@@ -10,6 +10,7 @@ class UIButton: public BaseUI
 public:
 	UIButton() {}
 	UIButton(Vector2 pos, Vector2 size){
+		Init(pos, size);
 	}
 	UIButton(Layer setLayer)
 		: BaseUI(setLayer) {}
@@ -26,10 +27,6 @@ public:
 
 	static std::string StaticTypeName() {
 		return "UIButton";
-	}
-
-	std::string GetTypeName() const override {
-		return StaticTypeName();
 	}
 
 	/// <summary>
