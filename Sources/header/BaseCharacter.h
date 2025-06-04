@@ -4,6 +4,7 @@
 #include "../header/StateArgs.h"
 
 class BaseCharacterState;
+class BaseSection;
 
 /*
 * Ishihara
@@ -78,7 +79,7 @@ public:
 	/// </summary>
 	/// <param name="targetPos"></param>
 	/// <param name="secureRoom"></param>
-	void ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom = nullptr);
+	void ChangeMoveState(BaseSection* targetSection);
 
 	Vector2 GetPosition(){ return position; }
 	Vector2 GetPastPosition(){ return _pastPosition; }
