@@ -8,10 +8,10 @@ public:
 	UIManager();
 	~UIManager(){}
 
-	
+	static std::vector<UIScreenButton*> GetOperationUIList();
 
 private:
-	std::vector<UIScreenButton*> _pOperationUIList;
+	static std::vector<UIScreenButton*> _pOperationUIList;
 	const float _SCREEN_UI_SIZE_X = WINDOW_WIDTH / 6;
 	const float _SCREEN_UI_SIZE_Y = WINDOW_HEIGHT / 3;
 };

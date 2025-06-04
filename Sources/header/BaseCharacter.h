@@ -80,7 +80,6 @@ public:
 	/// <param name="secureRoom"></param>
 	void ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom = nullptr);
 
-	void SetPosition(Vector2 setPosition){ position = setPosition; }
 	Vector2 GetPosition(){ return position; }
 	Vector2 GetPastPosition(){ return _pastPosition; }
 	void SetAttackStatus(AttackStatus attackStatus){ _attackStatus = attackStatus; }

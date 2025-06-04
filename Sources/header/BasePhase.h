@@ -33,6 +33,11 @@ public:
 
 protected:
 	/// <summary>
+	/// カーソルが乗っているときの処理
+	/// </summary>
+	/// <param name="pos"></param>
+	virtual void OnCursorProc(Vector2 pos){}
+	/// <summary>
 	/// 左クリックを押したときの処理
 	/// </summary>
 	/// <param name="pos"></param>
@@ -46,12 +51,12 @@ protected:
 	/// 左クリックをドラックしているときの処理
 	/// </summary>
 	/// <param name="pos"></param>
-	virtual void LDrackInputProc(Vector2 pos){}
+	virtual void LDrackInputProc(Vector2 pos, Vector2 oldPos){}
 	/// <summary>
 	/// 右クリックをドラックしているときの処理
 	/// </summary>
 	/// <param name="pos"></param>
-	virtual void RDrackInputProc(Vector2 pos){}
+	virtual void RDrackInputProc(Vector2 pos, Vector2 oldPos){}
 	/// <summary>
 	/// 左クリックを離したときの処理
 	/// </summary>

@@ -18,7 +18,6 @@ public:
 		objectType = ObjectType::INVALID;
 		layer = Layer::OBJECT;
 		drawHandle = -1;
-		beforeOnCursor = false;
 	}
 	BaseObject(Layer setLayer)
 		: layer(setLayer){}
@@ -41,8 +40,10 @@ public:
 	/// 破棄
 	/// </summary>
 	virtual void Teardown();
-	virtual void ClickEvent(){};
-	virtual void OnCursor(){};
+	virtual void ClickEvent(){}
+	virtual void OnCursor(){}
+	virtual void NotOnCursor(){}
+
 	static std::string StaticTypeName() {
 		return "BaseObject";
 	}
@@ -50,6 +51,9 @@ public:
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
+	inline void SetPosition(Vector2 setPosition){ position = setPosition; }
+	inline void SetSize(Vector2 setSize){ objectSize = setSize; }
+
 	/// <summary>
 	/// オブジェクトが重なっているかどうか
 	/// </summary>
@@ -79,6 +83,4 @@ protected:
 	ObjectType objectType;
 	// サイズ
 	Vector2 objectSize;
-	// カーソルが乗っていたか
-	bool beforeOnCursor;
 };

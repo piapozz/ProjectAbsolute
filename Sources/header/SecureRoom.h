@@ -60,6 +60,7 @@ public:
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
+	inline static void SetGetUICallback(std::function<std::vector<UIScreenButton*>()> Callback){ _GetUICallback = Callback; }
 
 private:
 	// メルトダウンのカウント数
@@ -90,13 +91,13 @@ private:
 	// 作業の名前
 	std::string _operationNameList[(int)Type::MAX];
 	// UI
-	UIScreenButton* _pOperationUIList[(int)Type::MAX];
 	UIButton* _pOperationCountUI;
 	UIButton* _pRunawayCountUI;
 	// UIのオフセット
-	Vector2 _operationUIOffsetList[(int)Type::MAX];
 	Vector2 _operationCountOffset;
 	Vector2 _runawayCountOffset;
+	// 表示するUIを取得するコールバック
+	static std::function<std::vector<UIScreenButton*>()> _GetUICallback;
 
 	/// <summary>
 	/// メルトダウンのカウントをする

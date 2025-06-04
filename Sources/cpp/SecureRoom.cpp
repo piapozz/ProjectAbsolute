@@ -9,6 +9,7 @@
 #include "../header/OperationContact.h"
 #include "../header/OperationInjure.h"
 #include "../header/OfficerPlayer.h"
+#include "../header/UIManager.h"
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
@@ -24,33 +25,9 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	_operationNameList[3] = "危害";
 
 	// オフセットを初期化
-	Vector2 uiCenter = Vector2(0, WINDOW_HEIGHT) + Vector2(_SCREEN_UI_SIZE_X / 2, -_SCREEN_UI_SIZE_Y / 2);
-	_operationUIOffsetList[0] = Vector2(-_SCREEN_UI_SIZE_X / 4, -_SCREEN_UI_SIZE_Y / 4);
-	_operationUIOffsetList[1] = Vector2(_SCREEN_UI_SIZE_X / 4, -_SCREEN_UI_SIZE_Y / 4);
-	_operationUIOffsetList[2] = Vector2(-_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
-	_operationUIOffsetList[3] = Vector2(_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
 	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 
-	// UIの生成
-	for (int i = 0; i < (int)Type::MAX; i++)
-	{
-		_pOperationUIList[i] = new UIScreenButton();
-		_pOperationUIList[i]->Init(uiCenter + _operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2));
-		_pOperationUIList[i]->SetText(_operationNameList[i]);
-		_pOperationUIList[i]->SetCallback([this, i, position]()
-		{
-			// UIを非表示
-			for (int j = 0; j < (int)Type::MAX; j++)
-			{
-				_pOperationUIList[j]->SetActive(false);
-			}
-			_selectOperation = (Type)i;
-			Vector2 setPos = Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y);
-			_pInteractOfficer->ChangeMoveState(position + setPos, this);
-		});
-		_pOperationUIList[i]->SetActive(false);
-	}
 	_pOperationCountUI = new UIButton();
 	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
 	_pOperationCountUI->SetText(std::to_string(0));
@@ -91,9 +68,22 @@ void SecureRoom::ClickEvent()
 	_currentState = State::SELECT;
 
 	// 作業UIの表示
+	std::vector<UIScreenButton*> pOperationUIList = UIManager::GetOperationUIList();
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		_pOperationUIList[i]->SetActive(true);
+		pOperationUIList[i]->SetText(_operationNameList[i]);
+		pOperationUIList[i]->SetCallback([this, i, pOperationUIList]()
+		{
+			// UIを非表示
+			for (int j = 0; j < (int)Type::MAX; j++)
+			{
+				pOperationUIList[j]->SetActive(false);
+			}
+			_selectOperation = (Type)i;
+			Vector2 setPos = position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y);
+			_pInteractOfficer->ChangeMoveState(setPos, this);
+		});
+		pOperationUIList[i]->SetActive(true);
 	}
 }
 

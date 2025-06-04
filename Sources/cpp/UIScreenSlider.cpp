@@ -1,9 +1,9 @@
 #include "../header/UIScreenSlider.h"
 #include "../header/CameraController.h"
 
-void UIScreenSlider::Init(Vector2 setPosition, Vector2 setSize)
+void UIScreenSlider::Init(Vector2 setPosition, Vector2 setSize, bool fill)
 {
-	BaseUIScreen::Init(setPosition, setSize);
+	BaseUIScreen::Init(setPosition, setSize, fill);
 }
 
 void UIScreenSlider::Proc()

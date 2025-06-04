@@ -1,10 +1,10 @@
 #include "../header/UIScreenButton.h"
 #include "../header/CameraController.h"
 
-void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize)
+void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize, bool fill)
 {
 	// èâä˙âª
-	BaseUIScreen::Init(setPosition, setSize);
+	BaseUIScreen::Init(setPosition, setSize, fill);
 }
 
 void UIScreenButton::Proc()
