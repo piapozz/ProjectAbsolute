@@ -11,6 +11,7 @@
 #include "../header/OfficerPlayer.h"
 #include "../header/UIManager.h"
 #include "../header/PhaseMain.h"
+#include "../header/ObjectFactory.h"
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
@@ -28,13 +29,11 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	// オフセットを初期化
 	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
-
-	_pOperationCountUI = new UIButton();
-	_pOperationCountUI->Init(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
+	ObjectFactory& factory = ObjectFactory::Instance();
+	_pOperationCountUI = factory.CreateWithArgs<UIButton>(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
 	_pOperationCountUI->SetText(std::to_string(0));
 	_pOperationCountUI->SetLayer(Layer::NONE_INTERACT);
-	_pRunawayCountUI = new UIButton();
-	_pRunawayCountUI->Init(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
+	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
 	_pRunawayCountUI->SetText(std::to_string(0));
 	_pRunawayCountUI->SetLayer(Layer::NONE_INTERACT);
 	// エンティティーのマスターデータから作業IDを取得し生成

@@ -6,9 +6,7 @@
 void ObjectManager::Init()
 {
 	_objectList = std::vector<std::vector<BaseObject*>>(
-		(int)ObjectType::MAX,
-		std::vector<BaseObject*>((int)ObjectType::MAX,
-		nullptr)
+		(int)ObjectType::MAX
 	);
 	_gameSpeed = 1;
 }
