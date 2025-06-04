@@ -48,6 +48,7 @@ public:
 		return "BaseObject";
 	}
 
+	inline Vector2 GetPosition(){ return position; }
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }

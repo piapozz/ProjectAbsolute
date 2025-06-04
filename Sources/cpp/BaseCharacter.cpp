@@ -52,12 +52,17 @@ void BaseCharacter::ChangeState(CharacterStateID stateID, StateArgs* args)
 	}
 }
 
-void BaseCharacter::ChangeMoveState(Vector2 targetPos, SecureRoom* secureRoom)
+void BaseCharacter::ChangeMoveState(BaseSection* targetSection)
 {
 	std::vector<Vector2> routeList;
+	Vector2 targetPos = targetSection->GetPosition();
+
 	routeList = StageManager::FindPath(position, targetPos);
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;
+
+	SecureRoom* secureRoom = static_cast<SecureRoom*>(targetSection);
+
 	if (secureRoom != nullptr)
 	{
 		args->secureRoom = secureRoom;
