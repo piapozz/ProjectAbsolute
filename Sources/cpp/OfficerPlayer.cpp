@@ -1,6 +1,7 @@
 #include "../header/OfficerPlayer.h"
 #include "../header/BaseCharacterState.h"
 #include "../header/OfficerInitData.h"
+#include "../header/PhaseMain.h"
 
 OfficerPlayer::OfficerPlayer()
 {
@@ -53,6 +54,7 @@ void OfficerPlayer::Teardown()
 void OfficerPlayer::ClickEvent()
 {
 	// ç∂è„Ç…UIÇï`âÊ
-
-
+	std::vector<OfficerPlayer*> selectOfficerList = PhaseMain::GetSelectOfficerList();
+	selectOfficerList.clear();
+	selectOfficerList.push_back(this);
 }

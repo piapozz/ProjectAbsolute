@@ -10,6 +10,7 @@
 #include "../header/OperationInjure.h"
 #include "../header/OfficerPlayer.h"
 #include "../header/UIManager.h"
+#include "../header/PhaseMain.h"
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
@@ -74,6 +75,7 @@ void SecureRoom::ClickEvent()
 		pOperationUIList[i]->SetText(_operationNameList[i]);
 		pOperationUIList[i]->SetCallback([this, i, pOperationUIList]()
 		{
+			SetInteractOfficer(PhaseMain::GetSelectOfficerList()[0]);
 			// UI‚ð”ñ•\Ž¦
 			for (int j = 0; j < (int)Type::MAX; j++)
 			{
@@ -81,7 +83,7 @@ void SecureRoom::ClickEvent()
 			}
 			_selectOperation = (Type)i;
 			Vector2 setPos = position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y);
-			_pInteractOfficer->ChangeMoveState(setPos, this);
+			_pInteractOfficer->ChangeMoveState(this);
 		});
 		pOperationUIList[i]->SetActive(true);
 	}

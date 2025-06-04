@@ -1,6 +1,8 @@
 #include "../header/BaseSection.h"
 #include "../header/ObjectManager.h"
 #include "../header/BaseCharacter.h"
+#include "../header/PhaseMain.h"
+#include "../header/OfficerPlayer.h"
 
 void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
 {
@@ -59,4 +61,18 @@ std::vector<BaseCharacter*> BaseSection::GetCharacters() const
 		}
 	}
 	return characters;
+}
+
+void BaseSection::ClickEvent()
+{
+	std::vector<OfficerPlayer*> selectOfficerList = PhaseMain::GetSelectOfficerList();
+	if (selectOfficerList.empty()) return;
+
+	// この部屋にキャラクターを移動させる
+	// キャラ移動が可能なら移動
+	if (selectOfficerList[0]->GetImpossible())
+	{
+		selectOfficerList[0]->ChangeMoveState(this);
+		return;
+	}
 }
