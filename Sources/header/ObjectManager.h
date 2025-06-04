@@ -42,15 +42,20 @@ public:
 	/// </summary>
 	void AllClear();
 	/// <summary>
-	/// オブジェクトの検索
+	/// オブジェクトの検索(一番上)
+	/// </summary>
+	/// <returns></returns>
+	BaseObject* FindPosObject(Vector2 pos);
+	/// <summary>
+	/// オブジェクトの検索(タイプ指定)
 	/// </summary>
 	/// <returns></returns>
 	BaseObject* FindPosObject(Vector2 pos, ObjectType type);
 	/// <summary>
-	/// オブジェクトの検索
+	/// オブジェクトの検索(全部)
 	/// </summary>
 	/// <returns></returns>
-	std::vector<BaseObject*> FindRectObject(Vector2 pos, Vector2 size, ObjectType type);
+	std::vector<BaseObject*> FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type);
 	/// <summary>
 	/// ゲーム速度の変更
 	/// </summary>

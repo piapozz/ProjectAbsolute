@@ -49,7 +49,7 @@ void BaseSection::Teardown()
 std::vector<BaseCharacter*> BaseSection::GetCharacters() const
 {
 	// キャラクターの取得
-	auto charas = ObjectManager::Instance().FindRectObject(position, objectSize, ObjectType::CHARACTER);
+	auto charas = ObjectManager::Instance().FindRectAllObject(position, objectSize, ObjectType::CHARACTER);
 	std::vector<BaseCharacter*> characters;
 	for (BaseObject* obj : charas)
 	{
