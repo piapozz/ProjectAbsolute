@@ -62,6 +62,7 @@ public:
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
 	inline static void SetGetUICallback(std::function<std::vector<OfficerPlayer*>()> Callback){ _GetUICallback = Callback; }
+	inline void SetState(State state){ _currentState = state; }
 
 private:
 	// メルトダウンのカウント数
