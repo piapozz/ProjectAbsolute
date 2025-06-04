@@ -2,6 +2,7 @@
 #include "../header/CharacterStateFactory.h"
 #include "../header/OfficerInitData.h"
 #include "../header/StageManager.h"
+#include "../header/ObjectManager.h"
 
 BaseOfficer::BaseOfficer()
 {
@@ -19,7 +20,9 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 {
 	BaseCharacter::Init();
 	position = data.position;
-	_pastPosition = position;
+	ObjectManager& objectManager = ObjectManager::Instance();
+
+	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(position));
 	health = data.health;
 	maxHealth = health;
 	_mental = data.mental;

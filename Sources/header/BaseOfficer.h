@@ -1,8 +1,7 @@
 #pragma once
 #include <DxLib.h>
 #include "../header/BaseCharacter.h"
-
-class OfficerInitData;
+#include "../header/OfficerInitData.h"
 
 /*
  * Sein

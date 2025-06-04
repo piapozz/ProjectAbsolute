@@ -2,9 +2,9 @@
 #include "BaseObject.h"
 #include "../header/RouteSearcher.h"
 #include "../header/StateArgs.h"
+#include "../header/BaseSection.h"
 
 class BaseCharacterState;
-class BaseSection;
 
 /*
 * Ishihara
@@ -82,7 +82,7 @@ public:
 	void ChangeMoveState(BaseSection* targetSection);
 
 	Vector2 GetPosition(){ return position; }
-	Vector2 GetPastPosition(){ return _pastPosition; }
+	BaseSection* GetPastPosition(){ return pastRoom; }
 	void SetAttackStatus(AttackStatus attackStatus){ _attackStatus = attackStatus; }
 	AttackStatus GetAttackStatus() { return _attackStatus; }
 	void SetHealth(int value){ health = value; }
@@ -93,7 +93,7 @@ public:
 	CharacterGroup GetGroup(){ return _groupType; }
 
 	// ‰ß‹Ž‚ÌˆÊ’u
-	Vector2 _pastPosition;
+	BaseSection* pastRoom;
 	BaseCharacterState* pCharacterState;
 	CharacterStateID stateID;
 	unsigned int color;

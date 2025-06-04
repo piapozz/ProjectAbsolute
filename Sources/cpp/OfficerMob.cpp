@@ -1,16 +1,5 @@
 #include "../header/OfficerMob.h"
 #include "../header/BaseCharacterState.h"
-#include "../header/OfficerInitData.h"
-
-OfficerMob::OfficerMob()
-{
-
-}
-
-OfficerMob::~OfficerMob()
-{
-
-}
 
 void OfficerMob::Init(OfficerInitData data, int setOfficerID)
 {
