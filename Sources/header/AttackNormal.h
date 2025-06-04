@@ -4,9 +4,5 @@
 class AttackNormal: public BaseAttack
 {
 public:
-	
-
-
-
-
+	void Attack(BaseCharacter* chara) override;
 };
