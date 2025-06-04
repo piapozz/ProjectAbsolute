@@ -49,6 +49,10 @@ void ObjectManager::Draw()
 void ObjectManager::AddObject(BaseObject* obj)
 {
 	if(obj == nullptr) return;
+	if (_objectList.size() == 0)
+	{
+		Init();
+	}
 	ObjectType type = obj->GetType();
 	_objectList[(int)type].push_back(obj);
 }

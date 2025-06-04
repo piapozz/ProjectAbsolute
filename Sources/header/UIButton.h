@@ -12,6 +12,12 @@ public:
 	UIButton(Vector2 pos, Vector2 size){
 		Init(pos, size);
 	}
+	UIButton(UISetting setting, std::function<void()> callback) {
+		Init(setting.m_position, setting.m_size);
+		SetSize(setting.m_size.x);
+		SetText(setting.m_text);
+		SetCallback(callback);
+	}
 	UIButton(Layer setLayer)
 		: BaseUI(setLayer) {}
 	UIButton(Layer setLayer, int setDrawHandle)

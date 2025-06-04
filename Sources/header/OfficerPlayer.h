@@ -9,12 +9,14 @@
 class OfficerPlayer : public BaseOfficer
 {
 public:
-	OfficerPlayer();
+	OfficerPlayer(){
+	};
 	OfficerPlayer(OfficerInitData data, int setOfficerID)
 	{
 		Init(data, setOfficerID);
 	};
-	~OfficerPlayer();
+	~OfficerPlayer(){
+	};
 
 	static std::string StaticTypeName() {
 		return "OfficerPlayer";

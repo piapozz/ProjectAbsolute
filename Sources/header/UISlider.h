@@ -8,6 +8,11 @@ public:
 	UISlider(Vector2 setPosition, Vector2 setSize){
 		Init(setPosition, setSize);
 	}
+	UISlider(UISetting setting) {
+		Init(setting.m_position, setting.m_size);
+		SetSize(setting.m_size.x);
+		SetText(setting.m_text);
+	}
 	UISlider(Layer setLayer)
 		: BaseUI(setLayer) {}
 	UISlider(Layer setLayer, int setDrawHandle)

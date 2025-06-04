@@ -8,12 +8,14 @@
 class OfficerMob : public BaseOfficer
 {
 public:
-	OfficerMob();
+	OfficerMob(){
+	};
 	OfficerMob(OfficerInitData data, int setOfficerID)
 	{
 		Init(data, setOfficerID);
 	};
-	~OfficerMob();
+	~OfficerMob(){
+	};
 
 	static std::string StaticTypeName() {
 		return "OfficerMob";
