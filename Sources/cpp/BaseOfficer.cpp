@@ -22,7 +22,7 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 	position = data.position;
 	ObjectManager& objectManager = ObjectManager::Instance();
 
-	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(position));
+	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(position, ObjectType::SECTION));
 	health = data.health;
 	maxHealth = health;
 	_mental = data.mental;
