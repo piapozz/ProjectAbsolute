@@ -12,7 +12,7 @@ SceneManager::~SceneManager()
 
 void SceneManager::Init() 
 {
-	_scene->Init();
+
 }
 
 void SceneManager::Proc() 

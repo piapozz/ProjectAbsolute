@@ -1,5 +1,6 @@
 #include "../header/InputManager.h"
 #include "../header/UIScreenButton.h"
+#include "../header/ObjectFactory.h"
 
 InputManager::InputManager()
 {
@@ -9,10 +10,9 @@ InputManager::InputManager()
 	SetMouseDispFlag(FALSE);
 	_cursorColor = GetColor(255, 0, 0);
 	_onCursorObject = nullptr;
-	_cursorObject = new UIScreenButton();
 	Vector2 centorScreen = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	Vector2 size = Vector2(_CURSOR_SIZE, _CURSOR_SIZE);
-	_cursorObject->Init(centorScreen, size, true);
+	_cursorObject = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(centorScreen, size, true);
 	_cursorObject->SetLayer(Layer::NONE_INTERACT);
 }
 

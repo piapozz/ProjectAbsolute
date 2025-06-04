@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "DxLib.h"
+#include "CommonModule.h"
 
 enum class ObjectType{
 	INVALID = -1,
@@ -102,6 +103,15 @@ enum class CharacterGroup
 	ENTITY,
 	OTHER,
 };
+
+// UI設定構造体
+typedef struct{
+	Vector2 m_position; // 座標
+	Vector2 m_size;		// 大きさ
+	int m_textColor;	// テキストの色
+	std::string m_text; // テキスト内容
+	bool m_fill;		// 塗りつぶしフラグ
+} UISetting;;
 
 // ステージ
 const int SECTION_SIZE_X = 150;

@@ -11,6 +11,11 @@ public:
 	BaseUI(Vector2 setPosition, Vector2 setSize) {
 		Init(setPosition, setSize);
 	}
+	BaseUI(UISetting setting) {
+		Init(setting.m_position, setting.m_size);
+		SetSize(setting.m_size.x);
+		SetText(setting.m_text);
+	}
 	BaseUI(Layer setLayer)
 		: BaseObject(setLayer) {}
 	BaseUI(Layer setLayer,int setDrawHandle)

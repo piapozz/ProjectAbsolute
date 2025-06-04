@@ -2,7 +2,6 @@
 
 GameManager::GameManager()
 {
-	Init();
 
 }
 

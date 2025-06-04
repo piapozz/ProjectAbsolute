@@ -29,7 +29,8 @@ public:
 		INTERACT,
 		RUNAWAY
 	};
-
+	SecureRoom(){
+	};
 	SecureRoom(Vector2 position, Vector2 size)
 		:_isMeltdown(false), _meltdownCount(0){ Init(position, size); };
 	SecureRoom(BaseEntity* pEntity)
