@@ -1,6 +1,7 @@
 #include "../header/EventManager.h"
 #include "../header//StageManager.h"
 #include "../header/ObjectManager.h"
+#include "../header/ObjectFactory.h"
 #include "../header/UIButton.h"
 #include<random>
 
@@ -9,8 +10,9 @@ void EventManager::Init()
 	_energy = 0;
 	_melt = 0;
 	meltLevel = 1;
-	_pEnergySlider = new UIScreenSlider();
-	_pEnergySlider->Init(Vector2(400, 100), Vector2(500, 50), true);
+
+	ObjectFactory& factory = ObjectFactory::Instance();
+	_pEnergySlider = factory.CreateWithArgs<UIScreenSlider>(Vector2(400, 100), Vector2(500, 50), true);
 	_pEnergySlider->SetLayer(Layer::NONE_INTERACT);
 	_pEnergySlider->SetValue(_energy);
 	_pEnergySlider->SetColor(0, 255, 0);
@@ -18,25 +20,8 @@ void EventManager::Init()
 	_pEnergySlider->SetText(str.c_str());
 	_pEnergySlider->SetTextColor();
 
-	UIButton* _pEnergyButton = new UIButton();
-	_pEnergyButton->Init(Vector2(100, 1050), Vector2(500, 50));
-	_pEnergyButton->SetLayer(Layer::UI);
-	_pEnergyButton->SetText("エネルギー");
-	_pEnergyButton->SetCallback([this]()
-	{
-		// エネルギーの表示/非表示切り替え
-		if (_pEnergySlider->GetLayer() != Layer::NONE_DRAW)
-		{
-			_pEnergySlider->SetActive(false);
-		} else
-		{
-			_pEnergySlider->SetActive(true);
-		}
-	});
-
 	// 停止ボタン
-	_pStopButton = new UIScreenButton();
-	_pStopButton->Init(Vector2(100, 1050), Vector2(200, 50), true);
+	_pStopButton = factory.CreateWithArgs<UIScreenButton>(Vector2(100, 1050), Vector2(200, 50), true);
 	_pStopButton->SetLayer(Layer::UI);
 	_pStopButton->SetText("停止");
 	_pStopButton->SetCallback([this]()
@@ -46,8 +31,7 @@ void EventManager::Init()
 	});
 	_pStopButton->SetTextColor();
 	// 通常速度ボタン
-	_pNormalSpeedButton = new UIScreenButton();
-	_pNormalSpeedButton->Init(Vector2(300, 1050), Vector2(200, 50), true);
+	_pNormalSpeedButton = factory.CreateWithArgs<UIScreenButton>(Vector2(300, 1050), Vector2(200, 50), true);
 	_pNormalSpeedButton->SetLayer(Layer::UI);
 	_pNormalSpeedButton->SetText("通常");
 	_pNormalSpeedButton->SetCallback([this]()
@@ -57,8 +41,7 @@ void EventManager::Init()
 	});
 	_pNormalSpeedButton->SetTextColor();
 	// 倍速ボタン
-	_pFastSpeedButton = new UIScreenButton();
-	_pFastSpeedButton->Init(Vector2(500, 1050), Vector2(200, 50), true);
+	_pFastSpeedButton = factory.CreateWithArgs<UIScreenButton>(Vector2(500, 1050), Vector2(200, 50), true);
 	_pFastSpeedButton->SetLayer(Layer::UI);
 	_pFastSpeedButton->SetText("倍速");
 	_pFastSpeedButton->SetCallback([this]()
