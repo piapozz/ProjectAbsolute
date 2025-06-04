@@ -22,10 +22,6 @@ public:
 		return "SectionRoom";
 	}
 
-	std::string GetTypeName() const override {
-		return StaticTypeName();
-	}
-
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>

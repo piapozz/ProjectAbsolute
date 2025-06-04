@@ -42,7 +42,7 @@ void EventManager::Init()
 	_pStopButton->SetCallback([this]()
 	{
 		// 停止ボタンが押されたときの処理
-		ObjectManager::instance->ChangeGameSpeed(0);
+		ObjectManager::Instance().ChangeGameSpeed(0);
 	});
 	_pStopButton->SetTextColor();
 	// 通常速度ボタン
@@ -53,7 +53,7 @@ void EventManager::Init()
 	_pNormalSpeedButton->SetCallback([this]()
 	{
 		// 通常速度ボタンが押されたときの処理
-		ObjectManager::instance->ChangeGameSpeed(1);
+		ObjectManager::Instance().ChangeGameSpeed(1);
 	});
 	_pNormalSpeedButton->SetTextColor();
 	// 倍速ボタン
@@ -64,7 +64,7 @@ void EventManager::Init()
 	_pFastSpeedButton->SetCallback([this]()
 	{
 		// 倍速ボタンが押されたときの処理
-		ObjectManager::instance->ChangeGameSpeed(2);
+		ObjectManager::Instance().ChangeGameSpeed(2);
 	});
 	_pFastSpeedButton->SetTextColor();
 }

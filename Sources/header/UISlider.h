@@ -5,6 +5,9 @@ class UISlider: public BaseUI
 {
 public:
 	UISlider() {}
+	UISlider(Vector2 setPosition, Vector2 setSize){
+		Init(setPosition, setSize);
+	}
 	UISlider(Layer setLayer)
 		: BaseUI(setLayer) {}
 	UISlider(Layer setLayer, int setDrawHandle)
@@ -22,9 +25,6 @@ public:
 		return "UISlider";
 	}
 
-	std::string GetTypeName() const override {
-		return StaticTypeName();
-	}
 	/// <summary>
 	/// ílÇÃê›íË
 	/// </summary>

@@ -1,5 +1,6 @@
 #include "../header/OfficerManager.h"
 #include "../header/OfficerInitData.h"
+#include "../header/ObjectFactory.h"
 
 OfficerManager::OfficerManager()
 {
@@ -41,22 +42,23 @@ BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data)
 		}
 	}
 
+	ObjectFactory& factory = ObjectFactory::Instance();
+	int indexToUse = (emptyIndex == -1) ? _officerList.size() : emptyIndex;
+
 	BaseOfficer* officer = nullptr;
 	switch (type)
 	{
 		case OfficerType::PLAYER:
-			officer = new OfficerPlayer();
+			officer = factory.CreateWithArgs<OfficerPlayer>(data, indexToUse);
 			break;
 		case OfficerType::MOB:
-			officer = new OfficerMob();
+			officer = factory.CreateWithArgs<OfficerMob>(data, indexToUse);
 			break;
 		default:
 			return nullptr;
 	}
 	if (!officer) return nullptr;
 
-	int indexToUse = (emptyIndex == -1) ? _officerList.size() : emptyIndex;
-	officer->Init(data, indexToUse);
 
 	if (emptyIndex == -1) _officerList.push_back(officer);
 	

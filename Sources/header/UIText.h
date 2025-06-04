@@ -9,6 +9,9 @@ class UIText : public BaseUI
 public:
 	UIText() {
 	}
+	UIText(Vector2 setPosition, Vector2 setSize) {
+		Init(setPosition, setSize);
+	}
 	UIText(Layer setLayer)
 		: BaseUI(setLayer) {
 	}
@@ -24,5 +27,10 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	static std::string StaticTypeName() {
+		return "UIText";
+	}
+
 private:
 };

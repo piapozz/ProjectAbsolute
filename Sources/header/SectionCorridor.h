@@ -9,6 +9,8 @@ class SectionCorridor: public BaseSection
 public:
 	SectionCorridor() {
 	}
+	SectionCorridor(Vector2 pos, Vector2 size): BaseSection(pos, size) {
+	}
 	SectionCorridor(Layer setLayer)
 		: BaseSection(setLayer) {
 	}

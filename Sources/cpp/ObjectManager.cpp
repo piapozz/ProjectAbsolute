@@ -3,11 +3,8 @@
 #include "../header/ObjectFactory.h"
 #include "../header/MemoryAllocator.h"
 
-ObjectManager* ObjectManager::instance;
-
 void ObjectManager::Init()
 {
-	instance = this;
 	_objectList = std::vector<std::vector<BaseObject*>>(
 		(int)ObjectType::MAX,
 		std::vector<BaseObject*>((int)ObjectType::MAX,
@@ -85,6 +82,19 @@ void ObjectManager::AllClear()
 	_objectList.clear();
 }
 
+BaseObject* ObjectManager::FindPosObject(Vector2 pos)
+{
+	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	{
+		BaseObject* obj = FindPosObject(pos, (ObjectType)i);
+		if (obj != nullptr)
+		{
+			return obj;
+		}
+	}
+	return nullptr;
+}
+
 BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 {
 	for (BaseObject* obj : _objectList[(int)type])
@@ -101,7 +111,7 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 	return nullptr;
 }
 
-std::vector<BaseObject*> ObjectManager::FindRectObject(Vector2 pos, Vector2 size, ObjectType type)
+std::vector<BaseObject*> ObjectManager::FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type)
 {
 	std::vector<BaseObject*> objs;
 	for (BaseObject* obj : _objectList[(int)type])

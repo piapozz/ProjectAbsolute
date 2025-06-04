@@ -10,6 +10,9 @@ class UIScreenText : public BaseUIScreen
 public:
 	UIScreenText() {
 	}
+	UIScreenText(Vector2 setPosition, Vector2 setSize) {
+		Init(setPosition, setSize);
+	}
 	UIScreenText(Layer setLayer)
 		: BaseUIScreen(setLayer) {
 	}
@@ -25,5 +28,10 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	static std::string StaticTypeName() {
+		return "UIScreenText";
+	}
+
 private:
 };
