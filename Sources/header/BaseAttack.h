@@ -6,19 +6,41 @@
 class BaseAttack
 {
 public:
-	BaseAttack(){};
-	~BaseAttack(){};
+	BaseAttack(){
+	};
+	~BaseAttack(){
+	};
 
 	/// <summary>
 	/// UŒ‚
 	/// </summary>
 	/// <param name="chara"></param>
-	/// <param name="attackPos"></param>
-	/// <param name="attackSize"></param>
-	void Attack(BaseCharacter* chara);
+	virtual void Attack(BaseCharacter* chara);
+
 protected:
-	Vector2 hitBoxSize;
+	/// <summary>
+	/// ó‚¯æ‚Á‚½À•W‚ÉŠÔŠu‚ğŠJ‚¯‚é
+	/// </summary>
+	/// <param name="position"></param>
+	Vector2 GetLocation(Vector2 position);
+	/// <summary>
+	/// “–‚½‚è”»’è“à‚ÌƒLƒƒƒ‰‚ğæ“¾
+	/// </summary>
+	/// <param name="location"></param>
+	/// <returns></returns>
+	std::vector<BaseObject*> GetHitBoxCharacters(Vector2 location);
+
+	// “–‚½‚è”»’è‚ÌL‚³
+	Vector2 hitBoxSize = {HITBOX_SIZE_WIDTH, HITBOX_SIZE_HEIGHT};
+	// “–‚½‚è”»’è‚©‚ç‚ÌŠÔŠu
+	Vector2 hitBoxSpace = {HITBOX_SIZE_WIDTH / HALF, ZERO};
 
 private:
-	std::vector<BaseCharacter*> targetList;
+	const float HITBOX_SIZE_WIDTH = 100;
+	const float HITBOX_SIZE_HEIGHT = 100;
+	const float HITBOX_SPACE = 100;
+
+	const int ZERO = 0;
+	const int HALF = 2;
+
 };

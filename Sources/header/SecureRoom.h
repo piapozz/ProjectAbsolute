@@ -25,6 +25,7 @@ public:
 	enum class State
 	{
 		IDLE = 0,
+		SELECT,
 		INTERACT,
 		RUNAWAY
 	};
