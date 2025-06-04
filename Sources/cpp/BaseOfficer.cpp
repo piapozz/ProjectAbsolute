@@ -69,7 +69,7 @@ void BaseOfficer::Teardown()
 	BaseObject::Teardown();
 }
 
-void BaseOfficer::TakeDamege(int strength, Type damageType)
+void BaseOfficer::TakeDamage(int strength, Type damageType)
 {
 	float index;
 	index = strength * defenseRatio[(int)damageType];

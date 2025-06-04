@@ -56,7 +56,7 @@ public:
 	/// <param name="strength"></param>
 	/// <param name="damageType"></param>
 	/// <returns></returns>
-	virtual void TakeDamege(int strength, Type damageType)
+	virtual void TakeDamage(int strength, Type damageType)
 	{
 		float index;
 		index = strength * defenseRatio[(int)damageType];

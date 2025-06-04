@@ -14,10 +14,6 @@ public:
 		return "OfficerMob";
 	}
 
-	std::string GetTypeName() const override {
-		return StaticTypeName();
-	}
-
 	void Init(OfficerInitData data, int setOfficerID) override;
 	void Proc() override;
 	void Draw() override;

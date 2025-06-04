@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\cpp\AttackLongRange.cpp" />
     <ClCompile Include="Sources\cpp\AttackNormal.cpp" />
     <ClCompile Include="Sources\cpp\BaseAttack.cpp" />
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
@@ -189,6 +190,10 @@
     <ClCompile Include="Sources\cpp\SectionCorridor.cpp" />
     <ClCompile Include="Sources\cpp\SectionRoom.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorAllCharacter.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorAllEntity.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorAllOfficer.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
     <ClCompile Include="Sources\cpp\UIButton.cpp" />
     <ClCompile Include="Sources\cpp\UIManager.cpp" />
@@ -199,6 +204,7 @@
     <ClCompile Include="Sources\cpp\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\header\AttackLongRange.h" />
     <ClInclude Include="Sources\header\AttackNormal.h" />
     <ClInclude Include="Sources\header\AutoTypeNameObject.h" />
     <ClInclude Include="Sources\header\BaseAttack.h" />
@@ -220,6 +226,7 @@
     <ClInclude Include="Sources\header\DataManager.h" />
     <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />
+    <ClInclude Include="Sources\header\ITargetSelector.h" />
     <ClInclude Include="Sources\header\MemoryAllocator.h" />
     <ClInclude Include="Sources\header\ObjectFactory.h" />
     <ClInclude Include="Sources\header\OfficerInitData.h" />
@@ -255,6 +262,10 @@
     <ClInclude Include="Sources\header\SectionCorridor.h" />
     <ClInclude Include="Sources\header\SectionRoom.h" />
     <ClInclude Include="Sources\header\SecureRoom.h" />
+    <ClInclude Include="Sources\header\SelectorAllCharacter.h" />
+    <ClInclude Include="Sources\header\SelectorAllEntity.h" />
+    <ClInclude Include="Sources\header\SelectorAllOfficer.h" />
+    <ClInclude Include="Sources\header\SelectorNearOfficer.h" />
     <ClInclude Include="Sources\header\StageManager.h" />
     <ClInclude Include="Sources\header\StateArgs.h" />
     <ClInclude Include="Sources\header\UIButton.h" />
