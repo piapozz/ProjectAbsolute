@@ -191,6 +191,7 @@
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
     <ClCompile Include="Sources\cpp\UIButton.cpp" />
+    <ClCompile Include="Sources\cpp\UIManager.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenButton.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenSlider.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenText.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="Sources\header\StageManager.h" />
     <ClInclude Include="Sources\header\StateArgs.h" />
     <ClInclude Include="Sources\header\UIButton.h" />
+    <ClInclude Include="Sources\header\UIManager.h" />
     <ClInclude Include="Sources\header\UIScreenButton.h" />
     <ClInclude Include="Sources\header\UIScreenSlider.h" />
     <ClInclude Include="Sources\header\UIScreenText.h" />
