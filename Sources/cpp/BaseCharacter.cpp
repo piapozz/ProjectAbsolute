@@ -61,7 +61,7 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection)
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;
 
-	SecureRoom* secureRoom = static_cast<SecureRoom*>(targetSection);
+	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(targetSection);
 
 	if (secureRoom != nullptr)
 	{

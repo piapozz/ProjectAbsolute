@@ -9,6 +9,7 @@
 #include "../header/UIManager.h"
 #include "../header/BaseOfficer.h"
 #include "../header/SecureRoom.h"
+#include "../header/ObjectFactory.h"
 
 std::vector<OfficerPlayer*> PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
@@ -43,8 +44,7 @@ void PhaseMain::Init()
 		// 作業が終了したら、エネルギーを追加
 		_pEventManager->AddEnergy(successCount);
 	};
-	_pRangeSelect = new UIScreenButton();
-	_pRangeSelect->Init(Vector2::zero(), Vector2::zero(), false);
+	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Vector2::zero(), Vector2::zero(), false);
 	_pRangeSelect->SetLayer(Layer::NONE_DRAW);
 	_pUIManager = new UIManager();
 	// 各オブジェクトのインタラクト時のコールバック設定
@@ -127,7 +127,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	{
 		// スクリーンUI
 		// UIの取得
-		BaseObject* object = ObjectManager::Instance().FindPosObject(pos);
+		BaseObject* object = ObjectManager::Instance().FindPosObject(worldPos);
 		if (object != nullptr)
 		{
 			object->ClickEvent();

@@ -1,5 +1,6 @@
 #include "../header/UIManager.h"
 #include "../header/UIScreenButton.h"
+#include "../header/ObjectFactory.h"
 
 std::vector<UIScreenButton*> UIManager::GetOperationUIList(){
 	return _pOperationUIList;
@@ -16,11 +17,12 @@ UIManager::UIManager()
 	operationUIOffsetList[2] = Vector2(-_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
 	operationUIOffsetList[3] = Vector2(_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
 
+	ObjectFactory& factory = ObjectFactory::Instance();
 	// UIÇÃê∂ê¨
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		UIScreenButton* button = new UIScreenButton();
-		button->Init(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true);
+
+		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true);
 		button->SetActive(false);
 		_pOperationUIList.push_back(button);
 	}

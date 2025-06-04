@@ -1,15 +1,15 @@
 #include "../header/OfficerPlayer.h"
 #include "../header/BaseCharacterState.h"
 #include "../header/PhaseMain.h"
+#include "../header/ObjectFactory.h"
 
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 {
 	BaseOfficer::Init(data, setOfficerID);
 	_officerType = OfficerType::PLAYER;
 	layer = Layer::PLAYER;
-	slider = new UISlider;
 	Vector2 pos(position.x, position.y + (objectSize.y / 2));
-	slider->Init(pos, Vector2(objectSize.x, objectSize.y/4));
+	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(pos, Vector2(objectSize.x, objectSize.y/4));
 	slider->SetActive(true);
 	slider->SetText("HP");
 	slider->SetLayer(Layer::NONE_INTERACT);
