@@ -1,9 +1,19 @@
 #include "../header/InputManager.h"
+#include "../header/UIScreenButton.h"
 
 InputManager::InputManager()
 {
 	_isLPressed = false;
 	_isRPressed = false;
+	// カーソルの非表示
+	SetMouseDispFlag(FALSE);
+	_cursorColor = GetColor(255, 0, 0);
+	_onCursorObject = nullptr;
+	_cursorObject = new UIScreenButton();
+	Vector2 centorScreen = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	Vector2 size = Vector2(_CURSOR_SIZE, _CURSOR_SIZE);
+	_cursorObject->Init(centorScreen, size, true);
+	_cursorObject->SetLayer(Layer::NONE_INTERACT);
 }
 
 InputManager::~InputManager()
@@ -55,7 +65,11 @@ void InputManager::ExecuteCallback()
 	Vector2 cursorScreenPos = GetCursorScreenPos();
 	// クリックの状態を確認
 	int currentMouseInput = CheckClickState();
-
+	// カーソルが乗っているとき
+	if (_OnCursorAction != NULL)
+	{
+		_OnCursorAction(cursorScreenPos);
+	}
 	// 左クリック
 	if (currentMouseInput == MOUSE_INPUT_LEFT)
 	{
@@ -66,8 +80,7 @@ void InputManager::ExecuteCallback()
 	}
 	// ドラックしているとき
 	if (_LDrackAction != NULL && _isLPressed)
-		_LDrackAction(cursorScreenPos);
-
+		_LDrackAction(cursorScreenPos, _oldLClickScreenPos);
 	// 右クリック
 	if (currentMouseInput == MOUSE_INPUT_RIGHT)
 	{
@@ -78,8 +91,7 @@ void InputManager::ExecuteCallback()
 	}
 	// ドラックしているとき
 	if (_RDrackAction != NULL && _isRPressed)
-		_RDrackAction(cursorScreenPos);
-
+		_RDrackAction(cursorScreenPos, _oldRClickScreenPos);
 	// ホイールを回転させたときの処理
 	int wheelRot = GetMouseWheelRotVol();
 	if (_WheelRotAction != NULL && wheelRot != 0)
@@ -89,3 +101,21 @@ void InputManager::ExecuteCallback()
 		_EscapePushAction();
 }
 
+void InputManager::UpdateCursor()
+{
+	// カーソル座標の取得
+	Vector2 cursorScreenPos = GetCursorScreenPos() + Vector2(_CURSOR_SIZE / 2, _CURSOR_SIZE /2);
+	_cursorObject->SetPosition(cursorScreenPos);
+}
+
+bool InputManager::IsLeftClick(Vector2 pos)
+{
+	float distanceClick = (pos - _oldLClickScreenPos).size();
+	return distanceClick <= _CLICK_MARGIN;
+}
+
+bool InputManager::IsRightClick(Vector2 pos)
+{
+	float distanceClick = (pos - _oldRClickScreenPos).size();
+	return distanceClick <= _CLICK_MARGIN;
+}

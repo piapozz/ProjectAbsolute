@@ -16,13 +16,15 @@ public:
 	}
 	~BaseUIScreen() {}
 
-	void Init(Vector2 setPosition, Vector2 setSize);
+	void Init(Vector2 setPosition, Vector2 setSize, bool fill);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
 	void SetTextColor(int r = 255, int g = 255, int b = 255){ _textColor = GetColor(r, g, b); }
 	void SetText(const std::string& setText){ _text = setText; }
 	void OnCursor() override;
+	void NotOnCursor() override;
+
 protected:
 	void DrawUIBox(int color = NULL);
 	void DrawUIText();
@@ -34,5 +36,7 @@ private:
 	Vector2 _screenPos;
 	std::string _text;
 	int _textColor;
+	int _outLineColor;
+	bool _fill;
 };
 

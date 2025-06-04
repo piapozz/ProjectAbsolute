@@ -1,6 +1,11 @@
 #include "../header/UIManager.h"
 #include "../header/UIScreenButton.h"
 
+std::vector<UIScreenButton*> UIManager::GetOperationUIList(){
+	return _pOperationUIList;
+}
+std::vector<UIScreenButton*> UIManager::_pOperationUIList;
+
 UIManager::UIManager()
 {
 	// オフセットを初期化
@@ -14,8 +19,9 @@ UIManager::UIManager()
 	// UIの生成
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		_pOperationUIList[i] = new UIScreenButton();
-		_pOperationUIList[i]->Init(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true);
-		_pOperationUIList[i]->SetActive(false);
+		UIScreenButton* button = new UIScreenButton();
+		button->Init(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true);
+		button->SetActive(false);
+		_pOperationUIList.push_back(button);
 	}
 }

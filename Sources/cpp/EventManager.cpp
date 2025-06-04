@@ -10,7 +10,7 @@ void EventManager::Init()
 	_melt = 0;
 	meltLevel = 1;
 	_pEnergySlider = new UIScreenSlider();
-	_pEnergySlider->Init(Vector2(400, 100), Vector2(500, 50));
+	_pEnergySlider->Init(Vector2(400, 100), Vector2(500, 50), true);
 	_pEnergySlider->SetLayer(Layer::NONE_INTERACT);
 	_pEnergySlider->SetValue(_energy);
 	_pEnergySlider->SetColor(0, 255, 0);
@@ -36,7 +36,7 @@ void EventManager::Init()
 
 	// ’âŽ~ƒ{ƒ^ƒ“
 	_pStopButton = new UIScreenButton();
-	_pStopButton->Init(Vector2(100, 1050), Vector2(200, 50));
+	_pStopButton->Init(Vector2(100, 1050), Vector2(200, 50), true);
 	_pStopButton->SetLayer(Layer::UI);
 	_pStopButton->SetText("’âŽ~");
 	_pStopButton->SetCallback([this]()
@@ -47,7 +47,7 @@ void EventManager::Init()
 	_pStopButton->SetTextColor();
 	// ’Êí‘¬“xƒ{ƒ^ƒ“
 	_pNormalSpeedButton = new UIScreenButton();
-	_pNormalSpeedButton->Init(Vector2(300, 1050), Vector2(200, 50));
+	_pNormalSpeedButton->Init(Vector2(300, 1050), Vector2(200, 50), true);
 	_pNormalSpeedButton->SetLayer(Layer::UI);
 	_pNormalSpeedButton->SetText("’Êí");
 	_pNormalSpeedButton->SetCallback([this]()
@@ -58,7 +58,7 @@ void EventManager::Init()
 	_pNormalSpeedButton->SetTextColor();
 	// ”{‘¬ƒ{ƒ^ƒ“
 	_pFastSpeedButton = new UIScreenButton();
-	_pFastSpeedButton->Init(Vector2(500, 1050), Vector2(200, 50));
+	_pFastSpeedButton->Init(Vector2(500, 1050), Vector2(200, 50), true);
 	_pFastSpeedButton->SetLayer(Layer::UI);
 	_pFastSpeedButton->SetText("”{‘¬");
 	_pFastSpeedButton->SetCallback([this]()

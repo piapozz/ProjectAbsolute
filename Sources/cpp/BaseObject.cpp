@@ -20,15 +20,26 @@ bool BaseObject::IsSamePos(Vector2 pos)
 bool BaseObject::IsSameRect(Vector2 pos, Vector2 size)
 {
 	float left = pos.x - (size.x / 2);
-	float right = pos.x + (size.x) / 2;
+	float right = pos.x + (size.x / 2);
+	if (left > right)
+	{
+		float temp = left;
+		left = right;
+		right = temp;
+	}
 	float up = pos.y - (size.y / 2);
 	float down = pos.y + (size.y / 2);
+	if (up < down)
+	{
+		float temp = up;
+		up = down;
+		down = temp;
+	}
 
 	float posMinX = position.x - objectSize.x / 2;
 	float posMaxX = position.x + objectSize.x / 2;
 	float posMinY = position.y - objectSize.y / 2;
 	float posMaxY = position.y + objectSize.y / 2;
-	
 
 	bool xSame = (posMinX > left && right > posMinX) || (posMaxX > left && right > posMaxX);
 	bool ySame = (posMinY > down && up > posMinY) || (posMaxY > down && up > posMaxY);

@@ -2,11 +2,12 @@
 #include "../header/CameraController.h"
 #include "../header/ObjectManager.h"
 
-void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize)
+void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill)
 {
 	_text == "";
 	_textColor = -1;
 	_screenPos = setPosition;
+	_fill = fill;
 	// ステージ座標に変換
 	position = CameraController::GetScreen2StagePos(_screenPos);
 	fontHandle = CreateFontToHandle("ＭＳ ゴシック", 24, 1);
@@ -17,6 +18,7 @@ void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize)
 	layer = Layer::OBJECT;
 	ObjectManager::instance->AddObject(this);
 	textSize = 100;
+	_outLineColor = GetColor(255, 255, 255);
 }
 
 void BaseUIScreen::Proc()
@@ -45,10 +47,8 @@ void BaseUIScreen::DrawUIBox(int color)
 	int x2 = position.x - objectSize.x / 2;
 	int y2 = position.y - objectSize.y / 2;
 
-	if (color == NULL)
-		DrawBoxAA(x1, y1, x2, y2, GetColor(255, 255, 255), false);
-	else
-		DrawBoxAA(x1, y1, x2, y2, color, true);
+	DrawBoxAA(x1, y1, x2, y2, color, _fill);
+	DrawBoxAA(x1, y1, x2, y2, _outLineColor, FALSE);
 }
 
 void BaseUIScreen::DrawUIText()
@@ -62,6 +62,10 @@ void BaseUIScreen::DrawUIText()
 
 void BaseUIScreen::OnCursor()
 {
-	beforeOnCursor = true;
-	DrawUIBox();
+	_outLineColor = GetColor(0, 255, 255);
+}
+
+void BaseUIScreen::NotOnCursor()
+{
+	_outLineColor = GetColor(255, 255, 255);
 }

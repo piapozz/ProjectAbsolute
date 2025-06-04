@@ -1,4 +1,5 @@
 #include "../header/BasePhase.h"
+#include  "../header/InputManager.h"
 #include "DxLib.h"
 
 void BasePhase::ProcLoop()
@@ -7,6 +8,7 @@ void BasePhase::ProcLoop()
 	{
 		ObjectManager::instance->Update();
 		if (Proc()) break;
+		pInputManager->UpdateCursor();
 		ObjectManager::instance->Draw();
 	}
 }
