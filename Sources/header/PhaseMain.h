@@ -20,7 +20,9 @@ public:
 
 	void Init() override;
 	bool Proc() override;
-	void Teardown() override {};
+	void Teardown() override {}
+
+	static std::vector<OfficerPlayer*> GetSelectOfficerList();
 
 protected:
 	void OnCursorProc(Vector2 pos) override;
@@ -38,7 +40,7 @@ private:
 	UIManager* _pUIManager;
 	CameraController* _pCameraController;
 	OfficerManager* _pOfficerManager;
-	std::vector<OfficerPlayer*> _pSelectOfficerList;
+	static std::vector<OfficerPlayer*> _pSelectOfficerList;
 	EventManager* _pEventManager;
 	UIScreenButton* _pRangeSelect;
 

@@ -30,8 +30,8 @@ public:
 		RUNAWAY
 	};
 
-	SecureRoom()
-		:_isMeltdown(false), _meltdownCount(0){};
+	SecureRoom(Vector2 position, Vector2 size)
+		:_isMeltdown(false), _meltdownCount(0){ Init(position, size); };
 	SecureRoom(BaseEntity* pEntity)
 		:_pEntity(pEntity), _isMeltdown(false), _meltdownCount(0){}
 	~SecureRoom(){ Teardown(); }
@@ -60,7 +60,7 @@ public:
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
-	inline static void SetGetUICallback(std::function<std::vector<UIScreenButton*>()> Callback){ _GetUICallback = Callback; }
+	inline static void SetGetUICallback(std::function<std::vector<OfficerPlayer*>()> Callback){ _GetUICallback = Callback; }
 
 private:
 	// メルトダウンのカウント数
@@ -97,7 +97,7 @@ private:
 	Vector2 _operationCountOffset;
 	Vector2 _runawayCountOffset;
 	// 表示するUIを取得するコールバック
-	static std::function<std::vector<UIScreenButton*>()> _GetUICallback;
+	static std::function<std::vector<OfficerPlayer*>()> _GetUICallback;
 
 	/// <summary>
 	/// メルトダウンのカウントをする

@@ -10,6 +10,9 @@
 #include "../header/BaseOfficer.h"
 #include "../header/SecureRoom.h"
 
+std::vector<OfficerPlayer*> PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
+std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
+
 void PhaseMain::Init()
 {
 	// 入力の初期化
@@ -45,6 +48,7 @@ void PhaseMain::Init()
 	_pRangeSelect->SetLayer(Layer::NONE_DRAW);
 	_pUIManager = new UIManager();
 	// 各オブジェクトのインタラクト時のコールバック設定
+
 }
 
 bool PhaseMain::Proc()
@@ -70,7 +74,7 @@ void PhaseMain::OnCursorProc(Vector2 pos)
 
 	// スクリーンUI
 	// UIの取得
-	BaseObject* ScreenUI = ObjectManager::instance->FindPosObject(pos, ObjectType::SCREEN_UI);
+	BaseObject* ScreenUI = ObjectManager::Instance().FindPosObject(pos);
 	if (ScreenUI != nullptr)
 	{
 		ScreenUI->OnCursor();
@@ -123,51 +127,16 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	{
 		// スクリーンUI
 		// UIの取得
-		BaseObject* ScreenUI = ObjectManager::instance->FindPosObject(pos, ObjectType::SCREEN_UI);
-		if (ScreenUI != nullptr)
+		BaseObject* object = ObjectManager::Instance().FindPosObject(pos);
+		if (object != nullptr)
 		{
-			ScreenUI->ClickEvent();
+			object->ClickEvent();
 			return;
-		}
-		// UI
-		// UIの取得
-		BaseObject* UI = ObjectManager::instance->FindPosObject(worldPos, ObjectType::UI);
-		if (UI != nullptr)
-		{
-			UI->ClickEvent();
-			return;
-		}
-		// キャラクター
-		// 職員の取得
-		BaseObject* officer = ObjectManager::instance->FindPosObject(worldPos, ObjectType::CHARACTER);
-		if (officer != nullptr)
-		{
-			_pSelectOfficerList.clear();
-			_pSelectOfficerList.push_back(static_cast<OfficerPlayer*>(officer));
-			officer->ClickEvent();
-			return;
-		}
-		// ステージの取得
-		BaseObject* section = ObjectManager::instance->FindPosObject(worldPos, ObjectType::SECTION);
-		if (_pSelectOfficerList.empty()) return;
-
-		if (dynamic_cast<SecureRoom*>(section) != nullptr)
-		{
-			// 収容所の取得
-			SecureRoom* secureRoom = static_cast<SecureRoom*>(section);
-			secureRoom->ClickEvent();
-			secureRoom->SetInteractOfficer(_pSelectOfficerList[0]);
 		}
 		// ステージ外をクリック
 		if (!_pStageManager->CheckPosOnStage(worldPos))
 		{
 			_pSelectOfficerList.clear();
-			return;
-		}
-		// キャラ移動が可能なら移動
-		if (_pSelectOfficerList[0]->GetImpossible())
-		{
-			_pSelectOfficerList[0]->ChangeMoveState(worldPos);
 			return;
 		}
 	}
@@ -181,7 +150,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		Vector2 centorPos = Vector2(worldPos + ((worldOldPos - worldPos) / 2));
 		Vector2 size = worldOldPos - worldPos;
 		// 職員の取得
-		std::vector<BaseObject*> officerList = ObjectManager::instance->FindRectObject(centorPos, size, ObjectType::CHARACTER);
+		std::vector<BaseObject*> officerList = ObjectManager::Instance().FindRectAllObject(centorPos, size, ObjectType::CHARACTER);
 		if (officerList.empty()) return;
 		_pSelectOfficerList.clear();
 		for (int i = 0, max = officerList.size(); i < max; i++)
