@@ -49,9 +49,6 @@
 //	return characters;
 //}
 
-BaseAttack::BaseAttack(ITargetSelector* selector): targetSelector(selector){
-};
-
 void BaseAttack::Attack(BaseCharacter* attacker) 
 {
 	std::vector<BaseCharacter*> targets = targetSelector->SelectTargets(attacker);

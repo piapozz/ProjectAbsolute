@@ -67,12 +67,9 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection)
 	{
 		args->secureRoom = secureRoom;
 		ChangeState(CharacterStateID::OPERATION_MOVE, args);
-		_pastPosition = routeList[0];
 		return;
 	}
 	ChangeState(CharacterStateID::MOVE, args);
-	// ‰ß‹Ž‚ÌˆÊ’u‚ð•Û‘¶
-	_pastPosition = routeList[0];
 }
 
 //bool BaseCharacter::CharacterMove(std::vector<Vector2> targetPosList, float speed)

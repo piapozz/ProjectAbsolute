@@ -1,17 +1,6 @@
 #include "../header/OfficerPlayer.h"
 #include "../header/BaseCharacterState.h"
-#include "../header/OfficerInitData.h"
 #include "../header/PhaseMain.h"
-
-OfficerPlayer::OfficerPlayer()
-{
-
-}
-
-OfficerPlayer::~OfficerPlayer()
-{
-
-}
 
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 {

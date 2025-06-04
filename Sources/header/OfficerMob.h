@@ -9,7 +9,12 @@ class OfficerMob : public BaseOfficer
 {
 public:
 	OfficerMob();
+	OfficerMob(OfficerInitData data, int setOfficerID)
+	{
+		Init(data, setOfficerID);
+	};
 	~OfficerMob();
+
 	static std::string StaticTypeName() {
 		return "OfficerMob";
 	}

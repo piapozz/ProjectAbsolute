@@ -1,5 +1,6 @@
 ﻿#include "../header/CharacterStateMove.h"
 #include "../header/BaseCharacter.h"
+#include "../header/ObjectManager.h"
 
 CharacterStateMove::CharacterStateMove(std::vector<Vector2> targetPosList)
 {
@@ -17,6 +18,11 @@ void CharacterStateMove::Update(BaseCharacter* character)
 	{
 		character->SetPosition(_routeList.back());
 		character->ChangeState(CharacterStateID::IDLE);
+
+		// 過去の位置を保存
+		ObjectManager& objectManager = ObjectManager::Instance();
+		character->pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(character->GetPosition()));
+
 		return;
 	}
 

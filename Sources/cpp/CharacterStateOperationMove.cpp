@@ -61,5 +61,4 @@ void CharacterStateOperationMove::Exit(BaseCharacter* character)
 {
 	_routeList.clear();
 	character->color = IDLE;
-
 }
