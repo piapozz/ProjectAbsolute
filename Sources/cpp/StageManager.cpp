@@ -8,6 +8,7 @@
 #include "../header/RouteSearcher.h"
 #include "../header/PhaseMain.h"
 #include "../header/UIButton.h"
+#include "../header/ObjectFactory.h"
 
 std::vector<std::vector<int>> StageManager::_stageData;
 std::vector<SecureRoom*> StageManager::_secureRoomList;
@@ -17,9 +18,9 @@ StageManager::~StageManager()
 	//収容所データの解放
 	for (BaseObject* secure : _secureRoomList)
 	{		
-		secure->Teardown();
-		delete secure;
+		ObjectFactory::Instance().Destroy(secure);
 	}
+	_secureRoomList.clear();
 }
 
 void StageManager::Init()
@@ -37,22 +38,24 @@ void StageManager::CreateStage()
 		std::vector<bool>(STAGE_SIZE, false) 
 		);
 
+	ObjectFactory& factory = ObjectFactory::Instance();
+
 	// ステージの生成
 	for (int i = 0; i < STAGE_SIZE; ++i)
 	{
 		for (int j = 0; j < STAGE_SIZE; ++j)
 		{
-			if (_visited[i][j]) continue; // 既に訪れた場所はスキップ
+			if (_visited[i][j]) continue; 
 			// セクションの種類に応じて処理を分岐
 			if (_stageData[i][j] == (int)SectionType::ROOM)
 			{
 				// 部屋を生成
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
-				SectionRoom* room = new SectionRoom();
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				room->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				UIButton* button = new UIButton();
-				button->Init(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				button->Init(pos, Vector2(size * SECTION_SIZE_X, SECTION_SIZE_Y));
 				button->SetActive(true);
 				button->SetText("部屋");
 				button->SetLayer(Layer::NONE_INTERACT);

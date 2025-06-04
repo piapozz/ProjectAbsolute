@@ -8,6 +8,9 @@ class BaseSection: public BaseObject
 {
 public:
 	BaseSection(): BaseObject() { }
+	BaseSection(Vector2 pos, Vector2 size){
+		Init(pos, size);
+	}
 	BaseSection(Layer setLayer)
 		: BaseObject(setLayer) {}
 	BaseSection(Layer setLayer, int setDrawHandle)

@@ -156,7 +156,6 @@
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
     <ClCompile Include="Sources\cpp\EventManager.cpp" />
-    <ClCompile Include="Sources\cpp\MemoryAllocator.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
@@ -200,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\AttackNormal.h" />
+    <ClInclude Include="Sources\header\AutoTypeNameObject.h" />
     <ClInclude Include="Sources\header\BaseAttack.h" />
     <ClInclude Include="Sources\header\BaseCharacter.h" />
     <ClInclude Include="Sources\header\BaseEntity.h" />
@@ -220,6 +220,7 @@
     <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />
     <ClInclude Include="Sources\header\MemoryAllocator.h" />
+    <ClInclude Include="Sources\header\ObjectFactory.h" />
     <ClInclude Include="Sources\header\OfficerInitData.h" />
     <ClInclude Include="Sources\header\OfficerManager.h" />
     <ClInclude Include="Sources\header\OfficerMob.h" />

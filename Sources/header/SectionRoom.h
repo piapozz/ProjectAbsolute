@@ -8,6 +8,8 @@ class SectionRoom : public BaseSection
 {
 public:
 	SectionRoom() {}
+	SectionRoom(Vector2 pos, Vector2 size) : BaseSection(pos,size) {
+	}
 	SectionRoom(Layer setLayer)
 		: BaseSection(setLayer) {}
 	SectionRoom(Layer setLayer, int setDrawHandle)
@@ -15,6 +17,14 @@ public:
 	SectionRoom(const SectionRoom& obj)
 		: BaseSection(obj) {}
 	~SectionRoom() {}
+
+	static std::string StaticTypeName() {
+		return "SectionRoom";
+	}
+
+	std::string GetTypeName() const override {
+		return StaticTypeName();
+	}
 
 	/// <summary>
 	/// èâä˙âª

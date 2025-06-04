@@ -1,16 +1,25 @@
 #pragma once
 #include "../header/CommonModule.h"
 #include "../header/Const.h"
+#include "../header/AutoTypeNameObject.h"
 /*
 * Ishihara
 * オブジェクトの基底
 */
-class BaseObject
+class BaseObject : public AutoTypeNameObject
 {
 public:
 	BaseObject(){
 		objectType = ObjectType::INVALID;
 	 }
+	BaseObject(Vector2 pos, Vector2 size){
+		position = pos;
+		objectSize = size;
+		objectType = ObjectType::INVALID;
+		layer = Layer::OBJECT;
+		drawHandle = -1;
+		beforeOnCursor = false;
+	}
 	BaseObject(Layer setLayer)
 		: layer(setLayer){}
 	BaseObject(Layer setLayer, int setDrawHandle)
@@ -34,6 +43,9 @@ public:
 	virtual void Teardown();
 	virtual void ClickEvent(){};
 	virtual void OnCursor(){};
+	static std::string StaticTypeName() {
+		return "BaseObject";
+	}
 
 	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }

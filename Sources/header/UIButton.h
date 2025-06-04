@@ -9,6 +9,8 @@ class UIButton: public BaseUI
 {
 public:
 	UIButton() {}
+	UIButton(Vector2 pos, Vector2 size){
+	}
 	UIButton(Layer setLayer)
 		: BaseUI(setLayer) {}
 	UIButton(Layer setLayer, int setDrawHandle)
@@ -21,6 +23,14 @@ public:
 	void Draw() override;
 	void Teardown() override;
 	void ClickEvent() override {_callback();}
+
+	static std::string StaticTypeName() {
+		return "UIButton";
+	}
+
+	std::string GetTypeName() const override {
+		return StaticTypeName();
+	}
 
 	/// <summary>
 	/// コールバックの設定

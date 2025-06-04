@@ -17,6 +17,14 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	static std::string StaticTypeName() {
+		return "UISlider";
+	}
+
+	std::string GetTypeName() const override {
+		return StaticTypeName();
+	}
 	/// <summary>
 	/// ’l‚Ìİ’è
 	/// </summary>
