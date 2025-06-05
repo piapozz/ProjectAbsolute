@@ -17,6 +17,9 @@ void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSe
 	objectType = ObjectType::SCREEN_UI;
 	textSize = 100;
 	_outLineColor = GetColor(255, 255, 255);
+	active = layerSetting.m_active;
+	interactable = layerSetting.m_interact;
+	layer = layerSetting.m_layer;
 }
 
 void BaseUIScreen::Proc()

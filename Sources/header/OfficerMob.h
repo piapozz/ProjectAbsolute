@@ -11,8 +11,9 @@ public:
 	OfficerMob(){
 	};
 	OfficerMob(OfficerInitData data, int setOfficerID, LayerSetting layerSetting)
+		: BaseOfficer(layerSetting)
 	{
-		Init(data, setOfficerID, layerSetting);
+		Init(data, setOfficerID);
 	};
 	~OfficerMob(){
 	};
@@ -21,7 +22,7 @@ public:
 		return "OfficerMob";
 	}
 
-	void Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting) override;
+	void Init(OfficerInitData data, int setOfficerID) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

@@ -1,8 +1,8 @@
 #include "../header/BaseEgoEntity.h"
 
-void BaseEgoEntity::Init()
+void BaseEgoEntity::Init(LayerSetting layerSetting)
 {
-	BaseEntity::Init();
+	BaseEntity::Init(layerSetting);
 	isRunaway = false;
 }
 

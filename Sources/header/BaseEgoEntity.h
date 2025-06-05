@@ -19,9 +19,12 @@ public:
 	};
 
 	BaseEgoEntity(){}
+	BaseEgoEntity(LayerSetting layerSetting)
+		: BaseEntity(layerSetting) {
+	}
 	virtual ~BaseEgoEntity(){}
 
-	void Init() override;
+	void Init(LayerSetting layerSetting) override;
 	void Proc() override;
 	inline bool IsTool() override { return false; }
 

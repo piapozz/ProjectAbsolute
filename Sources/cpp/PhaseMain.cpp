@@ -34,7 +34,8 @@ void PhaseMain::Init()
 	_pStageManager->CreateStage();
 	_pOfficerManager = new OfficerManager();
 	_pOfficerManager->Init();
-	BaseEntity* addEntity = ObjectFactory::Instance().Create<Entity_E000>();
+	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
+	BaseEntity* addEntity = ObjectFactory::Instance().CreateWithArgs<Entity_E000>(layerSetting);
 	_pStageManager->SetEntity(addEntity, 0);
 	_pEventManager = new EventManager();
 	_pEventManager->Init();
@@ -43,7 +44,6 @@ void PhaseMain::Init()
 		// 作業が終了したら、エネルギーを追加
 		_pEventManager->AddEnergy(successCount);
 	};
-	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
 	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Vector2::zero(), Vector2::zero(), false, layerSetting);
 	_pUIManager = new UIManager();
 	// 各オブジェクトのインタラクト時のコールバック設定
@@ -106,7 +106,7 @@ void PhaseMain::LDrackInputProc(Vector2 pos, Vector2 oldPos)
 {
 	if (pInputManager->IsLeftClick(pos)) return;
 	// 範囲選択
-	_pRangeSelect->SetInteract(false);
+	_pRangeSelect->SetActive(true);
 	_pRangeSelect->SetPosition(pos + ((oldPos - pos) / 2));
 	_pRangeSelect->SetSize(oldPos - pos);
 }

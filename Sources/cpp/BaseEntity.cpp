@@ -2,9 +2,9 @@
 #include "../header/UIButton.h"
 #include <cmath>
 
-void BaseEntity::Init()
+void BaseEntity::Init(LayerSetting layerSetting)
 {
-	BaseCharacter::Init();
+	BaseCharacter::Init(layerSetting);
 	// マスターデータからID参照でパラメーターを取得
 	hazardLevel = 0;
 	maxRunawayCount = 3;

@@ -1,8 +1,8 @@
 #include "../header/BaseToolEntity.h"
 
-void BaseToolEntity::Init()
+void BaseToolEntity::Init(LayerSetting layerSetting)
 {
-	BaseEntity::Init();
+	BaseEntity::Init(layerSetting);
 }
 
 void BaseToolEntity::Proc()

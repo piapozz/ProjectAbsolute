@@ -22,6 +22,9 @@ public:
 	};
 
 	BaseCharacter() {}
+	BaseCharacter(LayerSetting layerSetting) {
+		Init(layerSetting);
+	}
 	BaseCharacter(Layer setLayer)
 		: BaseObject(setLayer) {}
 	BaseCharacter(Layer setLayer,int setDrawHandle)
@@ -33,7 +36,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	virtual void Init();
+	virtual void Init(LayerSetting layerSetting);
 	/// <summary>
 	/// アップデート
 	/// </summary>

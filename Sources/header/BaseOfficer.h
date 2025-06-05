@@ -11,9 +11,12 @@ class BaseOfficer : public BaseCharacter
 {
 public:
 	BaseOfficer();
+	BaseOfficer(LayerSetting layerSetting)
+		: BaseCharacter(layerSetting) {
+	}
 	virtual ~BaseOfficer();
 
-	virtual void Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting);
+	virtual void Init(OfficerInitData data, int setOfficerID);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

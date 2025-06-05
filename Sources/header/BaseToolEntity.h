@@ -16,9 +16,12 @@ public:
 	};
 	BaseToolEntity(ToolType setType)
 		:_toolType(setType){}
+	BaseToolEntity(ToolType setType, LayerSetting layerSetting)
+		: BaseEntity(layerSetting), _toolType(setType) {
+	}
 	~BaseToolEntity(){}
 
-	void Init();
+	void Init(LayerSetting layerSetting);
 	void Proc() override;
 	/// <summary>
 	/// Žg—p‚·‚é

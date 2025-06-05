@@ -4,12 +4,12 @@
 #include "../header/CharacterStateFactory.h"
 #include "../header/StageManager.h"
 
-void BaseCharacter::Init()
+void BaseCharacter::Init(LayerSetting layerSetting)
 {
 	objectType = ObjectType::CHARACTER;
-	active = true;
-	interactable = true;
-	layer = Layer::MIDDLE;
+	active = layerSetting.m_active;
+	interactable = layerSetting.m_interact;
+	layer =layerSetting.m_layer;
 	objectSize = Vector2(50, 50);
 
 }

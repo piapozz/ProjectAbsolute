@@ -10,11 +10,14 @@ class BaseEntity: public BaseCharacter
 {
 public:
 	BaseEntity(){}
+	BaseEntity(LayerSetting layerSetting){
+		Init(layerSetting);
+	}
 	BaseEntity(int ID)
 		:masterID(ID){}
 	virtual ~BaseEntity(){}
 
-	void Init() override;
+	void Init(LayerSetting layerSetting) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
