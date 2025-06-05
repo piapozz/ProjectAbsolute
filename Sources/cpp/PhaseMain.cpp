@@ -11,7 +11,7 @@
 #include "../header/SecureRoom.h"
 #include "../header/ObjectFactory.h"
 
-std::vector<OfficerPlayer*> PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
+std::vector<OfficerPlayer*>& PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
 
 void PhaseMain::Init()

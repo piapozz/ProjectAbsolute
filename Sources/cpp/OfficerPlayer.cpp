@@ -43,7 +43,7 @@ void OfficerPlayer::Teardown()
 void OfficerPlayer::ClickEvent()
 {
 	// ç∂è„Ç…UIÇï`âÊ
-	std::vector<OfficerPlayer*> selectOfficerList = PhaseMain::GetSelectOfficerList();
+	std::vector<OfficerPlayer*>& selectOfficerList = PhaseMain::GetSelectOfficerList();
 	selectOfficerList.clear();
 	selectOfficerList.push_back(this);
 }

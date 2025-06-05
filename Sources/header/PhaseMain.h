@@ -22,7 +22,7 @@ public:
 	bool Proc() override;
 	void Teardown() override {}
 
-	static std::vector<OfficerPlayer*> GetSelectOfficerList();
+	static std::vector<OfficerPlayer*>& GetSelectOfficerList();
 
 protected:
 	void OnCursorProc(Vector2 pos) override;
