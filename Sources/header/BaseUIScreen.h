@@ -5,8 +5,8 @@ class BaseUIScreen:public BaseObject
 public:
 	BaseUIScreen() {
 	}
-	BaseUIScreen(Vector2 setPosition, Vector2 setSize, bool fill) {
-		Init(setPosition, setSize, fill);
+	BaseUIScreen(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting) {
+		Init(setPosition, setSize, fill, layerSetting);
 	}
 	BaseUIScreen(Layer setLayer)
 		: BaseObject(setLayer) {
@@ -19,7 +19,7 @@ public:
 	}
 	~BaseUIScreen() {}
 
-	void Init(Vector2 setPosition, Vector2 setSize, bool fill);
+	void Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

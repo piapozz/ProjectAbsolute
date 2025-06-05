@@ -10,8 +10,8 @@ class BaseSection: public BaseObject
 {
 public:
 	BaseSection(): BaseObject() { }
-	BaseSection(Vector2 pos, Vector2 size){
-		Init(pos, size);
+	BaseSection(Vector2 pos, Vector2 size, LayerSetting layerSetting){
+		Init(pos, size, layerSetting);
 	}
 	BaseSection(Layer setLayer)
 		: BaseObject(setLayer) {}
@@ -24,7 +24,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
- 	virtual void Init(Vector2 setPosition, Vector2 setSize);
+ 	virtual void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
 	/// <summary>
 	/// アップデート
 	/// </summary>

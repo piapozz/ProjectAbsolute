@@ -16,7 +16,7 @@ BaseOfficer::~BaseOfficer()
 
 }
 
-void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
+void BaseOfficer::Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting)
 {
 	BaseCharacter::Init();
 	position = data.position;

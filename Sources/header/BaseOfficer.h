@@ -13,7 +13,7 @@ public:
 	BaseOfficer();
 	virtual ~BaseOfficer();
 
-	virtual void Init(OfficerInitData data, int setOfficerID);
+	virtual void Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

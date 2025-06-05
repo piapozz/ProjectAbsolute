@@ -1,9 +1,9 @@
 #include "../header/UIButton.h"
 
-void UIButton::Init(Vector2 setPosition, Vector2 setSize)
+void UIButton::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	// èâä˙âª
-	BaseUI::Init(setPosition, setSize);
+	BaseUI::Init(setPosition, setSize, layerSetting);
 }
 
 void UIButton::Proc()

@@ -7,7 +7,9 @@
 void BaseCharacter::Init()
 {
 	objectType = ObjectType::CHARACTER;
-	layer = Layer::OBJECT;
+	active = true;
+	interactable = true;
+	layer = Layer::MIDDLE;
 	objectSize = Vector2(50, 50);
 
 }

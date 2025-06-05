@@ -9,7 +9,7 @@ class SectionCorridor: public BaseSection
 public:
 	SectionCorridor() {
 	}
-	SectionCorridor(Vector2 pos, Vector2 size): BaseSection(pos, size) {
+	SectionCorridor(Vector2 pos, Vector2 size, LayerSetting layerSetting): BaseSection(pos, size, layerSetting) {
 	}
 	SectionCorridor(Layer setLayer)
 		: BaseSection(setLayer) {
@@ -30,7 +30,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init(Vector2 setPosition, Vector2 setSize) override;
+	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) override;
 	/// <summary>
 	/// アップデート
 	/// </summary>

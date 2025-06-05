@@ -2,10 +2,10 @@
 
 #include "../header/Const.h"
 
-void SectionCorridor::Init(Vector2 setPosition, Vector2 setSize)
+void SectionCorridor::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	// èâä˙âª
-	BaseSection::Init(setPosition, setSize);
+	BaseSection::Init(setPosition, setSize, layerSetting);
 }
 
 void SectionCorridor::Proc()

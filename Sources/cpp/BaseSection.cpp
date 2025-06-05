@@ -4,14 +4,16 @@
 #include "../header/PhaseMain.h"
 #include "../header/OfficerPlayer.h"
 
-void BaseSection::Init(Vector2 setPosition, Vector2 setSize)
+void BaseSection::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	// èâä˙âª
 	sectionType = SectionType::INVALID;
 	position = setPosition;
 	objectSize = setSize;
 	objectType = ObjectType::SECTION;
-	layer = Layer::OBJECT;
+	active = layerSetting.m_active;
+	interactable = layerSetting.m_interact;
+	layer = layerSetting.m_layer;
 }
 
 void BaseSection::Proc()

@@ -1,10 +1,10 @@
 #include "../header/SectionRoom.h"
 #include "../header/Const.h"
 
-void SectionRoom::Init(Vector2 setPosition, Vector2 setSize)
+void SectionRoom::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	// èâä˙âª
-	BaseSection::Init(setPosition, setSize);
+	BaseSection::Init(setPosition, setSize, layerSetting);
 }
 
 void SectionRoom::Proc()

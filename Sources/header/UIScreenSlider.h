@@ -8,14 +8,14 @@ class UIScreenSlider : public BaseUIScreen
 {
 public:
 	UIScreenSlider() {}
-	UIScreenSlider(Vector2 setPosition, Vector2 setSize, bool fill) {
-		Init(setPosition, setSize, fill);
+	UIScreenSlider(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting) {
+		Init(setPosition, setSize, fill, layerSetting);
 	}
 	UIScreenSlider(Layer setLayer): BaseUIScreen(setLayer) {}
 	UIScreenSlider(Layer setLayer, int setDrawHandle): BaseUIScreen(setLayer, setDrawHandle) {}
 	UIScreenSlider(const UIScreenSlider& obj): BaseUIScreen(obj) {}
 	~UIScreenSlider() {}
-	void Init(Vector2 setPosition, Vector2 setSize, bool fill);
+	void Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

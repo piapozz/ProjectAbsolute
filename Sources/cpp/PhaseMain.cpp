@@ -43,8 +43,8 @@ void PhaseMain::Init()
 		// 作業が終了したら、エネルギーを追加
 		_pEventManager->AddEnergy(successCount);
 	};
-	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Vector2::zero(), Vector2::zero(), false);
-	_pRangeSelect->SetLayer(Layer::NONE_DRAW);
+	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
+	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Vector2::zero(), Vector2::zero(), false, layerSetting);
 	_pUIManager = new UIManager();
 	// 各オブジェクトのインタラクト時のコールバック設定
 
@@ -106,7 +106,7 @@ void PhaseMain::LDrackInputProc(Vector2 pos, Vector2 oldPos)
 {
 	if (pInputManager->IsLeftClick(pos)) return;
 	// 範囲選択
-	_pRangeSelect->SetLayer(Layer::NONE_INTERACT);
+	_pRangeSelect->SetInteract(false);
 	_pRangeSelect->SetPosition(pos + ((oldPos - pos) / 2));
 	_pRangeSelect->SetSize(oldPos - pos);
 }
@@ -148,7 +148,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	// ドラックが離されたなら
 	else
 	{
-		_pRangeSelect->SetLayer(Layer::NONE_DRAW);
+		_pRangeSelect->SetActive(false);
 		// ワールド座標に変更
 		Vector2 worldOldPos = _pCameraController->GetScreen2StagePos(oldPos);
 		// 中心座標と大きさを指定

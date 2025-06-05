@@ -39,14 +39,9 @@ enum class SceneName
 enum class Layer
 {
 	INVALID = -1,
-	NONE_DRAW,
-	NONE_INTERACT,
-	BACK_GROUND,
-	OBJECT,
-	PLAYER,
-	ENTITY,
-	EFFECT,
-	UI,
+	BACK,
+	MIDDLE,
+	FRONT,
 
 	MAX
 };
@@ -105,13 +100,22 @@ enum class CharacterGroup
 };
 
 // UI設定構造体
-typedef struct{
-	Vector2 m_position; // 座標
-	Vector2 m_size;		// 大きさ
-	int m_textColor;	// テキストの色
-	std::string m_text; // テキスト内容
-	bool m_fill;		// 塗りつぶしフラグ
-} UISetting;;
+typedef struct UISetting{
+	Vector2 m_position = Vector2::zero();	// 座標
+	Vector2 m_size = Vector2::zero();		// 大きさ
+	std::string m_text = "";				// テキスト内容
+	bool m_fill = true;						// 塗りつぶしフラグ
+};
+
+// レイヤー設定構造体
+typedef struct LayerSetting
+{
+	bool m_active = true;
+	bool m_interact = true;
+	Layer m_layer = Layer::BACK;
+	// デフォルトコンストラクタ
+	LayerSetting(bool active, bool interact, Layer layer): m_active(active), m_interact(interact), m_layer(layer){ }
+};
 
 // ステージ
 const int SECTION_SIZE_X = 150;
