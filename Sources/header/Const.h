@@ -85,6 +85,7 @@ enum class CharacterStateID
 	OPERATION,
 	OPERATION_MOVE,
 	FIGHT,
+	FIGHT_MOVE,
 	PANIC,
 	DEAD,
 

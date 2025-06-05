@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "../header/Const.h"
 
 class BaseCharacter;
 

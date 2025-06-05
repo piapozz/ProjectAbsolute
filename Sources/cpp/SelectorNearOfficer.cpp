@@ -1,49 +1,36 @@
 #include "../header/SelectorNearOfficer.h"
 #include "../header/BaseCharacter.h"
+#include "../header/StageManager.h"
+#include "../header/OfficerManager.h"
 #include "../header/ObjectManager.h"
 
-//std::vector<BaseCharacter*> NearestEnemySelector::SelectTargets(BaseCharacter* attacker) {
-//	BaseCharacter* nearOfficer = nullptr;
-//	int minDistSq = -1;
-//
-//	// ƒLƒƒƒ‰‚ğ‘Sˆõæ“¾
-//	std::vector<BaseObject*> allCharacter = ObjectManager::instance->GetAllCharacter(ObjectType::CHARACTER);
-//	Vector2 attackerPos = attacker->GetPosition();
-//
-//	for (int i = 0; i < allCharacter.size();i++)
-//	{
-//		BaseCharacter* chara = dynamic_cast<BaseCharacter*>(allCharacter[i]);
-//		if (!chara || chara->GetGroup() == attacker->GetGroup()) continue;
-//
-//		Vector2 pos = chara->GetPosition();
-//		int dx = pos.x - attackerPos.x;
-//		int dy = pos.y - attackerPos.y;
-//		int distSq = dx * dx + dy * dy;
-//
-//		if (minDistSq == -1 || distSq < minDistSq)
-//		{
-//			minDistSq = distSq;
-//			nearOfficer = chara;
-//		}
-//	}
-//
-//	if (nearOfficer) return {nearOfficer};
-//	return {};
-//}
-
-std::vector<BaseCharacter*> NearestEnemySelector::SelectTargets(BaseCharacter* attacker)
+std::vector<BaseCharacter*> SelectorNearOfficer::SelectTargets(BaseCharacter* attacker)
 {
 	BaseCharacter* nearOfficer;
+	Vector2 attackerPos = attacker->GetPosition();
+	OfficerManager& officerManager = OfficerManager::Instance();
+	std::vector<BaseOfficer*> officerList = officerManager.Instance().GetOfficerList();
+	ObjectManager& objectManager = ObjectManager::Instance();
 
-	// ˆê”Ô‹ß‚¢Officer‚ğŒŸõ
+	int minDist = -1;
 
+	for (int i = 0; i < officerList.size();i++)
+	{
+		BaseCharacter* chara = dynamic_cast<BaseCharacter*>(officerList[i]);
+		if (!chara) continue;
 
+		Vector2 pos = chara->GetPosition();
+		int dx = pos.x - attackerPos.x;
+		int dy = pos.y - attackerPos.y;
+		int dist = dx * dx + dy * dy;
 
+		if (minDist == -1 || dist < minDist)
+		{
+			minDist = dist;
+			nearOfficer = chara;
+		}
+	}
 
-	std::vector<BaseCharacter*> index;
-	index.push_back(nearOfficer);
-	//if (!index) return nullptr;
-
-	return index;
+	if (nearOfficer) return {nearOfficer};
+	return {};
 }
-
