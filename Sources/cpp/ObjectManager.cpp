@@ -5,9 +5,11 @@
 
 void ObjectManager::Init()
 {
-	_objectList = std::vector<std::vector<BaseObject*>>(
-		(int)ObjectType::MAX
-	);
+	_objectList = vector<vector<vector<BaseObject*>>>(
+		(int)ObjectType::MAX,
+		std::vector<std::vector<BaseObject*>>(
+		(int)Layer::MAX
+	));
 	_gameSpeed = 1;
 }
 
@@ -15,14 +17,9 @@ void ObjectManager::Update()
 {
 	for (int i = 0; i < _gameSpeed; i++)
 	{
-		for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
-		{
-			for (BaseObject* obj : _objectList[i])
-			{
-				if (obj == nullptr) continue;
-				obj->Proc();
-			}
-		}
+		ForEachObject([](BaseObject* obj) {
+			obj->Proc();
+		});
 	}
 }
 
@@ -31,17 +28,30 @@ void ObjectManager::Draw()
 	// 画面のクリア
 	ClearDrawScreen ();
 	clsDx ();
-	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	for (int i = 0; i < _gameSpeed; i++)
 	{
-		for (BaseObject* obj : _objectList[i])
-		{
-			if (obj == nullptr) continue;
-			if (!obj->GetActive()) continue;
+		ForEachObject([](BaseObject* obj) {
 			obj->Draw();
-		}
+		});
 	}
 	// 裏画面の内容を表画面に反映
 	ScreenFlip ();
+}
+
+void ObjectManager::ForEachObject(function<void(BaseObject*)> func)
+{
+	for (int type = 0; type < (int)ObjectType::MAX; type++)
+	{
+		for (int layer = 0; layer < (int)Layer::MAX; layer++)
+		{
+			for (BaseObject* obj : _objectList[type][layer])
+			{
+				if (obj == nullptr) continue;
+				if (!obj->GetActive()) continue;
+				func(obj);
+			}
+		}
+	}
 }
 
 void ObjectManager::AddObject(BaseObject* obj)
@@ -52,20 +62,24 @@ void ObjectManager::AddObject(BaseObject* obj)
 		Init();
 	}
 	ObjectType type = obj->GetType();
-	_objectList[(int)type].push_back(obj);
+	Layer layer = obj->GetLayer();
+	_objectList[(int)type][(int)layer].push_back(obj);
 }
 
 void ObjectManager::RemoveObject(BaseObject* obj)
 {
 	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
 	{
-		for (auto it = _objectList[i].begin(); it != _objectList[i].end(); ++it)
+		for (int j = 0, max = (int)Layer::MAX; j < max; j++)
 		{
-			if (*it == obj)
+			for (auto it = _objectList[i][j].begin(); it != _objectList[i][j].end(); ++it)
 			{
-				ObjectFactory::Instance().Destroy(obj);
-				_objectList[i].erase(it);
-				break;
+				if (*it == obj)
+				{
+					ObjectFactory::Instance().Destroy(obj);
+					_objectList[i][j].erase(it);
+					return;
+				}
 			}
 		}
 	}
@@ -75,10 +89,13 @@ void ObjectManager::AllClear()
 {
 	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
 	{
-		for (BaseObject* obj : _objectList[i])
+		for (int j = 0, max = (int)Layer::MAX; j < max; j++)
 		{
-			if (obj == nullptr) continue;
-			ObjectFactory::Instance().Destroy(obj);
+			for (BaseObject* obj : _objectList[i][j])
+			{
+				if (obj == nullptr) continue;
+				ObjectFactory::Instance().Destroy(obj);
+			}
 		}
 	}
 	_objectList.clear();
@@ -99,13 +116,16 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos)
 
 BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 {
-	for (BaseObject* obj : _objectList[(int)type])
+	for (int j = 0, max = (int)Layer::MAX; j < max; j++)
 	{
-		if (obj == nullptr) continue;
-		if (!obj->GetActive() || !obj->GetInteract()) continue;
-		if (obj->IsSamePos(pos))
+		for (BaseObject* obj : _objectList[(int)type][j])
 		{
-			return obj;
+			if (obj == nullptr) continue;
+			if (!obj->GetActive() || !obj->GetInteract()) continue;
+			if (obj->IsSamePos(pos))
+			{
+				return obj;
+			}
 		}
 	}
 
@@ -115,13 +135,16 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 std::vector<BaseObject*> ObjectManager::FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type)
 {
 	std::vector<BaseObject*> objs;
-	for (BaseObject* obj : _objectList[(int)type])
+	for (int j = 0, max = (int)Layer::MAX; j < max; j++)
 	{
-		if (obj == nullptr) continue;
-		if (!obj->GetActive() || !obj->GetInteract()) continue;
-		if (obj->IsSameRect(pos, size))
+		for (BaseObject* obj : _objectList[(int)type][j])
 		{
-			objs.push_back(obj);
+			if (obj == nullptr) continue;
+			if (!obj->GetActive() || !obj->GetInteract()) continue;
+			if (obj->IsSameRect(pos, size))
+			{
+				objs.push_back(obj);
+			}
 		}
 	}
 	return objs;

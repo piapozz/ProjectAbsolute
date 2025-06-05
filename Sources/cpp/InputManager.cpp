@@ -12,7 +12,7 @@ InputManager::InputManager()
 	_onCursorObject = nullptr;
 	Vector2 centorScreen = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	Vector2 size = Vector2(_CURSOR_SIZE, _CURSOR_SIZE);
-	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
+	LayerSetting layerSetting = {true, false, Layer::FRONT};
 	_cursorObject = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(centorScreen, size, true, layerSetting);
 }
 

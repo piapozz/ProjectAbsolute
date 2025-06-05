@@ -44,6 +44,7 @@ void PhaseMain::Init()
 		// 作業が終了したら、エネルギーを追加
 		_pEventManager->AddEnergy(successCount);
 	};
+	layerSetting = {true, false, Layer::FRONT};
 	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Vector2::zero(), Vector2::zero(), false, layerSetting);
 	_pUIManager = new UIManager();
 	// 各オブジェクトのインタラクト時のコールバック設定
