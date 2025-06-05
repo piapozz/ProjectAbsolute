@@ -63,9 +63,8 @@ void SecureRoom::Teardown()
 
 void SecureRoom::ClickEvent()
 {
-	// 待機でないなら返す
-	if (_currentState != State::IDLE) return;
-	_currentState = State::SELECT;
+	// キャラクターがいないなら返す
+	if (PhaseMain::GetSelectOfficerList().empty()) return;
 
 	// 作業UIの表示
 	std::vector<UIScreenButton*> pOperationUIList = UIManager::GetOperationUIList();
@@ -136,7 +135,7 @@ void SecureRoom::OperationProc()
 void SecureRoom::StartOperation()
 {
 	// 選択状態でないなら返す
-	if (_currentState != State::SELECT) return;
+	if (_currentState != State::IDLE) return;
 	_currentState = State::INTERACT;
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
 	_pEntity->SetOperation(_selectOperation);
