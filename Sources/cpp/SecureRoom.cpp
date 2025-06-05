@@ -15,11 +15,13 @@
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
-void SecureRoom::Init(Vector2 position, Vector2 size)
+void SecureRoom::Init(Vector2 position, Vector2 size, LayerSetting layerSetting)
 {
-	BaseSection::Init(position, size);
+	BaseSection::Init(position, size, layerSetting);
 	sectionType = SectionType::SECURE;
-	layer = Layer::OBJECT;
+	active = layerSetting.m_active;
+	interactable = layerSetting.m_interact;
+	layer = layerSetting.m_layer;
 	// 作業名も取得
 	_operationNameList[0] = "世話";
 	_operationNameList[1] = "観察";
@@ -30,12 +32,12 @@ void SecureRoom::Init(Vector2 position, Vector2 size)
 	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	ObjectFactory& factory = ObjectFactory::Instance();
-	_pOperationCountUI = factory.CreateWithArgs<UIButton>(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
+	LayerSetting UILayerSetting = {true, true, Layer::MIDDLE};
+	_pOperationCountUI = factory.CreateWithArgs<UIButton>(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE), UILayerSetting);
 	_pOperationCountUI->SetText(std::to_string(0));
-	_pOperationCountUI->SetLayer(Layer::NONE_INTERACT);
-	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
+	UILayerSetting = {true, false, Layer::MIDDLE};
+	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE), UILayerSetting);
 	_pRunawayCountUI->SetText(std::to_string(0));
-	_pRunawayCountUI->SetLayer(Layer::NONE_INTERACT);
 	// エンティティーのマスターデータから作業IDを取得し生成
 	// _pOperation = new Operation(_pEntity->GetID());
 	int entityID = 0;

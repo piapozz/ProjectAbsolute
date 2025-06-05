@@ -46,46 +46,42 @@ void StageManager::CreateStage()
 		for (int j = 0; j < STAGE_SIZE; ++j)
 		{
 			if (_visited[i][j]) continue; 
+			LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
 			// セクションの種類に応じて処理を分岐
 			if (_stageData[i][j] == (int)SectionType::ROOM)
 			{
 				// 部屋を生成
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				button->SetActive(true);
+				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
+				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
 				button->SetText("部屋");
-				button->SetLayer(Layer::NONE_INTERACT);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
 				// 廊下を生成
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
-				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
-				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
-				button->SetActive(true);
+				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y), layerSetting);
+				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y), layerSetting);
 				button->SetText("廊下");
-				button->SetLayer(Layer::NONE_INTERACT);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
 				// 接合部を生成
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
 				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				button->SetActive(true);
+				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
+				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
 				button->SetText("接続部");
-				button->SetLayer(Layer::NONE_INTERACT);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{
 				// 収容所を生成
 				int size = CheckSectionSize(j, i, SectionType::SECURE);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
+				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
 				// 収容所のリストに追加
 				_secureRoomList.push_back(secure);
 			}

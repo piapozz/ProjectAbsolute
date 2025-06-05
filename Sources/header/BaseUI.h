@@ -8,11 +8,11 @@ class BaseUI: public BaseObject
 {
 public:
 	BaseUI() {}
-	BaseUI(Vector2 setPosition, Vector2 setSize) {
-		Init(setPosition, setSize);
+	BaseUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
+		Init(setPosition, setSize, layerSetting);
 	}
-	BaseUI(UISetting setting) {
-		Init(setting.m_position, setting.m_size);
+	BaseUI(UISetting setting, LayerSetting layerSetting) {
+		Init(setting.m_position, setting.m_size, layerSetting);
 		SetSize(setting.m_size.x);
 		SetText(setting.m_text);
 	}
@@ -27,7 +27,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	virtual void Init(Vector2 setPosition, Vector2 setSize);
+	virtual void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
 	/// <summary>
 	/// アップデート
 	/// </summary>

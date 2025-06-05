@@ -1,12 +1,12 @@
 #include "../header/OfficerMob.h"
 #include "../header/BaseCharacterState.h"
 
-void OfficerMob::Init(OfficerInitData data, int setOfficerID)
+void OfficerMob::Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting)
 {
-	BaseOfficer::Init(data, setOfficerID);
+	BaseOfficer::Init(data, setOfficerID, layerSetting);
 	SetImpossible(false);
 	_officerType = OfficerType::MOB;
-	layer = Layer::PLAYER;
+	layer = Layer::MIDDLE;
 }
 
 void OfficerMob::Proc()

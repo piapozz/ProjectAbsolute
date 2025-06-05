@@ -46,14 +46,3 @@ bool BaseObject::IsSameRect(Vector2 pos, Vector2 size)
 
 	return xSame && ySame;
 }
-
-void BaseObject::SetActive(bool active)
-{
-	if (active)
-	{
-		layer = Layer::UI;
-	} else
-	{
-		layer = Layer::NONE_DRAW;
-	}
-}

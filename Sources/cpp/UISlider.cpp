@@ -1,9 +1,9 @@
 #include "../header/UISlider.h"
 
-void UISlider::Init(Vector2 setPosition, Vector2 setSize)
+void UISlider::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	// èâä˙âª
-	BaseUI::Init(setPosition, setSize);
+	BaseUI::Init(setPosition, setSize, layerSetting);
 }
 
 void UISlider::Proc()

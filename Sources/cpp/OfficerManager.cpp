@@ -46,13 +46,14 @@ BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data)
 	int indexToUse = (emptyIndex == -1) ? _officerList.size() : emptyIndex;
 
 	BaseOfficer* officer = nullptr;
+	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
 	switch (type)
 	{
 		case OfficerType::PLAYER:
-			officer = factory.CreateWithArgs<OfficerPlayer>(data, indexToUse);
+			officer = factory.CreateWithArgs<OfficerPlayer>(data, indexToUse, layerSetting);
 			break;
 		case OfficerType::MOB:
-			officer = factory.CreateWithArgs<OfficerMob>(data, indexToUse);
+			officer = factory.CreateWithArgs<OfficerMob>(data, indexToUse, layerSetting);
 			break;
 		default:
 			return nullptr;

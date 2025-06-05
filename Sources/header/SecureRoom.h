@@ -31,13 +31,13 @@ public:
 	};
 	SecureRoom(){
 	};
-	SecureRoom(Vector2 position, Vector2 size)
-		:_isMeltdown(false), _meltdownCount(0){ Init(position, size); };
+	SecureRoom(Vector2 position, Vector2 size, LayerSetting layerSetting)
+		:_isMeltdown(false), _meltdownCount(0){ Init(position, size, layerSetting); };
 	SecureRoom(BaseEntity* pEntity)
 		:_pEntity(pEntity), _isMeltdown(false), _meltdownCount(0){}
 	~SecureRoom(){ Teardown(); }
 
-	void Init(Vector2 position, Vector2 size) override;
+	void Init(Vector2 position, Vector2 size, LayerSetting layerSetting) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

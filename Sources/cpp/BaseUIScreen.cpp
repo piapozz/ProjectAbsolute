@@ -2,7 +2,7 @@
 #include "../header/CameraController.h"
 #include "../header/ObjectManager.h"
 
-void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill)
+void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting)
 {
 	_text == "";
 	_textColor = -1;
@@ -15,7 +15,6 @@ void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill)
 	position = setPosition;
 	objectSize = setSize;
 	objectType = ObjectType::SCREEN_UI;
-	layer = Layer::OBJECT;
 	textSize = 100;
 	_outLineColor = GetColor(255, 255, 255);
 }

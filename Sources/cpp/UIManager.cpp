@@ -15,10 +15,11 @@ UIManager::UIManager()
 	operationUIOffsetList[3] = Vector2(_SCREEN_UI_SIZE_X / 4, _SCREEN_UI_SIZE_Y / 4);
 
 	ObjectFactory& factory = ObjectFactory::Instance();
+	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
 	// UIÇÃê∂ê¨
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true);
+		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true, layerSetting);
 		button->SetActive(false);
 		_pOperationUIList.push_back(button);
 	}
@@ -32,9 +33,6 @@ void UIManager::SetActiveOperationUI(bool active)
 {
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		if (active)
-			_pOperationUIList[i]->SetLayer(Layer::OBJECT);
-		else
-			_pOperationUIList[i]->SetLayer(Layer::NONE_DRAW);
+		_pOperationUIList[i]->SetActive(active);
 	}
 }

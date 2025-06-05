@@ -12,11 +12,15 @@ public:
 	BaseObject(){
 		objectType = ObjectType::INVALID;
 	 }
-	BaseObject(Vector2 pos, Vector2 size){
-		position = pos;
-		objectSize = size;
+	BaseObject(Vector2 pos, Vector2 size, Layer setLayer)
+		: position(pos), objectSize(size), layer(setLayer) {
 		objectType = ObjectType::INVALID;
-		layer = Layer::OBJECT;
+		drawHandle = -1;
+	}
+	BaseObject(Vector2 pos, Vector2 size, LayerSetting layerSetting)
+		: position(pos), objectSize(size), active(layerSetting.m_active), 
+		interactable(layerSetting.m_interact), layer(layerSetting.m_layer) {
+		objectType = ObjectType::INVALID;
 		drawHandle = -1;
 	}
 	BaseObject(Layer setLayer)
@@ -30,12 +34,11 @@ public:
 	/// <summary>
 	/// アップデート
 	/// </summary>
-	virtual void Proc(){};
+	virtual void Proc(){}
 	/// <summary>
 	/// 描画
 	/// </summary>
-	virtual void Draw(){
-	};
+	virtual void Draw(){}
 	/// <summary>
 	/// 破棄
 	/// </summary>
@@ -49,11 +52,14 @@ public:
 	}
 
 	inline Vector2 GetPosition(){ return position; }
-	inline void SetLayer(Layer setLayer) { layer = setLayer; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
+	inline bool GetActive() { return active; }
+	inline bool GetInteract() { return interactable; }
 	inline void SetPosition(Vector2 setPosition){ position = setPosition; }
 	inline void SetSize(Vector2 setSize){ objectSize = setSize; }
+	inline void SetActive(bool setActive){ active = setActive; }
+	inline void SetInteract(bool setInteract){ interactable = setInteract; }
 
 	/// <summary>
 	/// オブジェクトが重なっているかどうか
@@ -68,12 +74,11 @@ public:
 	/// <param name="size"></param>
 	/// <returns></returns>
 	bool IsSameRect(Vector2 pos, Vector2 size);
-	/// <summary>
-	/// 表示の切り替え
-	/// </summary>
-	/// <param name="active"></param>
-	void SetActive(bool active);
 protected:
+	// アクティブ状態
+	bool active;
+	// インタラクト可能か
+	bool interactable;
 	// レイヤー
 	Layer layer;
 	// 描画用のハンドル

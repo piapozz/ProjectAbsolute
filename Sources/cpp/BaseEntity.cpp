@@ -37,10 +37,10 @@ void BaseEntity::DecreaseRunawayCount()
 {
 	// 暴走カウンターを減少させる
 	runawayCount--;
+	if (runawayCount < 0) runawayCount = 0;
 	_pRunawayUI->SetText(std::to_string(runawayCount));
 	// 暴走カウンターが0になったら、暴走イベントを発生させる
 	if (runawayCount > 0) return;
-	runawayCount = 0;
 	RunawayEvent();
 }
 

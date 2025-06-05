@@ -2,11 +2,11 @@
 
 #include "../header/Const.h"
 
-void SectionConnect::Init(Vector2 setPosition, Vector2 setSize)
+void SectionConnect::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	// èâä˙âª
-	BaseSection::Init(setPosition, setSize);
-	layer = Layer::NONE_INTERACT;
+	BaseSection::Init(setPosition, setSize, layerSetting);
+	layer = layerSetting.m_layer;
 }
 
 void SectionConnect::Proc()

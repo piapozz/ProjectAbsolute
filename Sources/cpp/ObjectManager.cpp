@@ -36,7 +36,7 @@ void ObjectManager::Draw()
 		for (BaseObject* obj : _objectList[i])
 		{
 			if (obj == nullptr) continue;
-			if (obj->GetLayer() == Layer::NONE_DRAW) continue;
+			if (obj->GetActive()) continue;
 			obj->Draw();
 		}
 	}
@@ -102,8 +102,7 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 	for (BaseObject* obj : _objectList[(int)type])
 	{
 		if (obj == nullptr) continue;
-		if (obj->GetLayer() == Layer::NONE_DRAW ||
-			obj->GetLayer() == Layer::NONE_INTERACT) continue;
+		if (obj->GetActive() || obj->GetInteract()) continue;
 		if (obj->IsSamePos(pos))
 		{
 			return obj;
@@ -119,8 +118,7 @@ std::vector<BaseObject*> ObjectManager::FindRectAllObject(Vector2 pos, Vector2 s
 	for (BaseObject* obj : _objectList[(int)type])
 	{
 		if (obj == nullptr) continue;
-		if (obj->GetLayer() == Layer::NONE_DRAW ||
-			obj->GetLayer() == Layer::NONE_INTERACT) continue;
+		if (obj->GetActive() || obj->GetInteract()) continue;
 		if (obj->IsSameRect(pos, size))
 		{
 			objs.push_back(obj);

@@ -1,14 +1,13 @@
 #include "../header/BaseUI.h"
 #include "../header/ObjectManager.h"
 
-void BaseUI::Init(Vector2 setPosition, Vector2 setSize)
+void BaseUI::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
 	fontHandle = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", 24, 1);
 	textGraph = MakeScreen(128, 32, TRUE); 
 	position = setPosition;
 	objectSize = setSize;
 	objectType = ObjectType::UI;
-	layer = Layer::OBJECT;
 	textSize = 100;
 }
 
