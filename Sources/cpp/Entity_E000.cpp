@@ -1,8 +1,8 @@
 #include "../header/Entity_E000.h"
 
-void Entity_E000::Init()
+void Entity_E000::Init(LayerSetting layerSetting)
 {
-	BaseEgoEntity::Init();
+	BaseEgoEntity::Init(layerSetting);
 }
 
 void Entity_E000::EndOperationEvent(int successCount)

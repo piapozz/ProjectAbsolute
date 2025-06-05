@@ -54,8 +54,6 @@ void StageManager::CreateStage()
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
 				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
-				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
-				button->SetText("ïîâÆ");
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
@@ -63,8 +61,6 @@ void StageManager::CreateStage()
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
 				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y), layerSetting);
-				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y), layerSetting);
-				button->SetText("òLâ∫");
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
@@ -72,8 +68,6 @@ void StageManager::CreateStage()
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
 				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
 				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
-				UIButton* button = factory.CreateWithArgs<UIButton>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
-				button->SetText("ê⁄ë±ïî");
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{

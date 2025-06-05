@@ -9,6 +9,9 @@ void BaseUI::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSettin
 	objectSize = setSize;
 	objectType = ObjectType::UI;
 	textSize = 100;
+	active = layerSetting.m_active;
+	interactable = layerSetting.m_interact;
+	layer = layerSetting.m_layer;
 }
 
 void BaseUI::Proc()

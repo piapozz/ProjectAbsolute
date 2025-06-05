@@ -12,8 +12,9 @@ public:
 	OfficerPlayer(){
 	};
 	OfficerPlayer(OfficerInitData data, int setOfficerID, LayerSetting layerSetting)
+		: BaseOfficer(layerSetting) 
 	{
-		Init(data, setOfficerID, layerSetting);
+		Init(data, setOfficerID);
 	};
 	~OfficerPlayer(){
 	};
@@ -22,7 +23,7 @@ public:
 		return "OfficerPlayer";
 	}
 
-	void Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting) override;
+	void Init(OfficerInitData data, int setOfficerID) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

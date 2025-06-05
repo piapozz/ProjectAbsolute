@@ -3,9 +3,9 @@
 #include "../header/PhaseMain.h"
 #include "../header/ObjectFactory.h"
 
-void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, LayerSetting layerSetting)
+void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 {
-	BaseOfficer::Init(data, setOfficerID, layerSetting);
+	BaseOfficer::Init(data, setOfficerID);
 	_officerType = OfficerType::PLAYER;
 	Vector2 pos(position.x, position.y + (objectSize.y / 2));
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};
