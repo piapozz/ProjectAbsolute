@@ -21,6 +21,11 @@ public:
 	void Proc();
 	void Teardown();
 
+	static OfficerManager& Instance() {
+		static OfficerManager instance;
+		return instance;
+	}
+
 	BaseOfficer* AddOfficer(OfficerType type, OfficerInitData data);
 	void MoveSelectedPlayer(std::vector<int> officerNumber);
 

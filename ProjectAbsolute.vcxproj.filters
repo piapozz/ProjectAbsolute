@@ -282,11 +282,20 @@
     <ClCompile Include="Sources\cpp\SelectorAllOfficer.cpp">
       <Filter>ソース ファイル\Sein\Selector</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\SelectorNearOfficer.cpp">
+    <ClCompile Include="Sources\cpp\SelectorOutAreaNearOfficer.cpp">
       <Filter>ソース ファイル\Sein\Selector</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\AttackLongRange.cpp">
       <Filter>ソース ファイル\Sein\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\CharacterStateFightMove.cpp">
+      <Filter>ソース ファイル\Sein\CharacterState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SelectorNearOfficer.cpp">
+      <Filter>ソース ファイル\Sein\Selector</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\header\SelectorNearOfficer.h">
+      <Filter>ヘッダー ファイル\Sein\Selector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -497,11 +506,14 @@
     <ClInclude Include="Sources\header\SelectorAllOfficer.h">
       <Filter>ヘッダー ファイル\Sein\Selector</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\SelectorNearOfficer.h">
+    <ClInclude Include="Sources\header\SelectorOutAreaNearOfficer.h">
       <Filter>ヘッダー ファイル\Sein\Selector</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\AttackLongRange.h">
       <Filter>ヘッダー ファイル\Sein\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\CharacterStateFightMove.h">
+      <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

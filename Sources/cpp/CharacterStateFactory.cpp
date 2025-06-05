@@ -14,6 +14,8 @@ BaseCharacterState* CharacterStateFactory::CreateState(CharacterStateID stateID,
 			return new CharacterStateOperationMove(args->targetPosList, args->secureRoom);
 		case CharacterStateID::FIGHT:
 			return new CharacterStateFight();
+		case CharacterStateID::FIGHT_MOVE:
+			return new CharacterStateFightMove(args->targetPosList, args->targetCharacter);
 		case CharacterStateID::PANIC:
 			return new CharacterStatePanic();
 		case CharacterStateID::DEAD:
