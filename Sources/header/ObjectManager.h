@@ -1,7 +1,10 @@
 #pragma once
 #include "Const.h"
 #include <vector>
+#include <functional>
 #include "BaseObject.h"
+
+using namespace std;
 /*
 * Ishihara
 * オブジェクトの管理
@@ -30,6 +33,10 @@ public:
 	/// </summary>
 	void Draw();
 	/// <summary>
+	/// オブジェクトリストを網羅ラムダ
+	/// </summary>
+	void ForEachObject(function<void(BaseObject*)> func);
+	/// <summary>
 	/// オブジェクトの追加
 	/// </summary>
 	void AddObject(BaseObject* obj);
@@ -55,7 +62,7 @@ public:
 	/// オブジェクトの検索(全部)
 	/// </summary>
 	/// <returns></returns>
-	std::vector<BaseObject*> FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type);
+	vector<BaseObject*> FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type);
 	/// <summary>
 	/// ゲーム速度の変更
 	/// </summary>
@@ -65,7 +72,7 @@ public:
 	}
 private:
 	// オブジェクトのリスト
-	std::vector<std::vector<BaseObject*>> _objectList;
+	vector<vector<vector<BaseObject*>>> _objectList;
 	// ゲームスピード
 	int _gameSpeed;
 };
