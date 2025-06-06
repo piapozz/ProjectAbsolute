@@ -9,7 +9,7 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	_officerType = OfficerType::PLAYER;
 	Vector2 pos(position.x, position.y + (objectSize.y / 2));
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};
-	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(pos, Vector2(objectSize.x, objectSize.y/4), UILayerSetting);
+	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(pos + Vector2(0, objectSize.y), Vector2(objectSize.x, objectSize.y / 4), UILayerSetting);
 	slider->SetActive(true);
 	slider->SetText("HP");
 	slider->SetColor(255, 0, 0);
@@ -30,7 +30,7 @@ void OfficerPlayer::Draw()
 	VECTOR screenPos = ConvWorldPosToScreenPos(worldPos);
 
 	Vector2 pos(position.x, position.y + (objectSize.y / 2));
-	slider->SetPos(pos);
+	slider->SetPos(pos + Vector2(0, objectSize.y));
 	slider->SetValue((float)(health / maxHealth));
 }
 

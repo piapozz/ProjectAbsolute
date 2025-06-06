@@ -12,7 +12,7 @@ void EventManager::Init()
 	meltLevel = 1;
 
 	ObjectFactory& factory = ObjectFactory::Instance();
-	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
+	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
 	_pEnergySlider = factory.CreateWithArgs<UIScreenSlider>(Vector2(400, 100), Vector2(500, 50), true, layerSetting);
 	_pEnergySlider->SetValue(_energy);
 	_pEnergySlider->SetColor(0, 255, 0);
@@ -20,6 +20,7 @@ void EventManager::Init()
 	_pEnergySlider->SetText(str.c_str());
 	_pEnergySlider->SetTextColor();
 
+	layerSetting = {true, true, Layer::MIDDLE};
 	// í‚é~É{É^Éì
 	_pStopButton = factory.CreateWithArgs<UIScreenButton>(Vector2(100, 1050), Vector2(200, 50), true, layerSetting);
 	_pStopButton->SetText("í‚é~");

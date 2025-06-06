@@ -50,17 +50,17 @@ void BaseOfficer::Draw()
 
 	int temp = 0 * 360 / 100;
 	float radian = (float)temp * DX_PI / 180.0f;
-	float x = cosf(radian) * 10;
-	float y = sinf(radian) * 10;
-	VECTOR Pos1 = VGet(position.x + x, position.y + y, 0);
+	float x = cosf(radian) * (objectSize.y / 2);
+	float y = sinf(radian) * (objectSize.y / 2);
+	VECTOR Pos1 = VGet(position.x + x, (position.y + (objectSize.y / 2)) + y, 0);
 
 	for (int i = 1 ; i < 100;i++)
 	{
 		temp = i * 360 / 100;
 		radian = (float)temp * DX_PI / 180.0f;
-		x = cosf(radian) * 10;
-		y = sinf(radian) * 10;
-		VECTOR Pos2 = VGet(position.x + x, position.y + y, 0);
+		x = cosf(radian) * (objectSize.y / 2);
+		y = sinf(radian) * (objectSize.y / 2);
+		VECTOR Pos2 = VGet(position.x + x, (position.y + (objectSize.y / 2)) + y, 0);
 		DrawLine3D(Pos1, Pos2, color) ;
 		Pos1 = Pos2;
 	}
