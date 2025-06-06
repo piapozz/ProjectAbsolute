@@ -5,6 +5,7 @@
 #include "../header/BaseSection.h"
 
 class BaseCharacterState;
+class BaseAttack;
 
 /*
 * Ishihara
@@ -67,6 +68,18 @@ public:
 		DecreaseHealth(ceil(index));
 	}
 	/// <summary>
+	/// ‹æ‰æ‚ÖˆÚ“®‚·‚é
+	/// </summary>
+	/// <param name="targetSection"></param>
+	/// <returns></returns>
+	bool Move(BaseSection* targetSection);
+	/// <summary>
+	/// ×‚©‚¢À•W‚ÉˆÚ“®‚·‚é
+	/// </summary>
+	/// <param name="targetPosition"></param>
+	/// <returns></returns>
+	bool Move(Vector2 targetPosition);
+	/// <summary>
 	/// ‘Ì—ÍŒ¸­ˆ—
 	/// </summary>
 	/// <param name="decreaseValue"></param>
@@ -94,11 +107,14 @@ public:
 	bool GetImpossible(){ return impossible; }
 	void SetGroup(CharacterGroup groupType){ _groupType = groupType; }
 	CharacterGroup GetGroup(){ return _groupType; }
+	void SetAttack(BaseAttack* baseAttack){ characterAttack = baseAttack; }
+	BaseAttack* GetAttack(){ return characterAttack; }
 
 	// ‰ß‹‚ÌˆÊ’u
 	BaseSection* pastRoom;
 	BaseCharacterState* pCharacterState;
 	CharacterStateID stateID;
+	BaseAttack* characterAttack;
 	unsigned int color;
 
 protected:

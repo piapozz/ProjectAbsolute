@@ -59,7 +59,6 @@ std::vector<BaseCharacter*> SelectorOutAreaNearOfficer::SelectTargets(BaseCharac
 
 	std::vector<BaseCharacter*> index;
 	index.push_back(nearOfficer);
-	//if (!index) return nullptr;
 
 	return index;
 }

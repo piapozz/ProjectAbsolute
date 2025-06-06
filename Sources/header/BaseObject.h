@@ -54,6 +54,7 @@ public:
 	inline Vector2 GetPosition(){ return position; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
+	inline Vector2 GetSize(){ return objectSize; }
 	inline bool GetActive() { return active; }
 	inline bool GetInteract() { return interactable; }
 	inline void SetPosition(Vector2 setPosition){ position = setPosition; }
