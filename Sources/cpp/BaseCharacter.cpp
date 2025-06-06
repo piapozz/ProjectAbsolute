@@ -58,8 +58,9 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection)
 {
 	std::vector<Vector2> routeList;
 	Vector2 targetPos = targetSection->GetPosition();
+	Vector2 startPos = ObjectManager::Instance().FindPosObject(position, ObjectType::SECTION)->GetPosition();
 
-	routeList = StageManager::FindPath(position, targetPos);
+	routeList = StageManager::FindPath(startPos, targetPos);
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;
 

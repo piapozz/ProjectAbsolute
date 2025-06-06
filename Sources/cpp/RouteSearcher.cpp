@@ -52,7 +52,7 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 		{
 			while (current != nullptr)
 			{
-				path.push_back(Vector2(SECTION_SIZE_X / 2 + (current->x * SECTION_SIZE_X), (-current->y * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)));
+				path.push_back(Vector2(SECTION_SIZE_X / 2 + (current->x * SECTION_SIZE_X), (-current->y * SECTION_SIZE_Y) - (SECTION_SIZE_Y)));
 				current = current->parent;
 			}
 			break;
