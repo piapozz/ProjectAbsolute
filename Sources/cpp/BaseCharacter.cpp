@@ -33,6 +33,16 @@ void BaseCharacter::Teardown()
 	BaseObject::Teardown();
 } 
 
+bool BaseCharacter::Move(BaseSection* targetSection)
+{
+	return true;
+}
+
+bool BaseCharacter::Move(Vector2 targetPosition)
+{
+	return true;
+}
+
 void BaseCharacter::DecreaseHealth(int decreaseValue)
 {
 	health -= decreaseValue;

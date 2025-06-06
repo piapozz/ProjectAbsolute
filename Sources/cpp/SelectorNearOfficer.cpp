@@ -6,7 +6,7 @@
 
 std::vector<BaseCharacter*> SelectorNearOfficer::SelectTargets(BaseCharacter* attacker)
 {
-	BaseCharacter* nearOfficer;
+	BaseCharacter* nearOfficer = nullptr;
 	Vector2 attackerPos = attacker->GetPosition();
 	OfficerManager& officerManager = OfficerManager::Instance();
 	std::vector<BaseOfficer*> officerList = officerManager.Instance().GetOfficerList();
