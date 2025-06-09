@@ -9,6 +9,6 @@ public:
 
 	void SetActive(bool active);
 private:
-	UIScreenButton _
+	UIScreenButton 
 };
 

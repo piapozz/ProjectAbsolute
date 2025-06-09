@@ -205,6 +205,7 @@
     <ClCompile Include="Sources\cpp\UIManager.cpp" />
     <ClCompile Include="Sources\cpp\UIOfficer.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenButton.cpp" />
+    <ClCompile Include="Sources\cpp\UIScreenImage.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenSlider.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenText.cpp" />
     <ClCompile Include="Sources\cpp\UISlider.cpp" />
@@ -284,12 +285,13 @@
     <ClInclude Include="Sources\header\UIImage.h" />
     <ClInclude Include="Sources\header\UIManager.h" />
     <ClInclude Include="Sources\header\UIOfficer.h" />
+    <ClInclude Include="Sources\header\UIScreen.h" />
     <ClInclude Include="Sources\header\UIScreenButton.h" />
+    <ClInclude Include="Sources\header\UIScreenImage.h" />
     <ClInclude Include="Sources\header\UIScreenSlider.h" />
     <ClInclude Include="Sources\header\UIScreenText.h" />
     <ClInclude Include="Sources\header\UISlider.h" />
     <ClInclude Include="Sources\header\UIText.h" />
-    <ClInclude Include="UIScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
