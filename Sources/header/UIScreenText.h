@@ -10,8 +10,8 @@ class UIScreenText : public BaseUIScreen
 public:
 	UIScreenText() {
 	}
-	UIScreenText(Vector2 setPosition, Vector2 setSize) {
-		Init(setPosition, setSize);
+	UIScreenText(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
+		Init(setPosition, setSize, layerSetting);
 	}
 	UIScreenText(Layer setLayer)
 		: BaseUIScreen(setLayer) {
@@ -24,14 +24,28 @@ public:
 	}
 	~UIScreenText() {
 	}
-	void Init(Vector2 setPosition, Vector2 setSize);
+	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+
+	void SetTextColor(int r = 255, int g = 255, int b = 255){
+		_textColor = GetColor(r, g, b);
+	}
+	void SetText(const std::string& setText){
+		_text = setText;
+	}
 
 	static std::string StaticTypeName() {
 		return "UIScreenText";
 	}
 
+	void DrawUIText();
 private:
+	int textGraph;
+	int textSize;
+	int fontHandle;
+	std::string _text;
+	int _textColor;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "UIText.h"
+#include "UIImage.h"
 #include <functional>
 /*
 * Ishihara
@@ -14,8 +15,6 @@ public:
 	}
 	UIButton(UISetting setting, std::function<void()> callback, LayerSetting layerSetting) {
 		Init(setting.m_position, setting.m_size, layerSetting);
-		SetSize(setting.m_size.x);
-		SetText(setting.m_text);
 		SetCallback(callback);
 	}
 	UIButton(Layer setLayer)
@@ -34,6 +33,15 @@ public:
 	static std::string StaticTypeName() {
 		return "UIButton";
 	}
+	void SetText(std::string str) {
+		_pText->SetText(str);
+	}
+
+	void SetActive(bool active) override {
+		BaseObject::SetActive(active);
+		_pImage->SetActive(active);
+		_pText->SetActive(active);
+	}
 
 	/// <summary>
 	/// コールバックの設定
@@ -41,7 +49,10 @@ public:
 	/// <param name="callback"></param>
 	void SetCallback(std::function<void()> callback) {_callback = callback;}
 private:
-
+	// テキスト
+	UIText* _pText;
+	// 画像
+	UIImage* _pImage; 
 	// コールバック
 	std::function<void()> _callback;
 };

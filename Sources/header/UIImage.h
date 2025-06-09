@@ -11,8 +11,6 @@ public:
 	}
 	UIImage(UISetting setting, LayerSetting layerSetting) {
 		Init(setting.m_position, setting.m_size, layerSetting);
-		SetSize(setting.m_size.x);
-		SetText(setting.m_text);
 	}
 	UIImage(Layer setLayer)
 		: BaseUI(setLayer) {
@@ -32,5 +30,10 @@ public:
 	static std::string StaticTypeName() {
 		return "UIImage";
 	}
+
+	void OnCursor() override {
+	};
+	void NotOnCursor() override {
+	};
 };
 

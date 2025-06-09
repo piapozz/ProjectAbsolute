@@ -29,6 +29,13 @@ public:
 	void Teardown() override;
 
 	/// <summary>
+	/// 大きさの変更
+	/// </summary>
+	/// <param name="setSize"></param>
+	void SetSize(int setSize){
+		textSize = setSize;
+	}
+	/// <summary>
 	/// テキストの設定
 	/// </summary>
 	/// <param name="text"></param>
@@ -50,4 +57,11 @@ public:
 	}
 
 private:
+	std::string text;
+	int textGraph;
+	int textSize;
+	int fontHandle;
+
+	// 文字
+	std::string prevText = "";
 };
