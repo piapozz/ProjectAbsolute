@@ -315,6 +315,9 @@
     <ClCompile Include="Sources\cpp\UIOfficer.cpp">
       <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\UIEntity.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -543,6 +546,12 @@
       <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\UI.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIEntity.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScreen.h">
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
   </ItemGroup>

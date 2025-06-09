@@ -200,6 +200,7 @@
     <ClCompile Include="Sources\cpp\SelectorOutAreaNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
     <ClCompile Include="Sources\cpp\UIButton.cpp" />
+    <ClCompile Include="Sources\cpp\UIEntity.cpp" />
     <ClCompile Include="Sources\cpp\UIImage.cpp" />
     <ClCompile Include="Sources\cpp\UIManager.cpp" />
     <ClCompile Include="Sources\cpp\UIOfficer.cpp" />
@@ -279,6 +280,7 @@
     <ClInclude Include="Sources\header\StateArgs.h" />
     <ClInclude Include="Sources\header\UI.h" />
     <ClInclude Include="Sources\header\UIButton.h" />
+    <ClInclude Include="Sources\header\UIEntity.h" />
     <ClInclude Include="Sources\header\UIImage.h" />
     <ClInclude Include="Sources\header\UIManager.h" />
     <ClInclude Include="Sources\header\UIOfficer.h" />
@@ -287,6 +289,7 @@
     <ClInclude Include="Sources\header\UIScreenText.h" />
     <ClInclude Include="Sources\header\UISlider.h" />
     <ClInclude Include="Sources\header\UIText.h" />
+    <ClInclude Include="UIScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
