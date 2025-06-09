@@ -18,6 +18,6 @@ private:
 	std::vector<Vector2> _routeList;
 	CharacterStateID _nextStateID;
 	int _arrayCount = 0;
-	int speed = 2;
+	int _speed = 2;
 
 };

@@ -6,6 +6,7 @@
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 {
 	BaseOfficer::Init(data, setOfficerID);
+	_groupType = CharacterGroup::OFFICER;
 	_officerType = OfficerType::PLAYER;
 	Vector2 pos(position.x, position.y + (objectSize.y / 2));
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};

@@ -72,7 +72,7 @@ void SecureRoom::ClickEvent()
 	if (PhaseMain::GetSelectOfficerList().empty()) return;
 
 	// çÏã∆UIÇÃï\é¶
-	std::vector<UIScreenButton*> pOperationUIList = UIManager::GetOperationUIList();
+	std::vector<UIScreenButton*> pOperationUIList = UIManager::Instance().GetOperationUIList();
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
 		pOperationUIList[i]->SetText(_operationNameList[i]);

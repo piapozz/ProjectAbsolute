@@ -19,6 +19,9 @@ void OfficerManager::Init()
 	AddOfficer(OfficerType::PLAYER, data);
 	AddOfficer(OfficerType::PLAYER, data);
 	AddOfficer(OfficerType::PLAYER, data);
+
+	AddOfficer(OfficerType::MOB, data);
+	AddOfficer(OfficerType::MOB, data);
 }
 
 void OfficerManager::Proc()

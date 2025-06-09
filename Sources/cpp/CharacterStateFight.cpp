@@ -11,38 +11,55 @@ void CharacterStateFight::Update(BaseCharacter* character)
 
 	_targetCharacter = selector->SelectTargets(character);
 
-	// ‡@“¯‚¶‹æ‰æ‚É“G‘Î‘ÎÛ‚ª‚¢‚é‚©ŒŸõ
+	// “¯‚¶‹æ‰æ‚É“G‘Î‘ÎÛ‚ª‚¢‚é‚©ŒŸõ
 	BaseObject* attackerSection = objectManager.FindPosObject(attackerPos, ObjectType::SECTION);
 	Vector2 sectionPosition = attackerSection->GetPosition();
 	Vector2 sectionSize = attackerSection->GetSize();
 
 	std::vector<BaseObject*> targetCharaList = objectManager.FindRectAllObject(sectionPosition, sectionSize, ObjectType::CHARACTER);
 	
+	Vector2 targetPosition = _targetCharacter[0]->GetPosition();
+	BaseObject* targetSectionObject = objectManager.FindPosObject(targetPosition, ObjectType::SECTION);
+	BaseSection* targetSection = dynamic_cast<BaseSection*>(targetSectionObject);
+
 	// ‹æ‰æ‚É“G‘Î‘ÎÛ‚ª‚¢‚È‚©‚Á‚½‚ç
 	if (targetCharaList.empty())
 	{
-		// ‡A‚¢‚È‚¢‚È‚çŒo˜H’Tõ‚µ‚Ä“¯‚¶•”‰®‚Ü‚ÅˆÚ“®
-		// ˆÚ“®‚ªŠ®—¹‚µ‚½‚çŒo˜H’Tõ‚µ‚È‚¨‚·
-		// character->Move(targetCharacter)
+		character->ChangeMoveState(targetSection, CharacterStateID::FIGHT);
 		return;
 	}
 
-	// ‡A‚¢‚é‚È‚çŽË’öŒ—“à‚Ü‚Å•”‰®“àˆÚ“®
-	// character->Move()
+	int dx = targetPosition.x - attackerPos.x;
+	BaseCharacter::AttackAction* attack = character->GetAttackAction()[0];
+	int attackRange = attack->attackRange;
 
-	// ‡@`‡B‚ÌŠÔ‚É‘ÎÛ‚Æ‚Ì‹——£‚ðŒ©‚ÄŠÔ‡‚¢‚È‚çUŒ‚‚·‚é
-	BaseAttack* attack = character->GetAttack();
-	// attack->Attack(_targetCharacter);
+	// ŽË’öŠO
+	if (abs(dx) > attackRange)
+	{
+		character->ChangeMoveState(targetPosition, CharacterStateID::FIGHT);
+		return;
+	} 
+	// ŽË’ö“à
+	else
+	{
+		// ŽŸ‚ÌUŒ‚‚Ü‚Å‚ÌƒN[ƒ‹ƒ^ƒCƒ€
 
-	// (“¯‚¶‹æ‰æ“à‚Ö‚ÌUŒ‚‚È‚ç‚±‚Ì‘O‚É“¯‚¶‹æ‰æ‚É‚¢‚é‚©’²‚×‚é‚±‚Æ)
+		// UŒ‚
+		if (attack)
+		{
+			attack->characterAttack->Attack(character);
+		}
+	}
+	return;
 }
 
 void CharacterStateFight::Enter(BaseCharacter* character)
 {
-
+	character->color = FIGHT;
+	character->stateID = CharacterStateID::FIGHT;
 }
 
 void CharacterStateFight::Exit(BaseCharacter* character)
 {
-
+	character->color = IDLE;
 }
