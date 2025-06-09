@@ -44,7 +44,7 @@ void CharacterStateMove::Update(BaseCharacter* character)
 	}
 
 	// x移動を滑らかに進める
-	float moveX = (dx / distance) * speed;
+	float moveX = (dx / distance) * _speed;
 	current.x += moveX;
 
 	// まだy移動しない

@@ -76,6 +76,19 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection, CharacterStateID
 	ChangeState(CharacterStateID::MOVE, args);
 }
 
+void BaseCharacter::ChangeMoveState(Vector2 targetPosition, CharacterStateID nextStateID)
+{
+	std::vector<Vector2> routeList;
+	Vector2 nowPositon = GetPosition();
+	routeList.push_back(nowPositon);
+	routeList.push_back(targetPosition);
+
+	StateArgs* args = new StateArgs();
+	args->targetPosList = routeList;
+	args->stateID = nextStateID;
+	ChangeState(CharacterStateID::MOVE, args);
+}
+
 //bool BaseCharacter::CharacterMove(std::vector<Vector2> targetPosList, float speed)
 //{
 //	Vector2 current = GetPosition();

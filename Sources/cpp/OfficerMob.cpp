@@ -4,6 +4,7 @@
 void OfficerMob::Init(OfficerInitData data, int setOfficerID)
 {
 	BaseOfficer::Init(data, setOfficerID);
+	_groupType = CharacterGroup::ENTITY;
 	SetImpossible(false);
 	_officerType = OfficerType::MOB;
 	layer = Layer::MIDDLE;
