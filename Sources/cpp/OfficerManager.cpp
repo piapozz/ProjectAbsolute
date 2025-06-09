@@ -16,6 +16,9 @@ void OfficerManager::Init()
 {
 	OfficerInitData data;
 	AddOfficer(OfficerType::PLAYER, data);
+	AddOfficer(OfficerType::PLAYER, data);
+	AddOfficer(OfficerType::PLAYER, data);
+	AddOfficer(OfficerType::PLAYER, data);
 }
 
 void OfficerManager::Proc()
@@ -50,9 +53,11 @@ BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data)
 	switch (type)
 	{
 		case OfficerType::PLAYER:
+			layerSetting = {true, true, Layer::MIDDLE};
 			officer = factory.CreateWithArgs<OfficerPlayer>(data, indexToUse, layerSetting);
 			break;
 		case OfficerType::MOB:
+			layerSetting = {true, false, Layer::MIDDLE};
 			officer = factory.CreateWithArgs<OfficerMob>(data, indexToUse, layerSetting);
 			break;
 		default:

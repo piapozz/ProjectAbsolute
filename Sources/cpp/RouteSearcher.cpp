@@ -12,24 +12,24 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 		goalX < 0 || goalX >= STAGE_SIZE || goalY < 0 || goalY >= STAGE_SIZE) 
 	{
 		// 範囲外の場合は空のベクターを返す
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y)) };
 	}
 	// ステージデータが空の場合は空のベクターを返す
 	if (stageData.empty()) return std::vector<Vector2>();
 	// スタートとゴールのタイルが通れない場合は空のベクターを返す
 	if (stageData[startY][startX] == (int)SectionType::NONE || stageData[goalY][goalX] == (int)SectionType::NONE)
 	{
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y)) };
 	}
 	// スタートとゴールのタイルが同じ場合はスタートを返す
 	if (startX == goalX && startY == goalY)
 	{
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y)) };
 	}
 	// スタートとゴールのタイルが接続部の場合は空のベクターを返す
 	if (stageData[startY][startX] == (int)SectionType::CONNECT || stageData[goalY][goalX] == (int)SectionType::CONNECT)
 	{
-		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y / 2)) };
+		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y)) };
 	}
 
 	std::vector<std::vector<Node*>> nodes(STAGE_SIZE, std::vector<Node*>(STAGE_SIZE, nullptr));

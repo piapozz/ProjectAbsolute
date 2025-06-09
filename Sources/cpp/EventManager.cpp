@@ -45,7 +45,7 @@ void EventManager::Init()
 	_pFastSpeedButton->SetCallback([this]()
 	{
 		// ”{‘¬ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«‚Ìˆ—
-		ObjectManager::Instance().ChangeGameSpeed(2);
+		ObjectManager::Instance().ChangeGameSpeed(4);
 	});
 	_pFastSpeedButton->SetTextColor();
 }

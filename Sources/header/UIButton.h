@@ -1,5 +1,5 @@
 #pragma once
-#include "BaseUI.h"
+#include "UIText.h"
 #include <functional>
 /*
 * Ishihara
@@ -41,6 +41,7 @@ public:
 	/// <param name="callback"></param>
 	void SetCallback(std::function<void()> callback) {_callback = callback;}
 private:
+
 	// コールバック
 	std::function<void()> _callback;
 };
