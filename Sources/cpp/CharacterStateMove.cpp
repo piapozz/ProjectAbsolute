@@ -2,9 +2,10 @@
 #include "../header/BaseCharacter.h"
 #include "../header/ObjectManager.h"
 
-CharacterStateMove::CharacterStateMove(std::vector<Vector2> targetPosList)
+CharacterStateMove::CharacterStateMove(std::vector<Vector2> targetPosList, CharacterStateID nextStateID)
 {
 	_routeList = targetPosList;
+	_nextStateID = nextStateID;
 }
 
 void CharacterStateMove::Update(BaseCharacter* character)
@@ -21,7 +22,7 @@ void CharacterStateMove::Update(BaseCharacter* character)
 		ObjectManager& objectManager = ObjectManager::Instance();
 		character->pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(_routeList[_routeList.size() - 1], ObjectType::SECTION));
 		character->SetPosition(_routeList.back());
-		character->ChangeState(CharacterStateID::IDLE);
+		character->ChangeState(_nextStateID);
 
 		return;
 	}
@@ -55,8 +56,9 @@ void CharacterStateMove::Update(BaseCharacter* character)
 void CharacterStateMove::Enter(BaseCharacter* character)
 {
 	character->color = MOVE;
-	_arrayCount = 0;
 	character->stateID = CharacterStateID::MOVE;
+	_arrayCount = 0;
+	// speed = character->GetSpeed();
 }
 
 void CharacterStateMove::Exit(BaseCharacter* character)
