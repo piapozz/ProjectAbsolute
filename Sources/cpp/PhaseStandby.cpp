@@ -10,12 +10,3 @@ void PhaseStandby::Init()
 	// 控えキャラクターUI
 	// 開始ボタン
 }
-
-bool PhaseStandby::Proc()
-{
-	// 入力受付
-
-	// 選択されたら
-
-	return true;
-}

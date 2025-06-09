@@ -17,15 +17,10 @@ public:
 	/// ‰Šú‰»
 	/// </summary>
 	void Init();
-	/// <summary>
-	/// ƒƒCƒ“ˆ—
-	/// </summary>
-	void Proc();
 	bool GetGameEnd ( );
 
 private:
 	PhaseManager* _pPhaseManager;
-	ObjectManager* _pObjectManager;
 	// ƒQ[ƒ€‚ªI—¹‚µ‚½‚©‚ğ•Û
 	bool _gameEnd;
 };

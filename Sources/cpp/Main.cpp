@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "../header/SceneManager.h"
+#include "../header/ObjectManager.h"
 
 // プログラム開始
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -22,8 +23,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// シーンマネージャー生成
 	SceneManager* sceneManager = new SceneManager();
-
-	// 初期化
 	sceneManager->ChangeScene(SceneName::MAIN);
 
 	// 描画先を裏画面にする
@@ -48,22 +47,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		// 現在のカウントを取得する
 		int time = GetNowCount();
 
-		// 画面のクリア
-		ClearDrawScreen();
-		clsDx();
+		// 入力処理
+		InputManager::Instance().Update();
 
-		// シーン内処理
-		sceneManager->Proc();
+		// オブジェクト処理
+		ObjectManager::Instance().Update();
 
-		// シーンの描画
-		sceneManager->Draw();
+		// オブジェクト描画
+		ObjectManager::Instance().Draw();
 
-
-		// 裏画面の内容を表画面に反映
-		ScreenFlip();
-
-		// １７ミリ秒(約秒間６０フレームだった時の１フレームあたりの経過時間)
-		// 経過するまでここで待つ
+		// 17ミリ秒待つ
 		while (GetNowCount() - time < 17)
 		{
 		}

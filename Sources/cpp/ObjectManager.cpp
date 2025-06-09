@@ -21,18 +21,33 @@ void ObjectManager::Update()
 			obj->Proc();
 		});
 	}
+	for (int layer = 0; layer < (int)Layer::MAX; layer++)
+	{
+		for (BaseObject* obj : _objectList[(int)ObjectType::SCREEN_UI][layer])
+		{
+			if (obj == nullptr) continue;
+			if (!obj->GetActive()) continue;
+			obj->Proc();
+		}
+	}
 }
 
 void ObjectManager::Draw()
 {
 	// 画面のクリア
-	ClearDrawScreen ();
+	ClearDrawScreen();
 	clsDx ();
-	for (int i = 0; i < _gameSpeed; i++)
+	ForEachObject([](BaseObject* obj) {
+		obj->Draw();
+	});
+	for (int layer = 0; layer < (int)Layer::MAX; layer++)
 	{
-		ForEachObject([](BaseObject* obj) {
+		for (BaseObject* obj : _objectList[(int)ObjectType::SCREEN_UI][layer])
+		{
+			if (obj == nullptr) continue;
+			if (!obj->GetActive()) continue;
 			obj->Draw();
-		});
+		}
 	}
 	// 裏画面の内容を表画面に反映
 	ScreenFlip ();
@@ -40,7 +55,7 @@ void ObjectManager::Draw()
 
 void ObjectManager::ForEachObject(function<void(BaseObject*)> func)
 {
-	for (int type = 0; type < (int)ObjectType::MAX; type++)
+	for (int type = 0; type < (int)ObjectType::SCREEN_UI; type++)
 	{
 		for (int layer = 0; layer < (int)Layer::MAX; layer++)
 		{

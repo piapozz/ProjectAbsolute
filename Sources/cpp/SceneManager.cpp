@@ -1,4 +1,6 @@
 #include "../header/SceneManager.h"
+#include "../header/InputManager.h"
+#include "../header/Objectmanager.h"
 
 SceneManager::SceneManager() 
 {
@@ -13,16 +15,6 @@ SceneManager::~SceneManager()
 void SceneManager::Init() 
 {
 
-}
-
-void SceneManager::Proc() 
-{
-	_scene->Proc();
-}
-
-void SceneManager::Draw() 
-{
-	_scene->Draw();
 }
 
 void SceneManager::ChangeScene(SceneName scene)

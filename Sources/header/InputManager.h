@@ -12,9 +12,15 @@ class UIScreenButton;
 class InputManager
 {
 public:
-	InputManager();
-	~InputManager();
+	InputManager(){ Init(); }
+	~InputManager(){}
 
+	static InputManager& Instance()
+	{
+		static InputManager instance;
+		return instance;
+	}
+	void Init();
 	/// <summary>
 	/// クリックの状態を確認する
 	/// </summary>
@@ -23,7 +29,7 @@ public:
 	/// <summary>
 	/// コールバックで設定された関数を実行
 	/// </summary>
-	void ExecuteCallback();
+	void Update();
 	/// <summary>
 	/// カーソルのスクリーン座標の取得
 	/// </summary>
@@ -43,14 +49,8 @@ public:
 	inline void SetEscapeCallback(std::function<void()> Callback){ _EscapePushAction = Callback; }
 	inline void SetOnCursorObject(BaseObject* setObj) { _onCursorObject = setObj; }
 	inline BaseObject* GetOnCursorObject(){ return _onCursorObject; }
-	/// <summary>
-	/// カーソルの更新
-	/// </summary>
-	/// <param name="cursorScreenPos"></param>
-	void UpdateCursor();
 
 private:
-	const int _CURSOR_SIZE = 20;
 	const float _CLICK_MARGIN = 10;
 	// カーソルが乗っているときのコールバック
 	std::function<void(Vector2 pos)> _OnCursorAction;
@@ -86,5 +86,4 @@ private:
 	UIScreenButton* _cursorObject;
 	// カーソルの乗っているオブジェクト
 	BaseObject* _onCursorObject;
-	int _cursorColor;
 };

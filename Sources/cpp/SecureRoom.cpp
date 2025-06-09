@@ -65,6 +65,9 @@ void SecureRoom::Teardown()
 
 void SecureRoom::ClickEvent()
 {
+	// 選択されているなら返す
+	if (_currentState == State::SELECT) return;
+
 	// キャラクターがいないなら返す
 	if (PhaseMain::GetSelectOfficerList().empty()) return;
 
@@ -76,13 +79,13 @@ void SecureRoom::ClickEvent()
 		pOperationUIList[i]->SetCallback([this, i, pOperationUIList]()
 		{
 			SetInteractOfficer(PhaseMain::GetSelectOfficerList()[0]);
+			_currentState = State::SELECT;
 			// UIを非表示
 			for (int j = 0; j < (int)Type::MAX; j++)
 			{
 				pOperationUIList[j]->SetActive(false);
 			}
 			_selectOperation = (Type)i;
-			Vector2 setPos = position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y);
 			_pInteractOfficer->ChangeMoveState(this);
 		});
 		pOperationUIList[i]->SetActive(true);
@@ -137,8 +140,9 @@ void SecureRoom::OperationProc()
 void SecureRoom::StartOperation()
 {
 	// 選択状態でないなら返す
-	if (_currentState != State::IDLE) return;
+	if (_currentState != State::SELECT) return;
 	_currentState = State::INTERACT;
+	_pInteractOfficer->SetPosition(position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y));
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
 	_pEntity->SetOperation(_selectOperation);
 	// 作業開始イベントを発生させる

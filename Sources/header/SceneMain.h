@@ -15,14 +15,6 @@ public:
     /// ‰Šú‰»
     /// </summary>
     void Init();
-    /// <summary>
-    /// ˆ—
-    /// </summary>
-    void Proc();
-    /// <summary>
-    /// •`‰æ
-    /// </summary>
-    void Draw();
 
 private:
 	GameManager* _pGamemanager;

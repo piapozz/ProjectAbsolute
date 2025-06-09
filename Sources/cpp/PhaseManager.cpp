@@ -3,31 +3,39 @@
 
 void PhaseManager::Init()
 {
-	// フェーズのリストを初期化
-	_phaseList.clear();
-	_phaseList.push_back(new PhaseSelect());
-	_phaseList.push_back(new PhaseStandby());
-	_phaseList.push_back(new PhaseMain());
-	_phaseList.push_back(new PhaseResult());
-}
-
-void PhaseManager::Proc()
-{
-	for (int i = 0, max = (int)_phaseList.size(); i < max; i++)
-	{
-		// 初期化してフェーズのループを回す
-		_phaseList[i]->Init();
-		_phaseList[i]->ProcLoop();
-		_phaseList[i]->Teardown();
-	}
+	ChangePhase(PhaseName::MAIN);
 }
 
 void PhaseManager::Teardown()
 {
-	for (int i = 0, max = (int)_phaseList.size(); i < max; i++)
+	_currentPhase->Teardown();
+}
+
+void PhaseManager::ChangePhase(PhaseName nextPhase)
+{
+	if (nextPhase == PhaseName::INVALID) return;
+	// 現在のシーンが空じゃなかったら、シーンの情報を破棄する
+	delete(_currentPhase);
+
+	// 引数のシーンに切り替える
+	switch (nextPhase)
 	{
-		_phaseList[i]->Teardown();
-		delete _phaseList[i];
+		case PhaseName::SELECT:
+			_currentPhase = new PhaseSelect();
+			break;
+		case PhaseName::STANDBY:
+			_currentPhase = new PhaseStandby();
+			break;
+		case PhaseName::MAIN:
+			_currentPhase = new PhaseMain();
+			break;
+		case PhaseName::RESULT:
+			_currentPhase = new PhaseResult();
+			break;
+		default: break;
 	}
-	_phaseList.clear();
+	// 初期化をしておく
+	_currentPhase->Init();
+	// コールバックを設定
+	_currentPhase->SetChangePhaseCallback([this](PhaseName nextPhase) { this->ChangePhase(nextPhase); });
 }

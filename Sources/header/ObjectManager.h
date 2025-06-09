@@ -17,7 +17,9 @@ public:
 		return instance;
 	}
 
-	ObjectManager() {}
+	ObjectManager() {
+		Init();
+	}
 	~ObjectManager() {}
 
 	/// <summary>

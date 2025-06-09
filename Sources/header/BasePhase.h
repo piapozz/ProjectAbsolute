@@ -17,19 +17,14 @@ public:
 	/// </summary>
 	inline virtual void Init(){};
 	/// <summary>
-	//// 処理のループ
-	// </summary>
-	void ProcLoop();
-	/// <summary>
-	/// 処理
-	/// </summary>
-	/// <returns>終了したか否か</returns>
-	inline virtual bool Proc() = 0;
-	/// <summary>
 	/// 破棄
 	/// </summary>
-	inline virtual void Teardown() {
-		ObjectManager::Instance().AllClear(); };
+	inline virtual void Teardown(){ ObjectManager::Instance().AllClear(); }
+	/// <summary>
+	/// シーンを切り替えるコールバックを設定する
+	/// </summary>
+	/// <param name="callback"></param>
+	inline void SetChangePhaseCallback(std::function<void(PhaseName nextPhase)> callback){ ChangePhase = callback; }
 
 protected:
 	/// <summary>
@@ -78,5 +73,5 @@ protected:
 	/// </summary>
 	virtual void EscapeInputProc(){};
 
-	InputManager* pInputManager;
+	std::function<void(PhaseName nextPhase)> ChangePhase;
 };

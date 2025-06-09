@@ -1,5 +1,5 @@
 #include "../header/UIScreenButton.h"
-#include "../header/CameraController.h"
+#include "../header/Camera.h"
 
 void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting)
 {

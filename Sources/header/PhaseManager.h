@@ -12,7 +12,7 @@ class ObjectManager;
 class PhaseManager
 {
 public:
-	inline PhaseManager() {}
+	PhaseManager() {}
 	~PhaseManager() {}
 
 	/// <summary>
@@ -20,16 +20,14 @@ public:
 	/// </summary>
 	void Init();
 	/// <summary>
-	/// 処理
-	/// </summary>
-	void Proc();
-	/// <summary>
 	/// 破棄
 	/// </summary>
 	void Teardown();
 
 private:
-	// フェーズのリスト
-	std::vector<BasePhase*> _phaseList;
+	// フェーズ
+	BasePhase* _currentPhase;
+
+	inline void ChangePhase(PhaseName nextPhase);
 };
 

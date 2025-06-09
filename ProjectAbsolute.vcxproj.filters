@@ -174,9 +174,6 @@
     <ClCompile Include="Sources\cpp\OfficerManager.cpp">
       <Filter>ソース ファイル\Sein\Officer</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\CameraController.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\BaseEgoEntity.cpp">
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
@@ -296,6 +293,15 @@
     </ClCompile>
     <ClCompile Include="Sources\header\SelectorNearOfficer.h">
       <Filter>ヘッダー ファイル\Sein\Selector</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\Cursor.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\Camera.cpp">
+      <Filter>ソース ファイル\Sakakura</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\CommonModule.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -476,9 +482,6 @@
     <ClInclude Include="Sources\header\BaseAttack.h">
       <Filter>ヘッダー ファイル\Sein\Attack</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\CameraController.h">
-      <Filter>ヘッダー ファイル\Sein</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\BaseUIScreen.h">
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
@@ -514,6 +517,12 @@
     </ClInclude>
     <ClInclude Include="Sources\header\CharacterStateFightMove.h">
       <Filter>ヘッダー ファイル\Sein\CharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Cursor.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Camera.h">
+      <Filter>ヘッダー ファイル\Sakakura</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,10 +6,10 @@
 
 enum class ObjectType{
 	INVALID = -1,
-	SCREEN_UI,
-	UI,
-	CHARACTER,
 	SECTION,
+	CHARACTER,
+	UI,
+	SCREEN_UI,
 
 	MAX
 };
@@ -33,6 +33,16 @@ enum class SceneName
 	OPTION,
 	EXIT,
 
+	MAX
+};
+// フェーズの名前
+enum class PhaseName
+{
+	INVALID = -1,
+	SELECT,
+	STANDBY,
+	MAIN,
+	RESULT,
 	MAX
 };
 // 表示レイヤー
@@ -138,3 +148,6 @@ const float RAD2DEG = (float)(180 / DX_PI);
 // ステータス関係
 const int MINIMUM_HEALTH = 0;
 const int MINIMUM_MENTAL = 0;
+
+// カーソル
+const int CURSOR_SIZE = 20;

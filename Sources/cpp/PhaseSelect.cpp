@@ -19,14 +19,6 @@ void PhaseSelect::Init()
 
 }
 
-bool PhaseSelect::Proc()
-{
-	// “ü—Íó•t
-
-	// I—¹
-	return true;
-}
-
 void PhaseSelect::SelectEntity(int selectNum)
 {
 	
