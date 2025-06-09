@@ -158,6 +158,7 @@
     <ClCompile Include="Sources\cpp\CommonModule.cpp" />
     <ClCompile Include="Sources\cpp\Cursor.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\EntityInformationUI.cpp" />
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
     <ClCompile Include="Sources\cpp\EventManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\Cursor.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\EntityInformationUI.h" />
     <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />
     <ClInclude Include="Sources\header\ITargetSelector.h" />
