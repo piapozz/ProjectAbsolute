@@ -103,6 +103,12 @@
     <Filter Include="ソース ファイル\Ishihara\PackageUI">
       <UniqueIdentifier>{d5568317-263d-4f0e-a874-6ada9414392e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Sakakura\UI">
+      <UniqueIdentifier>{2ecc1d26-178b-43a8-ba4c-33c5cf23abf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sakakura\UI">
+      <UniqueIdentifier>{045ed061-4671-48ff-b27f-d8f7053d9826}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -312,14 +318,17 @@
     <ClCompile Include="Sources\cpp\UIOfficer.cpp">
       <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\UIEntity.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\Cursor.cpp">
       <Filter>ソース ファイル\Sakakura</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\UIScreenImage.cpp">
       <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIEntity.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityInformationUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -548,9 +557,6 @@
     <ClInclude Include="Sources\header\UI.h">
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\UIEntity.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\UIScreen.h">
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
@@ -559,6 +565,12 @@
     </ClInclude>
     <ClInclude Include="Sources\header\UIScreenImage.h">
       <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIEntity.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityInformationUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

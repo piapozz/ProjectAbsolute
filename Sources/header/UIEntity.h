@@ -1,7 +1,11 @@
 #pragma once
-#include "../header/UIScreen.h"
+#include "BaseObject.h"
 
-class UIEntity
+class EntityInformationUI;
+class UIScreenImage;
+class UIScreenText;
+
+class UIEntity: public BaseObject
 {
 public:
 	UIEntity();
@@ -9,6 +13,9 @@ public:
 
 	void SetActive(bool active);
 private:
-	UIScreenButton 
+	
+	UIScreenImage* _BGImage;
+	UIScreenText* _informationText;
+	EntityInformationUI* _entityInformation;
 };
 
