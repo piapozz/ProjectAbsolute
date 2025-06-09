@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -158,7 +158,13 @@
     <ClCompile Include="Sources\cpp\CommonModule.cpp" />
     <ClCompile Include="Sources\cpp\Cursor.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\EntityEscapeUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityInformationUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityManagementTipsUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityOperationFavorUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityManagementUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntitySuitUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityWeaponUI.cpp" />
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
     <ClCompile Include="Sources\cpp\EventManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
@@ -236,7 +242,13 @@
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\Cursor.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\EntityEscapeUI.h" />
     <ClInclude Include="Sources\header\EntityInformationUI.h" />
+    <ClInclude Include="Sources\header\EntityManagementTipsUI.h" />
+    <ClInclude Include="Sources\header\EntityOperationFavorUI.h" />
+    <ClInclude Include="Sources\header\EntityManagementUI.h" />
+    <ClInclude Include="Sources\header\EntitySuitUI.h" />
+    <ClInclude Include="Sources\header\EntityWeaponUI.h" />
     <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />
     <ClInclude Include="Sources\header\ITargetSelector.h" />

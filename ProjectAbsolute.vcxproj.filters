@@ -330,6 +330,24 @@
     <ClCompile Include="Sources\cpp\EntityInformationUI.cpp">
       <Filter>ソース ファイル\Sakakura\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityOperationFavorUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityEscapeUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityWeaponUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntitySuitUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityManagementTipsUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityManagementUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -570,6 +588,24 @@
       <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\EntityInformationUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityOperationFavorUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityEscapeUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityWeaponUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntitySuitUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityManagementTipsUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityManagementUI.h">
       <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
     </ClInclude>
   </ItemGroup>
