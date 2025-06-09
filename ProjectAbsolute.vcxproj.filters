@@ -97,6 +97,12 @@
     <Filter Include="ヘッダー ファイル\Sein\Selector">
       <UniqueIdentifier>{dda67ba3-eced-4b2c-a790-00315a2b62e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Ishihara\PackageUI">
+      <UniqueIdentifier>{c0a1710c-3f9e-4aa4-8818-9118e59ec826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Ishihara\PackageUI">
+      <UniqueIdentifier>{d5568317-263d-4f0e-a874-6ada9414392e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -302,6 +308,12 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\CommonModule.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIImage.cpp">
+      <Filter>ソース ファイル\Ishihara\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIOfficer.cpp">
+      <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -523,6 +535,15 @@
     </ClInclude>
     <ClInclude Include="Sources\header\Camera.h">
       <Filter>ヘッダー ファイル\Sakakura</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIImage.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIOfficer.h">
+      <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UI.h">
+      <Filter>ヘッダー ファイル\Ishihara\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,7 +13,6 @@ void SectionRoom::Proc()
 	BaseSection::Proc();
 }
 
-
 void SectionRoom::Draw()
 {
    // •`‰æ

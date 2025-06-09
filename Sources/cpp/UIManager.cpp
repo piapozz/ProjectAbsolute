@@ -2,8 +2,6 @@
 #include "../header/UIScreenButton.h"
 #include "../header/ObjectFactory.h"
 
-std::vector<UIScreenButton*> UIManager::_pOperationUIList;
-
 UIManager::UIManager()
 {
 	// オフセットを初期化
