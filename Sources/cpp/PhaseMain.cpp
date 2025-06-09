@@ -146,7 +146,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		_pRangeSelect->SetActive(false);
 		// ワールド座標に変更
 		Camera* camera = Camera::instance;
-		Vector2 worldOldPos =  GetScreen2StagePos(pos, camera->GetHeight(), camera->GetPosition());
+		Vector2 worldOldPos =  GetScreen2StagePos(oldPos, camera->GetHeight(), camera->GetPosition());
 		// 中心座標と大きさを指定
 		Vector2 centorPos = Vector2(worldPos + ((worldOldPos - worldPos) / 2));
 		Vector2 size = worldOldPos - worldPos;
