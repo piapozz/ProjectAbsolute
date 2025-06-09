@@ -1,5 +1,6 @@
 #pragma once
-#include "../header/BaseUIScreen.h"
+#include "UIScreenImage.h"
+#include "UIScreenText.h"
 /*
 * ishihara
 * UIスクリーンスライダー
@@ -36,7 +37,24 @@ public:
 	void SetColor(int r = 255, int g = 255, int b = 255) {
 		_color = GetColor(r, g, b);
 	}
+
+	void SetText(const std::string& setText) {
+		_pText->SetText(setText);
+	}
+
+	void SetTextColor(int r = 255, int g = 255, int b = 255) {
+		_pText->SetTextColor(r, g, b);
+	}
+
+	void SetActive(bool active) override {
+		BaseObject::SetActive(active);
+		_pImage->SetActive(active);
+		_pText->SetActive(active);
+	}
+
 private:
+	UIScreenImage* _pImage;
+	UIScreenText* _pText;
 	// スライダーの値
 	float _value;
 	// スライダーの色

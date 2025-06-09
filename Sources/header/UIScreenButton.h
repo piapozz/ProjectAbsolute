@@ -1,5 +1,6 @@
 #pragma once
-#include "../header/BaseUIScreen.h"
+#include "UIScreenImage.h"
+#include "UIScreenText.h"
 #include <functional>
 /*
 * Ishihara
@@ -29,12 +30,28 @@ public:
 		return "UIScreenButton";
 	}
 
+	void SetText(std::string str) {
+		_pText->SetText(str);
+	}
+
+	void SetTextColor(int r = 255, int g = 255, int b = 255) {
+		_pText->SetTextColor(r, g, b);
+	}
+
+	void SetActive(bool active) override {
+		BaseObject::SetActive(active);
+		_pImage->SetActive(active);
+		_pText->SetActive(active);
+	}
+
 	/// <summary>
 	/// コールバックの設定
 	/// </summary>
 	/// <param name="callback"></param>
 	void SetCallback(std::function<void()> callback) { _callback = callback; }
 private:
+	UIScreenText* _pText;
+	UIScreenImage* _pImage;
 	// コールバック
 	std::function<void()> _callback;
 };

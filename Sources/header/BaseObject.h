@@ -59,7 +59,7 @@ public:
 	inline bool GetInteract() { return interactable; }
 	inline void SetPosition(Vector2 setPosition){ position = setPosition; }
 	inline void SetSize(Vector2 setSize){ objectSize = setSize; }
-	inline void SetActive(bool setActive){ active = setActive; }
+	virtual void SetActive(bool setActive){ active = setActive; }
 	inline void SetInteract(bool setInteract){ interactable = setInteract; }
 
 	/// <summary>

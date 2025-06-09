@@ -1,5 +1,7 @@
 #pragma once  
 #include "BaseUI.h"	
+#include "UIText.h"
+#include "UIImage.h"
 
 class UISlider: public BaseUI
 {
@@ -10,8 +12,6 @@ public:
 	}
 	UISlider(UISetting setting, LayerSetting layerSetting) {
 		Init(setting.m_position, setting.m_size, layerSetting);
-		SetSize(setting.m_size.x);
-		SetText(setting.m_text);
 	}
 	UISlider(Layer setLayer)
 		: BaseUI(setLayer) {}
@@ -43,7 +43,22 @@ public:
 	void SetColor(int r = 255, int g = 255, int b = 255, int a = 255) {
 		color = GetColorU8(r, g, b, a);
 	}
+
+	void SetText(const std::string setText) {
+		_pText->SetText(setText);
+	}
+
+	void SetActive(bool active) override {
+		BaseObject::SetActive(active);
+		_pImage->SetActive(active);
+		_pText->SetActive(active);
+	}
+
 private:
+	// テキスト
+	UIText* _pText;
+	// 画像
+	UIImage* _pImage;
 	// スライダーの値
 	float _value;
 	// スライダーの色
