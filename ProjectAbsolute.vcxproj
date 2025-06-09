@@ -153,8 +153,10 @@
     <ClCompile Include="Sources\cpp\BaseToolEntity.cpp" />
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\BaseUIScreen.cpp" />
-    <ClCompile Include="Sources\cpp\CameraController.cpp" />
+    <ClCompile Include="Sources\cpp\Camera.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStateFightMove.cpp" />
+    <ClCompile Include="Sources\cpp\CommonModule.cpp" />
+    <ClCompile Include="Sources\cpp\Cursor.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
     <ClCompile Include="Sources\cpp\EventManager.cpp" />
@@ -223,10 +225,11 @@
     <ClInclude Include="Sources\header\BaseToolEntity.h" />
     <ClInclude Include="Sources\header\BaseUI.h" />
     <ClInclude Include="Sources\header\BaseUIScreen.h" />
-    <ClInclude Include="Sources\header\CameraController.h" />
+    <ClInclude Include="Sources\header\Camera.h" />
     <ClInclude Include="Sources\header\CharacterStateFightMove.h" />
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
+    <ClInclude Include="Sources\header\Cursor.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
     <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />

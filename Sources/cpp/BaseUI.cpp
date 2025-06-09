@@ -1,5 +1,6 @@
 #include "../header/BaseUI.h"
 #include "../header/ObjectManager.h"
+#include "../header/Camera.h"
 
 void BaseUI::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
 {
@@ -21,25 +22,37 @@ void BaseUI::Proc()
 
 	if (prevText != text)
 	{
-		int w = GetDrawStringWidthToHandle(text.c_str(), strlen(text.c_str()), fontHandle);
+		const int padding = 50;
+
+		int w = GetDrawStringWidthToHandle(text.c_str(), static_cast<int>(text.length()), fontHandle);
 		int h = GetFontSizeToHandle(fontHandle);
 
-		int texW = w + 50;
-		int texH = h + 50;
+		int texW = w + padding;
+		int texH = h + padding;
 
-		int screen;
+		// ŒÃ‚¢ƒOƒ‰ƒtƒBƒbƒN‚ðíœ
+		if (textGraph != -1)
+		{
+			DeleteGraph(textGraph);
+		}
+
+		// •`‰ææ‚Æ•`‰æó‘Ô‚Ì•Û‘¶
+		int prevScreen = GetDrawScreen();
+
+		// ‰¼‘z‰æ–Êì¬‚Æ•`‰æ
 		textGraph = MakeScreen(texW, texH, TRUE);
-
-		screen = GetDrawScreen();
 		SetDrawScreen(textGraph);
-		ClearDrawScreen();
+
+		// ‰Šúó‘Ô‚Å•`‰æ
+		SetDrawArea(0, 0, texW, texH);
 
 		int drawX = texW / 2 - w / 2;
 		int drawY = texH / 2 - h / 2;
 		DrawStringToHandle(drawX, drawY, text.c_str(), GetColor(255, 255, 255), fontHandle);
 
-		ScreenFlip();
-		SetDrawScreen(screen);
+		// •`‰æó‘Ô‚ð•œŒ³
+		SetDrawScreen(prevScreen);
+		Camera::instance->UpdateCamera();
 
 		prevText = text;
 	}

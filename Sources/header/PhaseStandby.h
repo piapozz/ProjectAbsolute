@@ -12,7 +12,6 @@ public:
 	~PhaseStandby() {};
 
 	void Init() override;
-	bool Proc() override;
 	void Teardown() override {};
 
 protected:

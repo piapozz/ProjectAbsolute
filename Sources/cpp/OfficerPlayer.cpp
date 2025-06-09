@@ -41,6 +41,8 @@ void OfficerPlayer::Teardown()
 
 void OfficerPlayer::ClickEvent()
 {
+	// ì‹Æ’†‚È‚ç‰½‚à‚µ‚È‚¢
+	if (stateID == CharacterStateID::OPERATION) return;
 	// ¶ã‚ÉUI‚ğ•`‰æ
 	std::vector<OfficerPlayer*>& selectOfficerList = PhaseMain::GetSelectOfficerList();
 	selectOfficerList.clear();

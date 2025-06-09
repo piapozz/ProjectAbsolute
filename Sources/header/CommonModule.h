@@ -150,3 +150,12 @@ public:
 		return vec1.x * vec2.y - vec2.x * vec1.y;
 	}
 };
+
+/// <summary>
+/// スクリーン座標からステージ座標に変換する
+/// </summary>
+/// <param name="screenPos"></param>
+/// <param name="cameraHeight"></param>
+/// <param name="cameraPos"></param>
+/// <returns></returns>
+Vector2 GetScreen2StagePos(Vector2 screenPos, float cameraHeight, Vector2 cameraPos);

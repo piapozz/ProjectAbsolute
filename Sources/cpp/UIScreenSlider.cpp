@@ -1,5 +1,4 @@
 #include "../header/UIScreenSlider.h"
-#include "../header/CameraController.h"
 
 void UIScreenSlider::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting)
 {

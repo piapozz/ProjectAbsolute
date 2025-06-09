@@ -1,5 +1,4 @@
 #include "../header/BaseUIScreen.h"
-#include "../header/CameraController.h"
 #include "../header/ObjectManager.h"
 
 void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting)
@@ -8,8 +7,6 @@ void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSe
 	_textColor = -1;
 	_screenPos = setPosition;
 	_fill = fill;
-	// ステージ座標に変換
-	position = CameraController::GetScreen2StagePos(_screenPos);
 	fontHandle = CreateFontToHandle("ＭＳ ゴシック", 24, 1);
 	textGraph = MakeScreen(128, 32, TRUE);
 	position = setPosition;

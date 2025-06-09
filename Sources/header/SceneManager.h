@@ -4,6 +4,7 @@
 #include "../header/SceneTitle.h"
 #include "../header/SceneMain.h"
 
+class InputManager;
 /*
 * Ishihara
 * シーンの管理
@@ -19,14 +20,6 @@ public:
 	/// 初期化
 	/// </summary>
 	void Init();
-	/// <summary>
-	/// 処理
-	/// </summary>
-	void Proc();
-	/// <summary>
-	/// 描画
-	/// </summary>
-	void Draw();
 	/// <summary>
 	/// シーンの切り替え
 	/// </summary>

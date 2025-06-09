@@ -1,25 +1,24 @@
 #pragma once
-#include "DxLib.h"
 #include "../header/CommonModule.h"
+#include "../header/BaseObject.h"
+
 
 /*
  * Sakakura
  * ƒJƒƒ‰‚Ì‘€ìƒNƒ‰ƒX
  */
-class CameraController
+class Camera : public BaseObject
 {
 public:
-	static Vector2 stagePosition;
-	static float heightSize;
-	static Vector2 GetScreen2StagePos(Vector2 screenPos);
-
-	CameraController();
-	virtual ~CameraController(){}
+	Camera();
+	virtual ~Camera(){}
+	static Camera* instance;
 
 	void RPushEvent(Vector2 screenPos);
 	void RDrackEvent(Vector2 screenPos);
 	void WheelEvent(int up);
 	void UpdateCamera();
+	inline float GetHeight(){ return _heightSize; }
 
 private:
 	const int _MIN_HEIGHT_SIZE = 100;
@@ -31,6 +30,7 @@ private:
 
 	Vector2 _prevCursorPos;
 	Vector2 _pushPos;
+	float _heightSize;
 
 	void SetCameraOrtho(int wheel);
 };

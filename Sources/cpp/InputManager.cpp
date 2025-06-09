@@ -1,24 +1,19 @@
 #include "../header/InputManager.h"
 #include "../header/UIScreenButton.h"
 #include "../header/ObjectFactory.h"
+#include "../header/Cursor.h"
 
-InputManager::InputManager()
+void InputManager::Init()
 {
 	_isLPressed = false;
 	_isRPressed = false;
 	// カーソルの非表示
 	SetMouseDispFlag(FALSE);
-	_cursorColor = GetColor(255, 0, 0);
-	_onCursorObject = nullptr;
+	int cursorColor = GetColor(255, 0, 0);
 	Vector2 centorScreen = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	Vector2 size = Vector2(_CURSOR_SIZE, _CURSOR_SIZE);
+	Vector2 size = Vector2(CURSOR_SIZE, CURSOR_SIZE);
 	LayerSetting layerSetting = {true, false, Layer::FRONT};
-	_cursorObject = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(centorScreen, size, true, layerSetting);
-}
-
-InputManager::~InputManager()
-{
-
+	ObjectFactory::Instance().CreateWithArgs<Cursor>(centorScreen, size, true, layerSetting);
 }
 
 int InputManager::CheckClickState()
@@ -59,7 +54,7 @@ Vector2 InputManager::GetCursorScreenPos()
 	return Vector2((float)posx, (float)posy);
 }
 
-void InputManager::ExecuteCallback()
+void InputManager::Update()
 {
 	// カーソル座標の取得
 	Vector2 cursorScreenPos = GetCursorScreenPos();
@@ -99,13 +94,6 @@ void InputManager::ExecuteCallback()
 	// Escapeキーを押したときの処理
 	if (_EscapePushAction != NULL && CheckHitKey(KEY_INPUT_ESCAPE))
 		_EscapePushAction();
-}
-
-void InputManager::UpdateCursor()
-{
-	// カーソル座標の取得
-	Vector2 cursorScreenPos = GetCursorScreenPos() + Vector2(_CURSOR_SIZE / 2, _CURSOR_SIZE /2);
-	_cursorObject->SetPosition(cursorScreenPos);
 }
 
 bool InputManager::IsLeftClick(Vector2 pos)

@@ -3,7 +3,7 @@
 #include <vector>
 class StageManager;
 class UIManager;
-class CameraController;
+class Camera;
 class OfficerManager;
 class OfficerPlayer;
 class EventManager;
@@ -19,7 +19,6 @@ public:
 	~PhaseMain() {};
 
 	void Init() override;
-	bool Proc() override;
 	void Teardown() override {}
 
 	static std::vector<OfficerPlayer*>& GetSelectOfficerList();
@@ -38,7 +37,7 @@ protected:
 private:
 	StageManager* _pStageManager;
 	UIManager* _pUIManager;
-	CameraController* _pCameraController;
+	Camera* _pCamera;
 	OfficerManager* _pOfficerManager;
 	static std::vector<OfficerPlayer*> _pSelectOfficerList;
 	EventManager* _pEventManager;

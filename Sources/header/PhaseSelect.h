@@ -12,7 +12,6 @@ public:
 	~PhaseSelect() {};
 
 	void Init() override;
-	bool Proc() override;
 	void Teardown() override {};
 
 protected:
