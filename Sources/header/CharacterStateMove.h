@@ -8,7 +8,7 @@
 class CharacterStateMove : public BaseCharacterState
 {
 public:
-	CharacterStateMove(std::vector<Vector2> targetPosList);
+	CharacterStateMove(std::vector<Vector2> targetPosList, CharacterStateID nextStateID);
 
 	void Update(BaseCharacter* character) override;
 	void Enter(BaseCharacter* character) override;
@@ -16,6 +16,8 @@ public:
 
 private:
 	std::vector<Vector2> _routeList;
+	CharacterStateID _nextStateID;
 	int _arrayCount = 0;
 	int speed = 2;
+
 };

@@ -72,13 +72,13 @@ public:
 	/// </summary>
 	/// <param name="targetSection"></param>
 	/// <returns></returns>
-	bool Move(BaseSection* targetSection);
+	//bool Move(BaseSection* targetSection, float speed);
 	/// <summary>
 	/// ×‚©‚¢À•W‚ÉˆÚ“®‚·‚é
 	/// </summary>
 	/// <param name="targetPosition"></param>
 	/// <returns></returns>
-	bool Move(Vector2 targetPosition);
+	//bool Move(Vector2 targetPosition, float speed);
 	/// <summary>
 	/// ‘Ì—ÍŒ¸­ˆ—
 	/// </summary>
@@ -95,7 +95,7 @@ public:
 	/// </summary>
 	/// <param name="targetPos"></param>
 	/// <param name="secureRoom"></param>
-	void ChangeMoveState(BaseSection* targetSection);
+	void ChangeMoveState(BaseSection* targetSection, CharacterStateID nextStateID = CharacterStateID::IDLE);
 
 	Vector2 GetPosition(){ return position; }
 	BaseSection* GetPastPosition(){ return pastRoom; }
@@ -109,6 +109,8 @@ public:
 	CharacterGroup GetGroup(){ return _groupType; }
 	void SetAttack(BaseAttack* baseAttack){ characterAttack = baseAttack; }
 	BaseAttack* GetAttack(){ return characterAttack; }
+	void SetSpeed(int value){ _moveSpeed = value; }
+	int GetSpeed(){ return _moveSpeed; }
 
 	// ‰ß‹‚ÌˆÊ’u
 	BaseSection* pastRoom;
@@ -132,6 +134,6 @@ protected:
 	CharacterGroup _groupType;
 
 private:
-
+	int _moveSpeed;
 };
 

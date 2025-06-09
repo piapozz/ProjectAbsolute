@@ -61,4 +61,6 @@ void CharacterStateOperationMove::Exit(BaseCharacter* character)
 {
 	_routeList.clear();
 	character->color = IDLE;
+	_secureRoom->SetState(SecureRoom::State::IDLE);
+
 }

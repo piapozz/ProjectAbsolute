@@ -33,16 +33,6 @@ void BaseCharacter::Teardown()
 	BaseObject::Teardown();
 } 
 
-bool BaseCharacter::Move(BaseSection* targetSection)
-{
-	return true;
-}
-
-bool BaseCharacter::Move(Vector2 targetPosition)
-{
-	return true;
-}
-
 void BaseCharacter::DecreaseHealth(int decreaseValue)
 {
 	health -= decreaseValue;
@@ -64,7 +54,7 @@ void BaseCharacter::ChangeState(CharacterStateID stateID, StateArgs* args)
 	}
 }
 
-void BaseCharacter::ChangeMoveState(BaseSection* targetSection)
+void BaseCharacter::ChangeMoveState(BaseSection* targetSection, CharacterStateID nextStateID)
 {
 	std::vector<Vector2> routeList;
 	Vector2 targetPos = targetSection->GetPosition();
@@ -82,6 +72,7 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection)
 		ChangeState(CharacterStateID::OPERATION_MOVE, args);
 		return;
 	}
+	args->stateID = nextStateID;
 	ChangeState(CharacterStateID::MOVE, args);
 }
 
