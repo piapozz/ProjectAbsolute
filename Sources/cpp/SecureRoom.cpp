@@ -139,8 +139,8 @@ void SecureRoom::OperationProc()
 
 void SecureRoom::StartOperation()
 {
-	// 選択状態でないなら返す
-	if (_currentState != State::SELECT) return;
+	// インタラクト中でないなら
+	if (_currentState == State::INTERACT) return;
 	_currentState = State::INTERACT;
 	_pInteractOfficer->SetPosition(position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y));
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
