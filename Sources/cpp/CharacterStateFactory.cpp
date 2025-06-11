@@ -2,6 +2,8 @@
 
 BaseCharacterState* CharacterStateFactory::CreateState(CharacterStateID stateID, StateArgs* args)
 {
+
+
 	switch (stateID)
 	{
 		case CharacterStateID::IDLE:

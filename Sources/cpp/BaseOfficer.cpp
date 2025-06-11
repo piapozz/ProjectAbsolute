@@ -38,9 +38,6 @@ void BaseOfficer::Proc()
 {
 	BaseObject::Proc();
 
-	if (health <= 0) ChangeState(CharacterStateID::DEAD, nullptr);
-	if (_mental <= 0) ChangeState(CharacterStateID::PANIC, nullptr);
-
 	pCharacterState->Update(this);
 }
 
