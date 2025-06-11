@@ -1,7 +1,7 @@
 #pragma once
 #include "BaseObject.h"
-class EntityOperationFavorUI:
-    public BaseObject
+class EntityOperationFavorUI : public BaseObject
 {
+
 };
 

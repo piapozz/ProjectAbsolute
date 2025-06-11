@@ -12,13 +12,13 @@ public:
 	BaseObject(){
 		objectType = ObjectType::INVALID;
 	 }
-	BaseObject(Vector2 pos, Vector2 size, Layer setLayer)
-		: position(pos), objectSize(size), layer(setLayer) {
+	BaseObject(Transform setTransform, Layer setLayer)
+		: transform(setTransform), layer(setLayer) {
 		objectType = ObjectType::INVALID;
 		drawHandle = -1;
 	}
-	BaseObject(Vector2 pos, Vector2 size, LayerSetting layerSetting)
-		: position(pos), objectSize(size), active(layerSetting.m_active), 
+	BaseObject(Transform setTransform, LayerSetting layerSetting)
+		: transform(setTransform), active(layerSetting.m_active),
 		interactable(layerSetting.m_interact), layer(layerSetting.m_layer) {
 		objectType = ObjectType::INVALID;
 		drawHandle = -1;
@@ -51,14 +51,14 @@ public:
 		return "BaseObject";
 	}
 
-	inline Vector2 GetPosition(){ return position; }
+	inline Vector2 GetPosition(){ return transform.position; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
-	inline Vector2 GetSize(){ return objectSize; }
+	inline Vector2 GetSize(){ return transform.scale; }
 	inline bool GetActive() { return active; }
 	inline bool GetInteract() { return interactable; }
-	inline void SetPosition(Vector2 setPosition){ position = setPosition; }
-	inline void SetSize(Vector2 setSize){ objectSize = setSize; }
+	inline void SetPosition(Vector2 setPosition){ transform.position = setPosition; }
+	inline void SetSize(Vector2 setSize){ transform.scale = setSize; }
 	virtual void SetActive(bool setActive){ active = setActive; }
 	inline void SetInteract(bool setInteract){ interactable = setInteract; }
 
@@ -76,6 +76,8 @@ public:
 	/// <returns></returns>
 	bool IsSameRect(Vector2 pos, Vector2 size);
 protected:
+	// 基本情報
+	Transform transform;
 	// アクティブ状態
 	bool active;
 	// インタラクト可能か
@@ -84,10 +86,6 @@ protected:
 	Layer layer;
 	// 描画用のハンドル
 	int drawHandle;
-	// 座標
-	Vector2 position;
 	// どのタイプか
 	ObjectType objectType;
-	// サイズ
-	Vector2 objectSize;
 };

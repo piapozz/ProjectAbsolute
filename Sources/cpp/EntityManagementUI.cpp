@@ -1,6 +1,12 @@
 #include "../header/EntityManagementUI.h"
 #include "../header/EntityManagementTipsUI.h"
 
+EntityManagementUI::EntityManagementUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+	: BaseObject(setPosition, setSize, layerSetting)
+{
+
+}
+
 void EntityManagementUI::Draw()
 {
 	// ŠÇ—•û–@‚ðã‚©‚ç‡‚É•\Ž¦
@@ -12,5 +18,10 @@ void EntityManagementUI::Draw()
 
 void EntityManagementUI::SetActive(bool active)
 {
-	
+	_informationText->Draw();
+
+	for (int i = 0, max = _tipsUIList.size(); i < max; i++)
+	{
+		_tipsUIList[i]->SetActive(active);
+	}
 }
