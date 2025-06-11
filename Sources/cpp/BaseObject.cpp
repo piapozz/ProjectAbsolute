@@ -4,21 +4,27 @@ void BaseObject::Teardown()
 {
 	DeleteGraph(drawHandle);
 	layer = Layer::INVALID;
-	position = Vector2::zero();
+	transform.position = Vector2::zero();
 }
 
 bool BaseObject::IsSamePos(Vector2 pos)
 {
+	Vector2 position = transform.position;
+	Vector2 scale = transform.scale;
+
 	// ˆÊ’u‚ª“¯‚¶‚©‚Ç‚¤‚©
-	float posMinX = position.x - objectSize.x / 2;
-	float posMaxX = position.x + objectSize.x / 2;
-	float posMinY = position.y - objectSize.y / 2;
-	float posMaxY = position.y + objectSize.y / 2;
+	float posMinX = position.x - scale.x / 2;
+	float posMaxX = position.x + scale.x / 2;
+	float posMinY = position.y - scale.y / 2;
+	float posMaxY = position.y + scale.y / 2;
 	return (pos.x >= posMinX && pos.x <= posMaxX && pos.y >= posMinY && pos.y <= posMaxY);
 }
 
 bool BaseObject::IsSameRect(Vector2 pos, Vector2 size)
 {
+	Vector2 position = transform.position;
+	Vector2 scale = transform.scale;
+
 	float left = pos.x - (size.x / 2);
 	float right = pos.x + (size.x / 2);
 	if (left > right)
@@ -36,10 +42,10 @@ bool BaseObject::IsSameRect(Vector2 pos, Vector2 size)
 		down = temp;
 	}
 
-	float posMinX = position.x - objectSize.x / 2;
-	float posMaxX = position.x + objectSize.x / 2;
-	float posMinY = position.y - objectSize.y / 2;
-	float posMaxY = position.y + objectSize.y / 2;
+	float posMinX = position.x - scale.x / 2;
+	float posMaxX = position.x + scale.x / 2;
+	float posMinY = position.y - scale.y / 2;
+	float posMaxY = position.y + scale.y / 2;
 
 	bool xSame = (posMinX > left && right > posMinX) || (posMaxX > left && right > posMaxX);
 	bool ySame = (posMinY > down && up > posMinY) || (posMaxY > down && up > posMaxY);

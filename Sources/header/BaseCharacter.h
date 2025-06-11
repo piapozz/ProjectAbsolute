@@ -115,7 +115,6 @@ public:
 	/// <param name="nextStateID"></param>
 	void ChangeMoveState(Vector2 targetPosition, CharacterStateID nextStateID = CharacterStateID::IDLE);
 
-	inline Vector2 GetPosition(){ return position; }
 	inline BaseSection* GetPastPosition(){ return pastRoom; }
 	inline AttackStatus GetAttackStatus() { return _attackStatus; }
 	inline int GetHealth(){ return health; }

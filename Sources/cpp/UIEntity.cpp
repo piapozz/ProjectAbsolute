@@ -9,4 +9,5 @@ UIEntity::UIEntity()
 void UIEntity::SetActive(bool active)
 {
 	// 全EntityUIのアクティブを切り替える
+
 }

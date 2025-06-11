@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+class BaseObject;
 
 // 二次元ベクトル
 struct Vector2
@@ -159,3 +160,20 @@ public:
 /// <param name="cameraPos"></param>
 /// <returns></returns>
 Vector2 GetScreen2StagePos(Vector2 screenPos, float cameraHeight, Vector2 cameraPos);
+
+// オブジェクトの基本情報
+struct Transform
+{
+public:
+	Vector2 position = {0, 0};
+	Vector2 scale = {0, 0};
+	BaseObject* parent = nullptr;
+
+	static Transform Combine(const Transform& parent, const Transform& child)
+	{
+		Transform result;
+		result.position = parent.position + child.position;
+		result.scale = parent.scale * child.scale;
+		return result;
+	}
+};

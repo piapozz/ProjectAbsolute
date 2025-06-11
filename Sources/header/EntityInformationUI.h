@@ -7,10 +7,12 @@ class UIScreenText;
 class EntityInformationUI : public BaseObject
 {
 public:
-	EntityInformationUI(){}
+	EntityInformationUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
 	~EntityInformationUI(){}
 
+	void Draw();
 	void SetActive(bool active);
+	inline void SetLock(bool isLock){ _isLock = isLock; }
 
 private:
 	UIScreenImage* _lockImage;
@@ -31,5 +33,6 @@ private:
 	UIScreenText* _normalOperation;
 	UIScreenText* _badOperationInformation;
 	UIScreenText* _badOperation;
+	bool _isLock;
 };
 
