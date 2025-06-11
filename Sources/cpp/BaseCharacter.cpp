@@ -88,36 +88,3 @@ void BaseCharacter::ChangeMoveState(Vector2 targetPosition, CharacterStateID nex
 	args->stateID = nextStateID;
 	ChangeState(CharacterStateID::MOVE, args);
 }
-
-//bool BaseCharacter::CharacterMove(std::vector<Vector2> targetPosList, float speed)
-//{
-//	Vector2 current = GetPosition();
-//	Vector2 target = targetPosList[_moveListIndex];
-//
-//	// x方向の移動
-//	float dx = target.x - current.x;
-//	float distance = std::abs(dx);
-//
-//	float moveX = (dx / distance) * speed;
-//	current.x += moveX;
-//	current.y = target.y;
-//
-//	SetPosition(current);
-//
-//	// 目的地に到着したら次の目的地へ移動
-//	if (distance < 2.0f)
-//	{
-//		current.x = target.x;
-//		SetPosition(current);
-//		_moveListIndex++;
-//	}
-//
-//	// すべてのルートに到達したらステート遷移
-//	if (_moveListIndex == targetPosList.size())
-//	{
-//		_moveListIndex = 0;
-//		return true;
-//	}
-//
-//	return false;
-//}

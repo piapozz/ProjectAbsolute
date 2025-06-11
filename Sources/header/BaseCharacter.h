@@ -5,6 +5,7 @@
 #include "../header/BaseSection.h"
 
 class BaseCharacterState;
+class AIController;
 class BaseAttack;
 class ITargetSelector;
 
