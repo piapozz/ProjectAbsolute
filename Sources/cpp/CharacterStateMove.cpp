@@ -10,10 +10,6 @@ CharacterStateMove::CharacterStateMove(std::vector<Vector2> targetPosList, Chara
 
 void CharacterStateMove::Update(BaseCharacter* character)
 {
-	//bool finishMove = false;
-	//finishMove = character->CharacterMove(_routeList, speed);
-	//if (finishMove)character->ChangeState(OfficerStateID::OFFICER_IDLE);
-
 	// もし目的地に到達していたら処理を終了
 	if (_arrayCount >= _routeList.size())
 	{

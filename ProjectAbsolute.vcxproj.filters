@@ -109,6 +109,12 @@
     <Filter Include="ヘッダー ファイル\Sakakura\UI">
       <UniqueIdentifier>{045ed061-4671-48ff-b27f-d8f7053d9826}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Sein\Controller">
+      <UniqueIdentifier>{5372207f-0cd8-4c39-827f-e5c45e7ad225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sein\Controller">
+      <UniqueIdentifier>{8b39a4e3-0f52-4824-ba80-f5ebff95e43c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -347,6 +353,12 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\EntityManagementUI.cpp">
       <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\CharacterController.cpp">
+      <Filter>ソース ファイル\Sein\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerController.cpp">
+      <Filter>ソース ファイル\Sein\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -607,6 +619,12 @@
     </ClInclude>
     <ClInclude Include="Sources\header\EntityManagementUI.h">
       <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\CharacterController.h">
+      <Filter>ヘッダー ファイル\Sein\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerController.h">
+      <Filter>ヘッダー ファイル\Sein\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
