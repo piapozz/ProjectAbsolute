@@ -46,7 +46,6 @@ public:
 	void Deallocate(T* ptr) 
 	{
 		auto it = std::find(_pool.begin(), _pool.end(), ptr);
-		assert(it != _pool.end() && "Invalid pointer deallocation");
 		size_t index = std::distance(_pool.begin(), it);
 		_freeIndices.push(index);
 	}
