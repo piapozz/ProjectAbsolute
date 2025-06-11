@@ -37,6 +37,15 @@ public:
 	template<typename T, typename... Args>
 	T* CreateWithArgs(Args&&... args);
 	/// <summary>
+	/// オブジェクトの生成（引数あり、オブジェクトマネージャーの追加なし）
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="...Args"></typeparam>
+	/// <param name="...args"></param>
+	/// <returns></returns>
+	template<typename T, typename... Args>
+	T* CreateChildWithArgs(Args&&... args);
+	/// <summary>
 	/// オブジェクトの削除
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
@@ -81,7 +90,6 @@ void ObjectFactory::Register(const std::string& key)
 template<typename T, typename... Args>
 void ObjectFactory::RegisterWithArgs()
 {
-	static_assert(std::is_base_of<BaseObject, T>::value, "T must derive from BaseObject");
 	std::string key = T::StaticTypeName();
 	if (_allocators.find(key) == _allocators.end())
 		_allocators[key] = std::make_unique<AllocatorWrapper<T>>();
@@ -96,7 +104,6 @@ void ObjectFactory::RegisterWithArgs()
 template<typename T, typename... Args>
 T* ObjectFactory::CreateWithArgs(Args&&... args)
 {
-	static_assert(std::is_base_of<BaseObject, T>::value, "T must derive from BaseObject");
 	const std::string key = T::StaticTypeName();
 	if (_allocators.find(key) == _allocators.end())
 		RegisterWithArgs<T, Args...>();
@@ -107,13 +114,24 @@ T* ObjectFactory::CreateWithArgs(Args&&... args)
 	return obj;
 }
 
+template<typename T, typename... Args>
+T* ObjectFactory::CreateChildWithArgs(Args&&... args)
+{
+	const std::string key = T::StaticTypeName();
+	if (_allocators.find(key) == _allocators.end())
+		RegisterWithArgs<T, Args...>();
+
+	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
+	T* obj = allocatorWrapper->Allocate(std::forward<Args>(args)...);
+	return obj;
+}
+
 template<typename T>
 T* ObjectFactory::Create()
 {
 	Register<T>();
 	std::string key = T::StaticTypeName();
 	auto itCreator = _creators.find(key);
-	assert(itCreator != _creators.end() && "Creator not found");
 	return static_cast<T*>(itCreator->second());
 }
 
