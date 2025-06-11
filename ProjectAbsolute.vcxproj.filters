@@ -360,6 +360,15 @@
     <ClCompile Include="Sources\cpp\OfficerController.cpp">
       <Filter>ソース ファイル\Sein\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\UIWeapon.cpp">
+      <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UIOfficerParam.cpp">
+      <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\UISuit.cpp">
+      <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -625,6 +634,15 @@
     </ClInclude>
     <ClInclude Include="Sources\header\OfficerController.h">
       <Filter>ヘッダー ファイル\Sein\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIOfficerParam.h">
+      <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UISuit.h">
+      <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\UIWeapon.h">
+      <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
