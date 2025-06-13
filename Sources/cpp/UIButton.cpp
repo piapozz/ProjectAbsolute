@@ -7,24 +7,27 @@ void UIButton::Init(Transform setTransform, LayerSetting layerSetting)
 	BaseUI::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(setTransform, setLayer);
-	setLayer.m_layer = Layer::BACK;
-	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(setTransform, setLayer);
+	Transform trans = Transform();
+	trans.parent = this;
+	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(trans, setLayer);
+	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(trans, setLayer);
 }
 
 void UIButton::Proc()
 {
 	// アップデート
 	BaseUI::Proc();
-	Vector2 position = transform.GetWorldPosition();
-	_pImage->SetPosition(position);
-	_pText->SetPosition(position);
+
+	_pImage->Proc();
+	_pText->Proc();
 }
 
 void UIButton::Draw()
 {
 	// 描画
 	BaseUI::Draw();
+	_pImage->Draw();
+	_pText->Draw();
 }
 
 void UIButton::Teardown()

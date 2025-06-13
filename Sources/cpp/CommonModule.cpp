@@ -19,12 +19,18 @@ Vector2 GetScreen2StagePos(Vector2 screenPos, float cameraHeight, Vector2 camera
 	return Vector2(cameraPos + screenDistance * ratio);
 }
 
-Vector2 Transform::GetWorldPosition()
+Transform Transform::GetWorldTransform()
 {
-	Vector2 result;
+	Transform result;
 	if (parent != nullptr)
-		result = position + parent->GetPosition();
+	{
+		result.position = position + parent->GetPosition();
+		result.scale = (scale + 1)* parent->GetScale();
+	}
 	else
-		result = position;
+	{
+		result.position = position;
+		result.scale = scale;
+	}
 	return result;
 }

@@ -22,7 +22,8 @@ void BaseEntity::Draw()
 	for (int i = 0; i < 3; i++)
 	{
 		float angle = 2.0f / 3.0f * DX_PI * i;
-		Vector2 position = transform.GetWorldPosition();
+		Transform transformWorld = transform.GetWorldTransform();
+		Vector2 position = transformWorld.position;
 		pos[i] = VGet(position.x + cos(angle) * 30, position.y + sin(angle) * 30, 0);
 	}
 

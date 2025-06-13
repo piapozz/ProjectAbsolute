@@ -21,15 +21,6 @@ void ObjectManager::Update()
 			obj->Proc();
 		});
 	}
-	for (int layer = 0; layer < (int)Layer::MAX; layer++)
-	{
-		for (BaseObject* obj : _objectList[(int)ObjectType::SCREEN_UI][layer])
-		{
-			if (obj == nullptr) continue;
-			if (!obj->GetActive()) continue;
-			obj->Proc();
-		}
-	}
 }
 
 void ObjectManager::Draw()
@@ -38,24 +29,16 @@ void ObjectManager::Draw()
 	ClearDrawScreen();
 	clsDx ();
 	ForEachObject([](BaseObject* obj) {
+		if (obj->GetTransform().IsChild()) return;
 		obj->Draw();
 	});
-	for (int layer = 0; layer < (int)Layer::MAX; layer++)
-	{
-		for (BaseObject* obj : _objectList[(int)ObjectType::SCREEN_UI][layer])
-		{
-			if (obj == nullptr) continue;
-			if (!obj->GetActive()) continue;
-			obj->Draw();
-		}
-	}
 	// — ‰æ–Ê‚Ì“à—e‚ð•\‰æ–Ê‚É”½‰f
 	ScreenFlip ();
 }
 
 void ObjectManager::ForEachObject(function<void(BaseObject*)> func)
 {
-	for (int type = 0; type < (int)ObjectType::SCREEN_UI; type++)
+	for (int type = 0; type < (int)ObjectType::MAX; type++)
 	{
 		for (int layer = 0; layer < (int)Layer::MAX; layer++)
 		{

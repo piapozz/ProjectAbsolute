@@ -44,6 +44,13 @@ public:
 		_pText->SetActive(active);
 	}
 
+	void OnCursor() override {
+		_pImage->OnCursor();
+	};
+	void NotOnCursor() override {
+		_pImage->NotOnCursor();
+	};
+
 	/// <summary>
 	/// コールバックの設定
 	/// </summary>

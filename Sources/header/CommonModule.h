@@ -178,6 +178,6 @@ public:
 
 	Transform(Vector2 setPosition, Vector2 setScale, BaseObject* setParent = nullptr)
 		: position(setPosition), scale(setScale), parent(setParent){}
-	Vector2 GetWorldPosition();
+	Transform GetWorldTransform();
 	inline bool IsChild() { return parent != nullptr; }
 };

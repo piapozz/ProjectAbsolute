@@ -21,7 +21,8 @@ Camera::Camera()
 
 void Camera::UpdateCamera()
 {
-	Vector2 position = transform.GetWorldPosition();
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
 	VECTOR cameraPosition = VGet(position.x, position.y, _Z_POS_OFFSET);
 	VECTOR target = VGet(position.x, position.y, _Z_TARGET_FAR);
 	SetCameraPositionAndTarget_UpVecY(cameraPosition, target);

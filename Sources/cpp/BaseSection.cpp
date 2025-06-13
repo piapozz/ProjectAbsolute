@@ -27,8 +27,9 @@ void BaseSection::Draw()
 	BaseObject::Draw();
 
 	// 四角を描画
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	int x1 = position.x + scale.x / 2;
 	int y1 = position.y + scale.y / 2;
 	int x2 = position.x - scale.x / 2;
@@ -54,8 +55,9 @@ void BaseSection::Teardown()
 std::vector<BaseCharacter*> BaseSection::GetCharacters()
 {
 	// キャラクターの取得
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	auto charas = ObjectManager::Instance().FindRectAllObject(position, scale, ObjectType::CHARACTER);
 	std::vector<BaseCharacter*> characters;
 	for (BaseObject* obj : charas)

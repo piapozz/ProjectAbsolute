@@ -24,7 +24,8 @@ void BaseCharacter::Draw()
 {
 	// •`‰æ
 	BaseObject::Draw();
-	Vector2 position = transform.GetWorldPosition();
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
 	DrawGraph(drawHandle, position.x, position.y, TRUE);
 }
 
@@ -59,7 +60,8 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection, CharacterStateID
 {
 	std::vector<Vector2> routeList;
 	Vector2 targetPos = targetSection->GetPosition();
-	Vector2 position = transform.GetWorldPosition();
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
 	Vector2 startPos = ObjectManager::Instance().FindPosObject(position, ObjectType::SECTION)->GetPosition();
 
 	routeList = StageManager::FindPath(startPos, targetPos);

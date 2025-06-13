@@ -52,7 +52,8 @@ void UIText::Draw() {
 	BaseUI::Draw();
 
 	// テキスト
-	Vector2 position = transform.GetWorldPosition();
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
 	VECTOR pos = VGet(position.x, position.y, 0.0f);
 	DrawBillboard3D(
 		pos,

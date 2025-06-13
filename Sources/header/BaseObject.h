@@ -55,9 +55,10 @@ public:
 	inline Vector2 GetPosition(){ return transform.position; }
 	inline Layer GetLayer() { return layer; }
 	inline ObjectType GetType() { return objectType; }
-	inline Vector2 GetSize(){ return transform.scale; }
+	inline Vector2 GetScale(){ return transform.scale; }
 	inline bool GetActive() { return active; }
 	inline bool GetInteract() { return interactable; }
+	inline Transform GetTransform() { return transform; }
 	inline void SetPosition(Vector2 setPosition){ transform.position = setPosition; }
 	inline void SetSize(Vector2 setSize){ transform.scale = setSize; }
 	virtual void SetActive(bool setActive){ active = setActive; }

@@ -16,7 +16,7 @@ void UIScreenImage::Draw()
 {
 	// •`‰æ
 	BaseUIScreen::Draw();
-	DrawUIBox();
+	DrawUIBox(GetColor(125, 125, 125));
 }
 
 void UIScreenImage::Teardown()
@@ -28,8 +28,9 @@ void UIScreenImage::Teardown()
 void UIScreenImage::DrawUIBox(int color)
 {
 	// ŽlŠp‚ð•`‰æ
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	int x1 = position.x + scale.x / 2;
 	int y1 = position.y + scale.y / 2;
 	int x2 = position.x - scale.x / 2;

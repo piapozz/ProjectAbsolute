@@ -7,25 +7,28 @@ void UISlider::Init(Transform setTransform, LayerSetting layerSetting)
 	BaseUI::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(setTransform, setLayer);
-	setLayer.m_layer = Layer::BACK;
-	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(setTransform, setLayer);
+	Transform trans = Transform();
+	trans.parent = this;
+	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(trans, setLayer);
+	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(trans, setLayer);
 }
 
 void UISlider::Proc()
 {
 	// アップデート
 	BaseUI::Proc();
-	Vector2 position = transform.GetWorldPosition();
-	_pImage->SetPosition(position);
-	_pText->SetPosition(position);
+
+	_pImage->Proc();
+	_pText->Proc();
 }
 
 void UISlider::Draw()
 {
+	_pImage->Draw();
 	// ポリゴン
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	int x1 = position.x - scale.x / 2;
 	int y1 = position.y - scale.y / 2;
 	int x2 = x1 + (scale.x * _value);
@@ -61,6 +64,8 @@ void UISlider::Draw()
 	
 	// 描画
 	BaseUI::Draw();
+
+	_pText->Draw();
 }
 
 void UISlider::Teardown()
