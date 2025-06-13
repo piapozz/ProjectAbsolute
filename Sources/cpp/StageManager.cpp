@@ -53,21 +53,24 @@ void StageManager::CreateStage()
 				// ïîâÆÇê∂ê¨
 				int size = CheckSectionSize(j, i, SectionType::ROOM);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
+				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(transform, layerSetting);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
 				// òLâ∫Çê∂ê¨
 				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
-				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y), layerSetting);
+				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
+				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(transform, layerSetting);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
 				// ê⁄çáïîÇê∂ê¨
 				int size = CheckSectionSize(j, i, SectionType::CONNECT);
 				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
+				Transform transform = Transform(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(transform, layerSetting);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{
@@ -75,7 +78,8 @@ void StageManager::CreateStage()
 				int size = CheckSectionSize(j, i, SectionType::SECURE);
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
 				LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
-				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y), layerSetting);
+				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(transform, layerSetting);
 				// é˚óeèäÇÃÉäÉXÉgÇ…í«â¡
 				_secureRoomList.push_back(secure);
 			}

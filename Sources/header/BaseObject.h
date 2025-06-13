@@ -11,6 +11,7 @@ class BaseObject : public AutoTypeNameObject
 public:
 	BaseObject(){
 		objectType = ObjectType::INVALID;
+		transform = Transform();
 	 }
 	BaseObject(Transform setTransform, Layer setLayer)
 		: transform(setTransform), layer(setLayer) {

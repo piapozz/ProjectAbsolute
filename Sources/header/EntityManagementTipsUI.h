@@ -4,7 +4,7 @@
 class EntityManagementTipsUI : public BaseObject
 {
 public:
-	EntityManagementTipsUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText);
+	EntityManagementTipsUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
 	~EntityManagementTipsUI(){}
 
 	void SetActive(bool active);

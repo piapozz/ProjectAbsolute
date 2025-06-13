@@ -8,9 +8,12 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	BaseOfficer::Init(data, setOfficerID);
 	_groupType = CharacterGroup::OFFICER;
 	_officerType = OfficerType::PLAYER;
-	Vector2 pos(position.x, position.y + (objectSize.y / 2));
+	Vector2 position = transform.GetWorldPosition();
+	Vector2 scale = transform.scale;
+	Vector2 pos(position.x, position.y + (scale.y / 2));
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};
-	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(pos + Vector2(0, objectSize.y), Vector2(objectSize.x, objectSize.y / 4), UILayerSetting);
+	Transform transform = Transform(pos + Vector2(0, scale.y), Vector2(scale.x, scale.y / 4));
+	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transform, UILayerSetting);
 	slider->SetActive(true);
 	slider->SetText("HP");
 	slider->SetColor(255, 0, 0);
@@ -27,11 +30,13 @@ void OfficerPlayer::Draw()
 {
 	BaseOfficer::Draw();
 
+	Vector2 position = transform.GetWorldPosition();
+	Vector2 scale = transform.scale;
 	VECTOR worldPos = {position.x, position.y, 0};
 	VECTOR screenPos = ConvWorldPosToScreenPos(worldPos);
 
-	Vector2 pos(position.x, position.y + (objectSize.y / 2));
-	slider->SetPos(pos + Vector2(0, objectSize.y));
+	Vector2 pos(position.x, position.y + (scale.y / 2));
+	slider->SetPos(pos + Vector2(0, scale.y));
 	slider->SetValue((float)(health / maxHealth));
 }
 

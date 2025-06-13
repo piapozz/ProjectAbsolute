@@ -1,7 +1,7 @@
 #include "../header/EntityManagementTipsUI.h"
 
-EntityManagementTipsUI::EntityManagementTipsUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText)
-	: BaseObject(setPosition, setSize, layerSetting)
+EntityManagementTipsUI::EntityManagementTipsUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText)
+	: BaseObject(setTransform, layerSetting)
 {
 	_isLock = true;
 	// テキストの設定もする

@@ -11,7 +11,7 @@ Camera::Camera()
 	_heightSize = _MAX_HEIGHT_SIZE;
 	SetupCamera_Ortho(_heightSize);
 	// ÉJÉÅÉâÇÃà íuÇ∆å¸Ç´Çê›íË
-	position = Vector2(_DEFAULT_POS_X, _DEFAULT_POS_Y);
+	transform.position = Vector2(_DEFAULT_POS_X, _DEFAULT_POS_Y);
 	VECTOR position = VGet(_DEFAULT_POS_X, _DEFAULT_POS_Y, _Z_POS_OFFSET);
 	VECTOR target = VGet(_DEFAULT_POS_X, _DEFAULT_POS_Y, _Z_TARGET_FAR);
 	SetCameraPositionAndTarget_UpVecY(position, target);
@@ -21,6 +21,7 @@ Camera::Camera()
 
 void Camera::UpdateCamera()
 {
+	Vector2 position = transform.GetWorldPosition();
 	VECTOR cameraPosition = VGet(position.x, position.y, _Z_POS_OFFSET);
 	VECTOR target = VGet(position.x, position.y, _Z_TARGET_FAR);
 	SetCameraPositionAndTarget_UpVecY(cameraPosition, target);
@@ -47,7 +48,8 @@ void Camera::RDrackEvent(Vector2 screenPos)
 	int dx = _prevCursorPos.x - screenPos.x;
 	int dy = _prevCursorPos.y - screenPos.y;
 	float screenRatio = _heightSize / WINDOW_HEIGHT;
-	position = Vector2(position.x + dx * screenRatio, position.y - dy * screenRatio);
+	Vector2 position = transform.position;
+	transform.position = Vector2(position.x + dx * screenRatio, position.y - dy * screenRatio);
 
 	_prevCursorPos = screenPos;
 

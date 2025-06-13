@@ -1,7 +1,7 @@
 #include "../header/EntityEscapeUI.h"
 
-EntityEscapeUI::EntityEscapeUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText)
-	: BaseObject(setPosition, setSize, layerSetting)
+EntityEscapeUI::EntityEscapeUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText)
+	: BaseObject(setTransform, layerSetting)
 {
 
 }

@@ -15,9 +15,9 @@
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
-void SecureRoom::Init(Vector2 position, Vector2 size, LayerSetting layerSetting)
+void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 {
-	BaseSection::Init(position, size, layerSetting);
+	BaseSection::Init(setTransform, layerSetting);
 	sectionType = SectionType::SECURE;
 	active = layerSetting.m_active;
 	interactable = layerSetting.m_interact;
@@ -33,10 +33,13 @@ void SecureRoom::Init(Vector2 position, Vector2 size, LayerSetting layerSetting)
 	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	ObjectFactory& factory = ObjectFactory::Instance();
 	LayerSetting UILayerSetting = {true, true, Layer::MIDDLE};
-	_pOperationCountUI = factory.CreateWithArgs<UIButton>(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE), UILayerSetting);
+	Vector2 position = transform.GetWorldPosition();
+	Transform transform = Transform(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
+	_pOperationCountUI = factory.CreateWithArgs<UIButton>(transform, UILayerSetting);
 	_pOperationCountUI->SetText(std::to_string(0));
 	UILayerSetting = {true, false, Layer::MIDDLE};
-	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE), UILayerSetting);
+	transform = Transform(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
+	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(transform, UILayerSetting);
 	_pRunawayCountUI->SetText(std::to_string(0));
 	// エンティティーのマスターデータから作業IDを取得し生成
 	// _pOperation = new Operation(_pEntity->GetID());
@@ -95,6 +98,7 @@ void SecureRoom::ClickEvent()
 void SecureRoom::SetEntity(BaseEntity* setEntity)
 {
 	_pEntity = setEntity;
+	Vector2 position = transform.GetWorldPosition();
 	_pEntity->SetPosition(position + Vector2(_ENTITY_OFFSET_POS_X, _ENTITY_OFFSET_POS_Y));
 	_pEntity->SetRunawayUI(_pRunawayCountUI);
 }
@@ -142,6 +146,7 @@ void SecureRoom::StartOperation()
 	// インタラクト中でないなら
 	if (_currentState == State::INTERACT) return;
 	_currentState = State::INTERACT;
+	Vector2 position = transform.GetWorldPosition();
 	_pInteractOfficer->SetPosition(position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y));
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
 	_pEntity->SetOperation(_selectOperation);

@@ -9,7 +9,7 @@ class SectionConnect: public BaseSection
 public:
 	SectionConnect() {
 	}
-	SectionConnect(Vector2 pos, Vector2 size, LayerSetting layerSetting): BaseSection(pos, size, layerSetting) {
+	SectionConnect(Transform setTransform, LayerSetting layerSetting): BaseSection(setTransform, layerSetting) {
 	}
 	SectionConnect(Layer setLayer)
 		: BaseSection(setLayer) {
@@ -30,7 +30,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) override;
+	void Init(Transform setTransform, LayerSetting layerSetting) override;
 	/// <summary>
 	/// アップデート
 	/// </summary>

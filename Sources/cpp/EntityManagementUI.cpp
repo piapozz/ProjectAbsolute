@@ -1,8 +1,8 @@
 #include "../header/EntityManagementUI.h"
 #include "../header/EntityManagementTipsUI.h"
 
-EntityManagementUI::EntityManagementUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
-	: BaseObject(setPosition, setSize, layerSetting)
+EntityManagementUI::EntityManagementUI(Transform setTransform, LayerSetting layerSetting)
+	: BaseObject(setTransform, layerSetting)
 {
 
 }

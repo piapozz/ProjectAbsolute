@@ -6,8 +6,8 @@ class UIScreenImage:
 public:
 	UIScreenImage() {
 	}
-	UIScreenImage(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting) {
-		Init(setPosition, setSize, fill, layerSetting);
+	UIScreenImage(Transform setTransform, bool fill, LayerSetting layerSetting) {
+		Init(setTransform, fill, layerSetting);
 	}
 	UIScreenImage(Layer setLayer)
 		: BaseUIScreen(setLayer) {
@@ -21,7 +21,7 @@ public:
 	~UIScreenImage() {
 	}
 
-	void Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting);
+	void Init(Transform setTransform, bool fill, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

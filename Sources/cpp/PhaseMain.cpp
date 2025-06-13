@@ -45,7 +45,7 @@ void PhaseMain::Init()
 		_pEventManager->AddEnergy(successCount);
 	};
 	layerSetting = {true, false, Layer::FRONT};
-	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Vector2::zero(), Vector2::zero(), false, layerSetting);
+	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
 	_pUIManager = new UIManager();
 	// ÉJÉÅÉâê∂ê¨
 	_pCamera = new Camera();

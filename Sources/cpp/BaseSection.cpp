@@ -4,12 +4,11 @@
 #include "../header/PhaseMain.h"
 #include "../header/OfficerPlayer.h"
 
-void BaseSection::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+void BaseSection::Init(Transform setTransform, LayerSetting layerSetting)
 {
 	// 初期化
 	sectionType = SectionType::INVALID;
-	position = setPosition;
-	objectSize = setSize;
+	transform = setTransform;
 	objectType = ObjectType::SECTION;
 	active = layerSetting.m_active;
 	interactable = layerSetting.m_interact;
@@ -28,10 +27,12 @@ void BaseSection::Draw()
 	BaseObject::Draw();
 
 	// 四角を描画
-	int x1 = position.x + objectSize.x / 2;
-	int y1 = position.y + objectSize.y / 2;
-	int x2 = position.x - objectSize.x / 2;
-	int y2 = position.y - objectSize.y / 2;
+	Vector2 position = transform.GetWorldPosition();
+	Vector2 scale = transform.scale;
+	int x1 = position.x + scale.x / 2;
+	int y1 = position.y + scale.y / 2;
+	int x2 = position.x - scale.x / 2;
+	int y2 = position.y - scale.y / 2;
 
 	VECTOR Pos1 = VGet(x1, y1, 0);
 	VECTOR Pos2 = VGet(x2, y1, 0);
@@ -50,10 +51,12 @@ void BaseSection::Teardown()
 	BaseObject::Teardown();
 }
 
-std::vector<BaseCharacter*> BaseSection::GetCharacters() const
+std::vector<BaseCharacter*> BaseSection::GetCharacters()
 {
 	// キャラクターの取得
-	auto charas = ObjectManager::Instance().FindRectAllObject(position, objectSize, ObjectType::CHARACTER);
+	Vector2 position = transform.GetWorldPosition();
+	Vector2 scale = transform.scale;
+	auto charas = ObjectManager::Instance().FindRectAllObject(position, scale, ObjectType::CHARACTER);
 	std::vector<BaseCharacter*> characters;
 	for (BaseObject* obj : charas)
 	{

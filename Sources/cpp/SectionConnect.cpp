@@ -2,10 +2,10 @@
 
 #include "../header/Const.h"
 
-void SectionConnect::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+void SectionConnect::Init(Transform setTransform, LayerSetting layerSetting)
 {
 	// ‰Šú‰»
-	BaseSection::Init(setPosition, setSize, layerSetting);
+	BaseSection::Init(setTransform, layerSetting);
 	layer = layerSetting.m_layer;
 }
 

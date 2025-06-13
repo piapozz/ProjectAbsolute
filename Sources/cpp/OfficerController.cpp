@@ -29,7 +29,7 @@ void OfficerController::DecideState()
 	}
 }
 
-void UpdateIdleState()
+void OfficerController::UpdateIdleState()
 {
 	if (!HasWaitedEnough()) return;
 
@@ -39,7 +39,7 @@ void UpdateIdleState()
 	//character->ChangeMoveState(nextPosition, CharacterStateID::IDLE);
 }
 
-bool HasWaitedEnough()
+bool OfficerController::HasWaitedEnough()
 {
 	int nowCount = GetNowCount();
 	//int elapsed = nowCount - startCount;
@@ -68,9 +68,10 @@ Vector2 GetRandomPositionInRoom()
 	//float randValue = GetRand(right - left) + left;
 
 	//return {randValue, characterPosition.y};
+	return Vector2().zero();
 }
 
-void UpdateMoveState()
+void OfficerController::UpdateMoveState()
 {
 	//BaseCharacterState* characterState = officer->pCharacterState;
 	//if (!characterState->EndState()) return;

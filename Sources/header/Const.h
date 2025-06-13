@@ -110,14 +110,6 @@ enum class CharacterGroup
 	OTHER,
 };
 
-// UI設定構造体
-typedef struct UISetting{
-	Vector2 m_position = Vector2::zero();	// 座標
-	Vector2 m_size = Vector2::zero();		// 大きさ
-	std::string m_text = "";				// テキスト内容
-	bool m_fill = true;						// 塗りつぶしフラグ
-};
-
 // レイヤー設定構造体
 typedef struct LayerSetting
 {

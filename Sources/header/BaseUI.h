@@ -8,11 +8,8 @@ class BaseUI: public BaseObject
 {
 public:
 	BaseUI() {}
-	BaseUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
-		Init(setPosition, setSize, layerSetting);
-	}
-	BaseUI(UISetting setting, LayerSetting layerSetting) {
-		Init(setting.m_position, setting.m_size, layerSetting);
+	BaseUI(Transform setTransform, LayerSetting layerSetting) {
+		Init(setTransform, layerSetting);
 	}
 	BaseUI(Layer setLayer)
 		: BaseObject(setLayer) {}
@@ -25,7 +22,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	virtual void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
+	virtual void Init(Transform setTransform, LayerSetting layerSetting);
 	/// <summary>
 	/// アップデート
 	/// </summary>
@@ -43,7 +40,7 @@ public:
 	/// </summary>
 	/// <param name="setPos"></param>
 	void SetPos(Vector2 setPos) {
-		position = setPos;
+		transform.position = setPos;
 	}
 };
 

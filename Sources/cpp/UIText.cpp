@@ -1,8 +1,8 @@
 #include "../header/UIText.h"
 #include "../header/Camera.h"
 
-void UIText::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
-	BaseUI::Init(setPosition, setSize, layerSetting);
+void UIText::Init(Transform setTransform, LayerSetting layerSetting) {
+	BaseUI::Init(setTransform, layerSetting);
 	fontHandle = CreateFontToHandle("ＭＳ ゴシック", 24, 1);
 	textGraph = MakeScreen(128, 32, TRUE);
 	textSize = 100;
@@ -52,6 +52,7 @@ void UIText::Draw() {
 	BaseUI::Draw();
 
 	// テキスト
+	Vector2 position = transform.GetWorldPosition();
 	VECTOR pos = VGet(position.x, position.y, 0.0f);
 	DrawBillboard3D(
 		pos,

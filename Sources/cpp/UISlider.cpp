@@ -1,21 +1,22 @@
 #include "../header/UISlider.h"
 #include "../header/ObjectFactory.h"
 
-void UISlider::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+void UISlider::Init(Transform setTransform, LayerSetting layerSetting)
 {
 	// 初期化
-	BaseUI::Init(setPosition, setSize, layerSetting);
+	BaseUI::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(setPosition, setSize, setLayer);
+	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(setTransform, setLayer);
 	setLayer.m_layer = Layer::BACK;
-	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(setPosition, setSize, setLayer);
+	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(setTransform, setLayer);
 }
 
 void UISlider::Proc()
 {
 	// アップデート
 	BaseUI::Proc();
+	Vector2 position = transform.GetWorldPosition();
 	_pImage->SetPosition(position);
 	_pText->SetPosition(position);
 }
@@ -23,10 +24,12 @@ void UISlider::Proc()
 void UISlider::Draw()
 {
 	// ポリゴン
-	int x1 = position.x - objectSize.x / 2;
-	int y1 = position.y - objectSize.y / 2;
-	int x2 = x1 + (objectSize.x * _value);
-	int y2 = position.y + objectSize.y / 2;
+	Vector2 position = transform.GetWorldPosition();
+	Vector2 scale = transform.scale;
+	int x1 = position.x - scale.x / 2;
+	int y1 = position.y - scale.y / 2;
+	int x2 = x1 + (scale.x * _value);
+	int y2 = position.y + scale.y / 2;
 	VECTOR pos1 = VGet(x1, y1, 0.0f);
 	VECTOR pos2 = VGet(x1, y2, 0.0f);
 	VECTOR pos3 = VGet(x2, y2, 0.0f);
