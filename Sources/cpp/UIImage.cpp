@@ -17,8 +17,9 @@ void UIImage::Draw()
 	BaseObject::Draw();
 
 	// ŽlŠp‚ð•`‰æ
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	int x1 = position.x + scale.x / 2;
 	int y1 = position.y + scale.y / 2;
 	int x2 = position.x - scale.x / 2;

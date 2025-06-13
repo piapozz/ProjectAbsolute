@@ -8,8 +8,9 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	BaseOfficer::Init(data, setOfficerID);
 	_groupType = CharacterGroup::OFFICER;
 	_officerType = OfficerType::PLAYER;
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	Vector2 pos(position.x, position.y + (scale.y / 2));
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};
 	Transform transform = Transform(pos + Vector2(0, scale.y), Vector2(scale.x, scale.y / 4));
@@ -30,8 +31,9 @@ void OfficerPlayer::Draw()
 {
 	BaseOfficer::Draw();
 
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	VECTOR worldPos = {position.x, position.y, 0};
 	VECTOR screenPos = ConvWorldPosToScreenPos(worldPos);
 

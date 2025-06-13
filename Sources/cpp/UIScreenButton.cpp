@@ -8,23 +8,27 @@ void UIScreenButton::Init(Transform setTransform, bool fill, LayerSetting layerS
 	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(setTransform, setLayer);
-	setLayer.m_layer = Layer::BACK;
-	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(setTransform, fill, setLayer);
+	Transform trans = Transform();
+	trans.parent = this;
+	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
+	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
 }
 
 void UIScreenButton::Proc()
 {
 	// アップデート
 	BaseUIScreen::Proc();
-	Vector2 position = transform.GetWorldPosition();
-	_pImage->SetPosition(position);
-	_pText->SetPosition(position);
+
+	_pImage->Proc();
+	_pText->Proc();
 }
 
 void UIScreenButton::Draw()
 {
 	BaseUIScreen::Draw();
+
+	_pImage->Draw();
+	_pText->Draw();
 }
 
 void UIScreenButton::Teardown()

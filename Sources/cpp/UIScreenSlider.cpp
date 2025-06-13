@@ -6,33 +6,36 @@ void UIScreenSlider::Init(Transform setTransform, bool fill, LayerSetting layerS
 	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(setTransform, fill, setLayer);
-	setLayer.m_layer = Layer::BACK;
-	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(setTransform, setLayer);
+	Transform trans = Transform();
+	trans.parent = this;
+	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
+	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
 }
 
 void UIScreenSlider::Proc()
 {
 	// アップデート
 	BaseUIScreen::Proc();
-	Vector2 position = transform.GetWorldPosition();
-	_pImage->SetPosition(position);
-	_pText->SetPosition(position);
+
+	_pImage->Proc();
+	_pText->Proc();
 }
 
 void UIScreenSlider::Draw()
 {
+	_pImage->Draw();
 	// 四角を描画
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	int x1 = position.x - scale.x / 2;
 	int y1 = position.y - scale.y / 2;
 	int x2 = x1 + (scale.x * _value);
 	int y2 = position.y + scale.y / 2;
 
 	DrawBoxAA(x1, y1, x2, y2, _color, TRUE);
-
 	BaseUIScreen::Draw();
+	_pText->Draw();
 }
 
 void UIScreenSlider::Teardown()

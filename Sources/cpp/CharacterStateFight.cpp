@@ -14,7 +14,7 @@ void CharacterStateFight::Update(BaseCharacter* character)
 	// “¯‚¶‹æ‰æ‚É“G‘Î‘ÎÛ‚ª‚¢‚é‚©ŒŸõ
 	BaseObject* attackerSection = objectManager.FindPosObject(attackerPos, ObjectType::SECTION);
 	Vector2 sectionPosition = attackerSection->GetPosition();
-	Vector2 sectionSize = attackerSection->GetSize();
+	Vector2 sectionSize = attackerSection->GetScale();
 
 	std::vector<BaseObject*> targetCharaList = objectManager.FindRectAllObject(sectionPosition, sectionSize, ObjectType::CHARACTER);
 	

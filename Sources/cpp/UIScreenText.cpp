@@ -33,7 +33,8 @@ void UIScreenText::DrawUIText()
 {
 	if (_text == "") return;
 	// テキスト
-	Vector2 position = transform.GetWorldPosition();
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
 	int anchorX = position.x;
 	int anchorY = position.y;
 	DrawFormatStringToHandle(anchorX, anchorY, _textColor, fontHandle, _text.c_str());

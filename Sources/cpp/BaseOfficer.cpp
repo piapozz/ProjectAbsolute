@@ -18,7 +18,8 @@ BaseOfficer::~BaseOfficer()
 
 void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 {
-	Vector2 position = transform.GetWorldPosition();
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
 	position = data.position;
 	ObjectManager& objectManager = ObjectManager::Instance();
 
@@ -48,8 +49,9 @@ void BaseOfficer::Draw()
 
 	int temp = 0 * 360 / 100;
 	float radian = (float)temp * DX_PI / 180.0f;
-	Vector2 position = transform.GetWorldPosition();
-	Vector2 scale = transform.scale;
+	Transform transformWorld = transform.GetWorldTransform();
+	Vector2 position = transformWorld.position;
+	Vector2 scale = transformWorld.scale;
 	float x = cosf(radian) * (scale.y / 2);
 	float y = sinf(radian) * (scale.y / 2);
 	VECTOR Pos1 = VGet(position.x + x, (position.y + (scale.y / 2)) + y, 0);

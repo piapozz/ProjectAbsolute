@@ -37,15 +37,6 @@ public:
 	template<typename T, typename... Args>
 	T* CreateWithArgs(Args&&... args);
 	/// <summary>
-	/// オブジェクトの生成（引数あり、オブジェクトマネージャーの追加なし）
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <typeparam name="...Args"></typeparam>
-	/// <param name="...args"></param>
-	/// <returns></returns>
-	template<typename T, typename... Args>
-	T* CreateChildWithArgs(Args&&... args);
-	/// <summary>
 	/// オブジェクトの削除
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
@@ -111,18 +102,6 @@ T* ObjectFactory::CreateWithArgs(Args&&... args)
 	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
 	T* obj = allocatorWrapper->Allocate(std::forward<Args>(args)...);
 	ObjectManager::Instance().AddObject(obj);
-	return obj;
-}
-
-template<typename T, typename... Args>
-T* ObjectFactory::CreateChildWithArgs(Args&&... args)
-{
-	const std::string key = T::StaticTypeName();
-	if (_allocators.find(key) == _allocators.end())
-		RegisterWithArgs<T, Args...>();
-
-	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
-	T* obj = allocatorWrapper->Allocate(std::forward<Args>(args)...);
 	return obj;
 }
 
