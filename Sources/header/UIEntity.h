@@ -16,14 +16,16 @@ public:
 	UIEntity();
 	~UIEntity(){}
 
+	void Proc() override;
+	void Draw() override;
 	void SetActive(bool active);
+
 private:
 	
 	UIScreenImage* _BGImage;
 	UIScreenText* _informationText;
 	EntityInformationUI* _entityInformation;
 	EntityManagementUI* _entityManagement;
-	EntityManagementTipsUI* _entityManagementTips;
 	EntityEscapeUI* _entityEscape;
 	EntityWeaponUI* _entityWeapon;
 	EntitySuitUI* _entitySuit;
