@@ -1,8 +1,8 @@
 #include "../header/UIImage.h"
 
-void UIImage::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+void UIImage::Init(Transform setTransform, LayerSetting layerSetting)
 {
-	BaseUI::Init(setPosition, setSize, layerSetting);
+	BaseUI::Init(setTransform, layerSetting);
 }
 
 void UIImage::Proc()
@@ -17,10 +17,12 @@ void UIImage::Draw()
 	BaseObject::Draw();
 
 	// ŽlŠp‚ð•`‰æ
-	int x1 = position.x + objectSize.x / 2;
-	int y1 = position.y + objectSize.y / 2;
-	int x2 = position.x - objectSize.x / 2;
-	int y2 = position.y - objectSize.y / 2;
+	Vector2 position = transform.GetWorldPosition();
+	Vector2 scale = transform.scale;
+	int x1 = position.x + scale.x / 2;
+	int y1 = position.y + scale.y / 2;
+	int x2 = position.x - scale.x / 2;
+	int y2 = position.y - scale.y / 2;
 
 	VECTOR Pos1 = VGet(x1, y1, 0);
 	VECTOR Pos2 = VGet(x2, y1, 0);

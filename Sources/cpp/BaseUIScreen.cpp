@@ -1,11 +1,9 @@
 #include "../header/BaseUIScreen.h"
 #include "../header/ObjectManager.h"
 
-void BaseUIScreen::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+void BaseUIScreen::Init(Transform setTransform, LayerSetting layerSetting)
 {
-	_screenPos = setPosition;
-	position = setPosition;
-	objectSize = setSize;
+	transform = setTransform;
 	objectType = ObjectType::SCREEN_UI;
 	active = layerSetting.m_active;
 	interactable = layerSetting.m_interact;

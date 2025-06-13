@@ -13,7 +13,8 @@ void EventManager::Init()
 
 	ObjectFactory& factory = ObjectFactory::Instance();
 	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
-	_pEnergySlider = factory.CreateWithArgs<UIScreenSlider>(Vector2(400, 100), Vector2(500, 50), true, layerSetting);
+	Transform transform = Transform(Vector2(400, 100), Vector2(500, 50));
+	_pEnergySlider = factory.CreateWithArgs<UIScreenSlider>(transform, true, layerSetting);
 	_pEnergySlider->SetValue(_energy);
 	_pEnergySlider->SetColor(0, 255, 0);
 	std::string str = std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY);
@@ -22,7 +23,8 @@ void EventManager::Init()
 
 	layerSetting = {true, true, Layer::MIDDLE};
 	// í‚é~É{É^Éì
-	_pStopButton = factory.CreateWithArgs<UIScreenButton>(Vector2(100, 1050), Vector2(200, 50), true, layerSetting);
+	transform = Transform(Vector2(100, 1050), Vector2(200, 50));
+	_pStopButton = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
 	_pStopButton->SetText("í‚é~");
 	_pStopButton->SetCallback([this]()
 	{
@@ -31,7 +33,8 @@ void EventManager::Init()
 	});
 	_pStopButton->SetTextColor();
 	// í èÌë¨ìxÉ{É^Éì
-	_pNormalSpeedButton = factory.CreateWithArgs<UIScreenButton>(Vector2(300, 1050), Vector2(200, 50), true, layerSetting);
+	transform = Transform(Vector2(300, 1050), Vector2(200, 50));
+	_pNormalSpeedButton = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
 	_pNormalSpeedButton->SetText("í èÌ");
 	_pNormalSpeedButton->SetCallback([this]()
 	{
@@ -40,7 +43,8 @@ void EventManager::Init()
 	});
 	_pNormalSpeedButton->SetTextColor();
 	// î{ë¨É{É^Éì
-	_pFastSpeedButton = factory.CreateWithArgs<UIScreenButton>(Vector2(500, 1050), Vector2(200, 50), true, layerSetting);
+	transform = Transform(Vector2(500, 1050), Vector2(200, 50));
+	_pFastSpeedButton = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
 	_pFastSpeedButton->SetText("î{ë¨");
 	_pFastSpeedButton->SetCallback([this]()
 	{

@@ -13,7 +13,8 @@ void InputManager::Init()
 	Vector2 centorScreen = Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	Vector2 size = Vector2(CURSOR_SIZE, CURSOR_SIZE);
 	LayerSetting layerSetting = {true, false, Layer::FRONT};
-	ObjectFactory::Instance().CreateWithArgs<Cursor>(centorScreen, size, true, layerSetting);
+	Transform transform = Transform(centorScreen, size);
+	ObjectFactory::Instance().CreateWithArgs<Cursor>(transform, true, layerSetting);
 }
 
 int InputManager::CheckClickState()

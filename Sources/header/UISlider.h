@@ -7,11 +7,8 @@ class UISlider: public BaseUI
 {
 public:
 	UISlider() {}
-	UISlider(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting){
-		Init(setPosition, setSize, layerSetting);
-	}
-	UISlider(UISetting setting, LayerSetting layerSetting) {
-		Init(setting.m_position, setting.m_size, layerSetting);
+	UISlider(Transform setTransform, LayerSetting layerSetting){
+		Init(setTransform, layerSetting);
 	}
 	UISlider(Layer setLayer)
 		: BaseUI(setLayer) {}
@@ -21,7 +18,7 @@ public:
 		: BaseUI(obj) {}
 	~UISlider() {}
 
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) override;
+	void Init(Transform setTransform, LayerSetting layerSetting) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

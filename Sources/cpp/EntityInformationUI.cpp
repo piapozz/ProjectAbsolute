@@ -1,8 +1,8 @@
 #include "../header/EntityInformationUI.h"
 #include "../header/UIScreen.h"
 
-EntityInformationUI::EntityInformationUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
-	: BaseObject(setPosition, setSize, layerSetting)
+EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting layerSetting)
+	: BaseObject(setTransform, layerSetting)
 {
 
 }

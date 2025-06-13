@@ -2,10 +2,9 @@
 #include "../header/ObjectManager.h"
 #include "../header/Camera.h"
 
-void BaseUI::Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting)
+void BaseUI::Init(Transform setTransform, LayerSetting layerSetting)
 {
-	position = setPosition;
-	objectSize = setSize;
+	transform = setTransform;
 	objectType = ObjectType::UI;
 	active = layerSetting.m_active;
 	interactable = layerSetting.m_interact;

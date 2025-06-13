@@ -5,7 +5,7 @@
 class EntityEscapeUI : public BaseObject
 {
 public:
-	EntityEscapeUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText);
+	EntityEscapeUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
 	~EntityEscapeUI(){}
 
 	void SetActive(bool active);

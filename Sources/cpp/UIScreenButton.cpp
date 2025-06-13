@@ -2,21 +2,22 @@
 #include "../header/Camera.h"
 #include "../header/ObjectFactory.h"
 
-void UIScreenButton::Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting)
+void UIScreenButton::Init(Transform setTransform, bool fill, LayerSetting layerSetting)
 {
 	// 初期化
-	BaseUIScreen::Init(setPosition, setSize, layerSetting);
+	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(setPosition, setSize, setLayer);
+	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(setTransform, setLayer);
 	setLayer.m_layer = Layer::BACK;
-	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(setPosition, setSize, fill, setLayer);
+	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(setTransform, fill, setLayer);
 }
 
 void UIScreenButton::Proc()
 {
 	// アップデート
 	BaseUIScreen::Proc();
+	Vector2 position = transform.GetWorldPosition();
 	_pImage->SetPosition(position);
 	_pText->SetPosition(position);
 }

@@ -10,7 +10,7 @@ void BaseCharacter::Init(LayerSetting layerSetting)
 	active = layerSetting.m_active;
 	interactable = layerSetting.m_interact;
 	layer =layerSetting.m_layer;
-	objectSize = Vector2(50, 50);
+	transform.scale = Vector2(50, 50);
 
 }
 
@@ -24,6 +24,7 @@ void BaseCharacter::Draw()
 {
 	// •`‰æ
 	BaseObject::Draw();
+	Vector2 position = transform.GetWorldPosition();
 	DrawGraph(drawHandle, position.x, position.y, TRUE);
 }
 
@@ -58,6 +59,7 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection, CharacterStateID
 {
 	std::vector<Vector2> routeList;
 	Vector2 targetPos = targetSection->GetPosition();
+	Vector2 position = transform.GetWorldPosition();
 	Vector2 startPos = ObjectManager::Instance().FindPosObject(position, ObjectType::SECTION)->GetPosition();
 
 	routeList = StageManager::FindPath(startPos, targetPos);

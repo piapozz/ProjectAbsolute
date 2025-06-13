@@ -165,15 +165,19 @@ Vector2 GetScreen2StagePos(Vector2 screenPos, float cameraHeight, Vector2 camera
 struct Transform
 {
 public:
-	Vector2 position = {0, 0};
-	Vector2 scale = {0, 0};
-	BaseObject* parent = nullptr;
+	Vector2 position;
+	Vector2 scale;
+	BaseObject* parent;
 
-	static Transform Combine(const Transform& parent, const Transform& child)
+	Transform()
 	{
-		Transform result;
-		result.position = parent.position + child.position;
-		result.scale = parent.scale * child.scale;
-		return result;
+		position = Vector2(0, 0);
+		scale = Vector2(0, 0);
+		parent = nullptr;
 	}
+
+	Transform(Vector2 setPosition, Vector2 setScale, BaseObject* setParent = nullptr)
+		: position(setPosition), scale(setScale), parent(setParent){}
+	Vector2 GetWorldPosition();
+	inline bool IsChild() { return parent != nullptr; }
 };

@@ -9,8 +9,8 @@ class UIText : public BaseUI
 public:
 	UIText() {
 	}
-	UIText(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
-		Init(setPosition, setSize, layerSetting);
+	UIText(Transform setTransform, LayerSetting layerSetting) {
+		Init(setTransform, layerSetting);
 	}
 	UIText(Layer setLayer)
 		: BaseUI(setLayer) {
@@ -23,7 +23,7 @@ public:
 	}
 	~UIText() {
 	}
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) override;
+	void Init(Transform setTransform, LayerSetting layerSetting) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

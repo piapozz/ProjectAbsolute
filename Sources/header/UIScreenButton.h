@@ -10,8 +10,8 @@ class UIScreenButton : public BaseUIScreen
 {
 public:
 	UIScreenButton() {}
-	UIScreenButton(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting) {
-		Init(setPosition, setSize, fill, layerSetting);
+	UIScreenButton(Transform setTransform, bool fill, LayerSetting layerSetting) {
+		Init(setTransform, fill, layerSetting);
 	}
 	UIScreenButton(Layer setLayer)
 		: BaseUIScreen(setLayer) {}
@@ -20,7 +20,7 @@ public:
 	UIScreenButton(const UIScreenButton& obj)
 		: BaseUIScreen(obj) {}
 	~UIScreenButton() {}
-	void Init(Vector2 setPosition, Vector2 setSize, bool fill, LayerSetting layerSetting);
+	void Init(Transform setTransform, bool fill, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

@@ -10,11 +10,11 @@ class BaseCharacter;
 class CharacterController
 {
 public:
-	CharacterController(){};
+	CharacterController();
 	~CharacterController(){};
 
-	virtual void UpdateAI(){};
-	virtual void DecideState(){};
+	virtual void UpdateAI();
+	virtual void DecideState();
 
 protected:
 	BaseCharacter* character;

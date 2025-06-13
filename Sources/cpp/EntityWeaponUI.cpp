@@ -1,7 +1,7 @@
 #include "../header/EntityWeaponUI.h"
 
-EntityWeaponUI::EntityWeaponUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText)
-	: BaseObject(setPosition, setSize, layerSetting)
+EntityWeaponUI::EntityWeaponUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText)
+	: BaseObject(setTransform, layerSetting)
 {
 
 }

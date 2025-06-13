@@ -5,7 +5,7 @@
 class EntitySuitUI : public BaseObject
 {
 public:
-	EntitySuitUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText);
+	EntitySuitUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
 	~EntitySuitUI(){}
 
 	void SetActive(bool active);

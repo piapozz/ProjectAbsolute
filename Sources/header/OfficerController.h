@@ -12,12 +12,16 @@ class OfficerController : public CharacterController
 public:
 	OfficerController(){};
 	OfficerController(BaseCharacter& character) {
-		officer = dynamic_cast<BaseOfficer*>(&character);
+		//officer = static_cast<BaseOfficer*>(&character);
 	}
 	~OfficerController(){};
 
 	void UpdateAI() override;
 	void DecideState() override;
+
+	void UpdateIdleState();
+	void UpdateMoveState();
+	bool HasWaitedEnough();
 
 protected:
 

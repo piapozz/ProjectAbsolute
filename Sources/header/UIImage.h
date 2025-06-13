@@ -6,11 +6,8 @@ class UIImage:
 public:
 	UIImage() {
 	}
-	UIImage(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
-		Init(setPosition, setSize, layerSetting);
-	}
-	UIImage(UISetting setting, LayerSetting layerSetting) {
-		Init(setting.m_position, setting.m_size, layerSetting);
+	UIImage(Transform setTransform, LayerSetting layerSetting) {
+		Init(setTransform, layerSetting);
 	}
 	UIImage(Layer setLayer)
 		: BaseUI(setLayer) {
@@ -23,7 +20,7 @@ public:
 	}
 	~UIImage() {
 	}
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) override;
+	void Init(Transform setTransform, LayerSetting layerSetting) override;
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

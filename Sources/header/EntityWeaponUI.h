@@ -5,7 +5,7 @@
 class EntityWeaponUI : public BaseObject
 {
 public:
-	EntityWeaponUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting, std::string tipsText);
+	EntityWeaponUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
 	~EntityWeaponUI(){}
 
 	void SetActive(bool active);

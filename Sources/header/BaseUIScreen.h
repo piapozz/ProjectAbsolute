@@ -5,8 +5,8 @@ class BaseUIScreen:public BaseObject
 public:
 	BaseUIScreen() {
 	}
-	BaseUIScreen(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
-		Init(setPosition, setSize, layerSetting);
+	BaseUIScreen(Transform setTransform, LayerSetting layerSetting) {
+		Init(setTransform, layerSetting);
 	}
 	BaseUIScreen(Layer setLayer)
 		: BaseObject(setLayer) {
@@ -19,11 +19,9 @@ public:
 	}
 	~BaseUIScreen() {}
 
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
+	void Init(Transform setTrasnform, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
-private:
-	Vector2 _screenPos;
 };
 

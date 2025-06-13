@@ -10,8 +10,8 @@ class BaseSection: public BaseObject
 {
 public:
 	BaseSection(): BaseObject() { }
-	BaseSection(Vector2 pos, Vector2 size, LayerSetting layerSetting){
-		Init(pos, size, layerSetting);
+	BaseSection(Transform setTransform, LayerSetting layerSetting){
+		Init(setTransform, layerSetting);
 	}
 	BaseSection(Layer setLayer)
 		: BaseObject(setLayer) {}
@@ -24,7 +24,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
- 	virtual void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
+ 	virtual void Init(Transform setTransform, LayerSetting layerSetting);
 	/// <summary>
 	/// アップデート
 	/// </summary>
@@ -45,7 +45,7 @@ public:
 	/// キャラクターの取得
 	/// </summary>
 	/// <returns></returns>
-	std::vector<BaseCharacter*> GetCharacters() const;
+	std::vector<BaseCharacter*> GetCharacters();
 protected:
 	// 自分がどの部屋のタイプか
 	SectionType sectionType;

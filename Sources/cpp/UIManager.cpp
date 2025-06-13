@@ -17,7 +17,8 @@ UIManager::UIManager()
 	// UIÇÃê∂ê¨
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2), true, layerSetting);
+		Transform transform = Transform(uiCenter + operationUIOffsetList[i], Vector2(_SCREEN_UI_SIZE_X / 2, _SCREEN_UI_SIZE_Y / 2));
+		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
 		button->SetActive(false);
 		_pOperationUIList.push_back(button);
 	}

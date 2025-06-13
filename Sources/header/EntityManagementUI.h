@@ -8,7 +8,7 @@ class EntityManagementTipsUI;
 class EntityManagementUI : public BaseObject
 {
 public:
-	EntityManagementUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
+	EntityManagementUI(Transform setTransform, LayerSetting layerSetting);
 	~EntityManagementUI(){}
 
 	void Draw() override;

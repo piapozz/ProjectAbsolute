@@ -10,8 +10,8 @@ class UIScreenText : public BaseUIScreen
 public:
 	UIScreenText() {
 	}
-	UIScreenText(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) {
-		Init(setPosition, setSize, layerSetting);
+	UIScreenText(Transform setTransform, LayerSetting layerSetting) {
+		Init(setTransform, layerSetting);
 	}
 	UIScreenText(Layer setLayer)
 		: BaseUIScreen(setLayer) {
@@ -24,7 +24,7 @@ public:
 	}
 	~UIScreenText() {
 	}
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
+	void Init(Transform setTransform, LayerSetting layerSetting);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;

@@ -8,7 +8,7 @@ class SectionRoom : public BaseSection
 {
 public:
 	SectionRoom() {}
-	SectionRoom(Vector2 pos, Vector2 size, LayerSetting layerSetting) : BaseSection(pos, size, layerSetting) {
+	SectionRoom(Transform setTransform, LayerSetting layerSetting) : BaseSection(setTransform, layerSetting) {
 	}
 	SectionRoom(Layer setLayer)
 		: BaseSection(setLayer) {}
@@ -25,7 +25,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting) override;
+	void Init(Transform setTransform, LayerSetting layerSetting) override;
 	/// <summary>
 	/// アップデート
 	/// </summary>

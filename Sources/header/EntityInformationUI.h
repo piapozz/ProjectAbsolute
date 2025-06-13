@@ -7,7 +7,7 @@ class UIScreenText;
 class EntityInformationUI : public BaseObject
 {
 public:
-	EntityInformationUI(Vector2 setPosition, Vector2 setSize, LayerSetting layerSetting);
+	EntityInformationUI(Transform setTransform, LayerSetting layerSetting);
 	~EntityInformationUI(){}
 
 	void Draw();
