@@ -7,7 +7,7 @@ void UIButton::Init(Transform setTransform, LayerSetting layerSetting)
 	BaseUI::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	Transform trans = Transform();
+	Transform trans = Transform(Vector2().zero(), Vector2().one());
 	trans.parent = this;
 	_pText = ObjectFactory::Instance().CreateWithArgs<UIText>(trans, setLayer);
 	_pImage = ObjectFactory::Instance().CreateWithArgs<UIImage>(trans, setLayer);

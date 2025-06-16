@@ -108,10 +108,13 @@ T* ObjectFactory::CreateWithArgs(Args&&... args)
 template<typename T>
 T* ObjectFactory::Create()
 {
-	Register<T>();
-	std::string key = T::StaticTypeName();
-	auto itCreator = _creators.find(key);
-	return static_cast<T*>(itCreator->second());
+	const std::string key = T::StaticTypeName();
+	if (_allocators.find(key) == _allocators.end())
+		Register<T>();
+	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
+	T* obj = allocatorWrapper->Allocate();
+	ObjectManager::Instance().AddObject(obj);
+	return obj;
 }
 
 template<typename T>
@@ -145,6 +148,10 @@ public:
 	template<typename... Args>
 	T* Allocate(Args&&... args) {
 		return allocator.Allocate(std::forward<Args>(args)...);
+	}
+
+	T* Allocate() {
+		return allocator.Allocate();
 	}
 
 	virtual BaseObject* AllocateBase() override {

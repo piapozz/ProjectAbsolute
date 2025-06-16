@@ -43,6 +43,22 @@ public:
 		return p;
 	}
 
+	T* Allocate()
+	{
+		if (_freeIndices.empty())
+		{
+			T* p = new T();
+			_pool.push_back(p);
+			return p;
+		}
+		size_t index = _freeIndices.top();
+		_freeIndices.pop();
+		T* p = _pool[index];
+		p = new T();
+
+		return p;
+	}
+
 	void Deallocate(T* ptr) 
 	{
 		auto it = std::find(_pool.begin(), _pool.end(), ptr);

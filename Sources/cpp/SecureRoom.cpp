@@ -12,6 +12,7 @@
 #include "../header/UIManager.h"
 #include "../header/PhaseMain.h"
 #include "../header/ObjectFactory.h"
+#include "../header/UIEntity.h"
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
@@ -28,7 +29,7 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	_operationNameList[2] = "接触";
 	_operationNameList[3] = "危害";
 
-	// オフセットを初期化
+	// UI生成
 	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	ObjectFactory& factory = ObjectFactory::Instance();
@@ -42,8 +43,16 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	trans = Transform(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
 	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(trans, UILayerSetting);
 	_pRunawayCountUI->SetText(std::to_string(0));
+	trans = Transform(position, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE) * 6);
+	UILayerSetting = {true, true, Layer::FRONT};
+	_pInformationUI = factory.CreateWithArgs<UIButton>(trans, UILayerSetting);
+	_pInformationUI->SetCallback([this]()
+	{
+		UIManager::Instance().SetActiveEntity(true);
+	});
+
 	// エンティティーのマスターデータから作業IDを取得し生成
-	// _pOperation = new Operation(_pEntity->GetID());
+	// 現在は固定で生成
 	int entityID = 0;
 	_pOperationList[0] = new OperationSatisfy(entityID, _pOperationCountUI);
 	_pOperationList[1] = new OperationObserbation(entityID, _pOperationCountUI);

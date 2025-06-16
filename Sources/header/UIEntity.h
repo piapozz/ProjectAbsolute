@@ -10,7 +10,7 @@ class EntitySuitUI;
 class UIScreenImage;
 class UIScreenText;
 
-class UIEntity: public BaseObject
+class UIEntity: public BaseUIScreen
 {
 public:
 	UIEntity();
@@ -18,7 +18,10 @@ public:
 
 	void Proc() override;
 	void Draw() override;
-	void SetActive(bool active);
+
+	static std::string StaticTypeName() {
+		return "UIEntity";
+	}
 
 private:
 	
@@ -29,5 +32,12 @@ private:
 	EntityEscapeUI* _entityEscape;
 	EntityWeaponUI* _entityWeapon;
 	EntitySuitUI* _entitySuit;
+
+	const Vector2 _WINDOW_SCALE = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+	const Vector2 _CENTER_POS = _WINDOW_SCALE / 2;
+	const Transform _TRANSFORM = Transform(_CENTER_POS, _WINDOW_SCALE);
+	const LayerSetting _DEFAULT_LAYER = LayerSetting(false, false, Layer::MIDDLE);
+	const Vector2 _INFORMTION_POS = Vector2(-0.3f, -0.2f);
+	const Vector2 _INFORMTION_SCALE = Vector2(0.4f, 1.5f);
 };
 

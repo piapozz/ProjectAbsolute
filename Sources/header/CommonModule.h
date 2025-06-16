@@ -79,6 +79,30 @@ public:
 		return temp;
 	}
 
+	void operator+=(const float& num)
+	{
+		x += num;
+		y += num;
+	}
+
+	void operator-=(const float& num)
+	{
+		x -= num;
+		y -= num;
+	}
+
+	void operator*=(const float& num)
+	{
+		x *= num;
+		y *= num;
+	}
+
+	void operator/=(const float& num)
+	{
+		x /= num;
+		y /= num;
+	}
+
 	Vector2()
 	{
 		x = 0;
@@ -102,6 +126,14 @@ public:
 		Vector2 temp;
 		temp.x = 0;
 		temp.y = 0;
+		return temp;
+	}
+
+	inline static Vector2 one()
+	{
+		Vector2 temp;
+		temp.x = 1;
+		temp.y = 1;
 		return temp;
 	}
 

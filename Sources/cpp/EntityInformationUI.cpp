@@ -1,10 +1,28 @@
 #include "../header/EntityInformationUI.h"
 #include "../header/UIScreen.h"
+#include "../header/UIText.h"
 
 EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting layerSetting)
 	: BaseObject(setTransform, layerSetting)
 {
-
+	_lockImage = new UIScreenImage();
+	_informationFrame = new UIScreenImage();
+	_information = new UIScreenText();
+	_image = new UIScreenImage();
+	_name = new UIScreenText();
+	_id = new UIScreenText();
+	_hazardLevel = new UIScreenText();
+	_typeInformation = new UIScreenText();
+	_type = new UIScreenText();
+	_energyInformation = new UIScreenText();
+	_energy = new UIScreenText();
+	_operationInformation = new UIScreenText();
+	_goodOperationInformation = new UIScreenText();
+	_goodOperation = new UIScreenText();
+	_normalOperationInformation = new UIScreenText();
+	_normalOperation = new UIScreenText();
+	_badOperationInformation = new UIScreenText();
+	_badOperation = new UIScreenText();
 }
 
 void EntityInformationUI::Draw()
