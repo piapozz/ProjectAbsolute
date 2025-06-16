@@ -1,5 +1,6 @@
 #include "../header/OfficerMob.h"
 #include "../header/BaseCharacterState.h"
+#include "../header/EntityController.h"
 
 void OfficerMob::Init(OfficerInitData data, int setOfficerID)
 {
@@ -8,6 +9,7 @@ void OfficerMob::Init(OfficerInitData data, int setOfficerID)
 	SetImpossible(false);
 	_officerType = OfficerType::MOB;
 	layer = Layer::MIDDLE;
+	pController = new EntityController(this);
 }
 
 void OfficerMob::Proc()

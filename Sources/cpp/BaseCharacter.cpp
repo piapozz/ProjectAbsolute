@@ -18,6 +18,9 @@ void BaseCharacter::Proc()
 {
 	// アップデート
 	BaseObject::Proc();
+
+	// pCharacterState->Update(this);
+	// pController->UpdateAI();
 }
 
 void BaseCharacter::Draw()

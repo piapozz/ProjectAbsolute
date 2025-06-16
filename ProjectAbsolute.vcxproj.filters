@@ -115,6 +115,12 @@
     <Filter Include="ソース ファイル\Sein\Controller">
       <UniqueIdentifier>{8b39a4e3-0f52-4824-ba80-f5ebff95e43c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Sein\CharacterState\Officer">
+      <UniqueIdentifier>{8bf5b604-caee-41ea-8966-de03a5221a03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sein\CharacterState\Officer">
+      <UniqueIdentifier>{6dbca83e-b12e-472a-a2be-4b34b7da329b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -368,6 +374,30 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\UISuit.cpp">
       <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerPlayerController.cpp">
+      <Filter>ソース ファイル\Sein\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerMobController.cpp">
+      <Filter>ソース ファイル\Sein\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\header\OfficerMobController.h">
+      <Filter>ヘッダー ファイル\Sein\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\header\EntityController.cpp">
+      <Filter>ソース ファイル\Sein\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp">
+      <Filter>ソース ファイル\Sein\CharacterState\Officer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\header\BaseSuit.h">
+      <Filter>ヘッダー ファイル\Sein\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SuitTriangle.cpp">
+      <Filter>ソース ファイル\Sein\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\WeaponTriangle.cpp">
+      <Filter>ソース ファイル\Sein\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -643,6 +673,24 @@
     </ClInclude>
     <ClInclude Include="Sources\header\UIWeapon.h">
       <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerPlayerController.h">
+      <Filter>ヘッダー ファイル\Sein\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityController.h">
+      <Filter>ヘッダー ファイル\Sein\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\OfficerStateIdle.h">
+      <Filter>ヘッダー ファイル\Sein\CharacterState\Officer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BaseWeapon.h">
+      <Filter>ヘッダー ファイル\Sein\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SuitTriangle.h">
+      <Filter>ヘッダー ファイル\Sein\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\WeaponTriangle.h">
+      <Filter>ヘッダー ファイル\Sein\Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

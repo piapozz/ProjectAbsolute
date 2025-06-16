@@ -171,6 +171,7 @@
     <ClCompile Include="Sources\cpp\OfficerController.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerMobController.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStateDead.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStateFactory.cpp" />
@@ -181,6 +182,8 @@
     <ClCompile Include="Sources\cpp\CharacterStateOperationMove.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStatePanic.cpp" />
     <ClCompile Include="Sources\cpp\BaseOperation.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerPlayerController.cpp" />
+    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
     <ClCompile Include="Sources\cpp\OperationContact.cpp" />
     <ClCompile Include="Sources\cpp\OperationInjure.cpp" />
     <ClCompile Include="Sources\cpp\OperationObserbation.cpp" />
@@ -208,6 +211,7 @@
     <ClCompile Include="Sources\cpp\SelectorNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\SelectorOutAreaNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
+    <ClCompile Include="Sources\cpp\SuitTriangle.cpp" />
     <ClCompile Include="Sources\cpp\UIButton.cpp" />
     <ClCompile Include="Sources\cpp\UIEntity.cpp" />
     <ClCompile Include="Sources\cpp\UIImage.cpp" />
@@ -222,6 +226,10 @@
     <ClCompile Include="Sources\cpp\UISuit.cpp" />
     <ClCompile Include="Sources\cpp\UIText.cpp" />
     <ClCompile Include="Sources\cpp\UIWeapon.cpp" />
+    <ClCompile Include="Sources\cpp\WeaponTriangle.cpp" />
+    <ClCompile Include="Sources\header\BaseSuit.h" />
+    <ClCompile Include="Sources\header\EntityController.cpp" />
+    <ClCompile Include="Sources\header\OfficerMobController.h" />
     <ClCompile Include="Sources\header\SelectorNearOfficer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +249,7 @@
     <ClInclude Include="Sources\header\BaseToolEntity.h" />
     <ClInclude Include="Sources\header\BaseUI.h" />
     <ClInclude Include="Sources\header\BaseUIScreen.h" />
+    <ClInclude Include="Sources\header\BaseWeapon.h" />
     <ClInclude Include="Sources\header\Camera.h" />
     <ClInclude Include="Sources\header\CharacterController.h" />
     <ClInclude Include="Sources\header\CharacterStateFightMove.h" />
@@ -248,6 +257,7 @@
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\Cursor.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\EntityController.h" />
     <ClInclude Include="Sources\header\EntityEscapeUI.h" />
     <ClInclude Include="Sources\header\EntityInformationUI.h" />
     <ClInclude Include="Sources\header\EntityManagementTipsUI.h" />
@@ -274,6 +284,8 @@
     <ClInclude Include="Sources\header\CharacterStateOperationMove.h" />
     <ClInclude Include="Sources\header\CharacterStatePanic.h" />
     <ClInclude Include="Sources\header\BaseOperation.h" />
+    <ClInclude Include="Sources\header\OfficerPlayerController.h" />
+    <ClInclude Include="Sources\header\OfficerStateIdle.h" />
     <ClInclude Include="Sources\header\OperationContact.h" />
     <ClInclude Include="Sources\header\OperationInjure.h" />
     <ClInclude Include="Sources\header\OperationObserbation.h" />
@@ -300,6 +312,7 @@
     <ClInclude Include="Sources\header\SelectorOutAreaNearOfficer.h" />
     <ClInclude Include="Sources\header\StageManager.h" />
     <ClInclude Include="Sources\header\StateArgs.h" />
+    <ClInclude Include="Sources\header\SuitTriangle.h" />
     <ClInclude Include="Sources\header\UI.h" />
     <ClInclude Include="Sources\header\UIButton.h" />
     <ClInclude Include="Sources\header\UIEntity.h" />
@@ -316,6 +329,7 @@
     <ClInclude Include="Sources\header\UISuit.h" />
     <ClInclude Include="Sources\header\UIText.h" />
     <ClInclude Include="Sources\header\UIWeapon.h" />
+    <ClInclude Include="Sources\header\WeaponTriangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

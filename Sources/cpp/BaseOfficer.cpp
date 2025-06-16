@@ -27,7 +27,7 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 	health = data.health;
 	maxHealth = health;
 	_mental = data.mental;
-	_armorID = data.armorID;
+	_suitID = data.suitID;
 	_weaponID = data.weaponID;
 
 	SetImpossible(true);
@@ -41,6 +41,7 @@ void BaseOfficer::Proc()
 	BaseObject::Proc();
 
 	pCharacterState->Update(this);
+	pController->UpdateAI();
 }
 
 void BaseOfficer::Draw()

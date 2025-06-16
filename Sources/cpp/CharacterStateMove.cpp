@@ -10,6 +10,8 @@ CharacterStateMove::CharacterStateMove(std::vector<Vector2> targetPosList, Chara
 
 void CharacterStateMove::Update(BaseCharacter* character)
 {
+	if (endState) return;
+
 	// もし目的地に到達していたら処理を終了
 	if (_arrayCount >= _routeList.size())
 	{
@@ -18,12 +20,12 @@ void CharacterStateMove::Update(BaseCharacter* character)
 		ObjectManager& objectManager = ObjectManager::Instance();
 		character->pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(_routeList[_routeList.size() - 1], ObjectType::SECTION));
 		character->SetPosition(_routeList.back());
-		character->ChangeState(_nextStateID);
+		endState = true;
 
 		return;
 	}
 
-	Vector2 current = character->GetPosition();
+	Vector2 current = character->GetTransform().position;
 	Vector2 target = _routeList[_arrayCount];
 
 	// まずx方向の移動を完了させる
@@ -54,7 +56,7 @@ void CharacterStateMove::Enter(BaseCharacter* character)
 	character->color = MOVE;
 	character->stateID = CharacterStateID::MOVE;
 	_arrayCount = 0;
-	// speed = character->GetSpeed();
+	endState = false;
 }
 
 void CharacterStateMove::Exit(BaseCharacter* character)

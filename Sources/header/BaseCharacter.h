@@ -3,9 +3,9 @@
 #include "../header/RouteSearcher.h"
 #include "../header/StateArgs.h"
 #include "../header/BaseSection.h"
+#include "../header/CharacterController.h"
 
 class BaseCharacterState;
-class AIController;
 class BaseAttack;
 class ITargetSelector;
 
@@ -132,6 +132,7 @@ public:
 	std::vector<AttackAction*> attackActions;
 	// ‰ß‹‚ÌˆÊ’u
 	BaseSection* pastRoom;
+	CharacterController* pController;
 	BaseCharacterState* pCharacterState;
 	CharacterStateID stateID;
 	unsigned int color;
@@ -139,6 +140,8 @@ public:
 protected:
 	// UŒ‚‚Ìî•ñ
 	AttackStatus _attackStatus;
+	// UŒ‚—Í
+	int strength;
 	// –hŒä”{—¦
 	float defenseRatio[(int)Type::MAX];
 	// ‘Ì—Í

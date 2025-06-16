@@ -18,7 +18,7 @@ public:
 	virtual void Enter(BaseCharacter* character){};
 	virtual void Exit(BaseCharacter* character){};
 
-	inline bool EndState(){ return endState; }
+	inline bool IsEndState(){ return endState; }
 
 	unsigned int NONE = GetColor(0, 255, 255);		
 	unsigned int IDLE = GetColor(255, 255, 255);	// îí
@@ -29,6 +29,6 @@ public:
 	unsigned int PANIC = GetColor(255, 0, 255);		// éá
 	unsigned int DEAD = GetColor(255, 0, 0);		// ê‘
 
-private:
+protected:
 	bool endState = false;
 };
