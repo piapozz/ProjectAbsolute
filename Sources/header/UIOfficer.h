@@ -8,15 +8,33 @@
 class UIOfficer : public BaseUIScreen
 {
 public:
-	UIOfficer();
-	~UIOfficer();
+	UIOfficer() {
+	}
+	UIOfficer(Transform setTransform, bool fill, LayerSetting layerSetting) {
+		Init(setTransform, fill, layerSetting);
+	}
+	UIOfficer(Layer setLayer)
+		: BaseUIScreen(setLayer) {
+	}
+	UIOfficer(Layer setLayer, int setDrawHandle)
+		: BaseUIScreen(setLayer, setDrawHandle) {
+	}
+	UIOfficer(const UIOfficer& obj)
+		: BaseUIScreen(obj) {
+	}
+	~UIOfficer() {
+	}
+	void Init(Transform setTransform, bool fill, LayerSetting layerSetting);
+	void Proc() override;
+	void Draw() override;
+	void Teardown() override;
 
 	void SetOfficer(BaseOfficer officer);
 private:
 	// 背景
 	UIScreenImage* _pBackground;
 	// 名前
-	UIScreenImage* _pOfficerName;
+	UIScreenText* _pOfficerName;
 	// 画像
 	UIScreenImage* _pOfficerImage;
 	// 武器
@@ -26,26 +44,32 @@ private:
 	// パラメーター
 	UIOfficerParam* _pOfficerParam[(int)Type::MAX];
 
-	// 座標,サイズ(相対)
+	// 座標,サイズ(相対割合)
 	
 	// 背景
-	//const Vector2 BACKGROUND_SIZE = Vector2(0, 0);
-	//const Vector2 BACKGROUND_POS =  Vector2(0, 0);
-	//// 名前
-	//const Vector2 NAME_SIZE = Vector2(0, -);
-	//const Vector2 NAME_POS =  Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//// 画像
-	//const Vector2 BACKGROUND_SIZE = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//const Vector2 BACKGROUND_POS =  Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//// 武器
-	//const Vector2 BACKGROUND_SIZE = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//const Vector2 BACKGROUND_POS =  Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//// 防具
-	//const Vector2 BACKGROUND_SIZE = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//const Vector2 BACKGROUND_POS =  Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//// パラメーター
-	//const Vector2 BACKGROUND_SIZE = Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//const Vector2 BACKGROUND_POS =  Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+	const Vector2 BACKGROUND_SIZE = Vector2(1, 1);
+	const Vector2 BACKGROUND_POS =  Vector2(0, 0);
+	// 名前
+	const Vector2 NAME_SIZE = Vector2(1, 0.1f);
+	const Vector2 NAME_POS =  Vector2(0, -0.95f);
+	// 画像
+	const Vector2 IMAGE_SIZE = Vector2(0.35f, 0.6f);
+	const Vector2 IMAGE_POS =  Vector2(-0.65f, -0.2f);
+	// 武器
+	const Vector2 WEAPON_SIZE = Vector2(0.65f, 0.3f);
+	const Vector2 WEAPON_POS =  Vector2(0.35f, -0.45f);
+	// 防具
+	const Vector2 SUIT_SIZE = Vector2(0.65f, 0.3f);
+	const Vector2 SUIT_POS =  Vector2(0.35f, 0.05f);
+	// パラメーター
+	const Vector2 RED_SIZE = Vector2(0.5f, 0.15f);
+	const Vector2 RED_POS =  Vector2(-0.25f, 0.45f);
+	const Vector2 WHITE_SIZE = Vector2(0.5f, 0.15f);
+	const Vector2 WHITE_POS =  Vector2(0.25f, 0.8f);
+	const Vector2 BRACK_SIZE = Vector2(0.5f, 0.15f);
+	const Vector2 BRACK_POS =  Vector2(-0.25f, 0.45f);
+	const Vector2 PALE_SIZE = Vector2(0.5f, 0.15f);
+	const Vector2 PALE_POS =  Vector2(0.25f, 0.8f);
 
 };
 

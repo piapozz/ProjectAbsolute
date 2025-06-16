@@ -4,8 +4,26 @@
 class UISuit: public BaseUIScreen
 {
 public:
-	UISuit();
-	~UISuit();
+	UISuit() {
+	}
+	UISuit(Transform setTransform, bool fill, LayerSetting layerSetting) {
+		Init(setTransform, fill, layerSetting);
+	}
+	UISuit(Layer setLayer)
+		: BaseUIScreen(setLayer) {
+	}
+	UISuit(Layer setLayer, int setDrawHandle)
+		: BaseUIScreen(setLayer, setDrawHandle) {
+	}
+	UISuit(const UISuit& obj)
+		: BaseUIScreen(obj) {
+	}
+	~UISuit() {
+	}
+	void Init(Transform setTransform, bool fill, LayerSetting layerSetting);
+	void Proc() override;
+	void Draw() override;
+	void Teardown() override;
 
 private:
 	// îwåi
