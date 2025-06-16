@@ -6,7 +6,7 @@ void UIScreenSlider::Init(Transform setTransform, bool fill, LayerSetting layerS
 	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	Transform trans = Transform();
+	Transform trans = Transform(Vector2().zero(), Vector2().one());
 	trans.parent = this;
 	_pImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
 	_pText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);

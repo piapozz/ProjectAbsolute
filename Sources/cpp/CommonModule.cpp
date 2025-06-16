@@ -24,8 +24,10 @@ Transform Transform::GetWorldTransform()
 	Transform result;
 	if (parent != nullptr)
 	{
-		result.position = position + parent->GetPosition();
-		result.scale = (scale + 1)* parent->GetScale();
+		Transform parentTransform = parent->GetTransform().GetWorldTransform();
+
+		result.position = position / 2 * parentTransform.scale + parentTransform.position;
+		result.scale = scale * parentTransform.scale;
 	}
 	else
 	{

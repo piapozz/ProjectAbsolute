@@ -9,6 +9,7 @@ class BaseOperation;
 class OfficerPlayer;
 class UIButton;
 class UIScreenButton;
+class UIEntity;
 
 /*
  * Sakakura
@@ -21,6 +22,10 @@ public:
 	static std::function<void()> StartOperationEvent;
 	// 作業終了時のコールバック
 	static std::function<void(int)> EndOperationEvent;
+
+	static std::string StaticTypeName() {
+		return "SecureRoom";
+	}
 
 	enum class State
 	{
@@ -95,6 +100,8 @@ private:
 	// UI
 	UIButton* _pOperationCountUI;
 	UIButton* _pRunawayCountUI;
+	UIButton* _pInformationUI;
+	UIEntity* _pEntityUI;
 	// UIのオフセット
 	Vector2 _operationCountOffset;
 	Vector2 _runawayCountOffset;
