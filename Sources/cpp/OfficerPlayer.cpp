@@ -2,6 +2,7 @@
 #include "../header/BaseCharacterState.h"
 #include "../header/PhaseMain.h"
 #include "../header/ObjectFactory.h"
+#include "../header/OfficerController.h"
 
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 {
@@ -20,6 +21,7 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 	slider->SetColor(255, 0, 0);
 
 	SetImpossible(true);
+	pController = new OfficerController(this);
 }
 
 void OfficerPlayer::Proc()

@@ -1,19 +1,24 @@
 #include "../header/OfficerController.h"
-#include "../header/BaseCharacter.h"
-#include "../header/BaseOfficer.h"
-#include "../header/SecureRoom.h"
 #include "../header/ObjectManager.h"
+#include "../header/BaseCharacter.h"
+#include "../header/SecureRoom.h"
 
-void OfficerController::UpdateAI()
+void OfficerController::UpdateAI() 
 {
 	DecideState();
 }
 
-void OfficerController::DecideState()
+void OfficerController::DecideState() 
 {
-	CharacterStateID stateID = officer->stateID;
+	CharacterController::DecideState();
 
-	switch (stateID)
+	if (officer->GetMental() <= 0)
+	{
+		character->ChangeState(CharacterStateID::PANIC);
+		return;
+	}
+
+	switch (character->stateID)
 	{
 		case CharacterStateID::IDLE:
 			UpdateIdleState();
@@ -23,68 +28,88 @@ void OfficerController::DecideState()
 			UpdateMoveState();
 			break;
 
-		default:
-			// 他ステート処理（今後拡張）
+		case CharacterStateID::FIGHT:
+			UpdateMoveState();
 			break;
 	}
+
+	return;
 }
 
 void OfficerController::UpdateIdleState()
 {
-	if (!HasWaitedEnough()) return;
+	if (!WaitUntilCount()) return;
 
-	//Vector2 nextPosition = GetRandomPositionInCurrentSection();
+	Vector2 nextPosition = GetRandomPositionInRoom();
 
 	// 部屋内で適当に移動
-	//character->ChangeMoveState(nextPosition, CharacterStateID::IDLE);
+	character->ChangeMoveState(nextPosition);
 }
 
-bool OfficerController::HasWaitedEnough()
+void OfficerController::UpdateMoveState() 
+{
+	BaseCharacterState* state = character->pCharacterState;
+
+	BaseCharacterState* characterState = character->pCharacterState;
+
+	// 自身の状態を確認してステートを分岐
+	if (!characterState->IsEndState()) return;
+
+	// もしターゲットを持っていたら
+	//if (officer->targetCharacter)
+	//{
+	//	officer->ChangeState(CharacterStateID::FIGHT);
+	//	return;
+	//}
+
+	// SecureRoom かどうかをチェック
+	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
+	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
+
+	if (secureRoom)
+	{
+		character->ChangeState(CharacterStateID::OPERATION);
+		return;
+	}
+
+	character->ChangeState(CharacterStateID::IDLE);
+	return;
+}
+
+void OfficerController::UpdateFightState()
+{
+
+}
+
+bool OfficerController::WaitUntilCount()
 {
 	int nowCount = GetNowCount();
-	//int elapsed = nowCount - startCount;
+	int elapsed = nowCount - _startCount;
 
-	//if (elapsed >= _waitCount)
-	//{
-	//	startCount = nowCount; 
-	//	return true;
-	//}
+	if (elapsed >= _waitCount)
+	{
+		_startCount = nowCount;
+		return true;
+	}
 	return false;
 }
 
-Vector2 GetRandomPositionInRoom()
+Vector2 OfficerController::GetRandomPositionInRoom()
 {
-	//ObjectManager& objectManager = ObjectManager::Instance();
-	//Vector2 characterPosition = character->GetPosition();
+	Transform characterTransform = character->GetTransform();
 
-	//BaseObject* sectionObject = objectManager.FindPosObject(characterPosition, ObjectType::SECTION);
-	//if (!sectionObject) return characterPosition;
+	ObjectManager& objectManager = ObjectManager::Instance();
+	Vector2 characterPosition = characterTransform.position;
 
-	//Vector2 sectionPosition = sectionObject->GetPosition();
-	//Vector2 sectionSize = sectionObject->GetSize();
+	BaseObject* sectionObject = objectManager.FindPosObject(characterPosition, ObjectType::SECTION);
+	if (!sectionObject) return characterPosition;
 
-	//int left = sectionPosition.x - sectionSize.x / 2;
-	//int right = sectionPosition.x + sectionSize.x / 2;
-	//float randValue = GetRand(right - left) + left;
+	Vector2 sectionPosition = sectionObject->GetTransform().position;
+	Vector2 sectionSize = sectionObject->GetTransform().scale;
 
-	//return {randValue, characterPosition.y};
-	return Vector2().zero();
-}
+	int left = sectionPosition.x - sectionSize.x / 2;
+	int right = sectionPosition.x + sectionSize.x / 2;
+	float randValue = GetRand(right - left) + left;
 
-void OfficerController::UpdateMoveState()
-{
-	//BaseCharacterState* characterState = officer->pCharacterState;
-	//if (!characterState->EndState()) return;
-
-	//// SecureRoom かどうかをチェック
-	//BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
-	//SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
-
-	//if (secureRoom)
-	//{
-	//	character->ChangeState(CharacterStateID::OPERATION);
-	//} else
-	//{
-	//	character->ChangeState(CharacterStateID::IDLE);
-	//}
+	return {randValue, characterPosition.y};
 }

@@ -2,6 +2,8 @@
 #include <DxLib.h>
 #include "../header/BaseCharacter.h"
 #include "../header/OfficerInitData.h"
+#include "../header/BaseSuit.h"
+#include "../header/BaseWeapon.h"
 
 /*
  * Sein
@@ -23,22 +25,28 @@ public:
 	void TakeDamage(int strength, Type damageType) override;
 	void DecreaseMental(int decreaseValue);
 
-	void SetOfficerID(int officerID){ _officerID = officerID; }
 	int GetOfficerID(){ return _officerID; }
-	void SetOfficerType(OfficerType type){ _officerType = type; }
 	OfficerType GetOfficerType(){ return _officerType; }
-	void SetArmor(int armorID){ _armorID = armorID; }
-	void SetWeapon(int weaponID){ _weaponID = weaponID; }
+	BaseSuit* GetSuit(){ return suit; }
+	BaseWeapon* GetWeapon() { return weapon; }
 	int GetMental(){ return _mental; }
+	std::string GetName(){ return _officerName; }
+	void SetOfficerID(int officerID){ _officerID = officerID; }
+	void SetOfficerType(OfficerType type){ _officerType = type; }
+	void SetSuit(BaseSuit* baseSuit){ suit = baseSuit; }
+	void SetWeapon(BaseWeapon* baseWeapon){ weapon = baseWeapon; }
 	void SetMental(int value) { _mental = value; }
-
-private:
+	std::string SetName(std::string name){ _officerName = name; }
 
 protected:
+	BaseSuit* suit;
+	BaseWeapon* weapon;
+	OfficerType _officerType;
+
+private:
 	int _officerID;
-	int _armorID;
+	int _suitID;
 	int _weaponID;
 	int _mental;
-
-	OfficerType _officerType;
+	std::string _officerName;
 };
