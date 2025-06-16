@@ -109,5 +109,7 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 
     std::reverse(path.begin(), path.end());
 	// 反転したpathを返す
+	// スタートを除外
+	path.erase(path.begin());
     return path;
 }

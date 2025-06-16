@@ -101,7 +101,7 @@ void ObjectManager::AllClear()
 
 BaseObject* ObjectManager::FindPosObject(Vector2 pos)
 {
-	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	for (int i = (int)ObjectType::SCREEN_UI; i >=0 ; i--)
 	{
 		BaseObject* obj = FindPosObject(pos, (ObjectType)i);
 		if (obj != nullptr)
@@ -114,9 +114,9 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos)
 
 BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 {
-	for (int j = 0, max = (int)Layer::MAX; j < max; j++)
+	for (int i = (int)Layer::FRONT; i >=0 ; i--)
 	{
-		for (BaseObject* obj : _objectList[(int)type][j])
+		for (BaseObject* obj : _objectList[(int)type][i])
 		{
 			if (obj == nullptr) continue;
 			if (!obj->GetActive() || !obj->GetInteract()) continue;
@@ -133,9 +133,9 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)
 std::vector<BaseObject*> ObjectManager::FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type)
 {
 	std::vector<BaseObject*> objs;
-	for (int j = 0, max = (int)Layer::MAX; j < max; j++)
+	for (int i = (int)Layer::FRONT; i >=0 ; i--)
 	{
-		for (BaseObject* obj : _objectList[(int)type][j])
+		for (BaseObject* obj : _objectList[(int)type][i])
 		{
 			if (obj == nullptr) continue;
 			if (!obj->GetActive() || !obj->GetInteract()) continue;
