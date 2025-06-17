@@ -7,13 +7,15 @@ void UISuit::Init(Transform setTransform, bool fill, LayerSetting layerSetting)
 	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	Transform trans = Transform();
-	trans.parent = this;
+	Transform trans = Transform(BACKGROUND_POS, BACKGROUND_SIZE, this);
 	_pBackground = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
+	trans = Transform(NAME_POS, NAME_SIZE, this);
 	_pSuitName = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
+	trans = Transform(RANK_POS, RANK_SIZE, this);
 	_pSuitRank = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
 	for (int i = 0; i < (int)Type::MAX; ++i)
 	{
+		trans = Transform(DEFENSE_POS[i], DEFENSE_SIZE[i], this);
 		_pSuitDefense[i] = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
 	}
 }

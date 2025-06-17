@@ -7,10 +7,11 @@ void UIOfficerParam::Init(Transform setTransform, bool fill, LayerSetting layerS
 	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	Transform trans = Transform();
-	trans.parent = this;
+	Transform trans = Transform(BACKGROUND_POS, BACKGROUND_SIZE, this);
 	_pBackground = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
+	trans = Transform(NAME_POS, NAME_SIZE, this);
 	_pParamName = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
+	trans = Transform(VALUE_POS, VALUE_SIZE, this);
 	 _pParamValue = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
 }
 

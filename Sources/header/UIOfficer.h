@@ -62,14 +62,17 @@ private:
 	const Vector2 SUIT_SIZE = Vector2(0.65f, 0.3f);
 	const Vector2 SUIT_POS =  Vector2(0.35f, 0.05f);
 	// パラメーター
-	const Vector2 RED_SIZE = Vector2(0.5f, 0.15f);
-	const Vector2 RED_POS =  Vector2(-0.25f, 0.45f);
-	const Vector2 WHITE_SIZE = Vector2(0.5f, 0.15f);
-	const Vector2 WHITE_POS =  Vector2(0.25f, 0.8f);
-	const Vector2 BRACK_SIZE = Vector2(0.5f, 0.15f);
-	const Vector2 BRACK_POS =  Vector2(-0.25f, 0.45f);
-	const Vector2 PALE_SIZE = Vector2(0.5f, 0.15f);
-	const Vector2 PALE_POS =  Vector2(0.25f, 0.8f);
-
+	const Vector2 PARAM_SIZE[(int)Type::MAX] = {
+		Vector2(0.5f, 0.15f),
+		Vector2(0.5f, 0.15f),
+		Vector2(0.5f, 0.15f),
+		Vector2(0.5f, 0.15f)
+	};
+	const Vector2 PARAM_POS[(int)Type::MAX] = {
+		Vector2(-0.25f, 0.45f),
+		Vector2(0.25f, 0.8f),
+		Vector2(-0.25f, 0.45f),
+		Vector2(0.25f, 0.8f)
+	};
 };
 

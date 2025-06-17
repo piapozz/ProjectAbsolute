@@ -7,15 +7,24 @@ void UIOfficer::Init(Transform setTransform, bool fill, LayerSetting layerSettin
 	BaseUIScreen::Init(setTransform, layerSetting);
 	LayerSetting setLayer = layerSetting;
 	setLayer.m_interact = false;
-	Transform trans = Transform();
-	trans.parent = this;
+	Transform trans = Transform(BACKGROUND_POS, BACKGROUND_SIZE, this);
 	_pBackground = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
+	// 名前
+	trans = Transform(NAME_POS, NAME_SIZE, this);
 	_pOfficerName = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, setLayer);
+	// 画像
+	trans = Transform(IMAGE_POS, IMAGE_SIZE, this);
 	_pOfficerImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, fill, setLayer);
+	// 武器
+	trans = Transform(WEAPON_POS, WEAPON_SIZE, this);
 	_pWeapon = ObjectFactory::Instance().CreateWithArgs<UIWeapon>(trans, fill, setLayer);
+	// スーツ
+	trans = Transform(SUIT_POS, SUIT_SIZE, this);
 	_pSuit = ObjectFactory::Instance().CreateWithArgs<UISuit>(trans, fill, setLayer);
+	// パラメータ
 	for (int i = 0; i < (int)Type::MAX; ++i)
 	{
+		trans = Transform(PARAM_POS[i], PARAM_SIZE[i], this);
 		_pOfficerParam[i] = ObjectFactory::Instance().CreateWithArgs<UIOfficerParam>(trans, fill, setLayer);
 	}
 }
