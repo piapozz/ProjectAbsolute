@@ -35,5 +35,23 @@ private:
 	UIScreenText* _pWeaponType;
 	// 攻撃力
 	UIScreenText* _pWeaponAttack;
+
+	// 座標,サイズ(相対割合)
+
+	// 背景
+	const Vector2 BACKGROUND_SIZE = Vector2(1, 1);
+	const Vector2 BACKGROUND_POS =  Vector2(0, 0);
+	// 武器名
+	const Vector2 NAME_SIZE = Vector2(1, 0.3f);
+	const Vector2 NAME_POS =  Vector2(0, -0.7f);
+	// ランク
+	const Vector2 RANK_SIZE = Vector2(1, 0.2f);
+	const Vector2 RANK_POS =  Vector2(0, -0.2f);
+	// 攻撃属性
+	const Vector2 TYPE_SIZE = Vector2(0.5f, 0.5f);
+	const Vector2 TYPE_POS =  Vector2(-0.25f, 0.25f);
+	// 攻撃力
+	const Vector2 ATTACK_SIZE = Vector2(0.5f, 0.5f);
+	const Vector2 ATTACK_POS =  Vector2(0.25f, 0.25f);
 };
 

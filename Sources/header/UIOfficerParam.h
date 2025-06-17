@@ -26,5 +26,17 @@ private:
 	UIScreenText* _pParamName;
 	// パラメーター値
 	UIScreenText* _pParamValue;
+
+	// 座標,サイズ(相対割合)
+
+	// 背景
+	const Vector2 BACKGROUND_SIZE = Vector2(1, 1);
+	const Vector2 BACKGROUND_POS =  Vector2(0, 0);
+	// パラメーター名
+	const Vector2 NAME_SIZE = Vector2(0.5f, 1);
+	const Vector2 NAME_POS =  Vector2(-0.25f, 0);
+	// パラメーター値
+	const Vector2 VALUE_SIZE = Vector2(0.5f, 1);
+	const Vector2 VALUE_POS =  Vector2(0.25f, 0);
 };
 
