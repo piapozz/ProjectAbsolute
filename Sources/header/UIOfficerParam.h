@@ -19,6 +19,9 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	void SetParamName(std::string str);
+	void SetParam(float value);
 private:
 	// îwåi
 	UIScreenImage* _pBackground;

@@ -29,7 +29,7 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-	void SetOfficer(BaseOfficer* officer);
+	void SetOfficer(BaseOfficer& officer);
 private:
 	// îwåi
 	UIScreenImage* _pBackground;
@@ -69,10 +69,10 @@ private:
 		Vector2(0.5f, 0.15f)
 	};
 	const Vector2 PARAM_POS[(int)Type::MAX] = {
-		Vector2(-0.25f, 0.45f),
-		Vector2(0.25f, 0.8f),
-		Vector2(-0.25f, 0.45f),
-		Vector2(0.25f, 0.8f)
+		Vector2(-0.5f, 0.55f),
+		Vector2(0.5f, 0.55f),
+		Vector2(-0.5f, 0.9f),
+		Vector2(0.5f, 0.9f)
 	};
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "UIScreen.h"
+#include "BaseWeapon.h"
 
 class UIWeapon : public BaseUIScreen
 {
@@ -24,6 +25,8 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	void SetWeapon(BaseWeapon& setWeapon);
 private:
 	// îwåi
 	UIScreenImage* _pBackground;

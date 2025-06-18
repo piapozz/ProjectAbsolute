@@ -1,5 +1,7 @@
 #include "../header/UISuit.h"
 #include "../header/ObjectFactory.h"
+#include <iomanip> 
+#include <sstream>
 
 void UISuit::Init(Transform setTransform, bool fill, LayerSetting layerSetting)
 {
@@ -47,4 +49,27 @@ void UISuit::Draw()
 void UISuit::Teardown()
 {
 
+}
+
+void UISuit::SetSuit(BaseSuit& setSuit)
+{
+	_pSuitName->SetText(setSuit.GetName());
+	//_pSuitRank->SetText(setSuit.GetRankString());
+	float* defense = setSuit.GetMultipliers();
+	for (int i = 0; i < static_cast<int>(Type::MAX); ++i)
+	{
+		if (_pSuitDefense[i])
+		{
+			float value = defense[i];
+			std::ostringstream oss;
+			if (std::abs(value - static_cast<int>(value)) < 0.01f)
+			{
+				oss << static_cast<int>(value);
+			} else
+			{
+				oss << std::fixed << std::setprecision(2) << value;
+			}
+			_pSuitDefense[i]->SetText(oss.str());
+		}
+	}
 }
