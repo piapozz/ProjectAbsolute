@@ -11,8 +11,7 @@ class BaseCharacter;
 class ITargetSelector 
 {
 public:
-	virtual std::vector<BaseCharacter*> SelectTargets(BaseCharacter* attacker){
-	};
+	virtual std::vector<BaseCharacter*> SelectTargets(BaseCharacter* attacker){ return {}; }
 	virtual ~ITargetSelector() {
 	};
 };

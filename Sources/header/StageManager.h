@@ -14,8 +14,10 @@ class StageManager
 public:
 	// ステージデータ
 	static std::vector<std::vector<int>> _stageData;
-	
-	StageManager() { Init(); }
+
+	StageManager() {
+		Init();
+	}
 	~StageManager();
 
 	/// <summary>
@@ -45,7 +47,9 @@ public:
 	/// ステージのデータを取得
 	/// </summary>
 	/// <param name="stageData"></param>
-	void SetStageData(std::vector<std::vector<int>> stageData) { _stageData = stageData; }
+	void SetStageData(std::vector<std::vector<int>> stageData) {
+		_stageData = stageData;
+	}
 	/// <summary>
 	/// ステージがあるかどうか
 	/// </summary>
@@ -57,10 +61,15 @@ public:
 	/// </summary>
 	/// <param name="entity"></param>
 	/// <param name="index"></param>
-	void SetEntity(BaseEntity* entity, int index){_secureRoomList[index]->SetEntity(entity); }
+	void SetEntity(BaseEntity* entity, int index){
+		_secureRoomList[index]->SetEntity(entity);
+	}
 	static std::vector<SecureRoom*> _secureRoomList;
+
+	BaseSection* GetRandomSection();
+	std::vector<BaseSection*> GetRoomList();
 private:
 	// 事前に初期化された訪問フラグ
 	std::vector<std::vector<bool>> _visited;
-
+	std::vector<BaseSection*> _section;
 };

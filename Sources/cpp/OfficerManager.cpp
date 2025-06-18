@@ -12,16 +12,19 @@ OfficerManager::~OfficerManager()
 
 }
 
-void OfficerManager::Init()
+void OfficerManager::Init(StageManager* stageManager)
 {
-	OfficerInitData data;
-	AddOfficer(OfficerType::PLAYER, data);
-	AddOfficer(OfficerType::PLAYER, data);
-	AddOfficer(OfficerType::PLAYER, data);
-	AddOfficer(OfficerType::PLAYER, data);
 
-	AddOfficer(OfficerType::MOB, data);
-	AddOfficer(OfficerType::MOB, data);
+
+	OfficerInitData data;
+	Vector2 position = stageManager->GetRandomSection()->GetTransform().position;
+	AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data);
+	//AddOfficer(OfficerType::PLAYER, data);
+	//AddOfficer(OfficerType::PLAYER, data);
+	position = stageManager->GetRandomSection()->GetTransform().position;
+	AddOfficer(OfficerType::MOB, data, position);
+	// AddOfficer(OfficerType::MOB, data);
 }
 
 void OfficerManager::Proc()
@@ -34,7 +37,7 @@ void OfficerManager::Teardown()
 
 }
 
-BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data)
+BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data, Vector2 position)
 {
 	int emptyIndex = -1;
 
@@ -57,11 +60,11 @@ BaseOfficer* OfficerManager::AddOfficer(OfficerType type, OfficerInitData data)
 	{
 		case OfficerType::PLAYER:
 			layerSetting = {true, true, Layer::MIDDLE};
-			officer = factory.CreateWithArgs<OfficerPlayer>(data, indexToUse, layerSetting);
+			officer = factory.CreateWithArgs<OfficerPlayer>(data, indexToUse, layerSetting, position);
 			break;
 		case OfficerType::MOB:
 			layerSetting = {true, false, Layer::MIDDLE};
-			officer = factory.CreateWithArgs<OfficerMob>(data, indexToUse, layerSetting);
+			officer = factory.CreateWithArgs<OfficerMob>(data, indexToUse, layerSetting, position);
 			break;
 		default:
 			return nullptr;

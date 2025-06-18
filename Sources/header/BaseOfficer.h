@@ -18,7 +18,7 @@ public:
 	}
 	virtual ~BaseOfficer();
 
-	virtual void Init(OfficerInitData data, int setOfficerID);
+	virtual void Init(OfficerInitData data, int setOfficerID, Vector2 position);
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
