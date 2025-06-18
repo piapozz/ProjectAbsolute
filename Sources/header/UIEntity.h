@@ -37,7 +37,9 @@ private:
 	const Vector2 _CENTER_POS = _WINDOW_SCALE / 2;
 	const Transform _TRANSFORM = Transform(_CENTER_POS, _WINDOW_SCALE);
 	const LayerSetting _DEFAULT_LAYER = LayerSetting(false, false, Layer::MIDDLE);
-	const Vector2 _INFORMTION_POS = Vector2(-0.3f, -0.2f);
-	const Vector2 _INFORMTION_SCALE = Vector2(0.4f, 1.5f);
+	const Vector2 _INFORMTION_POS = Vector2(-0.3f, 0.2f);
+	const Vector2 _INFORMTION_SCALE = Vector2(0.2f, 0.7f);
+	const Vector2 _MANAGEMENT_POS = Vector2(0.2f, -0.4f);
+	const Vector2 _MANAGEMENT_SCALE = Vector2(0.3f, 0.4f);
 };
 
