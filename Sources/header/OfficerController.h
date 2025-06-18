@@ -33,6 +33,10 @@ private:
 	/// </summary>
 	/// <returns></returns>
 	Vector2 GetRandomPositionInRoom();
+	/// <summary>
+	/// “G‚ª‚¢‚é‚©Šm”F
+	/// </summary>
+	bool CheckHostility();
 
 	void UpdateIdleState() override;
 	void UpdateMoveState() override;

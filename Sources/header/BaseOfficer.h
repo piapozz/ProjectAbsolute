@@ -36,17 +36,18 @@ public:
 	void SetSuit(BaseSuit* baseSuit){ suit = baseSuit; }
 	void SetWeapon(BaseWeapon* baseWeapon){ weapon = baseWeapon; }
 	void SetMental(int value) { _mental = value; }
-	std::string SetName(std::string name){ _officerName = name; }
+	void SetName(std::string name){ _officerName = name; }
 
 protected:
 	BaseSuit* suit;
 	BaseWeapon* weapon;
+	Type attackType;
 	OfficerType _officerType;
-
-private:
 	int _officerID;
 	int _suitID;
 	int _weaponID;
 	int _mental;
 	std::string _officerName;
+
+private:
 };

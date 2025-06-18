@@ -6,11 +6,12 @@ class SuitTriangle : public BaseSuit
 public:
 	SuitTriangle()
 	{
+		suitName = "Triangle";
 		suitID = 1;
 
-		multiplier[(int)Type::RED] = 0.5f;
-		multiplier[(int)Type::WHITE] = 2.0f;
-		multiplier[(int)Type::BLACK] = 2.0f;
-		multiplier[(int)Type::PALE] = 2.0f;
+		suitMultiplier[(int)Type::RED] = 0.5f;
+		suitMultiplier[(int)Type::WHITE] = 2.0f;
+		suitMultiplier[(int)Type::BLACK] = 2.0f;
+		suitMultiplier[(int)Type::PALE] = 2.0f;
 	}
 };
