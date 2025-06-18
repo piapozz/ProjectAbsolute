@@ -13,6 +13,8 @@
 #include "../header/PhaseMain.h"
 #include "../header/ObjectFactory.h"
 #include "../header/UIEntity.h"
+#include "../header/UIText.h"
+#include "../header/EventManager.h"
 
 std::function<void(int)> SecureRoom::EndOperationEvent;
 
@@ -50,6 +52,9 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	{
 		UIManager::Instance().SetActiveEntity(true);
 	});
+	UILayerSetting = {false, false, Layer::FRONT};
+	_pMeltText = factory.CreateWithArgs<UIText>(setTransform, UILayerSetting);
+	_pMeltText->SetText("メルトダウン");
 
 	// エンティティーのマスターデータから作業IDを取得し生成
 	// 現在は固定で生成
@@ -118,15 +123,18 @@ void SecureRoom::StartMeltdown()
 {
 	_isMeltdown = true;
 	_meltdownCount = _MELTDOWN_COUNT;
+	_pMeltText->SetActive(true);
 }
 
 void SecureRoom::MeltdownProc()
 {
-	if (!_isMeltdown || !CanMeltdown()) return;
+	if (!_isMeltdown) return;
 
 	// メルトダウンカウントを減少させる
 	_meltdownCount--;
+	_pMeltText->SetText("メルトダウン" + std::to_string(_meltdownCount));
 	if (_meltdownCount > 0) return;
+	_pMeltText->SetActive(false);
 
 	// メルトダウンカウントが0になったら、エンティティーを暴走させる
 	_pEntity->SetRunawayCount(0);
@@ -164,4 +172,6 @@ void SecureRoom::StartOperation()
 	_pEntity->SetOperation(_selectOperation);
 	// 作業開始イベントを発生させる
 	_pEntity->StartOperationEvent();
+	// メルトダウンカウンターを増加させる
+	EventManager::Instance().AddMelt();
 }

@@ -10,6 +10,7 @@ class OfficerPlayer;
 class UIButton;
 class UIScreenButton;
 class UIEntity;
+class UIText;
 
 /*
  * Sakakura
@@ -65,7 +66,7 @@ public:
 	/// </summary>
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
-	inline bool CanMeltdown(){ return _currentState != State::INTERACT; }
+	inline bool CanMeltdown(){ return !_isMeltdown; }
 	inline static void SetGetUICallback(std::function<std::vector<OfficerPlayer*>()> Callback){ _GetUICallback = Callback; }
 	inline void SetState(State state){ _currentState = state; }
 
@@ -102,6 +103,7 @@ private:
 	UIButton* _pRunawayCountUI;
 	UIButton* _pInformationUI;
 	UIEntity* _pEntityUI;
+	UIText* _pMeltText;
 	// UIのオフセット
 	Vector2 _operationCountOffset;
 	Vector2 _runawayCountOffset;

@@ -9,7 +9,7 @@ void EventManager::Init()
 {
 	_energy = 0;
 	_melt = 0;
-	meltLevel = 1;
+	meltLevel = 0;
 
 	ObjectFactory& factory = ObjectFactory::Instance();
 	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
@@ -20,6 +20,14 @@ void EventManager::Init()
 	std::string str = std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY);
 	_pEnergySlider->SetText(str.c_str());
 	_pEnergySlider->SetTextColor();
+
+	transform = Transform(Vector2(400, 150), Vector2(500, 50));
+	_pMeltSlider = factory.CreateWithArgs<UIScreenSlider>(transform, true, layerSetting);
+	_pMeltSlider->SetValue(_melt);
+	_pMeltSlider->SetColor(255, 0, 0);
+	str = std::to_string(_melt) + "/" + std::to_string(_MELT_MAX);
+	_pMeltSlider->SetText(str.c_str());
+	_pMeltSlider->SetTextColor();
 
 	layerSetting = {true, true, Layer::MIDDLE};
 	// 停止ボタン
@@ -68,9 +76,19 @@ void EventManager::AddEnergy(int value)
 void EventManager::AddMelt()
 {
 	_melt++;
+	// スライダーの更新
+	_pMeltSlider->SetValue(static_cast<float>(_melt) / static_cast<float>(_MELT_MAX));
+	_pMeltSlider->SetText((std::to_string(_melt) + "/" + std::to_string(_MELT_MAX)).c_str());
+
+	if (_melt < _MELT_MAX) return;
+
+	_melt = 0;
+	meltLevel++;
+	_pMeltSlider->SetValue(static_cast<float>(_melt) / static_cast<float>(_MELT_MAX));
+	_pMeltSlider->SetText((std::to_string(_melt) + "/" + std::to_string(_MELT_MAX)).c_str());
 
 	// 暴走可能なSecureRoomだけを抽出
-	std::vector<SecureRoom*> meltableRooms;
+	std::vector<SecureRoom*> meltableRooms = StageManager::_secureRoomList;
 	for (SecureRoom* room : StageManager::_secureRoomList) 
 	{
 		if (room->CanMeltdown()) 
@@ -80,13 +98,9 @@ void EventManager::AddMelt()
 	}
 	// 暴走対象の数を計算
 	int meltCount = std::min<int>(
-		std::ceil(meltableRooms.size() * meltLevel / _MELT_LEVEL_MAX),
+		std::ceil(meltableRooms.size() * static_cast<float>(meltLevel) / static_cast<float>(_MELT_LEVEL_MAX)),
 		meltableRooms.size()
 	);
-	if (_melt < meltCount) return;
-
-	_melt = 0;
-	meltLevel++;
 	// ランダムにmeltCount個選出して暴走させる
 	std::random_device rd;
 	std::mt19937 gen(rd());

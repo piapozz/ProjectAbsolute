@@ -1,6 +1,7 @@
 #pragma once
-#include "../header/BaseEntity.h"
-#include "../header/BaseCharacterState.h"
+#include "BaseEntity.h"
+#include "BaseCharacterState.h"
+#include "UI.h"
 class BaseOperation;
 
 /*
@@ -20,15 +21,20 @@ public:
 
 	BaseEgoEntity(){}
 	BaseEgoEntity(LayerSetting layerSetting)
-		: BaseEntity(layerSetting) {
+	{
+		Init(layerSetting);
 	}
 	virtual ~BaseEgoEntity(){}
 
 	void Init(LayerSetting layerSetting) override;
 	void Proc() override;
+	void Draw() override;
+	void RunawayEvent() override { isRunaway = true; }
 	inline bool IsTool() override { return false; }
 
 protected:
 	bool isRunaway;
+
+	UIText* text;
 };
 
