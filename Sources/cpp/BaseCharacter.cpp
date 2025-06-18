@@ -10,6 +10,7 @@ void BaseCharacter::Init(LayerSetting layerSetting)
 	active = layerSetting.m_active;
 	interactable = layerSetting.m_interact;
 	layer =layerSetting.m_layer;
+	targetCharacter = nullptr;
 	transform.scale = Vector2(50, 50);
 
 }

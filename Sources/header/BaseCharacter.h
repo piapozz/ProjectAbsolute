@@ -136,6 +136,7 @@ public:
 	BaseCharacterState* pCharacterState;
 	CharacterStateID stateID;
 	unsigned int color;
+	BaseCharacter* targetCharacter;
 
 protected:
 	// UŒ‚‚Ìî•ñ

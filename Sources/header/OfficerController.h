@@ -36,7 +36,7 @@ private:
 	/// <summary>
 	/// “G‚ª‚¢‚é‚©Šm”F
 	/// </summary>
-	bool CheckHostility();
+	BaseCharacter* CheckHostility();
 
 	void UpdateIdleState() override;
 	void UpdateMoveState() override;

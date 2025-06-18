@@ -46,6 +46,7 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	std::vector<BaseCharacter*> GetCharacters();
+	SectionType GetSectionType(){ return  sectionType;}
 protected:
 	// Ž©•ª‚ª‚Ç‚Ì•”‰®‚Ìƒ^ƒCƒv‚©
 	SectionType sectionType;

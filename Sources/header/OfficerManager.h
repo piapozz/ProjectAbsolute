@@ -3,6 +3,7 @@
 #include "../header/OfficerPlayer.h"
 #include "../header/OfficerMob.h"
 #include "../header/ObjectManager.h"
+#include "../header/StageManager.h"
 #include <vector>
 
 class OfficerInitData;
@@ -17,7 +18,7 @@ public:
 	OfficerManager();
 	~OfficerManager();
 
-	void Init();
+	void Init(StageManager* stageManager);
 	void Proc();
 	void Teardown();
 
@@ -26,7 +27,7 @@ public:
 		return instance;
 	}
 
-	BaseOfficer* AddOfficer(OfficerType type, OfficerInitData data);
+	BaseOfficer* AddOfficer(OfficerType type, OfficerInitData data, Vector2 position);
 	void MoveSelectedPlayer(std::vector<int> officerNumber);
 
 	std::vector<BaseOfficer*> GetOfficerList() { return _officerList; }

@@ -208,6 +208,7 @@
     <ClCompile Include="Sources\cpp\SelectorAllCharacter.cpp" />
     <ClCompile Include="Sources\cpp\SelectorAllEntity.cpp" />
     <ClCompile Include="Sources\cpp\SelectorAllOfficer.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorNearEntityInRoom.cpp" />
     <ClCompile Include="Sources\cpp\SelectorNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\SelectorOutAreaNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
@@ -309,6 +310,7 @@
     <ClInclude Include="Sources\header\SelectorAllCharacter.h" />
     <ClInclude Include="Sources\header\SelectorAllEntity.h" />
     <ClInclude Include="Sources\header\SelectorAllOfficer.h" />
+    <ClInclude Include="Sources\header\SelectorNearEntityInRoom.h" />
     <ClInclude Include="Sources\header\SelectorOutAreaNearOfficer.h" />
     <ClInclude Include="Sources\header\StageManager.h" />
     <ClInclude Include="Sources\header\StateArgs.h" />
