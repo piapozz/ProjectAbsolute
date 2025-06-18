@@ -8,6 +8,12 @@
 class EventManager
 {
 public:
+	static EventManager& Instance()
+	{
+		static EventManager instance;
+		return instance;
+	}
+
 	void Init();
 	/// <summary>
 	/// エネルギーの追加
@@ -22,7 +28,7 @@ private:
 	// エネルギー最大値
 	const int _MAX_ENERGY = 100;
 	// メルトダウン最大値
-	const int _MELT_MAX = 2;
+	const int _MELT_MAX = 3;
 	// 暴走レベル最大値
 	const int _MELT_LEVEL_MAX = 10;
 	// エネルギー
@@ -33,6 +39,8 @@ private:
 	int meltLevel;
 	// 進捗スライダー
 	UIScreenSlider* _pEnergySlider;
+	// メルトダウンスライダー
+	UIScreenSlider* _pMeltSlider;
 	// 停止ボタン
 	UIScreenButton* _pStopButton;
 	// 通常再生ボタン

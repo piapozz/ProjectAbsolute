@@ -40,7 +40,6 @@ private:
 	Camera* _pCamera;
 	OfficerManager* _pOfficerManager;
 	static std::vector<OfficerPlayer*> _pSelectOfficerList;
-	EventManager* _pEventManager;
 	UIScreenButton* _pRangeSelect;
 
 	std::vector<std::vector<int>> _stageData ={

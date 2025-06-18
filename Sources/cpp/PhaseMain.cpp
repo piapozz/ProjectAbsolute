@@ -37,12 +37,11 @@ void PhaseMain::Init()
 	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
 	BaseEntity* addEntity = ObjectFactory::Instance().CreateWithArgs<Entity_E000>(layerSetting);
 	_pStageManager->SetEntity(addEntity, 0);
-	_pEventManager = new EventManager();
-	_pEventManager->Init();
+	EventManager::Instance().Init();
 	SecureRoom::EndOperationEvent = [this](int successCount)
 	{
 		// 作業が終了したら、エネルギーを追加
-		_pEventManager->AddEnergy(successCount);
+		EventManager::Instance().AddEnergy(successCount);
 	};
 	layerSetting = {true, false, Layer::FRONT};
 	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
