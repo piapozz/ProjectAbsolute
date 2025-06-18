@@ -1,9 +1,10 @@
 #pragma once
 #include <vector>
 #include "BaseUIScreen.h"
-#include "UIScreen.h"
 
 class EntityManagementTipsUI;
+class UIScreenImage;
+class UIScreenText;
 
 class EntityManagementUI : public BaseUIScreen
 {
@@ -14,6 +15,10 @@ public:
 
 	void Draw() override;
 	void SetActive(bool active);
+
+	static std::string StaticTypeName() {
+		return "EntityManagementUI";
+	}
 
 private:
 	UIScreenImage* _BGImage;

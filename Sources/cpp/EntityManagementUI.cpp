@@ -1,6 +1,7 @@
 #include "../header/EntityManagementUI.h"
 #include "../header/EntityManagementTipsUI.h"
 #include "../header/ObjectFactory.h"
+#include "../header/UIScreen.h"
 
 EntityManagementUI::EntityManagementUI(Transform setTransform, LayerSetting layerSetting)
 {
@@ -12,7 +13,7 @@ EntityManagementUI::EntityManagementUI(Transform setTransform, LayerSetting laye
 	_BGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 	worldTransform = Transform(_INFORMATION_TEXT_POS, Vector2::one(), this);
 	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_informationText->SetText("Entity Management");
+	_informationText->SetText("エンティティ 管理方法");
 }
 
 void EntityManagementUI::Draw()

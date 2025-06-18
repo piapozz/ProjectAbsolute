@@ -42,15 +42,6 @@ public:
 	void SetText(const std::string& setText) {
 		text = setText;
 	}
-	/// <summary>
-	/// ƒtƒHƒ“ƒg‚Ìİ’è
-	/// </summary>
-	/// <param name="setFont"></param>
-	/// <param name="size"></param>
-	/// <param name="thick"></param>
-	void SetFontHandle(const char* setFont, int size, int thick){
-		fontHandle = CreateFontToHandle(setFont, size, thick, DX_FONTTYPE_ANTIALIASING);
-	}
 
 	static std::string StaticTypeName() {
 		return "UIText";
@@ -60,7 +51,6 @@ private:
 	std::string text;
 	int textGraph;
 	int textSize;
-	int fontHandle;
 
 	// •¶š
 	std::string prevText = "";

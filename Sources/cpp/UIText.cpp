@@ -1,9 +1,9 @@
 #include "../header/UIText.h"
 #include "../header/Camera.h"
+#include "../header/UIManager.h"
 
 void UIText::Init(Transform setTransform, LayerSetting layerSetting) {
 	BaseUI::Init(setTransform, layerSetting);
-	fontHandle = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", 24, 1);
 	textGraph = MakeScreen(128, 32, TRUE);
 	textSize = 100;
 }
@@ -14,6 +14,7 @@ void UIText::Proc() {
 	{
 		const int padding = 50;
 
+		int fontHandle = UIManager::Instance().fontHandle;
 		int w = GetDrawStringWidthToHandle(text.c_str(), static_cast<int>(text.length()), fontHandle);
 		int h = GetFontSizeToHandle(fontHandle);
 
@@ -67,12 +68,10 @@ void UIText::Draw() {
 
 void UIText::Teardown() {
 	BaseUI::Teardown();
-	DeleteFontToHandle(fontHandle);
 
 	if (textGraph != -1)
 	{
 		DeleteGraph(textGraph);
 		textGraph = -1;
 	}
-	DeleteFontToHandle(fontHandle);
 }

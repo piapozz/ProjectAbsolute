@@ -3,6 +3,7 @@
 class UIScreenButton;
 class UIEntity;
 class UIOfficer;
+class BaseOfficer;
 
 class UIManager
 {
@@ -12,12 +13,16 @@ public:
 		return instance;
 	}
 
+	int fontHandle;
+
 	UIManager();
 	~UIManager(){}
 
 	std::vector<UIScreenButton*> GetOperationUIList();
 	void SetActiveOperationUI(bool active);
-	void SetActiveEntity(bool active);
+	void SetActiveEntityUI(bool active);
+	void SetActiveOfficerUI(bool active);
+	void SetOfficerUI(BaseOfficer* setOfficer);
 
 private:
 	std::vector<UIScreenButton*> _pOperationUIList;

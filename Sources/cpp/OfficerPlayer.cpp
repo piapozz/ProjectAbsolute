@@ -3,6 +3,7 @@
 #include "../header/PhaseMain.h"
 #include "../header/ObjectFactory.h"
 #include "../header/OfficerController.h"
+#include "../header/UIManager.h"
 
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
 {
@@ -53,7 +54,9 @@ void OfficerPlayer::ClickEvent()
 {
 	// 作業中なら何もしない
 	if (stateID == CharacterStateID::OPERATION) return;
-	// 左上にUIを描画
+	// UIに渡す
+	//UIManager::Instance().SetOfficerUI(this);
+	// 選択中にセットする
 	std::vector<OfficerPlayer*>& selectOfficerList = PhaseMain::GetSelectOfficerList();
 	selectOfficerList.clear();
 	selectOfficerList.push_back(this);

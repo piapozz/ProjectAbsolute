@@ -62,7 +62,7 @@ void UIOfficer::Teardown()
 
 }
 
-void UIOfficer::SetOfficer(BaseOfficer officer)
+void UIOfficer::SetOfficer(BaseOfficer* officer)
 {
 
 }

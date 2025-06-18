@@ -12,10 +12,13 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 	LayerSetting layer = LayerSetting(true, false, Layer::MIDDLE);
 	Transform worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
 	_lockImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
+	_informationFrame = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 	worldTransform = Transform(_INFORMATION_POS, Vector2::one(), this);
-	layer = LayerSetting(true, false, Layer::BACK);
 	_information = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_information->SetText("Entity Information");
+	_information->SetText("エンティティ 基本情報");
+	worldTransform = Transform(_ENTITY_IMAGE_POS, _ENTITY_IMAGE_SCALE, this);
+	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 
 	/*_informationFrame = new UIScreenImage();
 	_information = new UIScreenText();
@@ -39,7 +42,9 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 void EntityInformationUI::Draw()
 {
 	 _lockImage->Draw();
-	 //_information->Draw();
+	 _informationFrame->Draw();
+	 _information->Draw();
+	 _image->Draw();
 	 /*_informationFrame->Draw();
 	 _information->Draw();
 	 _image->Draw();

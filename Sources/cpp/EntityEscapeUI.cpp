@@ -1,13 +1,13 @@
 #include "../header/EntityEscapeUI.h"
 
-EntityEscapeUI::EntityEscapeUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText)
-	: BaseObject(setTransform, layerSetting)
+EntityEscapeUI::EntityEscapeUI(Transform setTransform, LayerSetting layerSetting)
 {
-
+	BaseUIScreen::Init(setTransform, layerSetting);
 }
 
 void EntityEscapeUI::SetActive(bool active)
 {
+	_BGImage->SetActive(active);
 	_lockText->SetActive(active);
 	_escapeInformation->SetActive(active);
 	_runawayCountInformation->SetActive(active);
@@ -21,13 +21,14 @@ void EntityEscapeUI::SetActive(bool active)
 
 void EntityEscapeUI::Draw()
 {
-	_lockText->Draw();
-	_escapeInformation->Draw();
-	_runawayCountInformation->Draw();
-	_runawayCount->Draw();
-	_defenceInformation->Draw();
-	_redDefence->Draw();
-	_whiteDefence->Draw();
-	_blackDefence->Draw();
-	_blueDefence->Draw();
+	//_BGImage->Draw();
+	//_lockText->Draw();
+	//_escapeInformation->Draw();
+	//_runawayCountInformation->Draw();
+	//_runawayCount->Draw();
+	//_defenceInformation->Draw();
+	//_redDefence->Draw();
+	//_whiteDefence->Draw();
+	//_blackDefence->Draw();
+	//_blueDefence->Draw();
 }

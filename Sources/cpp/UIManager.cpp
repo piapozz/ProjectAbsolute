@@ -2,9 +2,12 @@
 #include "../header/UIManager.h"
 #include "../header/UIScreenButton.h"
 #include "../header/UIEntity.h"
+#include "../header/UIOfficer.h"
 
 UIManager::UIManager()
 {
+	fontHandle = CreateFontToHandle("ＭＳ ゴシック", 24, 1);
+
 	// オフセットを初期化
 	Vector2 uiCenter = Vector2(0, WINDOW_HEIGHT) + Vector2(_OPERATION_SIZE_X / 2, -_OPERATION_SIZE_Y / 2);
 	std::vector<Vector2> operationUIOffsetList((int)Type::MAX);
@@ -39,7 +42,18 @@ void UIManager::SetActiveOperationUI(bool active)
 	}
 }
 
-void UIManager::SetActiveEntity(bool active)
+void UIManager::SetActiveEntityUI(bool active)
 {
 	_pEntityUI->SetActive(active);
+}
+
+void UIManager::SetActiveOfficerUI(bool active)
+{
+	_pOfficerUI->SetActive(active);
+}
+
+void UIManager::SetOfficerUI(BaseOfficer* setOfficer)
+{
+	_pOfficerUI->SetOfficer(setOfficer);
+	SetActiveOfficerUI(true);
 }

@@ -1,18 +1,24 @@
 #pragma once
-#include "BaseObject.h"
+#include "BaseUIScreen.h"
 #include "UIScreen.h"
 
-class EntityEscapeUI : public BaseObject
+class EntityEscapeUI : public BaseUIScreen
 {
 public:
-	EntityEscapeUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
+	EntityEscapeUI(){}
+	EntityEscapeUI(Transform setTransform, LayerSetting layerSetting);
 	~EntityEscapeUI(){}
 
 	void SetActive(bool active);
 	inline void SetLock(bool isLock){ _isLock = isLock; }
 	void Draw();
 
+	static std::string StaticTypeName() {
+		return "EntityEscapeUI";
+	}
+
 private:
+	UIScreenImage* _BGImage;
 	UIScreenText* _lockText;
 	UIScreenText* _escapeInformation;
 	UIScreenText* _runawayCountInformation;

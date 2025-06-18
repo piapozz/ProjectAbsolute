@@ -1,8 +1,8 @@
 #pragma once
 #include "BaseUIScreen.h"
-#include "UIScreen.h"
 
 class UIScreenImage;
+class UIScreenText;
 
 class EntityInformationUI : public BaseUIScreen
 {
@@ -47,7 +47,8 @@ private:
 	// 情報テキスト
 	const Vector2 _INFORMATION_POS = Vector2(0, 1.0f);
 	// エンティティ画像
-	const Vector2 _ENTITY_IMAGE_POS = Vector2(0, 0.5f);
+	const Vector2 _ENTITY_IMAGE_POS = Vector2(0, -0.5f);
+	const Vector2 _ENTITY_IMAGE_SCALE = Vector2(0.9f, 0.4f);
 	// エンティティの名前
 	const Vector2 _NAME_POS = Vector2(0, 0);
 	// エンティティのID
