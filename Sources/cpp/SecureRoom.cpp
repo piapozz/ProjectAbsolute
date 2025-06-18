@@ -84,7 +84,7 @@ void SecureRoom::Teardown()
 void SecureRoom::ClickEvent()
 {
 	// 選択されているなら返す
-	if (_currentState == State::SELECT) return;
+	if (_currentState != State::IDLE) return;
 
 	// キャラクターがいないなら返す
 	if (PhaseMain::GetSelectOfficerList().empty()) return;

@@ -7,7 +7,7 @@ template<typename T>
 class MemoryAllocator
 {
 public:
-	MemoryAllocator(size_t capacity = 100) 
+	MemoryAllocator(size_t capacity = 1000) 
 	{
 		_pool.reserve(capacity);
 		for (size_t i = 0; i < capacity; ++i)

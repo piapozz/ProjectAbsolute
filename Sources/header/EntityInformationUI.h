@@ -1,14 +1,19 @@
 #pragma once
-#include "BaseObject.h"
+#include "BaseUIScreen.h"
+#include "UIScreen.h"
 
 class UIScreenImage;
-class UIScreenText;
 
-class EntityInformationUI : public BaseObject
+class EntityInformationUI : public BaseUIScreen
 {
 public:
+	EntityInformationUI(){}
 	EntityInformationUI(Transform setTransform, LayerSetting layerSetting);
 	~EntityInformationUI(){}
+
+	static std::string StaticTypeName() {
+		return "EntityInformationUI";
+	}
 
 	void Draw();
 	void SetActive(bool active);
@@ -40,7 +45,7 @@ private:
 	// 情報フレーム画像
 	const Vector2 _INFORMATION_FRAME_POS = Vector2(0, 0);
 	// 情報テキスト
-	const Vector2 _INFORMATION_POS = Vector2(0, 0.9f);
+	const Vector2 _INFORMATION_POS = Vector2(0, 1.0f);
 	// エンティティ画像
 	const Vector2 _ENTITY_IMAGE_POS = Vector2(0, 0.5f);
 	// エンティティの名前

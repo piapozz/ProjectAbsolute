@@ -10,7 +10,6 @@
 UIEntity::UIEntity()
 {
 	BaseUIScreen::Init(_TRANSFORM, _DEFAULT_LAYER);
-	objectType = ObjectType::SCREEN_UI;
 	ObjectFactory& factory = ObjectFactory::Instance();
 	Vector2 position = transform.position;
 	Vector2 scale = transform.scale;
@@ -21,18 +20,19 @@ UIEntity::UIEntity()
 	worldTransform = Transform(Vector2(-0.9f, -0.9f), Vector2(0.4f, 0.2f), this);
 	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_informationText->SetText("Entity Information");
-	/*Transform informationTrans = Transform(_INFORMTION_POS, _INFORMTION_SCALE, this);
-	LayerSetting informationLayer = LayerSetting(false, false, Layer::MIDDLE);
-	_entityInformation = factory.CreateWithArgs<EntityInformationUI>(informationTrans, informationLayer);*/
+	worldTransform = Transform(_INFORMTION_POS, _INFORMTION_SCALE, this);
+	_entityInformation = factory.CreateWithArgs<EntityInformationUI>(worldTransform, layer);
+	worldTransform = Transform(_MANAGEMENT_POS, _MANAGEMENT_SCALE, this);
+	_entityManagement = factory.CreateWithArgs<EntityManagementUI>(worldTransform, layer);
 }
 
 void UIEntity::Proc()
 {
 	_BGImage->Proc();
 	_informationText->Proc();
-	/*_entityInformation->Proc();
+	_entityInformation->Proc();
 	_entityManagement->Proc();
-	_entityEscape->Proc();
+	/*_entityEscape->Proc();
 	_entityWeapon->Proc();
 	_entitySuit->Proc();*/
 }
@@ -41,9 +41,9 @@ void UIEntity::Draw()
 {
 	_BGImage->Draw();
 	_informationText->Draw();
-	/*_entityInformation->Draw();
+	_entityInformation->Draw();
 	_entityManagement->Draw();
-	_entityEscape->Draw();
+	/*_entityEscape->Draw();
 	_entityWeapon->Draw();
 	_entitySuit->Draw();*/
 }
