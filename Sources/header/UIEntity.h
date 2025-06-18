@@ -24,7 +24,6 @@ public:
 	}
 
 private:
-	
 	UIScreenImage* _BGImage;
 	UIScreenText* _informationText;
 	EntityInformationUI* _entityInformation;
@@ -41,5 +40,7 @@ private:
 	const Vector2 _INFORMTION_SCALE = Vector2(0.2f, 0.7f);
 	const Vector2 _MANAGEMENT_POS = Vector2(0.2f, -0.4f);
 	const Vector2 _MANAGEMENT_SCALE = Vector2(0.3f, 0.4f);
+	const Vector2 _ESCAPE_POS = Vector2(0.7f, -0.7f);
+	const Vector2 _ESCAPE_SCALE = Vector2(0.3f, 0.2f);
 };
 

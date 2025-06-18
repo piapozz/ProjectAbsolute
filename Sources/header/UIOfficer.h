@@ -29,7 +29,7 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-	void SetOfficer(BaseOfficer officer);
+	void SetOfficer(BaseOfficer* officer);
 private:
 	// îwåi
 	UIScreenImage* _pBackground;

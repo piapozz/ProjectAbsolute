@@ -116,5 +116,5 @@ Vector2 OfficerController::GetRandomPositionInRoom()
 
 bool OfficerController::CheckHostility()
 {
-
+	return false;
 }

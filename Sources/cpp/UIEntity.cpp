@@ -19,11 +19,13 @@ UIEntity::UIEntity()
 	_BGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 	worldTransform = Transform(Vector2(-0.9f, -0.9f), Vector2(0.4f, 0.2f), this);
 	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_informationText->SetText("Entity Information");
+	_informationText->SetText("エンティティ 情報");
 	worldTransform = Transform(_INFORMTION_POS, _INFORMTION_SCALE, this);
 	_entityInformation = factory.CreateWithArgs<EntityInformationUI>(worldTransform, layer);
 	worldTransform = Transform(_MANAGEMENT_POS, _MANAGEMENT_SCALE, this);
 	_entityManagement = factory.CreateWithArgs<EntityManagementUI>(worldTransform, layer);
+	worldTransform = Transform(_ESCAPE_POS, _ESCAPE_SCALE, this);
+	_entityEscape = factory.CreateWithArgs<EntityEscapeUI>(worldTransform, layer);
 }
 
 void UIEntity::Proc()
@@ -32,9 +34,9 @@ void UIEntity::Proc()
 	_informationText->Proc();
 	_entityInformation->Proc();
 	_entityManagement->Proc();
-	/*_entityEscape->Proc();
-	_entityWeapon->Proc();
-	_entitySuit->Proc();*/
+	_entityEscape->Proc();
+	//_entityWeapon->Proc();
+	//_entitySuit->Proc();
 }
 
 void UIEntity::Draw()
@@ -43,7 +45,7 @@ void UIEntity::Draw()
 	_informationText->Draw();
 	_entityInformation->Draw();
 	_entityManagement->Draw();
-	/*_entityEscape->Draw();
-	_entityWeapon->Draw();
-	_entitySuit->Draw();*/
+	_entityEscape->Draw();
+	//_entityWeapon->Draw();
+	//_entitySuit->Draw();
 }

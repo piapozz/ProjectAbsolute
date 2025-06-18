@@ -50,7 +50,7 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	_pInformationUI = factory.CreateWithArgs<UIButton>(trans, UILayerSetting);
 	_pInformationUI->SetCallback([this]()
 	{
-		UIManager::Instance().SetActiveEntity(true);
+		UIManager::Instance().SetActiveEntityUI(true);
 	});
 	UILayerSetting = {false, false, Layer::FRONT};
 	_pMeltText = factory.CreateWithArgs<UIText>(setTransform, UILayerSetting);

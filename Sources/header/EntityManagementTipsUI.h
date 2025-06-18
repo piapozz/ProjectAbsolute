@@ -1,6 +1,8 @@
 #pragma once
 #include "BaseObject.h"
-#include "UIScreen.h"
+
+class UIScreenText;
+
 class EntityManagementTipsUI : public BaseObject
 {
 public:
@@ -10,6 +12,10 @@ public:
 	void SetActive(bool active);
 	inline void SetLock(bool isLock) { _isLock = isLock; }
 	void Draw() override;
+
+	static std::string StaticTypeName() {
+		return "EntityManagementTipsUI";
+	}
 
 private:
 	UIScreenText* _lockText;

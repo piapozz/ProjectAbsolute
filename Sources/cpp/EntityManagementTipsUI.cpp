@@ -1,4 +1,5 @@
 #include "../header/EntityManagementTipsUI.h"
+#include "../header/UIScreen.h"
 
 EntityManagementTipsUI::EntityManagementTipsUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText)
 	: BaseObject(setTransform, layerSetting)

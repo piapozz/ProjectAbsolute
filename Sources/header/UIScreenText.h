@@ -43,9 +43,7 @@ public:
 
 	void DrawUIText();
 private:
-	int textGraph;
 	int textSize;
-	int fontHandle;
 	std::string _text;
 	int _textColor;
 };

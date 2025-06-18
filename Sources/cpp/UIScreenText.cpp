@@ -1,12 +1,11 @@
 #include "../header/UIScreenText.h"
+#include "../header/UIManager.h"
 
 void UIScreenText::Init(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
-	_text == "";
-	_textColor = -1;
-	fontHandle = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", 24, 1);
-	textGraph = MakeScreen(128, 32, TRUE);
+	_text = "";
+	_textColor = GetColor(255, 255, 255);
 	textSize = 100;
 }
 
@@ -37,5 +36,5 @@ void UIScreenText::DrawUIText()
 	Vector2 position = transformWorld.position;
 	int anchorX = position.x;
 	int anchorY = position.y;
-	DrawFormatStringToHandle(anchorX, anchorY, _textColor, fontHandle, _text.c_str());
+	DrawFormatStringToHandle(anchorX, anchorY, _textColor, UIManager::Instance().fontHandle, _text.c_str());
 }
