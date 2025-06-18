@@ -35,3 +35,13 @@ void UIOfficerParam::Teardown()
 {
 
 }
+
+void UIOfficerParam::SetParamName(std::string str)
+{
+	_pParamName->SetText(str);
+}
+
+void UIOfficerParam::SetParam(float value)
+{
+	_pParamValue->SetText(std::to_string(value));
+}

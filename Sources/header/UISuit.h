@@ -1,5 +1,6 @@
 #pragma once
 #include "UIScreen.h"
+#include "BaseSuit.h"
 
 class UISuit: public BaseUIScreen
 {
@@ -24,6 +25,8 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+
+	void SetSuit(BaseSuit& setSuit);
 
 private:
 	// îwåi
@@ -54,10 +57,10 @@ private:
 		Vector2(0.5f, 0.15f)
 	};
 	const Vector2 DEFENSE_POS[(int)Type::MAX] = {
-		Vector2(-0.25f, 0.3f),
-		Vector2(0.25f, 0.3f),
-		Vector2(-0.25f, 0.6f),
-		Vector2(0.25f, 0.6f)
+		Vector2(-0.5f, 0.3f),
+		Vector2(0.5f, 0.3f),
+		Vector2(-0.5f, 0.6f),
+		Vector2(0.5f, 0.6f)
 	};
 };
 

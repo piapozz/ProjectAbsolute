@@ -43,3 +43,11 @@ void UIWeapon::Teardown()
 {
 
 }
+
+void UIWeapon::SetWeapon(BaseWeapon& setWeapon)
+{
+	_pWeaponName->SetText(setWeapon.GetName());
+	//_pWeaponRank->SetText(setWeapon.GetRankString());
+	//_pWeaponType->SetText(setWeapon.GetDamageType().ToStoring);
+	_pWeaponAttack->SetText(std::to_string(setWeapon.GetDamage()));
+}
