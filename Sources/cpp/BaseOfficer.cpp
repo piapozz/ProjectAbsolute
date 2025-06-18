@@ -4,6 +4,9 @@
 #include "../header/StageManager.h"
 #include "../header/ObjectManager.h"
 
+#include "../header/SuitTriangle.h"
+#include "../header/WeaponTriangle.h"
+
 BaseOfficer::BaseOfficer()
 {
 	_officerType = OfficerType::NONE;
@@ -26,9 +29,21 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID)
 	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(position, ObjectType::SECTION));
 	health = data.health;
 	maxHealth = health;
+
 	_mental = data.mental;
 	_suitID = data.suitID;
 	_weaponID = data.weaponID;
+
+	suit = new SuitTriangle();
+	weapon = new WeaponTriangle();
+
+	float* multipliers = suit->GetMultipliers();
+	for (int i = 0;i < (int)Type::MAX;i++)
+	{
+		defenseRatio[i] = multipliers[i];
+	}
+	strength = weapon->GetDamage();
+	attackType = weapon->GetDamageType();
 
 	SetImpossible(true);
 

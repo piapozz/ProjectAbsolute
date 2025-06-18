@@ -113,3 +113,8 @@ Vector2 OfficerController::GetRandomPositionInRoom()
 
 	return {randValue, characterPosition.y};
 }
+
+bool OfficerController::CheckHostility()
+{
+
+}
