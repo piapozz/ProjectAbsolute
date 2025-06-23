@@ -1,11 +1,12 @@
 #pragma once
-#include "BaseObject.h"
+#include "BaseUIScreen.h"
 #include "UIScreen.h"
 
-class EntitySuitUI : public BaseObject
+class EntitySuitUI : public BaseUIScreen
 {
 public:
-	EntitySuitUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
+	EntitySuitUI(){}
+	EntitySuitUI(Transform setTransform, LayerSetting layerSetting);
 	~EntitySuitUI(){}
 
 	void SetActive(bool active);
@@ -13,6 +14,7 @@ public:
 	void Draw();
 
 private:
+	UIScreenImage* _BGImage;
 	UIScreenText* _lockText;
 	UIScreenText* _information;
 	UIScreenImage* _image;
