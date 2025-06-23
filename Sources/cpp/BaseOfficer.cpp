@@ -59,7 +59,7 @@ void BaseOfficer::Proc()
 	BaseObject::Proc();
 
 	pCharacterState->Update(this);
-	pController->UpdateAI();
+	// pController->UpdateAI();
 }
 
 void BaseOfficer::Draw()

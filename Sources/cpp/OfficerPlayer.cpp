@@ -4,6 +4,8 @@
 #include "../header/ObjectFactory.h"
 #include "../header/OfficerController.h"
 #include "../header/UIManager.h"
+#include "../header/SelectorNearEntityInRoom.h"
+#include "../header/BaseAttack.h"
 
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 {
@@ -25,11 +27,19 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 positio
 
 	SetImpossible(true);
 	pController = new OfficerController(this);
+	
+	AttackAction* normalAttack = new AttackAction();
+	normalAttack->targetSelector = new SelectorNearEntityInRoom();
+	normalAttack->characterAttack = new BaseAttack();
+	normalAttack->attackRange = 30;
+
+	attackActions.push_back(normalAttack);
 }
 
 void OfficerPlayer::Proc()
 {
 	BaseOfficer::Proc();
+	pController->UpdateAI();
 }
 
 void OfficerPlayer::Draw()

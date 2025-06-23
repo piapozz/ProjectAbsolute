@@ -19,6 +19,14 @@ void OfficerController::DecideState()
 		return;
 	}
 
+	// もしターゲットを持っていたら
+	if (stateID != CharacterStateID::FIGHT && officer->targetCharacter)
+	{
+		// クリックで移動が行われたらtargetをクリア
+		officer->ChangeState(CharacterStateID::FIGHT);
+		return;
+	}
+
 	switch (stateID)
 	{
 		case CharacterStateID::IDLE:
@@ -39,6 +47,13 @@ void OfficerController::DecideState()
 
 void OfficerController::UpdateIdleState()
 {
+	BaseCharacter* checkTarget = CheckHostility();
+	if (checkTarget)
+	{
+		character->targetCharacter = checkTarget;
+		character->ChangeState(CharacterStateID::FIGHT);
+	}
+
 	if (!WaitUntilCount()) return;
 
 	Vector2 nextPosition = GetRandomPositionInRoom();
@@ -53,21 +68,6 @@ void OfficerController::UpdateMoveState()
 
 	// 自身の状態を確認してステートを分岐
 	if (!characterState->IsEndState()) return;
-
-	//BaseCharacter* checkTarget = CheckHostility();
-	//if (checkTarget)
-	//{
-	//	character->targetCharacter = checkTarget;
-	//	character->ChangeState(CharacterStateID::FIGHT);
-	//}
-
-
-	// もしターゲットを持っていたら
-	if (officer->targetCharacter)
-	{
-		officer->ChangeState(CharacterStateID::FIGHT);
-		return;
-	}
 
 	// SecureRoom かどうかをチェック
 	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
@@ -99,7 +99,7 @@ void OfficerController::UpdateFightState()
 	// int attackRange = attackAction->attackRange;
 
 	// 射程外
-	if (abs(dx) > 1)
+	if (abs(dx) > 30)
 	{
 		character->ChangeMoveState(targetCharacter->GetTransform().position);
 		return;
@@ -143,7 +143,7 @@ Vector2 OfficerController::GetRandomPositionInRoom()
 
 BaseCharacter* OfficerController::CheckHostility()
 {
-	SelectorNearEntityInRoom* selector = new SelectorNearEntityInRoom();
+	ITargetSelector* selector = character->GetAttackAction()[0]->targetSelector;
 	std::vector<BaseCharacter*> targetList = selector->SelectTargets(character);
 	if (targetList.empty()) return nullptr;
 

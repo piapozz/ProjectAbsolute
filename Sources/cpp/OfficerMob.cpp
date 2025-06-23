@@ -9,7 +9,7 @@ void OfficerMob::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 	SetImpossible(false);
 	_officerType = OfficerType::MOB;
 	layer = Layer::MIDDLE;
-	pController = new OfficerController(this);
+	// pController = new OfficerController(this);
 }
 
 void OfficerMob::Proc()

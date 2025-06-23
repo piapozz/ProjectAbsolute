@@ -44,7 +44,7 @@
 //	return;
 //}
 
-void AttackNormal::Attack(BaseCharacter* attacker)
+void AttackNormal::Attack(BaseCharacter* attacker, BaseCharacter* characters)
 {
 
 }

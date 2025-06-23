@@ -22,9 +22,9 @@ std::vector<BaseCharacter*> SelectorNearEntityInRoom::SelectTargets(BaseCharacte
 	for (int i = 0; i < targetObjectList.size();i++)
 	{
 		BaseCharacter* character = static_cast<BaseCharacter*>(targetObjectList[i]);
-		if (character == attacker) return {};
+		if (character == attacker) continue;
 		CharacterGroup group = character->GetGroup();
-		if (group == CharacterGroup::OFFICER) targetList.push_back(character);
+		if (group == CharacterGroup::ENTITY) targetList.push_back(character);
 	}
 
 	if (targetList.empty()) return{};
