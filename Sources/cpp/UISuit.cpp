@@ -69,7 +69,9 @@ void UISuit::SetSuit(BaseSuit& setSuit)
 			{
 				oss << std::fixed << std::setprecision(2) << value;
 			}
+			Type type = (Type)i;
 			_pSuitDefense[i]->SetText(oss.str());
+			_pSuitDefense[i]->SetTextColor(ToColor(type));
 		}
 	}
 }

@@ -34,8 +34,8 @@ public:
 		_pText->SetText(str);
 	}
 
-	void SetTextColor(int r = 255, int g = 255, int b = 255) {
-		_pText->SetTextColor(r, g, b);
+	void SetTextColor(int color) {
+		_pText->SetTextColor(color);
 	}
 
 	void SetActive(bool active) override {

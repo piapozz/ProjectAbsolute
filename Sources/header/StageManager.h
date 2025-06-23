@@ -71,5 +71,6 @@ public:
 private:
 	// –‘O‚É‰Šú‰»‚³‚ê‚½–K–âƒtƒ‰ƒO
 	std::vector<std::vector<bool>> _visited;
-	std::vector<BaseSection*> _section;
+	std::vector<BaseSection*> _roomList;
+	std::vector<BaseSection*> _connectList;
 };

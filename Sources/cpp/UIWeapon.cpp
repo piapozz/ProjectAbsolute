@@ -48,6 +48,9 @@ void UIWeapon::SetWeapon(BaseWeapon& setWeapon)
 {
 	_pWeaponName->SetText(setWeapon.GetName());
 	//_pWeaponRank->SetText(setWeapon.GetRankString());
-	//_pWeaponType->SetText(setWeapon.GetDamageType().ToStoring);
+	Type type = setWeapon.GetDamageType();
+	_pWeaponType->SetText(ToStoring(type));
+	_pWeaponType->SetTextColor(ToColor(type));
 	_pWeaponAttack->SetText(std::to_string(setWeapon.GetDamage()));
+	_pWeaponAttack->SetTextColor(ToColor(type));
 }
