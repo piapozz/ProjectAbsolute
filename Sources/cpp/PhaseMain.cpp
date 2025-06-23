@@ -156,8 +156,9 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		for (int i = 0, max = officerList.size(); i < max; i++)
 		{
 			OfficerPlayer* officer = static_cast<OfficerPlayer*>(officerList[i]);
+			// 作業中ならスキップ
+			if (officer->stateID == CharacterStateID::OPERATION) return;
 			_pSelectOfficerList.push_back(officer);
-			officer->ClickEvent();
 		}
 		return;
 	}

@@ -21,11 +21,12 @@ BaseOfficer::~BaseOfficer()
 
 void BaseOfficer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 {
+	SetPosition(position);
 	Transform transformWorld = transform.GetWorldTransform();
-	Vector2 _position = transformWorld.position;
+	Vector2 transformPosition = transformWorld.position;
 	ObjectManager& objectManager = ObjectManager::Instance();
 
-	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(_position, ObjectType::SECTION));
+	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(transformPosition, ObjectType::SECTION));
 	health = data.health;
 	maxHealth = health;
 

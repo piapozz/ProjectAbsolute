@@ -19,6 +19,8 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 	_information->SetText("エンティティ 基本情報");
 	worldTransform = Transform(_ENTITY_IMAGE_POS, _ENTITY_IMAGE_SCALE, this);
 	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	worldTransform = Transform(_TYPE_BG_POS, _TYPE_BG_SCALE, this);
+	_typeBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 
 	/*_informationFrame = new UIScreenImage();
 	_information = new UIScreenText();
@@ -43,25 +45,26 @@ void EntityInformationUI::Draw()
 {
 	 _lockImage->Draw();
 	 _informationFrame->Draw();
-	 _information->Draw();
-	 _image->Draw();
-	 /*_informationFrame->Draw();
-	 _information->Draw();
-	 _image->Draw();
-	 _name->Draw();
-	 _id->Draw();
-	 _hazardLevel->Draw();
-	 _typeInformation->Draw();
-	 _type->Draw();
-	 _energyInformation->Draw();
-	 _energy->Draw();
-	 _operationInformation->Draw();
-	 _goodOperationInformation->Draw();
-	 _goodOperation->Draw();
-	 _normalOperationInformation->Draw();
-	 _normalOperation->Draw();
-	 _badOperationInformation->Draw();
-	 _badOperation->Draw();*/
+	 //_information->Draw();
+	 //_image->Draw();
+	 //_typeBGImage->Draw();
+	 //_informationFrame->Draw();
+	 //_information->Draw();
+	 //_image->Draw();
+	 //_name->Draw();
+	 //_id->Draw();
+	 //_hazardLevel->Draw();
+	 //_typeInformation->Draw();
+	 //_type->Draw();
+	 //_energyInformation->Draw();
+	 //_energy->Draw();
+	 //_operationInformation->Draw();
+	 //_goodOperationInformation->Draw();
+	 //_goodOperation->Draw();
+	 //_normalOperationInformation->Draw();
+	 //_normalOperation->Draw();
+	 //_badOperationInformation->Draw();
+	 //_badOperation->Draw();
 }
 
 void EntityInformationUI::SetActive(bool active)

@@ -10,13 +10,15 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 positio
 	BaseOfficer::Init(data, setOfficerID, position);
 	_groupType = CharacterGroup::OFFICER;
 	_officerType = OfficerType::PLAYER;
+
 	Transform transformWorld = transform.GetWorldTransform();
-	Vector2 _position = transformWorld.position;
-	Vector2 scale = transformWorld.scale;
-	Vector2 pos(_position.x, _position.y + (scale.y / 2));
+	Vector2 transformPosition = transformWorld.position;
+	Vector2 transformScale = transformWorld.scale;
+	Vector2 pos(transformPosition.x, transformPosition.y + (transformScale.y / 2));
+	
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};
-	Transform transform = Transform(pos + Vector2(0, scale.y), Vector2(scale.x, scale.y / 4));
-	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transform, UILayerSetting);
+	Transform transformUI = Transform(pos + Vector2(0, transformScale.y), Vector2(transformScale.x, transformScale.y / 4));
+	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transformUI, UILayerSetting);
 	slider->SetActive(true);
 	slider->SetText("HP");
 	slider->SetColor(255, 0, 0);

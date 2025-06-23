@@ -77,9 +77,10 @@ void BaseSection::ClickEvent()
 
 	// この部屋にキャラクターを移動させる
 	// キャラ移動が可能なら移動
-	if (selectOfficerList[0]->GetImpossible())
+	for (int i = 0, max = selectOfficerList.size(); i < max; i++)
 	{
-		selectOfficerList[0]->ChangeMoveState(this);
-		return;
+		if (!selectOfficerList[i]->GetImpossible()) continue;
+
+		selectOfficerList[i]->ChangeMoveState(this);
 	}
 }

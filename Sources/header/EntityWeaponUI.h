@@ -1,11 +1,16 @@
 #pragma once
-#include "BaseObject.h"
+#include "BaseUIScreen.h"
 #include "UIScreen.h"
 
-class EntityWeaponUI : public BaseObject
+class EntityWeaponUI : public BaseUIScreen
 {
 public:
-	EntityWeaponUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
+	static std::string StaticTypeName() {
+		return "EntityWeaponUI";
+	}
+
+	EntityWeaponUI(){}
+	EntityWeaponUI(Transform setTransform, LayerSetting layerSetting);
 	~EntityWeaponUI(){}
 
 	void SetActive(bool active);
@@ -13,6 +18,7 @@ public:
 	void Draw();
 
 private:
+	UIScreenImage* _BGImage;
 	UIScreenText* _lockText;
 	UIScreenText* _information;
 	UIScreenImage* _image;
