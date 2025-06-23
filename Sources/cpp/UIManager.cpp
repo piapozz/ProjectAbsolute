@@ -26,7 +26,7 @@ UIManager::UIManager()
 		button->SetActive(false);
 		_pOperationUIList.push_back(button);
 	}
-	_pEntityUI = factory.CreateWithArgs<UIEntity>();
+	//_pEntityUI = factory.CreateWithArgs<UIEntity>();
 	layerSetting = {false, false, Layer::MIDDLE};
 	Transform trans = Transform(Vector2(WINDOW_WIDTH - (WINDOW_WIDTH / 10), WINDOW_HEIGHT / 5), Vector2(WINDOW_WIDTH / 5, WINDOW_HEIGHT / 2.5f));
 	_pOfficerUI = factory.CreateWithArgs<UIOfficer>(trans, true, layerSetting);

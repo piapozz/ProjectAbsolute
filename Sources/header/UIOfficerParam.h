@@ -20,6 +20,10 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
+	static std::string StaticTypeName() {
+		return "UIOfficerParam";
+	}
+
 	void SetParamName(std::string str);
 	void SetParam(float value);
 private:

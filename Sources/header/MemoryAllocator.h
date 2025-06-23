@@ -2,71 +2,69 @@
 #include <vector>
 #include <stack>
 #include <cassert>
+#include <type_traits>
+#include <iostream>
 
 template<typename T>
 class MemoryAllocator
 {
 public:
-	MemoryAllocator(size_t capacity = 1000) 
+	MemoryAllocator(size_t capacity = 1000)
 	{
 		_pool.reserve(capacity);
 		for (size_t i = 0; i < capacity; ++i)
 		{
+			T* obj = reinterpret_cast<T*>(::operator new(sizeof(T)));
+			_pool.push_back(obj);
+			_ptrToIndex[obj] = i;
 			_freeIndices.push(i);
-			_pool.push_back(new T());
 		}
 	}
 
-	~MemoryAllocator() 
+	~MemoryAllocator()
 	{
 		for (T* p : _pool)
 		{
-			delete p;
+			::operator delete(p);
 		}
-		_pool.clear();
 	}
 
 	template<typename... Args>
 	T* Allocate(Args&&... args)
 	{
-		if (_freeIndices.empty())
+		T* obj = nullptr;
+		if (!_freeIndices.empty())
 		{
-			T* p = new T(std::forward<Args>(args)...);
-			_pool.push_back(p);
-			return p;
+			size_t index = _freeIndices.top();
+			_freeIndices.pop();
+			obj = _pool[index];
+		} else
+		{
+			obj = reinterpret_cast<T*>(::operator new(sizeof(T)));
+			_ptrToIndex[obj] = _pool.size();
+			_pool.push_back(obj);
 		}
-		size_t index = _freeIndices.top();
-		_freeIndices.pop();
-		T* p = _pool[index];
-		p = new T(std::forward<Args>(args)...);
-		
-		return p;
+
+		new (obj) T(std::forward<Args>(args)...);
+		return obj;
 	}
 
-	T* Allocate()
+	void Deallocate(T* ptr)
 	{
-		if (_freeIndices.empty())
+		if constexpr (!std::is_trivially_destructible_v<T>)
 		{
-			T* p = new T();
-			_pool.push_back(p);
-			return p;
+			ptr->~T();
 		}
-		size_t index = _freeIndices.top();
-		_freeIndices.pop();
-		T* p = _pool[index];
-		p = new T();
 
-		return p;
-	}
-
-	void Deallocate(T* ptr) 
-	{
-		auto it = std::find(_pool.begin(), _pool.end(), ptr);
-		size_t index = std::distance(_pool.begin(), it);
-		_freeIndices.push(index);
+		auto it = _ptrToIndex.find(ptr);
+		if (it != _ptrToIndex.end())
+		{
+			_freeIndices.push(it->second);
+		}
 	}
 
 private:
 	std::vector<T*> _pool;
 	std::stack<size_t> _freeIndices;
+	std::unordered_map<T*, size_t> _ptrToIndex;
 };

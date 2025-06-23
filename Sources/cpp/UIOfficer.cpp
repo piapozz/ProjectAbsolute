@@ -66,8 +66,8 @@ void UIOfficer::SetOfficer(BaseOfficer& officer)
 {
 	_pOfficerName->SetText(officer.GetName());
 	//_pOfficerImage->SetImage(officer.GetImagePath());
-	_pWeapon->SetWeapon(*officer.GetWeapon());
-	_pSuit->SetSuit(*officer.GetSuit());
+	_pWeapon->SetWeapon(officer.GetWeapon());
+	_pSuit->SetSuit(officer.GetSuit());
 	for (int i = 0; i < (int)Type::MAX; ++i)
 	{
 		//_pOfficerParam[i]->SetParam(officer.Get((Type)i));

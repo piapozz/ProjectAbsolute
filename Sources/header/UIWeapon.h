@@ -26,7 +26,11 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-	void SetWeapon(BaseWeapon& setWeapon);
+	static std::string StaticTypeName() {
+		return "UIWeapon";
+	}
+
+	void SetWeapon(BaseWeapon* setWeapon);
 private:
 	// îwåi
 	UIScreenImage* _pBackground;

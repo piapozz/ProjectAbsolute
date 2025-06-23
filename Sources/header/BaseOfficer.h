@@ -15,6 +15,9 @@ public:
 	BaseOfficer();
 	BaseOfficer(LayerSetting layerSetting)
 		: BaseCharacter(layerSetting) {
+		_officerType = OfficerType::NONE;
+		_officerID = -1;
+		pCharacterState = NULL;
 	}
 	virtual ~BaseOfficer();
 

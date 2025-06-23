@@ -26,7 +26,11 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-	void SetSuit(BaseSuit& setSuit);
+	static std::string StaticTypeName() {
+		return "UISuit";
+	}
+
+	void SetSuit(BaseSuit* setSuit);
 
 private:
 	// îwåi
