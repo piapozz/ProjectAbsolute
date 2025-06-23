@@ -9,9 +9,7 @@
 
 BaseOfficer::BaseOfficer()
 {
-	_officerType = OfficerType::NONE;
-	_officerID = -1;
-	pCharacterState = NULL;
+	
 }
 
 BaseOfficer::~BaseOfficer()

@@ -29,6 +29,10 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
+	static std::string StaticTypeName() {
+		return "UIOfficer";
+	}
+
 	void SetOfficer(BaseOfficer& officer);
 private:
 	// îwåi

@@ -9,6 +9,8 @@
 class BaseObject : public AutoTypeNameObject
 {
 public:
+	size_t poolIndex;
+
 	BaseObject(){
 		objectType = ObjectType::INVALID;
 		transform = Transform();

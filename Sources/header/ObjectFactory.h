@@ -3,163 +3,95 @@
 #include <string>
 #include <memory>
 #include <functional>
-#include <typeinfo>
-#include <cassert>
 #include "BaseObject.h"
-#include "ObjectManager.h"
 #include "MemoryAllocator.h"
-
+#include "ObjectManager.h"
 class BaseAllocatorWrapper;
 template<typename T>
 class AllocatorWrapper;
 
-// オブジェクトの生成と削除を管理するファクトリークラス
-class ObjectFactory {
+class ObjectFactory
+{
 public:
-	static ObjectFactory& Instance() {
+	static ObjectFactory& Instance()
+	{
 		static ObjectFactory instance;
 		return instance;
 	}
-	/// <summary>
-	/// オブジェクトの生成（引数なし）
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <returns></returns>
+
 	template<typename T>
-	T* Create();
-	/// <summary>
-	/// オブジェクトの生成（引数あり）
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <typeparam name="...Args"></typeparam>
-	/// <param name="...args"></param>
-	/// <returns></returns>
+	T* Create()
+	{
+		const std::string key = T::StaticTypeName();
+		if (_allocators.find(key) == _allocators.end())
+			Register<T>();
+		auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
+		return allocatorWrapper->Allocate();
+	}
+
 	template<typename T, typename... Args>
-	T* CreateWithArgs(Args&&... args);
-	/// <summary>
-	/// オブジェクトの削除
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="obj"></param>
+	T* CreateWithArgs(Args&&... args)
+	{
+		const std::string key = T::StaticTypeName();
+		if (_allocators.find(key) == _allocators.end())
+			Register<T>();
+		auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
+		T* obj = allocatorWrapper->Allocate(std::forward<Args>(args)...);
+		ObjectManager::Instance().AddObject(obj);
+		return obj;
+	}
+
 	template<typename T>
-	void Destroy(T* obj);
+	void Destroy(T* obj)
+	{
+		const std::string key = T::StaticTypeName();
+		auto it = _allocators.find(key);
+		if (it != _allocators.end())
+		{
+			ObjectManager::Instance().RemoveObject(obj);
+			it->second->DeallocateBase(obj);
+		} else
+		{
+			delete obj;
+		}
+	}
 
 private:
-	/// <summary>
-	/// クラスの登録
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="key"></param>
 	template<typename T>
-	void Register(const std::string& key = T::StaticTypeName());
-	/// <summary>
-	/// クラスの登録（引数あり）
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <typeparam name="...Args"></typeparam>
-	template<typename T, typename... Args>
-	void RegisterWithArgs();
+	void Register(const std::string& key = T::StaticTypeName())
+	{
+		_allocators[key] = std::make_unique<AllocatorWrapper<T>>();
+	}
 
-	std::unordered_map<std::string, std::function<BaseObject*()>> _creators;
 	std::unordered_map<std::string, std::unique_ptr<BaseAllocatorWrapper>> _allocators;
 };
 
-
-template<typename T>
-void ObjectFactory::Register(const std::string& key)
+class BaseAllocatorWrapper
 {
-	if (_allocators.find(key) != _allocators.end()) return;
-	_allocators[key] = std::make_unique<AllocatorWrapper<T>>();
-	_creators[key] = [this, key]() -> BaseObject*
-	{
-		return static_cast<BaseObject*>(
-			static_cast<AllocatorWrapper<T>*>(_allocators[key].get())->Allocate()
-		);
-	};
-}
-
-template<typename T, typename... Args>
-void ObjectFactory::RegisterWithArgs()
-{
-	std::string key = T::StaticTypeName();
-	if (_allocators.find(key) == _allocators.end())
-		_allocators[key] = std::make_unique<AllocatorWrapper<T>>();
-	
-	_creators[key] = [this, key]() -> BaseObject*
-    {
-        auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
-        return allocatorWrapper->Allocate();
-    };
-}
-
-template<typename T, typename... Args>
-T* ObjectFactory::CreateWithArgs(Args&&... args)
-{
-	const std::string key = T::StaticTypeName();
-	if (_allocators.find(key) == _allocators.end())
-		RegisterWithArgs<T, Args...>();
-	
-	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
-	T* obj = allocatorWrapper->Allocate(std::forward<Args>(args)...);
-	ObjectManager::Instance().AddObject(obj);
-	return obj;
-}
-
-template<typename T>
-T* ObjectFactory::Create()
-{
-	const std::string key = T::StaticTypeName();
-	if (_allocators.find(key) == _allocators.end())
-		Register<T>();
-	auto allocatorWrapper = static_cast<AllocatorWrapper<T>*>(_allocators[key].get());
-	T* obj = allocatorWrapper->Allocate();
-	ObjectManager::Instance().AddObject(obj);
-	return obj;
-}
-
-template<typename T>
-void ObjectFactory::Destroy(T* obj)
-{
-	if (!obj) return;
-
-	ObjectManager::Instance().RemoveObject(obj);
-	const std::string key = T::StaticTypeName();
-	auto it = _allocators.find(key);
-	if (it != _allocators.end())	
-		it->second->DeallocateBase(obj);
-	else	
-		delete obj;
-}
-
-class BaseAllocatorWrapper {
 public:
 	virtual ~BaseAllocatorWrapper() = default;
-
-	virtual BaseObject* AllocateBase() = 0;
 	virtual void DeallocateBase(BaseObject* obj) = 0;
 };
 
 template<typename T>
-class AllocatorWrapper: public BaseAllocatorWrapper {
+class AllocatorWrapper: public BaseAllocatorWrapper
+{
 public:
-	AllocatorWrapper(): allocator() {
-	}
-
 	template<typename... Args>
-	T* Allocate(Args&&... args) {
+	T* Allocate(Args&&... args)
+	{
 		return allocator.Allocate(std::forward<Args>(args)...);
 	}
 
-	T* Allocate() {
-		return allocator.Allocate();
+	template<typename... Args>
+	BaseObject* AllocateBase(Args&&... args)
+	{
+		return allocator.Allocate(std::forward<Args>(args)...);
 	}
 
-	virtual BaseObject* AllocateBase() override {
-		return allocator.Allocate();
-	}
-
-	virtual void DeallocateBase(BaseObject* obj) override {
-		allocator.Deallocate(static_cast<T*>(obj)); 
+	void DeallocateBase(BaseObject* obj) override
+	{
+		allocator.Deallocate(static_cast<T*>(obj));
 	}
 
 private:

@@ -51,11 +51,11 @@ void UISuit::Teardown()
 
 }
 
-void UISuit::SetSuit(BaseSuit& setSuit)
+void UISuit::SetSuit(BaseSuit* setSuit)
 {
-	_pSuitName->SetText(setSuit.GetName());
+	_pSuitName->SetText(setSuit->GetName());
 	//_pSuitRank->SetText(setSuit.GetRankString());
-	float* defense = setSuit.GetMultipliers();
+	float* defense = setSuit->GetMultipliers();
 	for (int i = 0; i < static_cast<int>(Type::MAX); ++i)
 	{
 		if (_pSuitDefense[i])
