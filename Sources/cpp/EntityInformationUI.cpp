@@ -6,70 +6,110 @@
 EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
+	_isLock = false;
 
 	ObjectFactory& factory = ObjectFactory::Instance();
-
+	Transform worldTransform = Transform();
 	LayerSetting layer = LayerSetting(true, false, Layer::MIDDLE);
-	Transform worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
-	_lockImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+
+	// 枠
 	worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
-	_informationFrame = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_informationBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 	worldTransform = Transform(_INFORMATION_POS, Vector2::one(), this);
 	_information = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_information->SetText("エンティティ 基本情報");
+	_information->SetText(_INFORMATION_TEXT);
+	// ロック
+	worldTransform = Transform(_LOCK_IMAGE_POS, _LOCK_IMAGE_SCALE, this);
+	_lockImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	worldTransform = Transform(_LOCK_TEXT_POS, Vector2::one(), this);
+	_lockText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_lockText->SetText(_LOCK_TEXT);
+	// 画像
 	worldTransform = Transform(_ENTITY_IMAGE_POS, _ENTITY_IMAGE_SCALE, this);
 	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	// 属性
 	worldTransform = Transform(_TYPE_BG_POS, _TYPE_BG_SCALE, this);
 	_typeBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
-
-	/*_informationFrame = new UIScreenImage();
-	_information = new UIScreenText();
-	_image = new UIScreenImage();
-	_name = new UIScreenText();
-	_id = new UIScreenText();
-	_hazardLevel = new UIScreenText();
-	_typeInformation = new UIScreenText();
-	_type = new UIScreenText();
-	_energyInformation = new UIScreenText();
-	_energy = new UIScreenText();
-	_operationInformation = new UIScreenText();
-	_goodOperationInformation = new UIScreenText();
-	_goodOperation = new UIScreenText();
-	_normalOperationInformation = new UIScreenText();
-	_normalOperation = new UIScreenText();
-	_badOperationInformation = new UIScreenText();
-	_badOperation = new UIScreenText();*/
+	worldTransform = Transform(_TYPE_INFORMATION_POS, Vector2::one(), this);
+	_typeInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_typeInformation->SetText(_TYPE_INFORMATION_TEXT);
+	worldTransform = Transform(_TYPE_POS, Vector2::one(), this);
+	_type = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_type->SetText("X");
+	// エネルギー
+	worldTransform = Transform(_ENERGY_BG_POS, _ENERGY_BG_SCALE, this);
+	_energyBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	worldTransform = Transform(_ENERGY_INFORMATION_POS, Vector2::one(), this);
+	_energyInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_energyInformation->SetText(_ENERGY_INFORMATION_TEXT);
+	worldTransform = Transform(_ENERGY_POS, Vector2::one(), this);
+	_energy = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_energy->SetText("X");
+	// 基礎情報
+	worldTransform = Transform(_NAME_POS, Vector2().one(), this);
+	_name = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_name->SetText("XXXX");
+	worldTransform = Transform(_ID_POS, Vector2().one(), this);
+	_id = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_id->SetText("E-XXX");
+	worldTransform = Transform(_HAZARD_LEVEL_POS, Vector2().one(), this);
+	_hazardLevel = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_hazardLevel->SetText("XXXX");
+	// 作業情報
+	worldTransform = Transform(_OPERATION_BG_POS, _OPARATION_BG_SCALE, this);
+	_operationBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	worldTransform = Transform(_OPERATION_INFORMATION_POS, Vector2().one(), this);
+	_operationInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_operationInformation->SetText(_OPERATION_INFORMATION_TEXT);
+	worldTransform = Transform(_GOOD_OPERATION_INFORMATION_POS, Vector2().one(), this);
+	_goodOperationInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_goodOperationInformation->SetText(_GOOD_OPERATION_INFORMATION_TEXT);
+	worldTransform = Transform(_NORMAL_OPERATION_INFORMATION_POS, Vector2().one(), this);
+	_normalOperationInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_normalOperationInformation->SetText(_NORMAL_OPERATION_INFORMATION_TEXT);
+	worldTransform = Transform(_BAD_OPERATION_INFORMATION_POS, Vector2().one(), this);
+	_badOperationInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_badOperationInformation->SetText(_BAD_OPERATION_INFORMATION_TEXT);
+	worldTransform = Transform(_GOOD_OPERATION_POS, Vector2().one(), this);
+	_goodOperation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_goodOperation->SetText("8 - 10");
+	worldTransform = Transform(_NORMAL_OPERATION_POS, Vector2().one(), this);
+	_normalOperation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_normalOperation->SetText("4 - 7");
+	worldTransform = Transform(_BAD_OPERATION_POS, Vector2().one(), this);
+	_badOperation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_badOperation->SetText("0 - 3");
 }
 
 void EntityInformationUI::Draw()
 {
-	 _lockImage->Draw();
-	 _informationFrame->Draw();
-	 //_information->Draw();
-	 //_image->Draw();
-	 //_typeBGImage->Draw();
-	 //_informationFrame->Draw();
-	 //_information->Draw();
-	 //_image->Draw();
-	 //_name->Draw();
-	 //_id->Draw();
-	 //_hazardLevel->Draw();
-	 //_typeInformation->Draw();
-	 //_type->Draw();
-	 //_energyInformation->Draw();
-	 //_energy->Draw();
-	 //_operationInformation->Draw();
-	 //_goodOperationInformation->Draw();
-	 //_goodOperation->Draw();
-	 //_normalOperationInformation->Draw();
-	 //_normalOperation->Draw();
-	 //_badOperationInformation->Draw();
-	 //_badOperation->Draw();
-}
-
-void EntityInformationUI::SetActive(bool active)
-{
-	// 全InformationUIのアクティブを切り替える
-
+	_informationBGImage->Draw();
+	_information->Draw();
+	if (_isLock)
+	{
+		_lockImage->Draw();
+		_lockText->Draw();
+	}
+	else
+	{
+		_image->Draw();
+		_typeBGImage->Draw();
+		_typeInformation->Draw();
+		_type->Draw();
+		_energyBGImage->Draw();
+		_energyInformation->Draw();
+		_energy->Draw();
+		_name->Draw();
+		_id->Draw();
+		_hazardLevel->Draw();
+		_operationBGImage->Draw();
+		_operationInformation->Draw();
+		_goodOperationInformation->Draw();
+		_normalOperationInformation->Draw();
+		_badOperationInformation->Draw();
+		_goodOperation->Draw();
+		_normalOperation->Draw();
+		_badOperation->Draw();
+	}
 }
 

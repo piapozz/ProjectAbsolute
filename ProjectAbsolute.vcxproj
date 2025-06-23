@@ -162,7 +162,8 @@
     <ClCompile Include="Sources\cpp\EntityEscapeUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityInformationUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityManagementTipsUI.cpp" />
-    <ClCompile Include="Sources\cpp\EntityOperationFavorUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityOperationSummaryUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityOperationUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityManagementUI.cpp" />
     <ClCompile Include="Sources\cpp\EntitySuitUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityWeaponUI.cpp" />
@@ -263,7 +264,8 @@
     <ClInclude Include="Sources\header\EntityEscapeUI.h" />
     <ClInclude Include="Sources\header\EntityInformationUI.h" />
     <ClInclude Include="Sources\header\EntityManagementTipsUI.h" />
-    <ClInclude Include="Sources\header\EntityOperationFavorUI.h" />
+    <ClInclude Include="Sources\header\EntityOperationSummaryUI.h" />
+    <ClInclude Include="Sources\header\EntityOperationUI.h" />
     <ClInclude Include="Sources\header\EntityManagementUI.h" />
     <ClInclude Include="Sources\header\EntitySuitUI.h" />
     <ClInclude Include="Sources\header\EntityWeaponUI.h" />
