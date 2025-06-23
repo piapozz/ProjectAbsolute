@@ -21,6 +21,15 @@ void ObjectManager::Update()
 			obj->Proc();
 		});
 	}
+	for (int layer = 0; layer < (int)Layer::MAX; layer++)
+	{
+		for (BaseObject* obj : _objectList[(int)ObjectType::SCREEN_UI][layer])
+		{
+			if (obj == nullptr) continue;
+			if (!obj->GetActive()) continue;
+			obj->Proc();
+		}
+	}
 }
 
 void ObjectManager::Draw()

@@ -167,6 +167,7 @@
     <ClCompile Include="Sources\cpp\EntitySuitUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityWeaponUI.cpp" />
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
+    <ClCompile Include="Sources\cpp\Entity_T000.cpp" />
     <ClCompile Include="Sources\cpp\EventManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerController.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
@@ -267,6 +268,7 @@
     <ClInclude Include="Sources\header\EntitySuitUI.h" />
     <ClInclude Include="Sources\header\EntityWeaponUI.h" />
     <ClInclude Include="Sources\header\Entity_E000.h" />
+    <ClInclude Include="Sources\header\Entity_T000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />
     <ClInclude Include="Sources\header\ITargetSelector.h" />
     <ClInclude Include="Sources\header\MemoryAllocator.h" />

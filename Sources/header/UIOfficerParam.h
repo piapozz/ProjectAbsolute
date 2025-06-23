@@ -25,7 +25,8 @@ public:
 	}
 
 	void SetParamName(std::string str);
-	void SetParam(float value);
+	void SetParam(std::string str);
+	void SetParamColor(int color);
 private:
 	// 背景
 	UIScreenImage* _pBackground;
@@ -41,9 +42,9 @@ private:
 	const Vector2 BACKGROUND_POS =  Vector2(0, 0);
 	// パラメーター名
 	const Vector2 NAME_SIZE = Vector2(0.5f, 1);
-	const Vector2 NAME_POS =  Vector2(-0.25f, 0);
+	const Vector2 NAME_POS =  Vector2(-0.7f, 0);
 	// パラメーター値
 	const Vector2 VALUE_SIZE = Vector2(0.5f, 1);
-	const Vector2 VALUE_POS =  Vector2(0.25f, 0);
+	const Vector2 VALUE_POS =  Vector2(0.1f, 0);
 };
 

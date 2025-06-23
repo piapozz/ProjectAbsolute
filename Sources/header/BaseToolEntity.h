@@ -14,6 +14,7 @@ public:
 		Continue,
 		Equip,
 	};
+	BaseToolEntity(){}
 	BaseToolEntity(ToolType setType)
 		:_toolType(setType){}
 	BaseToolEntity(ToolType setType, LayerSetting layerSetting)

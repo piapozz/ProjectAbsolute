@@ -48,6 +48,10 @@ private:
 	// パラメーター
 	UIOfficerParam* _pOfficerParam[(int)Type::MAX];
 
+	std::string _ParamName[(int)Type::MAX] = {
+		"勇気", "慎重", "自制", "正義"
+	};
+
 	// 座標,サイズ(相対割合)
 	
 	// 背景

@@ -1,5 +1,7 @@
 #include "../header/UIOfficer.h"
 #include "../header/ObjectFactory.h"
+#include <iomanip> 
+#include <sstream>
 
 void UIOfficer::Init(Transform setTransform, bool fill, LayerSetting layerSetting)
 {
@@ -68,8 +70,21 @@ void UIOfficer::SetOfficer(BaseOfficer& officer)
 	//_pOfficerImage->SetImage(officer.GetImagePath());
 	_pWeapon->SetWeapon(officer.GetWeapon());
 	_pSuit->SetSuit(officer.GetSuit());
-	for (int i = 0; i < (int)Type::MAX; ++i)
+	int* param = officer.GetParameter();
+	for (int i = 0; i < static_cast<int>(Type::MAX); ++i)
 	{
-		//_pOfficerParam[i]->SetParam(officer.Get((Type)i));
+		float value = param[i];
+		std::ostringstream oss;
+		if (std::abs(value - static_cast<int>(value)) < 0.01f)
+		{
+			oss << static_cast<int>(value);
+		} else
+		{
+			oss << std::fixed << std::setprecision(1) << value;
+		}
+		Type type = (Type)i;
+		_pOfficerParam[i]->SetParamName(_ParamName[i]);
+		_pOfficerParam[i]->SetParam(oss.str());
+		_pOfficerParam[i]->SetParamColor(ToColor(type));
 	}
 }

@@ -67,7 +67,7 @@ void UISuit::SetSuit(BaseSuit* setSuit)
 				oss << static_cast<int>(value);
 			} else
 			{
-				oss << std::fixed << std::setprecision(2) << value;
+				oss << std::fixed << std::setprecision(1) << value;
 			}
 			Type type = (Type)i;
 			_pSuitDefense[i]->SetText(oss.str());
