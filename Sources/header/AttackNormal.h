@@ -4,5 +4,5 @@
 class AttackNormal: public BaseAttack
 {
 public:
-	void Attack(BaseCharacter* chara) override;
+	void Attack(BaseCharacter* attacker, BaseCharacter* characters) override;
 };

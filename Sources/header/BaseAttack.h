@@ -11,13 +11,10 @@ class BaseCharacter;
 class BaseAttack 
 {
 public:
-	BaseAttack(ITargetSelector* selector){
+	BaseAttack(){
 	};
 	~BaseAttack(){
 	};
 
-	virtual void Attack(BaseCharacter* attacker);
-
-protected:
-	ITargetSelector* targetSelector;
+	virtual void Attack(BaseCharacter* attacker, BaseCharacter* characters);
 };

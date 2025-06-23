@@ -2,13 +2,9 @@
 #include "../header/BaseCharacter.h"
 #include "../header/ObjectManager.h"
 
-void BaseAttack::Attack(BaseCharacter* attacker) 
+void BaseAttack::Attack(BaseCharacter* attacker, BaseCharacter* characters)
 {
-	std::vector<BaseCharacter*> targets = targetSelector->SelectTargets(attacker);
-	for (int i = 0; i < targets.size(); i++)
-	{
-		int attackDamage = attacker->GetAttackStatus().attack;
-		Type attackType= attacker->GetAttackStatus().damageType;
-		targets[i]->TakeDamage(attackDamage, attackType);
-	}
+	int attackDamage = attacker->GetAttackStatus().attack;
+	Type attackType= attacker->GetAttackStatus().damageType;
+	characters->TakeDamage(attackDamage, attackType);
 }
