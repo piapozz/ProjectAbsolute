@@ -143,3 +143,30 @@ const int MINIMUM_MENTAL = 0;
 
 // カーソル
 const int CURSOR_SIZE = 20;
+
+// 文字列に変換
+inline std::string ToStoring(Type type)
+{
+	switch (type)
+	{
+		case Type::RED:    return "Red";
+		case Type::WHITE:  return "White";
+		case Type::BLACK:  return "Black";
+		case Type::PALE:   return "Pale";
+		case Type::INVALID:return "Invalid";
+		default:           return "Unknown";
+	}
+}
+
+// 色としての変換
+inline int ToColor(Type type)
+{
+	switch (type)
+	{
+		case Type::RED:    return GetColor(255, 100, 100);
+		case Type::WHITE:  return GetColor(255, 255, 255);
+		case Type::BLACK:  return GetColor(200, 100, 200);
+		case Type::PALE:   return GetColor(100, 200, 200);
+		default:           return GetColor(128, 128, 128);
+	}
+}

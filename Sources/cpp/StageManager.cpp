@@ -26,6 +26,8 @@ StageManager::~StageManager()
 void StageManager::Init()
 {  
 	_secureRoomList.clear();
+	_roomList.clear();
+	_connectList.clear();
 }
   
 void StageManager::CreateStage()
@@ -55,7 +57,7 @@ void StageManager::CreateStage()
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
 				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(transform, layerSetting);
-				_section.push_back(room);
+				_roomList.push_back(room);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
 			{
@@ -64,7 +66,7 @@ void StageManager::CreateStage()
 				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
 				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
 				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(transform, layerSetting);
-				_section.push_back(corrider);
+				_roomList.push_back(corrider);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::CONNECT)
 			{
@@ -73,7 +75,7 @@ void StageManager::CreateStage()
 				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
 				Transform transform = Transform(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
 				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(transform, layerSetting);
-				_section.push_back(connect);
+				_connectList.push_back(connect);
 			} 
 			else if (_stageData[i][j] == (int)SectionType::SECURE)
 			{
@@ -85,7 +87,6 @@ void StageManager::CreateStage()
 				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(transform, layerSetting);
 				// é˚óeèäÇÃÉäÉXÉgÇ…í«â¡
 				_secureRoomList.push_back(secure);
-				_section.push_back(secure);
 			}
 		}
 	}
@@ -142,7 +143,7 @@ BaseSection* StageManager::GetRandomSection()
 	std::vector<BaseSection*> _room = GetRoomList();
 	int size = _room.size();
 
-	int rand = GetRand(size);
+	int rand = GetRand(size - 1);
 
 	return _room[rand];
 }
@@ -151,7 +152,7 @@ std::vector<BaseSection*> StageManager::GetRoomList()
 {
 	std::vector<BaseSection*> result;
 
-	for (BaseSection* section : _section)
+	for (BaseSection* section : _roomList)
 	{
 		if (section->GetSectionType() == SectionType::CONNECT ||
 			section->GetSectionType() == SectionType::SECURE)

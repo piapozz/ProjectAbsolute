@@ -29,10 +29,10 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-
-	void SetTextColor(int r = 255, int g = 255, int b = 255){
-		_textColor = GetColor(r, g, b);
+	void SetTextColor(int color){
+		_textColor = color;
 	}
+
 	void SetText(const std::string& setText){
 		_text = setText;
 	}

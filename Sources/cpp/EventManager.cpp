@@ -19,7 +19,6 @@ void EventManager::Init()
 	_pEnergySlider->SetColor(0, 255, 0);
 	std::string str = std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY);
 	_pEnergySlider->SetText(str.c_str());
-	_pEnergySlider->SetTextColor();
 
 	transform = Transform(Vector2(400, 150), Vector2(500, 50));
 	_pMeltSlider = factory.CreateWithArgs<UIScreenSlider>(transform, true, layerSetting);
@@ -27,7 +26,6 @@ void EventManager::Init()
 	_pMeltSlider->SetColor(255, 0, 0);
 	str = std::to_string(_melt) + "/" + std::to_string(_MELT_MAX);
 	_pMeltSlider->SetText(str.c_str());
-	_pMeltSlider->SetTextColor();
 
 	layerSetting = {true, true, Layer::MIDDLE};
 	// 停止ボタン
@@ -39,7 +37,6 @@ void EventManager::Init()
 		// 停止ボタンが押されたときの処理
 		ObjectManager::Instance().ChangeGameSpeed(0);
 	});
-	_pStopButton->SetTextColor();
 	// 通常速度ボタン
 	transform = Transform(Vector2(300, 1050), Vector2(200, 50));
 	_pNormalSpeedButton = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
@@ -49,7 +46,6 @@ void EventManager::Init()
 		// 通常速度ボタンが押されたときの処理
 		ObjectManager::Instance().ChangeGameSpeed(1);
 	});
-	_pNormalSpeedButton->SetTextColor();
 	// 倍速ボタン
 	transform = Transform(Vector2(500, 1050), Vector2(200, 50));
 	_pFastSpeedButton = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
@@ -59,7 +55,6 @@ void EventManager::Init()
 		// 倍速ボタンが押されたときの処理
 		ObjectManager::Instance().ChangeGameSpeed(4);
 	});
-	_pFastSpeedButton->SetTextColor();
 }
 
 void EventManager::AddEnergy(int value)
