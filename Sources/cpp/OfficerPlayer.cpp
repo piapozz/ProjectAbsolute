@@ -5,15 +5,15 @@
 #include "../header/OfficerController.h"
 #include "../header/UIManager.h"
 
-void OfficerPlayer::Init(OfficerInitData data, int setOfficerID)
+void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 {
-	BaseOfficer::Init(data, setOfficerID);
+	BaseOfficer::Init(data, setOfficerID, position);
 	_groupType = CharacterGroup::OFFICER;
 	_officerType = OfficerType::PLAYER;
 	Transform transformWorld = transform.GetWorldTransform();
-	Vector2 position = transformWorld.position;
+	Vector2 _position = transformWorld.position;
 	Vector2 scale = transformWorld.scale;
-	Vector2 pos(position.x, position.y + (scale.y / 2));
+	Vector2 pos(_position.x, _position.y + (scale.y / 2));
 	LayerSetting UILayerSetting = {true, false, Layer::MIDDLE};
 	Transform transform = Transform(pos + Vector2(0, scale.y), Vector2(scale.x, scale.y / 4));
 	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transform, UILayerSetting);
