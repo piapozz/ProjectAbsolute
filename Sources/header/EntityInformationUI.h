@@ -27,6 +27,7 @@ private:
 	UIScreenText* _name;
 	UIScreenText* _id;
 	UIScreenText* _hazardLevel;
+	UIScreenImage* _typeBGImage;
 	UIScreenText* _typeInformation;
 	UIScreenText* _type;
 	UIScreenText* _energyInformation;
@@ -45,19 +46,20 @@ private:
 	// 情報フレーム画像
 	const Vector2 _INFORMATION_FRAME_POS = Vector2(0, 0);
 	// 情報テキスト
-	const Vector2 _INFORMATION_POS = Vector2(0, 1.0f);
+	const Vector2 _INFORMATION_POS = Vector2(0, -1.0f);
 	// エンティティ画像
-	const Vector2 _ENTITY_IMAGE_POS = Vector2(0, -0.5f);
-	const Vector2 _ENTITY_IMAGE_SCALE = Vector2(0.9f, 0.4f);
+	const Vector2 _ENTITY_IMAGE_POS = Vector2(-0.35, -0.5f);
+	const Vector2 _ENTITY_IMAGE_SCALE = Vector2(0.5f, 0.4f);
 	// エンティティの名前
 	const Vector2 _NAME_POS = Vector2(0, 0);
 	// エンティティのID
 	const Vector2 _ID_POS = Vector2(-0.5f, -0.1f);
 	// 危険度
 	const Vector2 _HAZARD_LEVEL_POS = Vector2(0.7f, -0.1f);
-	// 属性情報
-	const Vector2 _TYPE_INFORMATION_POS = Vector2(-0.5f, -0.1f);
 	// 属性
+	const Vector2 _TYPE_BG_POS = Vector2(0.6f, -0.75f);
+	const Vector2 _TYPE_BG_SCALE = Vector2(0.3f, 0.15f);
+	const Vector2 _TYPE_INFORMATION_POS = Vector2(-0.5f, -0.1f);
 	const Vector2 _TYPE_POS = Vector2(-0.5f, -0.3f);
 	// エネルギー情報
 	const Vector2 _ENERGY_INFORMATION_POS = Vector2(0.5f, -0.1f);

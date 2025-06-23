@@ -1,6 +1,7 @@
 #include "../header/UIScreen.h"
 #include "../header/UIEntity.h"
 #include "../header/EntityInformationUI.h"
+#include "../header/EntityOperationFavorUI.h"
 #include "../header/EntityManagementUI.h"
 #include "../header/EntityEscapeUI.h"
 #include "../header/EntityWeaponUI.h"
@@ -20,12 +21,18 @@ UIEntity::UIEntity()
 	worldTransform = Transform(Vector2(-0.9f, -0.9f), Vector2(0.4f, 0.2f), this);
 	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_informationText->SetText("エンティティ 情報");
-	worldTransform = Transform(_INFORMTION_POS, _INFORMTION_SCALE, this);
+	worldTransform = Transform(_INFORMATION_POS, _INFORMATION_SCALE, this);
 	_entityInformation = factory.CreateWithArgs<EntityInformationUI>(worldTransform, layer);
+	worldTransform = Transform(_OPERATION_POS, _OPERATION_SCALE, this);
+	_entityOperationFavor = factory.CreateWithArgs<EntityOperationFavorUI>(worldTransform, layer);
 	worldTransform = Transform(_MANAGEMENT_POS, _MANAGEMENT_SCALE, this);
 	_entityManagement = factory.CreateWithArgs<EntityManagementUI>(worldTransform, layer);
 	worldTransform = Transform(_ESCAPE_POS, _ESCAPE_SCALE, this);
 	_entityEscape = factory.CreateWithArgs<EntityEscapeUI>(worldTransform, layer);
+	worldTransform = Transform(_WEAPON_POS, _WEAPON_SCALE, this);
+	_entityWeapon = factory.CreateWithArgs<EntityWeaponUI>(worldTransform, layer);
+	worldTransform = Transform(_SUIT_POS, _SUIT_SCALE, this);
+	_entitySuit = factory.CreateWithArgs<EntitySuitUI>(worldTransform, layer);
 }
 
 void UIEntity::Proc()
@@ -33,10 +40,11 @@ void UIEntity::Proc()
 	_BGImage->Proc();
 	_informationText->Proc();
 	_entityInformation->Proc();
+	_entityOperationFavor->Proc();
 	_entityManagement->Proc();
 	_entityEscape->Proc();
-	//_entityWeapon->Proc();
-	//_entitySuit->Proc();
+	_entityWeapon->Proc();
+	_entitySuit->Proc();
 }
 
 void UIEntity::Draw()
@@ -44,8 +52,9 @@ void UIEntity::Draw()
 	_BGImage->Draw();
 	_informationText->Draw();
 	_entityInformation->Draw();
+	_entityOperationFavor->Draw();
 	_entityManagement->Draw();
 	_entityEscape->Draw();
-	//_entityWeapon->Draw();
-	//_entitySuit->Draw();
+	_entityWeapon->Draw();
+	_entitySuit->Draw();
 }
