@@ -45,7 +45,7 @@ void PhaseMain::Init()
 	};
 	layerSetting = {true, false, Layer::FRONT};
 	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
-	_pUIManager = new UIManager();
+	_pUIManager = &UIManager::Instance();
 	// カメラ生成
 	_pCamera = new Camera();
 	// 各オブジェクトのインタラクト時のコールバック設定

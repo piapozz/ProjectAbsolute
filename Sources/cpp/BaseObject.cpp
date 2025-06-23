@@ -9,8 +9,9 @@ void BaseObject::Teardown()
 
 bool BaseObject::IsSamePos(Vector2 pos)
 {
-	Vector2 position = transform.position;
-	Vector2 scale = transform.scale;
+	Transform worldTransform = transform.GetWorldTransform();
+	Vector2 position = worldTransform.position;
+	Vector2 scale = worldTransform.scale;
 
 	// ˆÊ’u‚ª“¯‚¶‚©‚Ç‚¤‚©
 	float posMinX = position.x - scale.x / 2;
@@ -22,8 +23,9 @@ bool BaseObject::IsSamePos(Vector2 pos)
 
 bool BaseObject::IsSameRect(Vector2 pos, Vector2 size)
 {
-	Vector2 position = transform.position;
-	Vector2 scale = transform.scale;
+	Transform worldTransform = transform.GetWorldTransform();
+	Vector2 position = worldTransform.position;
+	Vector2 scale = worldTransform.scale;
 
 	float left = pos.x - (size.x / 2);
 	float right = pos.x + (size.x / 2);
