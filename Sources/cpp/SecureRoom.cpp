@@ -30,6 +30,7 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	_operationNameList[1] = "ŠÏ@";
 	_operationNameList[2] = "ÚG";
 	_operationNameList[3] = "ŠëŠQ";
+	_currentState = State::IDLE;
 
 	// UI¶¬
 	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);

@@ -53,7 +53,7 @@ void EventManager::Init()
 	_pFastSpeedButton->SetCallback([this]()
 	{
 		// ”{‘¬ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«‚Ìˆ—
-		ObjectManager::Instance().ChangeGameSpeed(4);
+		ObjectManager::Instance().ChangeGameSpeed(8);
 	});
 }
 

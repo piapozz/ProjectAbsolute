@@ -145,7 +145,7 @@ const int MINIMUM_MENTAL = 0;
 const int CURSOR_SIZE = 20;
 
 // •¶Žš—ñ‚É•ÏŠ·
-inline std::string ToStoring(Type type)
+inline std::string ToString(Type type)
 {
 	switch (type)
 	{

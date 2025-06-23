@@ -12,4 +12,7 @@ struct OfficerInitData
 	int suitID = -1;
 	int weaponID = -1;
 	OfficerType type = OfficerType::NONE;
+	int param[(int)Type::MAX] ={
+		10,10,10,10
+	};
 };

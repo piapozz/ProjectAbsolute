@@ -28,9 +28,14 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 	health = data.health;
 	maxHealth = health;
 
+	_officerName = data.name;
 	_mental = data.mental;
 	_suitID = data.suitID;
 	_weaponID = data.weaponID;
+	for (int i = 0;i < (int)Type::MAX;i++)
+	{
+		_parameter[i] = data.param[i];
+	}
 
 	suit = new SuitTriangle();
 	weapon = new WeaponTriangle();

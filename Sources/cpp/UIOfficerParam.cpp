@@ -41,7 +41,13 @@ void UIOfficerParam::SetParamName(std::string str)
 	_pParamName->SetText(str);
 }
 
-void UIOfficerParam::SetParam(float value)
+void UIOfficerParam::SetParam(std::string str)
 {
-	_pParamValue->SetText(std::to_string(value));
+	_pParamValue->SetText(str);
+}
+
+void UIOfficerParam::SetParamColor(int color)
+{
+	_pParamName->SetTextColor(color);
+	_pParamValue->SetTextColor(color);
 }

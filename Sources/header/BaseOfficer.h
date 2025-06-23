@@ -34,12 +34,14 @@ public:
 	BaseWeapon* GetWeapon() { return weapon; }
 	int GetMental(){ return _mental; }
 	std::string GetName(){ return _officerName; }
+	int* GetParameter() { return _parameter; }
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	void SetOfficerType(OfficerType type){ _officerType = type; }
 	void SetSuit(BaseSuit* baseSuit){ suit = baseSuit; }
 	void SetWeapon(BaseWeapon* baseWeapon){ weapon = baseWeapon; }
 	void SetMental(int value) { _mental = value; }
 	void SetName(std::string name){ _officerName = name; }
+	void SetParameter(Type type, int value) { _parameter[(int)type] = value; }
 
 protected:
 	BaseSuit* suit;
@@ -51,6 +53,7 @@ protected:
 	int _weaponID;
 	int _mental;
 	std::string _officerName;
+	int _parameter[(int)Type::MAX];
 
 private:
 };
