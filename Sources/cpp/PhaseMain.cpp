@@ -33,7 +33,7 @@ void PhaseMain::Init()
 	_pStageManager->SetStageData(_stageData);
 	_pStageManager->CreateStage();
 	_pOfficerManager = new OfficerManager();
-	_pOfficerManager->Init();
+	_pOfficerManager->Init(_pStageManager);
 	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
 	BaseEntity* addEntity = ObjectFactory::Instance().CreateWithArgs<Entity_E000>(layerSetting);
 	_pStageManager->SetEntity(addEntity, 0);

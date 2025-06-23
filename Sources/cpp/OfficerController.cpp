@@ -1,24 +1,25 @@
 #include "../header/OfficerController.h"
 #include "../header/ObjectManager.h"
-#include "../header/BaseCharacter.h"
 #include "../header/SecureRoom.h"
+#include "../header/SelectorNearEntityInRoom.h"
 
-void OfficerController::UpdateAI() 
+void OfficerController::UpdateAI()
 {
 	DecideState();
 }
 
-void OfficerController::DecideState() 
+void OfficerController::DecideState()
 {
 	CharacterController::DecideState();
+	CharacterStateID stateID = character->stateID;
 
-	if (officer->GetMental() <= 0)
+	if (stateID != CharacterStateID::PANIC && officer->GetMental() <= 0)
 	{
 		character->ChangeState(CharacterStateID::PANIC);
 		return;
 	}
 
-	switch (character->stateID)
+	switch (stateID)
 	{
 		case CharacterStateID::IDLE:
 			UpdateIdleState();
@@ -29,7 +30,7 @@ void OfficerController::DecideState()
 			break;
 
 		case CharacterStateID::FIGHT:
-			UpdateMoveState();
+			UpdateFightState();
 			break;
 	}
 
@@ -46,21 +47,27 @@ void OfficerController::UpdateIdleState()
 	character->ChangeMoveState(nextPosition);
 }
 
-void OfficerController::UpdateMoveState() 
+void OfficerController::UpdateMoveState()
 {
-	BaseCharacterState* state = character->pCharacterState;
-
 	BaseCharacterState* characterState = character->pCharacterState;
 
 	// 自身の状態を確認してステートを分岐
 	if (!characterState->IsEndState()) return;
 
-	// もしターゲットを持っていたら
-	//if (officer->targetCharacter)
+	//BaseCharacter* checkTarget = CheckHostility();
+	//if (checkTarget)
 	//{
-	//	officer->ChangeState(CharacterStateID::FIGHT);
-	//	return;
+	//	character->targetCharacter = checkTarget;
+	//	character->ChangeState(CharacterStateID::FIGHT);
 	//}
+
+
+	// もしターゲットを持っていたら
+	if (officer->targetCharacter)
+	{
+		officer->ChangeState(CharacterStateID::FIGHT);
+		return;
+	}
 
 	// SecureRoom かどうかをチェック
 	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
@@ -78,7 +85,27 @@ void OfficerController::UpdateMoveState()
 
 void OfficerController::UpdateFightState()
 {
+	BaseCharacter* targetCharacter = character->targetCharacter;
 
+	if (nullptr)
+	{
+		character->ChangeState(CharacterStateID::IDLE);
+		return;
+	}
+
+	Vector2 attackerPos = character->GetTransform().position;
+	Vector2 targetPos = targetCharacter->GetTransform().position;
+	int dx = targetPos.x - attackerPos.x;
+	// int attackRange = attackAction->attackRange;
+
+	// 射程外
+	if (abs(dx) > 1)
+	{
+		character->ChangeMoveState(targetCharacter->GetTransform().position);
+		return;
+	}
+
+	return;
 }
 
 bool OfficerController::WaitUntilCount()
@@ -114,7 +141,11 @@ Vector2 OfficerController::GetRandomPositionInRoom()
 	return {randValue, characterPosition.y};
 }
 
-bool OfficerController::CheckHostility()
+BaseCharacter* OfficerController::CheckHostility()
 {
-	return false;
+	SelectorNearEntityInRoom* selector = new SelectorNearEntityInRoom();
+	std::vector<BaseCharacter*> targetList = selector->SelectTargets(character);
+	if (targetList.empty()) return nullptr;
+
+	return targetList[0];
 }
