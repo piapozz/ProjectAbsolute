@@ -14,17 +14,12 @@ OfficerManager::~OfficerManager()
 
 void OfficerManager::Init(StageManager* stageManager)
 {
-
-
 	OfficerInitData data;
 	Vector2 position = stageManager->GetRandomSection()->GetTransform().position;
 	AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data);
-	//AddOfficer(OfficerType::PLAYER, data);
-	//AddOfficer(OfficerType::PLAYER, data);
+
 	position = stageManager->GetRandomSection()->GetTransform().position;
 	AddOfficer(OfficerType::MOB, data, position);
-	// AddOfficer(OfficerType::MOB, data);
 }
 
 void OfficerManager::Proc()
