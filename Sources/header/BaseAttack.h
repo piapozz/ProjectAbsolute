@@ -1,6 +1,5 @@
 #pragma once
 #include "../header/BaseCharacter.h"
-#include "../header/ITargetSelector.h"
 
 class BaseCharacter;
 

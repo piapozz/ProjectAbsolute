@@ -7,7 +7,6 @@ void CharacterStateFight::Update(BaseCharacter* character)
 {
 	if (!character->targetCharacter)
 	{
-		character->ChangeState(CharacterStateID::IDLE);
 		return;
 	}
 
@@ -22,21 +21,28 @@ void CharacterStateFight::Update(BaseCharacter* character)
 			hasAttacked = true;
 		}
 
-		if (nowCount >= _attackStartCount + _attackDuration) 
+		if (nowCount >= _attackStartCount + _attackDuration)
 		{
 			isAttacking = false;
 			hasAttacked = false;
 			_attackStartCount = nowCount + _coolTime;
+			character->color = 0x800080;
 		}
 		return;
 	}
 
-	if (nowCount >= _attackStartCount) 
+	// クールタイムが終わっていない場合
+	if (nowCount < _attackStartCount)
 	{
-		if (CheckRange(character)) 
-		{
-			StartAttack();
-		}
+		character->color = 0x800080;
+		return;
+	}
+
+	// 攻撃開始チェック
+	if (CheckRange(character))
+	{
+		StartAttack();
+		character->color = FIGHT;  // 攻撃開始で元の色に戻す
 	}
 }
 
@@ -49,7 +55,8 @@ void CharacterStateFight::Enter(BaseCharacter* character)
 
 	isAttacking = false;
 	hasAttacked = false;
-	_attackStartCount = GetNowCount();
+
+	_attackStartCount = GetNowCount() + _coolTime;
 }
 
 void CharacterStateFight::Exit(BaseCharacter* character)

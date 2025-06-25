@@ -1,14 +1,14 @@
 #pragma once
-#include "../header/CharacterController.h"
+#include "../header/BaseController.h"
 #include "../header/BaseOfficer.h"
 
-class EntityController: public CharacterController
+class EntityController: public BaseController
 {
 public:
 	EntityController(){
 	}
-	EntityController(BaseCharacter* character): CharacterController(character){
-		CharacterController::character = character;
+	EntityController(BaseCharacter* character): BaseController(character){
+		BaseController::character = character;
 	};
 	~EntityController(){
 	};
