@@ -4,6 +4,9 @@ class UIScreenImage:
     public BaseUIScreen
 {
 public:
+	static std::string StaticTypeName() {
+		return "UIScreenImage";
+	}
 	UIScreenImage() {
 	}
 	UIScreenImage(Transform setTransform, bool fill, LayerSetting layerSetting) {
@@ -27,12 +30,13 @@ public:
 	void Teardown() override;
 	void OnCursor();
 	void NotOnCursor();
-	static std::string StaticTypeName() {
-		return "UIScreenImage";
-	}
-	void DrawUIBox(int color = NULL);
+	void DrawUIBox();
+	inline void SetColor(int color){ _color = color; }
+	inline void SetOutLineColor(int color){ _outLineColor = color; }
 private:
 	bool _fill;
+	bool _onCorsor;
+	int _color;
 	int _outLineColor;
 };
 

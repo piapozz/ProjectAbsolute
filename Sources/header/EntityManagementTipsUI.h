@@ -1,28 +1,33 @@
 #pragma once
-#include "BaseObject.h"
+#include "BaseUIScreen.h"
 
 class UIScreenText;
+class UIScreenImage;
 
-class EntityManagementTipsUI : public BaseObject
+class EntityManagementTipsUI : public BaseUIScreen
 {
 public:
-	EntityManagementTipsUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText);
+	EntityManagementTipsUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText, int tipsCount);
 	~EntityManagementTipsUI(){}
 
-	void SetActive(bool active);
-	inline void SetLock(bool isLock) { _isLock = isLock; }
 	void Draw() override;
+	inline void SetLock(bool isLock) { _isLock = isLock; }
 
 	static std::string StaticTypeName() {
 		return "EntityManagementTipsUI";
 	}
 
 private:
+	UIScreenImage* _BGImage;
 	UIScreenText* _lockText;
-	UIScreenText* _tipsInformation;
+	UIScreenText* _informationText;
 	UIScreenText* _tipsText;
 	bool _isLock;
-	const std::string _LOCK_TEXT = "ロック中";
-	const std::string _TIPS_INFORMATION = "管理方法%d";
+
+	const Vector2 _LOCK_TEXT_POS = Vector2(-0.45f, 0);
+	const std::string _LOCK_TEXT = "該当事例発生で解除";
+	const Vector2 _INFORMATION_POS = Vector2(-0.3f, -0.95f);
+	const std::string _INFORMATION_TEXT = "管理方法";
+	const Vector2 _TIPS_TEXT_POS = Vector2(-0.95f, -0.3f);
 };
 

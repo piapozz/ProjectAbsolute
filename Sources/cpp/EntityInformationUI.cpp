@@ -14,22 +14,23 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 
 	// 枠
 	worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
-	_informationBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_informationBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
+	_informationBGImage->SetOutLineColor(GetColor(255, 128, 0));
 	worldTransform = Transform(_INFORMATION_POS, Vector2::one(), this);
 	_information = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_information->SetText(_INFORMATION_TEXT);
 	// ロック
 	worldTransform = Transform(_LOCK_IMAGE_POS, _LOCK_IMAGE_SCALE, this);
-	_lockImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_lockImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	worldTransform = Transform(_LOCK_TEXT_POS, Vector2::one(), this);
 	_lockText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_lockText->SetText(_LOCK_TEXT);
 	// 画像
 	worldTransform = Transform(_ENTITY_IMAGE_POS, _ENTITY_IMAGE_SCALE, this);
-	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	// 属性
 	worldTransform = Transform(_TYPE_BG_POS, _TYPE_BG_SCALE, this);
-	_typeBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_typeBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	worldTransform = Transform(_TYPE_INFORMATION_POS, Vector2::one(), this);
 	_typeInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_typeInformation->SetText(_TYPE_INFORMATION_TEXT);
@@ -38,7 +39,7 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 	_type->SetText("X");
 	// エネルギー
 	worldTransform = Transform(_ENERGY_BG_POS, _ENERGY_BG_SCALE, this);
-	_energyBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_energyBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	worldTransform = Transform(_ENERGY_INFORMATION_POS, Vector2::one(), this);
 	_energyInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_energyInformation->SetText(_ENERGY_INFORMATION_TEXT);
@@ -57,7 +58,7 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 	_hazardLevel->SetText("XXXX");
 	// 作業情報
 	worldTransform = Transform(_OPERATION_BG_POS, _OPARATION_BG_SCALE, this);
-	_operationBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
+	_operationBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	worldTransform = Transform(_OPERATION_INFORMATION_POS, Vector2().one(), this);
 	_operationInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_operationInformation->SetText(_OPERATION_INFORMATION_TEXT);

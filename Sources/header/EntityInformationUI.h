@@ -47,7 +47,7 @@ private:
 	const Vector2 _LOCK_IMAGE_POS = Vector2(0, 0.05f);
 	const Vector2 _LOCK_IMAGE_SCALE = Vector2(0.95f, 0.9f);
 	const Vector2 _LOCK_TEXT_POS = Vector2(-0.15f, 0);
-	const std::string _LOCK_TEXT = "基本情報";
+	const std::string _LOCK_TEXT = "規定作業回数で解除";
 	// 情報フレーム画像
 	const Vector2 _INFORMATION_FRAME_POS = Vector2(0, 0);
 	// 情報テキスト

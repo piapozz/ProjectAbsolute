@@ -18,6 +18,6 @@ void Cursor::Proc()
 
 void Cursor::Draw()
 {
-	_pImage->DrawUIBox(GetColor(128, 128, 128));
+	_pImage->DrawUIBox();
 	BaseUIScreen::Draw();
 }

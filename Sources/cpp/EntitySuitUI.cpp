@@ -4,45 +4,46 @@
 EntitySuitUI::EntitySuitUI(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
+	_isLock = true;
 
 	ObjectFactory& factory = ObjectFactory::Instance();
+	Transform worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
 	LayerSetting layer = LayerSetting(true, false, Layer::MIDDLE);
 
-	Transform worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
-	_BGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
-}
-
-void EntitySuitUI::SetActive(bool active)
-{
-	_lockText->SetActive(active);
-	_information->SetActive(active);
-	_image->SetActive(active);
-	_rank->SetActive(active);
-	_name->SetActive(active);
-	_typeInformtaion->SetActive(active);
-	_type->SetActive(active);
-	_damageInformation->SetActive(active);
-	_damage->SetActive(active);
-	_speedInformation->SetActive(active);
-	_speed->SetActive(active);
-	_rangeInformation->SetActive(active);
-	_range->SetActive(active);
+	// äÓëb
+	worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
+	_BGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
+	_BGImage->SetOutLineColor(GetColor(255, 128, 0));
+	worldTransform = Transform(_INFORMATION_TEXT_POS, Vector2::one(), this);
+	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_informationText->SetText(_INFORMATION_TEXT);
+	// ÉçÉbÉN
+	worldTransform = Transform(_LOCK_IMAGE_POS, _LOCK_IMAGE_SCALE, this);
+	_lockImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
+	worldTransform = Transform(_LOCK_TEXT_POS, Vector2::one(), this);
+	_lockText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_lockText->SetText(_LOCK_TEXT);
+	// âÊëú
+	worldTransform = Transform(_IMAGE_POS, _IMAGE_SCALE, this);
+	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
+	// äÎåØìx
+	worldTransform = Transform(_RANK_TEXT_POS, Vector2::one(), this);
+	_rankText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_rankText->SetText(_LOCK_TEXT);
 }
 
 void EntitySuitUI::Draw()
 {
 	_BGImage->Draw();
-	//_lockText->Draw();
-	//_information->Draw();
-	//_image->Draw();
-	//_rank->Draw();
-	//_name->Draw();
-	//_typeInformtaion->Draw();
-	//_type->Draw();
-	//_damageInformation->Draw();
-	//_damage->Draw();
-	//_speedInformation->Draw();
-	//_speed->Draw();
-	//_rangeInformation->Draw();
-	//_range->Draw();
+	_informationText->Draw();
+	if (_isLock)
+	{
+		_lockImage->Draw();
+		_lockText->Draw();
+	} else
+	{
+		_image->Draw();
+		_rankText->Draw();
+
+	}
 }
