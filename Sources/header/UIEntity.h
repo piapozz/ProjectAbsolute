@@ -18,7 +18,6 @@ public:
 	~UIEntity(){}
 
 	void Init();
-	void Proc() override;
 	void Draw() override;
 
 	static std::string StaticTypeName() {
@@ -41,14 +40,14 @@ private:
 	const Vector2 _CENTER_POS = _WINDOW_SCALE / 2;
 	const Transform _TRANSFORM = Transform(_CENTER_POS, _WINDOW_SCALE);
 	const LayerSetting _DEFAULT_LAYER = LayerSetting(false, false, Layer::MIDDLE);
-	// 基本情報
-	const Vector2 _INFORMATION_POS = Vector2(-0.65f, -0.35f);
-	const Vector2 _INFORMATION_SCALE = Vector2(0.3f, 0.55f);
 	const Vector2 _INFORMATION_TEXT_POS = Vector2(-0.95, -0.95);
 	const std::string _INFORMATION_TEXT = "エンティティ 情報";
+	// 基本情報
+	const Vector2 _INFORMATION_POS = Vector2(-0.65f, -0.4f);
+	const Vector2 _INFORMATION_SCALE = Vector2(0.3f, 0.5f);
 	// 作業情報
-	const Vector2 _OPERATION_POS = Vector2(-0.65f, 0.6f);
-	const Vector2 _OPERATION_SCALE = Vector2(0.3f, 0.3f);
+	const Vector2 _OPERATION_POS = Vector2(-0.65f, 0.5f);
+	const Vector2 _OPERATION_SCALE = Vector2(0.3f, 0.4f);
 	// 管理方法
 	const Vector2 _MANAGEMENT_POS = Vector2(0, 0);
 	const Vector2 _MANAGEMENT_SCALE = Vector2(0.3f, 0.9f);

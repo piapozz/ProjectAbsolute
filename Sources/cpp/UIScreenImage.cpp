@@ -3,7 +3,10 @@
 void UIScreenImage::Init(Transform setTransform, bool fill, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
+	_color = GetColor(128, 128, 128);
+	_outLineColor = COLOR_WHITE;
 	_fill = fill;
+	_onCorsor = false;
 }
 
 void UIScreenImage::Proc()
@@ -16,7 +19,7 @@ void UIScreenImage::Draw()
 {
 	// •`‰æ
 	BaseUIScreen::Draw();
-	DrawUIBox(GetColor(125, 125, 125));
+	DrawUIBox();
 }
 
 void UIScreenImage::Teardown()
@@ -25,7 +28,7 @@ void UIScreenImage::Teardown()
 	BaseUIScreen::Teardown();
 }
 
-void UIScreenImage::DrawUIBox(int color)
+void UIScreenImage::DrawUIBox()
 {
 	// ŽlŠp‚ð•`‰æ
 	Transform transformWorld = transform.GetWorldTransform();
@@ -36,16 +39,19 @@ void UIScreenImage::DrawUIBox(int color)
 	int x2 = position.x - scale.x / 2;
 	int y2 = position.y - scale.y / 2;
 
-	DrawBoxAA(x1, y1, x2, y2, color, _fill);
-	DrawBoxAA(x1, y1, x2, y2, _outLineColor, FALSE);
+	DrawBoxAA(x1, y1, x2, y2, _color, _fill);
+	if (_onCorsor)
+		DrawBoxAA(x1, y1, x2, y2, COLOR_ON_CORSOR, FALSE);
+	else
+		DrawBoxAA(x1, y1, x2, y2, _outLineColor, FALSE);
 }
 
 void UIScreenImage::OnCursor()
 {
-	_outLineColor = GetColor(0, 255, 255);
+	_onCorsor = true;
 }
 
 void UIScreenImage::NotOnCursor()
 {
-	_outLineColor = GetColor(255, 255, 255);
+	_onCorsor = false;
 }

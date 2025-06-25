@@ -110,6 +110,17 @@ enum class CharacterGroup
 	OTHER,
 };
 
+enum class Level
+{
+	INVALID = -1,
+	I,
+	II,
+	III,
+	IV,
+	V,
+	MAX
+};
+
 // レイヤー設定構造体
 typedef struct LayerSetting
 {
@@ -129,6 +140,7 @@ const int STAGE_SIZE = 7;
 // 色
 const int COLOR_BLACK = GetColor(0, 0, 0);
 const int COLOR_WHITE = GetColor(255, 255, 255);
+const int COLOR_ON_CORSOR = GetColor(0, 255, 255);
 
 // ウィンドウ
 const int WINDOW_WIDTH = 1920;
@@ -168,5 +180,32 @@ inline int ToColor(Type type)
 		case Type::BLACK:  return GetColor(200, 100, 200);
 		case Type::PALE:   return GetColor(100, 200, 200);
 		default:           return GetColor(128, 128, 128);
+	}
+}
+
+// レベルをローマ数字に変換
+inline std::string ToRomanNumber(Level level)
+{
+	switch (level)
+	{
+		case Level::I:		return "I";
+		case Level::II:		return "II";
+		case Level::III:	return "III";
+		case Level::IV:		return "IV";
+		case Level::V:		return "V";
+		default:			return "Unknown";
+	}
+}
+
+// タイプを作業の文字列へ変換
+inline std::string ToOperation(Type type)
+{
+	switch (type)
+	{
+		case Type::RED:    return "世話";
+		case Type::WHITE:  return "観察";
+		case Type::BLACK:  return "接触";
+		case Type::PALE:   return "危害";
+		default:           return "";
 	}
 }
