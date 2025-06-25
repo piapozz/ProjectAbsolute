@@ -6,7 +6,6 @@
 #include "../header/CharacterStateOperation.h"
 #include "../header/CharacterStateOperationMove.h"
 #include "../header/CharacterStateFight.h"
-#include "../header/CharacterStateFightMove.h"
 #include "../header/CharacterStatePanic.h"
 #include "../header/CharacterStateDead.h"
 #include "../header/StateArgs.h"

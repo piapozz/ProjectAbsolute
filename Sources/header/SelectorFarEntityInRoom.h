@@ -1,7 +1,7 @@
 #pragma once
 #include "ITargetSelector.h"
 
-class SelectorNearOfficer: public ITargetSelector
+class SelectorFarEntityInRoom: public ITargetSelector
 {
 public:
 	std::vector<BaseCharacter*> SelectTargets(BaseCharacter* attacker) override;

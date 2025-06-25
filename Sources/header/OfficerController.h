@@ -1,14 +1,14 @@
 #pragma once
-#include "../header/CharacterController.h"
+#include "../header/BaseController.h"
 #include "../header/BaseOfficer.h"
 
-class OfficerController: public CharacterController 
+class OfficerController: public BaseController 
 {
 public:
 	OfficerController(){
 		_startCount = GetNowCount();
 	}
-	OfficerController(BaseCharacter* character): CharacterController(character){
+	OfficerController(BaseCharacter* character): BaseController(character){
 		_startCount = GetNowCount();
 		officer = static_cast<BaseOfficer*>(character);
 	};

@@ -1,8 +1,7 @@
 #pragma once
-#include "BaseAttack.h"
+#include "../header/BaseAttack.h"
 
-class AttackNormal: public BaseAttack
+class AttackSingle: public BaseAttack
 {
-public:
 	void Attack(BaseCharacter* attacker, BaseCharacter* characters) override;
 };

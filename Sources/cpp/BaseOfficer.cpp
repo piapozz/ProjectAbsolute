@@ -48,6 +48,9 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 	strength = weapon->GetDamage();
 	attackType = weapon->GetDamageType();
 
+	_attackStatus.attack = strength;
+	_attackStatus.damageType = attackType;
+
 	SetImpossible(true);
 
 	SetOfficerID(setOfficerID);

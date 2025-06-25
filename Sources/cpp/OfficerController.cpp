@@ -10,8 +10,20 @@ void OfficerController::UpdateAI()
 
 void OfficerController::DecideState()
 {
-	CharacterController::DecideState();
+	BaseController::DecideState();
 	CharacterStateID stateID = character->stateID;
+
+	if (character->GetIsDead()) return;
+
+	if (!character->GetIsDead())
+	{
+		if (character->GetHealth() <= 0)
+		{
+			character->SetIsDead(true);
+			character->ChangeState(CharacterStateID::DEAD);
+			return;
+		}
+	}
 
 	if (stateID != CharacterStateID::PANIC && officer->GetMental() <= 0)
 	{
@@ -52,6 +64,7 @@ void OfficerController::UpdateIdleState()
 	{
 		character->targetCharacter = checkTarget;
 		character->ChangeState(CharacterStateID::FIGHT);
+		return;
 	}
 
 	if (!WaitUntilCount()) return;
@@ -79,6 +92,8 @@ void OfficerController::UpdateMoveState()
 		return;
 	}
 
+	if(character->targetCharacter) character->ChangeState(CharacterStateID::FIGHT);
+
 	character->ChangeState(CharacterStateID::IDLE);
 	return;
 }
@@ -87,25 +102,41 @@ void OfficerController::UpdateFightState()
 {
 	BaseCharacter* targetCharacter = character->targetCharacter;
 
-	if (nullptr)
+	if (!targetCharacter || targetCharacter->GetIsDead())
 	{
+		BaseCharacter* newTarget = CheckHostility();
+		if (newTarget)
+		{
+			character->targetCharacter = newTarget;
+			return;
+		}
+
+		character->targetCharacter = nullptr;
 		character->ChangeState(CharacterStateID::IDLE);
+		return;
+	}
+
+	ObjectManager& objectManager = ObjectManager::Instance();
+	BaseObject* mySection = objectManager.FindPosObject(character->GetPosition(), ObjectType::SECTION);
+	BaseObject* targetSection = objectManager.FindPosObject(targetCharacter->GetPosition(), ObjectType::SECTION);
+
+	if (mySection != targetSection)
+	{
+		character->ChangeMoveState(targetCharacter->GetTransform().position);
 		return;
 	}
 
 	Vector2 attackerPos = character->GetTransform().position;
 	Vector2 targetPos = targetCharacter->GetTransform().position;
 	int dx = targetPos.x - attackerPos.x;
-	// int attackRange = attackAction->attackRange;
+	int attackRange = character->attackActions[0]->attackRange;
 
-	// ŽË’öŠO
-	if (abs(dx) > 30)
+	if (abs(dx) > attackRange)
 	{
 		character->ChangeMoveState(targetCharacter->GetTransform().position);
 		return;
 	}
 
-	return;
 }
 
 bool OfficerController::WaitUntilCount()

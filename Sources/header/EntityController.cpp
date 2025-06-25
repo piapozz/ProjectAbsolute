@@ -10,7 +10,7 @@ void EntityController::UpdateAI()
 
 void EntityController::DecideState()
 {
-	CharacterController::DecideState();
+	BaseController::DecideState();
 
 	character->ChangeState(CharacterStateID::PANIC);
 

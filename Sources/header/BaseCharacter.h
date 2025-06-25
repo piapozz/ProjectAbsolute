@@ -3,7 +3,7 @@
 #include "../header/RouteSearcher.h"
 #include "../header/StateArgs.h"
 #include "../header/BaseSection.h"
-#include "../header/CharacterController.h"
+#include "../header/BaseController.h"
 
 class BaseCharacterState;
 class BaseAttack;
@@ -80,18 +80,6 @@ public:
 		DecreaseHealth(ceil(index));
 	}
 	/// <summary>
-	/// 区画へ移動する
-	/// </summary>
-	/// <param name="targetSection"></param>
-	/// <returns></returns>
-	//bool Move(BaseSection* targetSection, float speed);
-	/// <summary>
-	/// 細かい座標に移動する
-	/// </summary>
-	/// <param name="targetPosition"></param>
-	/// <returns></returns>
-	//bool Move(Vector2 targetPosition, float speed);
-	/// <summary>
 	/// 体力減少処理
 	/// </summary>
 	/// <param name="decreaseValue"></param>
@@ -115,6 +103,8 @@ public:
 	/// <param name="nextStateID"></param>
 	void ChangeMoveState(Vector2 targetPosition, CharacterStateID nextStateID = CharacterStateID::IDLE);
 
+	inline bool GetIsDead(){ return isDead; }
+	inline bool GetIsPanic(){ return isPanic; }
 	inline BaseSection* GetPastPosition(){ return pastRoom; }
 	inline AttackStatus GetAttackStatus() { return _attackStatus; }
 	inline int GetHealth(){ return health; }
@@ -122,6 +112,8 @@ public:
 	inline CharacterGroup GetGroup(){ return _groupType; }
 	inline std::vector<AttackAction*> GetAttackAction(){ return attackActions; }
 	inline int GetSpeed(){ return _moveSpeed; }
+	inline void SetIsDead(bool flag){ isDead = flag; }
+	inline void SetIsPanic(bool flag){ isPanic = flag; }
 	inline void SetAttackStatus(AttackStatus attackStatus){ _attackStatus = attackStatus; }
 	inline void SetHealth(int value){ health = value; }
 	inline void SetImpossible(bool flag){ impossible = flag; }
@@ -132,7 +124,7 @@ public:
 	std::vector<AttackAction*> attackActions;
 	// 過去の位置
 	BaseSection* pastRoom;
-	CharacterController* pController;
+	BaseController* pController;
 	BaseCharacterState* pCharacterState;
 	CharacterStateID stateID;
 	unsigned int color;
@@ -153,7 +145,12 @@ protected:
 	bool impossible;
 	// キャラクターの陣営
 	CharacterGroup _groupType;
-
+	// 死亡しているかどうか
+	bool isDead;
+	// パニック状態かどうか
+	bool isPanic;
+	// 戦闘中かどうか
+	bool isFight;
 private:
 	int _moveSpeed;
 };

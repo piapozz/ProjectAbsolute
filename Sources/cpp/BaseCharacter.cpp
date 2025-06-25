@@ -13,6 +13,9 @@ void BaseCharacter::Init(LayerSetting layerSetting)
 	targetCharacter = nullptr;
 	transform.scale = Vector2(50, 50);
 
+	isDead = false;
+	isPanic = false;
+
 }
 
 void BaseCharacter::Proc()

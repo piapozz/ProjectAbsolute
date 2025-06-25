@@ -7,14 +7,14 @@ class BaseCharacter;
  * Sein
  * Controller‚ÌBase
  */
-class CharacterController
+class BaseController
 {
 public:
-	CharacterController(){
+	BaseController(){
 	};
-	CharacterController(BaseCharacter* character): character(character){
+	BaseController(BaseCharacter* character): character(character){
 	};
-	~CharacterController(){
+	~BaseController(){
 	};
 
 	virtual void UpdateAI() = 0;

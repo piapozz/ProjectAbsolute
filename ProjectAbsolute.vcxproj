@@ -139,8 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\cpp\AttackLongRange.cpp" />
-    <ClCompile Include="Sources\cpp\AttackNormal.cpp" />
+    <ClCompile Include="Sources\cpp\AttackBetweenCharacters.cpp" />
+    <ClCompile Include="Sources\cpp\AttackSingle.cpp" />
     <ClCompile Include="Sources\cpp\BaseAttack.cpp" />
     <ClCompile Include="Sources\cpp\BaseCharacter.cpp" />
     <ClCompile Include="Sources\cpp\BaseEntity.cpp" />
@@ -154,8 +154,8 @@
     <ClCompile Include="Sources\cpp\BaseUI.cpp" />
     <ClCompile Include="Sources\cpp\BaseUIScreen.cpp" />
     <ClCompile Include="Sources\cpp\Camera.cpp" />
-    <ClCompile Include="Sources\cpp\CharacterController.cpp" />
-    <ClCompile Include="Sources\cpp\CharacterStateFightMove.cpp" />
+    <ClCompile Include="Sources\cpp\BaseController.cpp" />
+    <ClCompile Include="Sources\cpp\CharacterStateOrderMove.cpp" />
     <ClCompile Include="Sources\cpp\CommonModule.cpp" />
     <ClCompile Include="Sources\cpp\Cursor.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
@@ -173,7 +173,6 @@
     <ClCompile Include="Sources\cpp\OfficerController.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerMobController.cpp" />
     <ClCompile Include="Sources\cpp\OfficerPlayer.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStateDead.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStateFactory.cpp" />
@@ -184,8 +183,6 @@
     <ClCompile Include="Sources\cpp\CharacterStateOperationMove.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStatePanic.cpp" />
     <ClCompile Include="Sources\cpp\BaseOperation.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerPlayerController.cpp" />
-    <ClCompile Include="Sources\cpp\OfficerStateIdle.cpp" />
     <ClCompile Include="Sources\cpp\OperationContact.cpp" />
     <ClCompile Include="Sources\cpp\OperationInjure.cpp" />
     <ClCompile Include="Sources\cpp\OperationObserbation.cpp" />
@@ -207,11 +204,8 @@
     <ClCompile Include="Sources\cpp\SectionCorridor.cpp" />
     <ClCompile Include="Sources\cpp\SectionRoom.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
-    <ClCompile Include="Sources\cpp\SelectorAllCharacter.cpp" />
-    <ClCompile Include="Sources\cpp\SelectorAllEntity.cpp" />
-    <ClCompile Include="Sources\cpp\SelectorAllOfficer.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorFarEntityInRoom.cpp" />
     <ClCompile Include="Sources\cpp\SelectorNearEntityInRoom.cpp" />
-    <ClCompile Include="Sources\cpp\SelectorNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\SelectorOutAreaNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
     <ClCompile Include="Sources\cpp\SuitTriangle.cpp" />
@@ -233,11 +227,10 @@
     <ClCompile Include="Sources\header\BaseSuit.h" />
     <ClCompile Include="Sources\header\EntityController.cpp" />
     <ClCompile Include="Sources\header\OfficerMobController.h" />
-    <ClCompile Include="Sources\header\SelectorNearOfficer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\header\AttackLongRange.h" />
-    <ClInclude Include="Sources\header\AttackNormal.h" />
+    <ClInclude Include="Sources\header\AttackBetweenCharacters.h" />
+    <ClInclude Include="Sources\header\AttackSingle.h" />
     <ClInclude Include="Sources\header\AutoTypeNameObject.h" />
     <ClInclude Include="Sources\header\BaseAttack.h" />
     <ClInclude Include="Sources\header\BaseCharacter.h" />
@@ -254,8 +247,8 @@
     <ClInclude Include="Sources\header\BaseUIScreen.h" />
     <ClInclude Include="Sources\header\BaseWeapon.h" />
     <ClInclude Include="Sources\header\Camera.h" />
-    <ClInclude Include="Sources\header\CharacterController.h" />
-    <ClInclude Include="Sources\header\CharacterStateFightMove.h" />
+    <ClInclude Include="Sources\header\BaseController.h" />
+    <ClInclude Include="Sources\header\CharacterStateOrderMove.h" />
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
     <ClInclude Include="Sources\header\Cursor.h" />
@@ -290,7 +283,6 @@
     <ClInclude Include="Sources\header\CharacterStatePanic.h" />
     <ClInclude Include="Sources\header\BaseOperation.h" />
     <ClInclude Include="Sources\header\OfficerPlayerController.h" />
-    <ClInclude Include="Sources\header\OfficerStateIdle.h" />
     <ClInclude Include="Sources\header\OperationContact.h" />
     <ClInclude Include="Sources\header\OperationInjure.h" />
     <ClInclude Include="Sources\header\OperationObserbation.h" />
@@ -311,9 +303,7 @@
     <ClInclude Include="Sources\header\SectionCorridor.h" />
     <ClInclude Include="Sources\header\SectionRoom.h" />
     <ClInclude Include="Sources\header\SecureRoom.h" />
-    <ClInclude Include="Sources\header\SelectorAllCharacter.h" />
-    <ClInclude Include="Sources\header\SelectorAllEntity.h" />
-    <ClInclude Include="Sources\header\SelectorAllOfficer.h" />
+    <ClInclude Include="Sources\header\SelectorFarEntityInRoom.h" />
     <ClInclude Include="Sources\header\SelectorNearEntityInRoom.h" />
     <ClInclude Include="Sources\header\SelectorOutAreaNearOfficer.h" />
     <ClInclude Include="Sources\header\StageManager.h" />

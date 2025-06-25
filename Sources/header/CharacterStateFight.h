@@ -25,7 +25,7 @@ private:
 	int _attackStartCount = 0;
 	int _attackHitTiming = 0;
 	int _attackDuration = 60;
-	int _coolTime = 90;
+	int _coolTime = 300;
 	int _hitTimingOffset = 10;
 
 	/// <summary>
