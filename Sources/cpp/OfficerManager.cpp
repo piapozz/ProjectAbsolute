@@ -15,7 +15,11 @@ OfficerManager::~OfficerManager()
 void OfficerManager::Init(StageManager* stageManager)
 {
 	OfficerInitData data;
-	Vector2 position = stageManager->GetRandomSection()->GetTransform().position;
+	Transform sectionTransform = stageManager->GetRandomSection()->GetTransform();
+	Vector2 sectionPosition = sectionTransform.position;
+	Vector2 sectionScale = sectionTransform.scale;
+
+	Vector2 position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
@@ -25,20 +29,27 @@ void OfficerManager::Init(StageManager* stageManager)
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	position = stageManager->GetRandomSection()->GetTransform().position;
+
+
+	sectionTransform = stageManager->GetRandomSection()->GetTransform();
+	sectionPosition = sectionTransform.position;
+	sectionScale = sectionTransform.scale;
+
+	position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
 	AddOfficer(OfficerType::MOB, data, position);
-	position = stageManager->GetRandomSection()->GetTransform().position;
+
+	sectionTransform = stageManager->GetRandomSection()->GetTransform();
+	sectionPosition = sectionTransform.position;
+	sectionScale = sectionTransform.scale;
+
+	position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
 	AddOfficer(OfficerType::MOB, data, position);
-	position = stageManager->GetRandomSection()->GetTransform().position;
+
+	sectionTransform = stageManager->GetRandomSection()->GetTransform();
+	sectionPosition = sectionTransform.position;
+	sectionScale = sectionTransform.scale;
+
+	position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
 	AddOfficer(OfficerType::MOB, data, position);
 }
 

@@ -42,7 +42,7 @@ void CharacterStateFight::Update(BaseCharacter* character)
 	if (CheckRange(character))
 	{
 		StartAttack();
-		character->color = FIGHT;  // UŒ‚ŠJŽn‚ÅŒ³‚ÌF‚É–ß‚·
+		character->color = FIGHT;
 	}
 }
 
@@ -55,6 +55,7 @@ void CharacterStateFight::Enter(BaseCharacter* character)
 
 	isAttacking = false;
 	hasAttacked = false;
+	endState = false;
 
 	_attackStartCount = GetNowCount() + _coolTime;
 }

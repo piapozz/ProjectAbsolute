@@ -31,14 +31,6 @@ void OfficerController::DecideState()
 		return;
 	}
 
-	// もしターゲットを持っていたら
-	if (stateID != CharacterStateID::FIGHT && officer->targetCharacter)
-	{
-		// クリックで移動が行われたらtargetをクリア
-		officer->ChangeState(CharacterStateID::FIGHT);
-		return;
-	}
-
 	switch (stateID)
 	{
 		case CharacterStateID::IDLE:
@@ -62,7 +54,7 @@ void OfficerController::UpdateIdleState()
 	BaseCharacter* checkTarget = CheckHostility();
 	if (checkTarget)
 	{
-		character->targetCharacter = checkTarget;
+		character->SetTargetCharacter(checkTarget);
 		character->ChangeState(CharacterStateID::FIGHT);
 		return;
 	}
@@ -70,19 +62,28 @@ void OfficerController::UpdateIdleState()
 	if (!WaitUntilCount()) return;
 
 	Vector2 nextPosition = GetRandomPositionInRoom();
-
-	// 部屋内で適当に移動
 	character->ChangeMoveState(nextPosition);
 }
 
 void OfficerController::UpdateMoveState()
 {
-	BaseCharacterState* characterState = character->pCharacterState;
+	BaseCharacter* targetCharacter = character->targetCharacter;
+	if (character->GetIsFight() && targetCharacter != nullptr)
+	{
+		Vector2 targetPos = targetCharacter->GetTransform().position;
+		Vector2 attackerPos = character->GetTransform().position;
+		int dx = targetPos.x - attackerPos.x;
+		int attackRange = character->attackActions[0]->attackRange;
 
-	// 自身の状態を確認してステートを分岐
-	if (!characterState->IsEndState()) return;
+		if (abs(dx) > attackRange)
+		{
+			character->ChangeState(CharacterStateID::FIGHT);
+			return;
+		}
+	}
 
-	// SecureRoom かどうかをチェック
+	if (!character->pCharacterState->IsEndState()) return;
+
 	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
 	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
 
@@ -92,10 +93,13 @@ void OfficerController::UpdateMoveState()
 		return;
 	}
 
-	if(character->targetCharacter) character->ChangeState(CharacterStateID::FIGHT);
+	if (character->GetIsFight())
+	{
+		character->ChangeState(CharacterStateID::FIGHT);
+		return;
+	}
 
 	character->ChangeState(CharacterStateID::IDLE);
-	return;
 }
 
 void OfficerController::UpdateFightState()
@@ -107,11 +111,11 @@ void OfficerController::UpdateFightState()
 		BaseCharacter* newTarget = CheckHostility();
 		if (newTarget)
 		{
-			character->targetCharacter = newTarget;
+			character->SetTargetCharacter(newTarget);
 			return;
 		}
 
-		character->targetCharacter = nullptr;
+		character->ClearTargetCharacter();
 		character->ChangeState(CharacterStateID::IDLE);
 		return;
 	}
@@ -120,23 +124,24 @@ void OfficerController::UpdateFightState()
 	BaseObject* mySection = objectManager.FindPosObject(character->GetPosition(), ObjectType::SECTION);
 	BaseObject* targetSection = objectManager.FindPosObject(targetCharacter->GetPosition(), ObjectType::SECTION);
 
-	if (mySection != targetSection)
-	{
-		character->ChangeMoveState(targetCharacter->GetTransform().position);
-		return;
-	}
-
-	Vector2 attackerPos = character->GetTransform().position;
 	Vector2 targetPos = targetCharacter->GetTransform().position;
+	Vector2 attackerPos = character->GetTransform().position;
 	int dx = targetPos.x - attackerPos.x;
 	int attackRange = character->attackActions[0]->attackRange;
 
-	if (abs(dx) > attackRange)
+	if (mySection != targetSection)
 	{
-		character->ChangeMoveState(targetCharacter->GetTransform().position);
+		BaseSection* section = static_cast<BaseSection*>(targetSection);
+		character->ChangeMoveState(section);
 		return;
 	}
 
+	if (abs(dx) > attackRange)
+	{
+		character->ChangeMoveState(targetPos);
+		return;
+	}
+	return;
 }
 
 bool OfficerController::WaitUntilCount()
