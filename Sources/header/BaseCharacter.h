@@ -102,9 +102,22 @@ public:
 	/// <param name="targetPosition"></param>
 	/// <param name="nextStateID"></param>
 	void ChangeMoveState(Vector2 targetPosition, CharacterStateID nextStateID = CharacterStateID::IDLE);
+	void ChangeMoveState(BaseCharacter* targetObject);
+	void SetTargetCharacter(BaseCharacter* target)
+	{
+		targetCharacter = target;
+		isFight = (target != nullptr);
+	}
+
+	void ClearTargetCharacter()
+	{
+		targetCharacter = nullptr;
+		isFight = false;
+	}
 
 	inline bool GetIsDead(){ return isDead; }
 	inline bool GetIsPanic(){ return isPanic; }
+	inline bool GetIsFight(){ return isFight; }
 	inline BaseSection* GetPastPosition(){ return pastRoom; }
 	inline AttackStatus GetAttackStatus() { return _attackStatus; }
 	inline int GetHealth(){ return health; }
@@ -114,6 +127,7 @@ public:
 	inline int GetSpeed(){ return _moveSpeed; }
 	inline void SetIsDead(bool flag){ isDead = flag; }
 	inline void SetIsPanic(bool flag){ isPanic = flag; }
+	inline void SetIsFight(bool flag){ isFight = flag; }
 	inline void SetAttackStatus(AttackStatus attackStatus){ _attackStatus = attackStatus; }
 	inline void SetHealth(int value){ health = value; }
 	inline void SetImpossible(bool flag){ impossible = flag; }
