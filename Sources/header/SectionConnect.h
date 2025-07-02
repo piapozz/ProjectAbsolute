@@ -43,5 +43,9 @@ public:
 	/// 破棄
 	/// </summary>
 	void Teardown() override;
+	/// <summary>
+	/// クリックしたときのイベント
+	/// </summary>
+	void ClickEvent() override {};
 };
 

@@ -1,14 +1,15 @@
-#include "../header/OfficerController.h"
+#include "../header/ControllerEntityTriangle.h"
+#include "../header/BaseCharacter.h"
 #include "../header/ObjectManager.h"
 #include "../header/SecureRoom.h"
 #include "../header/SelectorNearEntityInRoom.h"
 
-void OfficerController::UpdateAI()
+void ControllerEntityTriangle::UpdateAI()
 {
 	DecideState();
 }
 
-void OfficerController::DecideState()
+void ControllerEntityTriangle::DecideState()
 {
 	BaseController::DecideState();
 	CharacterStateID stateID = character->stateID;
@@ -19,12 +20,6 @@ void OfficerController::DecideState()
 	{
 		character->SetIsDead(true);
 		character->ChangeState(CharacterStateID::DEAD);
-		return;
-	}
-
-	if (stateID != CharacterStateID::PANIC && officer->GetMental() <= 0)
-	{
-		character->ChangeState(CharacterStateID::PANIC);
 		return;
 	}
 
@@ -46,7 +41,7 @@ void OfficerController::DecideState()
 	return;
 }
 
-void OfficerController::UpdateIdleState()
+void ControllerEntityTriangle::UpdateIdleState()
 {
 	BaseCharacter* checkTarget = CheckHostility();
 	if (checkTarget)
@@ -62,7 +57,7 @@ void OfficerController::UpdateIdleState()
 	character->ChangeMoveState(nextPosition);
 }
 
-void OfficerController::UpdateMoveState()
+void ControllerEntityTriangle::UpdateMoveState()
 {
 	BaseCharacter* targetCharacter = character->targetCharacter;
 	if (character->GetIsFight() && targetCharacter != nullptr)
@@ -86,12 +81,6 @@ void OfficerController::UpdateMoveState()
 	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
 	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
 
-	if (secureRoom)
-	{
-		character->ChangeState(CharacterStateID::OPERATION);
-		return;
-	}
-
 	if (character->GetIsFight())
 	{
 		character->ChangeState(CharacterStateID::FIGHT);
@@ -101,7 +90,7 @@ void OfficerController::UpdateMoveState()
 	character->ChangeState(CharacterStateID::IDLE);
 }
 
-void OfficerController::UpdateFightState()
+void ControllerEntityTriangle::UpdateFightState()
 {
 	BaseCharacter* targetCharacter = character->targetCharacter;
 
@@ -146,7 +135,7 @@ void OfficerController::UpdateFightState()
 	return;
 }
 
-bool OfficerController::WaitUntilCount()
+bool ControllerEntityTriangle::WaitUntilCount()
 {
 	int nowCount = GetNowCount();
 	int elapsed = nowCount - _startCount;
@@ -159,7 +148,7 @@ bool OfficerController::WaitUntilCount()
 	return false;
 }
 
-Vector2 OfficerController::GetRandomPositionInRoom()
+Vector2 ControllerEntityTriangle::GetRandomPositionInRoom()
 {
 	Transform characterTransform = character->GetTransform();
 	ObjectManager& objectManager = ObjectManager::Instance();
@@ -186,7 +175,7 @@ Vector2 OfficerController::GetRandomPositionInRoom()
 	return {randValue, characterPosition.y};
 }
 
-BaseCharacter* OfficerController::CheckHostility()
+BaseCharacter* ControllerEntityTriangle::CheckHostility()
 {
 	ITargetSelector* selector = character->GetAttackAction()[0]->targetSelector;
 	std::vector<BaseCharacter*> targetList = selector->SelectTargets(character);

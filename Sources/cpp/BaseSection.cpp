@@ -80,7 +80,7 @@ void BaseSection::ClickEvent()
 	for (int i = 0, max = selectOfficerList.size(); i < max; i++)
 	{
 		if (!selectOfficerList[i]->GetImpossible()) continue;
-
 		selectOfficerList[i]->ChangeMoveState(this);
+		selectOfficerList[i]->ClearTargetCharacter();
 	}
 }
