@@ -214,6 +214,7 @@
     <ClCompile Include="Sources\cpp\UIImage.cpp" />
     <ClCompile Include="Sources\cpp\UIManager.cpp" />
     <ClCompile Include="Sources\cpp\UIOfficer.cpp" />
+    <ClCompile Include="Sources\cpp\UIOfficerList.cpp" />
     <ClCompile Include="Sources\cpp\UIOfficerParam.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenButton.cpp" />
     <ClCompile Include="Sources\cpp\UIScreenImage.cpp" />
@@ -315,6 +316,7 @@
     <ClInclude Include="Sources\header\UIImage.h" />
     <ClInclude Include="Sources\header\UIManager.h" />
     <ClInclude Include="Sources\header\UIOfficer.h" />
+    <ClInclude Include="Sources\header\UIOfficerList.h" />
     <ClInclude Include="Sources\header\UIOfficerParam.h" />
     <ClInclude Include="Sources\header\UIScreen.h" />
     <ClInclude Include="Sources\header\UIScreenButton.h" />
