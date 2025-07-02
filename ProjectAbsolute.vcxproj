@@ -157,6 +157,7 @@
     <ClCompile Include="Sources\cpp\BaseController.cpp" />
     <ClCompile Include="Sources\cpp\CharacterStateOrderMove.cpp" />
     <ClCompile Include="Sources\cpp\CommonModule.cpp" />
+    <ClCompile Include="Sources\cpp\ControllerEntityTriangle.cpp" />
     <ClCompile Include="Sources\cpp\Cursor.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
     <ClCompile Include="Sources\cpp\EntityEscapeUI.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="Sources\header\CharacterStateOrderMove.h" />
     <ClInclude Include="Sources\header\CommonModule.h" />
     <ClInclude Include="Sources\header\Const.h" />
+    <ClInclude Include="Sources\header\ControllerEntityTriangle.h" />
     <ClInclude Include="Sources\header\Cursor.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
     <ClInclude Include="Sources\header\EntityController.h" />

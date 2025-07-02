@@ -29,7 +29,11 @@ void OfficerManager::Init(StageManager* stageManager)
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
-
+	AddOfficer(OfficerType::PLAYER, data, position);
+	AddOfficer(OfficerType::PLAYER, data, position);
+	AddOfficer(OfficerType::PLAYER, data, position);
+	AddOfficer(OfficerType::PLAYER, data, position);
+	AddOfficer(OfficerType::PLAYER, data, position);
 
 	sectionTransform = stageManager->GetRandomSection()->GetTransform();
 	sectionPosition = sectionTransform.position;

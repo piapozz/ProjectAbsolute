@@ -13,6 +13,7 @@ void BaseEgoEntity::Init(LayerSetting layerSetting)
 void BaseEgoEntity::Proc()
 {
 	BaseEntity::Proc();
+	// pController->UpdateAI();
 
 	// s“®‚ÌŒˆ’è
 	// ’E‘–‚µ‚Ä‚È‚¢‚È‚ç•Ô‚·
