@@ -9,15 +9,21 @@ class UIScreenText;
 class EntityManagementUI : public BaseUIScreen
 {
 public:
+	static std::string StaticTypeName() {
+		return "EntityManagementUI";
+	}
+
 	EntityManagementUI(){}
 	EntityManagementUI(Transform setTransform, LayerSetting layerSetting, int tipsCount);
 	~EntityManagementUI(){}
 
 	void Draw() override;
-
-	static std::string StaticTypeName() {
-		return "EntityManagementUI";
-	}
+	/// <summary>
+	/// ŠÇ—•û–@‚Ìİ’è
+	/// </summary>
+	/// <param name="tipsText"></param>
+	/// <param name="isLock"></param>
+	void SetManagement(std::vector<std::string> tipsText, std::vector<bool> isLock);
 
 private:
 	UIScreenImage* _BGImage;

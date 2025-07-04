@@ -7,15 +7,16 @@ class UIScreenImage;
 class EntityManagementTipsUI : public BaseUIScreen
 {
 public:
+	static std::string StaticTypeName() {
+		return "EntityManagementTipsUI";
+	}
+
 	EntityManagementTipsUI(Transform setTransform, LayerSetting layerSetting, std::string tipsText, int tipsCount);
 	~EntityManagementTipsUI(){}
 
 	void Draw() override;
 	inline void SetLock(bool isLock) { _isLock = isLock; }
-
-	static std::string StaticTypeName() {
-		return "EntityManagementTipsUI";
-	}
+	void SetTipsText(std::string setText);
 
 private:
 	UIScreenImage* _BGImage;

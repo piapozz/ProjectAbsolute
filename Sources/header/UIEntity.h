@@ -14,15 +14,16 @@ class UIScreenText;
 class UIEntity: public BaseUIScreen
 {
 public:
+	static std::string StaticTypeName() {
+		return "UIEntity";
+	}
+
 	UIEntity();
 	~UIEntity(){}
 
 	void Init();
 	void Draw() override;
-
-	static std::string StaticTypeName() {
-		return "UIEntity";
-	}
+	void SetEntityData(int setID);
 
 private:
 	UIScreenImage* _BGImage;

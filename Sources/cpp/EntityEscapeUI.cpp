@@ -69,3 +69,13 @@ void EntityEscapeUI::Draw()
 		}
 	}
 }
+
+void EntityEscapeUI::SetEscape(int setMeltdownCount, std::string setDefence[(int)Type::MAX])
+{
+	_meltdownCountText->SetText(std::to_string(setMeltdownCount));
+	for (int i = 0; i < (int)Type::MAX; i++)
+	{
+		_defenceText[i]->SetText(setDefence[i]);
+		_defenceText[i]->SetTextColor(ToColor((Type)i));
+	}
+}

@@ -18,6 +18,7 @@ public:
 	}
 
 	void Draw() override;
+	void SetOperation(int setProbability[(int)Type::MAX][(int)Level::MAX]);
 
 private:
 	UIScreenText* _information;

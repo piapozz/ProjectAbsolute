@@ -14,6 +14,7 @@ public:
 	~EntityEscapeUI(){}
 
 	void Draw();
+	void SetEscape(int setMeltdownCount, std::string setDefence[(int)Type::MAX]);
 	inline void SetLock(bool isLock){ _isLock = isLock; }
 
 private:

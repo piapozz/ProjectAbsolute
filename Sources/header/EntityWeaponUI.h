@@ -14,6 +14,7 @@ public:
 	~EntityWeaponUI(){}
 
 	void Draw();
+	void SetWeapon(Level setLevel, std::string setName, Type setType, int setDamage, int setSpeed, int setRange);
 	inline void SetLock(bool isLock){ _isLock = isLock; }
 
 private:
@@ -22,9 +23,9 @@ private:
 	UIScreenText* _lockText;
 	UIScreenText* _informationText;
 	UIScreenImage* _image;
-	UIScreenText* _rankText;
+	UIScreenText* _rank;
 	UIScreenText* _name;
-	UIScreenText* _typeInformtaion;
+	UIScreenText* _typeInformation;
 	UIScreenText* _type;
 	UIScreenText* _damageInformation;
 	UIScreenText* _damage;
@@ -40,10 +41,21 @@ private:
 	const std::string _LOCK_TEXT = "規定作業回数で解除";
 	const Vector2 _LOCK_IMAGE_POS = Vector2(0.0f, 0.05f);
 	const Vector2 _LOCK_IMAGE_SCALE = Vector2(0.95f, 0.9f);
-	const Vector2 _IMAGE_POS = Vector2(0.0f, -0.7f);
+	const Vector2 _IMAGE_POS = Vector2(0.0f, -0.5f);
 	const Vector2 _IMAGE_SCALE = Vector2(0.95f, 0.3f);
-	const Vector2 _RANK_TEXT_POS = Vector2(-0.3f, -0.3f);
-
-
+	const Vector2 _RANK_TEXT_POS = Vector2(-0.1f, -0.15f);
+	const Vector2 _NAME_TEXT_POS = Vector2(-0.1f, 0.0f);
+	const Vector2 _TYPE_INFORMATION_TEXT_POS = Vector2(-0.5f, 0.15f);
+	const std::string _TYPE_INFORMATION_TEXT = "属性";
+	const Vector2 _TYPE_TEXT_POS = Vector2(0.5f, 0.15f);
+	const Vector2 _DAMAGE_INFORMATION_TEXT_POS = Vector2(-0.5f, 0.3f);
+	const std::string _DAMAGE_INFORMATION_TEXT = "ダメージ";
+	const Vector2 _DAMAGE_TEXT_POS = Vector2(0.5f, 0.3f);
+	const Vector2 _SPEED_INFORMATION_TEXT_POS = Vector2(-0.5f, 0.45f);
+	const std::string _SPEED_INFORMATION_TEXT = "速度";
+	const Vector2 _SPEED_TEXT_POS = Vector2(0.5f, 0.45f);
+	const Vector2 _RANGE_INFORMATION_TEXT_POS = Vector2(-0.5f, 0.6f);
+	const std::string _RANGE_INFORMATION_TEXT = "射程";
+	const Vector2 _RANGE_TEXT_POS = Vector2(0.5f, 0.6f);
 };
 

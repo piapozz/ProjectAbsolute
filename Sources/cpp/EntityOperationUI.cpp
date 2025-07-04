@@ -40,3 +40,12 @@ void EntityOperationUI::Draw()
 		_summaryUIList[i]->Draw();
 	}
 }
+
+void EntityOperationUI::SetOperation(int setProbability[(int)Type::MAX][(int)Level::MAX])
+{
+	for (int i = 0; i < (int)Type::MAX; i++)
+	{
+		int porobability[(int)Level::MAX] = {50, 60, 70, 80, 90};
+		_summaryUIList[i]->SetProbability(setProbability[i]);
+	}
+}
