@@ -4,7 +4,7 @@
 EntitySuitUI::EntitySuitUI(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
-	_isLock = true;
+	_isLock = false;
 
 	ObjectFactory& factory = ObjectFactory::Instance();
 	Transform worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
@@ -28,8 +28,24 @@ EntitySuitUI::EntitySuitUI(Transform setTransform, LayerSetting layerSetting)
 	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	// ŠëŒ¯“x
 	worldTransform = Transform(_RANK_TEXT_POS, Vector2::one(), this);
-	_rankText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_rankText->SetText(_LOCK_TEXT);
+	_rank = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_rank->SetText("XX");
+	// –¼‘O
+	worldTransform = Transform(_NAME_TEXT_POS, Vector2::one(), this);
+	_name = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_name->SetText("XX");
+	// –hŒä
+	for (int i = 0; i < (int)Type::MAX; i++)
+	{
+		worldTransform = Transform(_DEFENCE_INFORMATION_TEXT_POS[i], Vector2::one(), this);
+		_typeDefenceInformation[i] = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+		Type type = (Type)i;
+		_typeDefenceInformation[i]->SetText(ToString(type));
+		_typeDefenceInformation[i]->SetTextColor(ToColor(type));
+		worldTransform = Transform(_DEFENCE_TEXT_POS[i], Vector2::one(), this);
+		_typeDefence[i] = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+		_typeDefence[i]->SetText("XX");
+	}
 }
 
 void EntitySuitUI::Draw()
@@ -40,10 +56,31 @@ void EntitySuitUI::Draw()
 	{
 		_lockImage->Draw();
 		_lockText->Draw();
-	} else
+	}
+	else
 	{
 		_image->Draw();
-		_rankText->Draw();
+		_rank->Draw();
+		_name->Draw();
+		for (int i = 0; i < (int)Type::MAX; i++)
+		{
+			_typeDefenceInformation[i]->Draw();
+			_typeDefence[i]->Draw();
+		}
+	}
+}
 
+void EntitySuitUI::SetSuit(Level setLevel, std::string setName, float setDefence[(int)Type::MAX])
+{
+	_rank->SetText(ToRomanNumber(setLevel));
+	_name->SetText(setName);
+	for (int i = 0; i < (int)Type::MAX; i++)
+	{
+		if (setDefence[i] < 1)
+			_typeDefence[i]->SetText(std::to_string(setDefence[i]) + '(' + _GOOD_DEFENCE + ')');
+		else if (setDefence[i] > 1)
+			_typeDefence[i]->SetText(std::to_string(setDefence[i]) + '(' + _BAD_DEFENCE + ')');
+		else
+			_typeDefence[i]->SetText(std::to_string(setDefence[i]) + '(' + _NORMAL_DEFENCE + ')');
 	}
 }

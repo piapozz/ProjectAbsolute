@@ -40,3 +40,8 @@ void EntityManagementTipsUI::Draw()
 		_tipsText->Draw();
 	}
 }
+
+void EntityManagementTipsUI::SetTipsText(std::string setText)
+{
+	_tipsText->SetText(setText);
+}

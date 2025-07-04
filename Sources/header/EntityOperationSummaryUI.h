@@ -15,8 +15,16 @@ public:
 	EntityOperationSummaryUI(Transform setTransform, LayerSetting layerSetting, std::string name, int probability[(int)Level::MAX]);
 	~EntityOperationSummaryUI(){}
 
-	void SetOperationText(std::string name, int probability[(int)Level::MAX]);
-
+	/// <summary>
+	/// ì‹Æ–¼‚Ìİ’è
+	/// </summary>
+	/// <param name="name"></param>
+	void SetOperationName(std::string name);
+	/// <summary>
+	/// Šm—¦‚Ìİ’è
+	/// </summary>
+	/// <param name="probability"></param>
+	void SetProbability(int probability[(int)Level::MAX]);
 	void Draw() override;
 
 private:

@@ -114,3 +114,17 @@ void EntityInformationUI::Draw()
 	}
 }
 
+void EntityInformationUI::SetInformation(std::string setName, std::string setID, Level setLevel, Type setType,
+		int setEnergy, int setGoodOperation[2], int setNormalOperation[2], int setBadOperation[2], bool isLock)
+{
+	_name->SetText(setName);
+	_id->SetText(setID);
+	_hazardLevel->SetText(ToRomanNumber(setLevel));
+	_type->SetText(ToString(setType));
+	_type->SetTextColor(ToColor(setType));
+	_energy->SetText(std::to_string(setEnergy));
+	_goodOperation->SetText(std::to_string(setGoodOperation[0]) + " - " + std::to_string(setGoodOperation[1]));
+	_normalOperation->SetText(std::to_string(setNormalOperation[0]) + " - " + std::to_string(setNormalOperation[1]));
+	_badOperation->SetText(std::to_string(setBadOperation[0]) + " - " + std::to_string(setBadOperation[1]));
+	_isLock = isLock;
+}

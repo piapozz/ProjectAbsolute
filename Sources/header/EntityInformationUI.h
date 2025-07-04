@@ -17,6 +17,19 @@ public:
 
 	void Draw();
 	inline void SetLock(bool isLock){ _isLock = isLock; }
+	/// <summary>
+	/// î•ñ‚ğİ’è‚·‚é
+	/// </summary>
+	/// <param name="setName"></param>
+	/// <param name="setID"></param>
+	/// <param name="setLevel"></param>
+	/// <param name="setType"></param>
+	/// <param name="setEnergy"></param>
+	/// <param name="setGoodOperation"></param>
+	/// <param name="setNormalOperation"></param>
+	/// <param name="setBadOperation"></param>
+	void SetInformation(std::string setName, std::string setID, Level setLevel, Type setType, 
+		int setEnergy, int setGoodOperation[2], int setNormalOperation[2], int setBadOperation[2], bool isLock);
 
 private:
 	UIScreenImage* _lockImage;

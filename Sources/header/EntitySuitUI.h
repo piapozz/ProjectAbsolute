@@ -16,9 +16,8 @@ public:
 	}
 
 	void Draw();
-	inline void SetLock(bool isLock){
-		_isLock = isLock;
-	}
+	void SetSuit(Level setLevel, std::string setName, float setDefence[(int)Type::MAX]);
+	inline void SetLock(bool isLock){ _isLock = isLock; }
 
 private:
 	UIScreenImage* _BGImage;
@@ -26,16 +25,10 @@ private:
 	UIScreenText* _lockText;
 	UIScreenText* _informationText;
 	UIScreenImage* _image;
-	UIScreenText* _rankText;
+	UIScreenText* _rank;
 	UIScreenText* _name;
-	UIScreenText* _typeInformtaion;
-	UIScreenText* _type;
-	UIScreenText* _damageInformation;
-	UIScreenText* _damage;
-	UIScreenText* _speedInformation;
-	UIScreenText* _speed;
-	UIScreenText* _rangeInformation;
-	UIScreenText* _range;
+	UIScreenText* _typeDefenceInformation[(int)Type::MAX];
+	UIScreenText* _typeDefence[(int)Type::MAX];
 	bool _isLock;
 
 	const Vector2 _INFORMATION_TEXT_POS = Vector2(-0.5f, -0.95f);
@@ -44,8 +37,26 @@ private:
 	const std::string _LOCK_TEXT = "ãKíËçÏã∆âÒêîÇ≈âèú";
 	const Vector2 _LOCK_IMAGE_POS = Vector2(0.0f, 0.05f);
 	const Vector2 _LOCK_IMAGE_SCALE = Vector2(0.95f, 0.9f);
-	const Vector2 _IMAGE_POS = Vector2(0.0f, -0.7f);
+	const Vector2 _IMAGE_POS = Vector2(0.0f, -0.5f);
 	const Vector2 _IMAGE_SCALE = Vector2(0.95f, 0.3f);
-	const Vector2 _RANK_TEXT_POS = Vector2(-0.3f, -0.3f);
+	const Vector2 _RANK_TEXT_POS = Vector2(-0.1f, -0.15f);
+	const Vector2 _NAME_TEXT_POS = Vector2(-0.1f, 0.0f);
+	const std::string _GOOD_DEFENCE = "ëœê´";
+	const std::string _NORMAL_DEFENCE = "ïÅí ";
+	const std::string _BAD_DEFENCE = "ê∆é„";
+	const Vector2 _DEFENCE_INFORMATION_TEXT_POS[(int)Type::MAX] =
+	{
+		Vector2(-0.5f, 0.15f),
+		Vector2(-0.5f, 0.3f),
+		Vector2(-0.5f, 0.45f),
+		Vector2(-0.5f, 0.6f)
+	};
+	const Vector2 _DEFENCE_TEXT_POS[(int)Type::MAX] =
+	{
+		Vector2(0.5f, 0.15f),
+		Vector2(0.5f, 0.3f),
+		Vector2(0.5f, 0.45f),
+		Vector2(0.5f, 0.6f)
+	};
 };
 

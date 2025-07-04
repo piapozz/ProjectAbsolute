@@ -38,3 +38,12 @@ void EntityManagementUI::Draw()
 		_tipsUIList[i]->Draw();
 	}
 }
+
+void EntityManagementUI::SetManagement(std::vector<std::string> tipsText, std::vector<bool> isLock)
+{
+	for (int i = 0, max = _tipsUIList.size(); i < max; i++)
+	{
+		_tipsUIList[i]->SetTipsText(tipsText[i]);
+		_tipsUIList[i]->SetLock(isLock[i]);
+	}
+}

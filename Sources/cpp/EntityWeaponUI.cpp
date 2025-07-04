@@ -4,7 +4,7 @@
 EntityWeaponUI::EntityWeaponUI(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
-	_isLock = true;
+	_isLock = false;
 
 	ObjectFactory& factory = ObjectFactory::Instance();
 	Transform worldTransform = Transform(Vector2::zero(), Vector2::one(), this);
@@ -28,8 +28,40 @@ EntityWeaponUI::EntityWeaponUI(Transform setTransform, LayerSetting layerSetting
 	_image = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
 	// 危険度
 	worldTransform = Transform(_RANK_TEXT_POS, Vector2::one(), this);
-	_rankText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_rankText->SetText(_LOCK_TEXT);
+	_rank = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_rank->SetText("XX");
+	// 名前
+	worldTransform = Transform(_NAME_TEXT_POS, Vector2::one(), this);
+	_name = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_name->SetText("XX");
+	// 属性
+	worldTransform = Transform(_TYPE_INFORMATION_TEXT_POS, Vector2::one(), this);
+	_typeInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_typeInformation->SetText(_TYPE_INFORMATION_TEXT);
+	worldTransform = Transform(_TYPE_TEXT_POS, Vector2::one(), this);
+	_type = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_type->SetText("XX");
+	// ダメージ
+	worldTransform = Transform(_DAMAGE_INFORMATION_TEXT_POS, Vector2::one(), this);
+	_damageInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_damageInformation->SetText(_DAMAGE_INFORMATION_TEXT);
+	worldTransform = Transform(_DAMAGE_TEXT_POS, Vector2::one(), this);
+	_damage = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_damage->SetText("XX");
+	// 速度
+	worldTransform = Transform(_SPEED_INFORMATION_TEXT_POS, Vector2::one(), this);
+	_speedInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_speedInformation->SetText(_SPEED_INFORMATION_TEXT);
+	worldTransform = Transform(_SPEED_TEXT_POS, Vector2::one(), this);
+	_speed = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_speed->SetText("XX");
+	// 射程
+	worldTransform = Transform(_RANGE_INFORMATION_TEXT_POS, Vector2::one(), this);
+	_rangeInformation = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_rangeInformation->SetText(_RANGE_INFORMATION_TEXT);
+	worldTransform = Transform(_RANGE_TEXT_POS, Vector2::one(), this);
+	_range = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
+	_range->SetText("XX");
 }
 
 void EntityWeaponUI::Draw()
@@ -44,7 +76,20 @@ void EntityWeaponUI::Draw()
 	else
 	{
 		_image->Draw();
-		_rankText->Draw();
-
+		_rank->Draw();
+		_name->Draw();
+		_typeInformation->Draw();
+		_type->Draw();
+		_damageInformation->Draw();
+		_damage->Draw();
+		_speedInformation->Draw();
+		_speed->Draw();
+		_rangeInformation->Draw();
+		_range->Draw();
 	}
+}
+
+void EntityWeaponUI::SetWeapon(Level setLevel, std::string setName, Type setType, int setDamage, int setSpeed, int setRange)
+{
+
 }

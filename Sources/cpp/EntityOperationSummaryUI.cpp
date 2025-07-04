@@ -40,17 +40,17 @@ EntityOperationSummaryUI::EntityOperationSummaryUI(Transform setTransform, Layer
 		_successProbability.push_back(successProbability);
 	}
 	// 作業テキストの設定
-	SetOperationText(name, probability);
+	SetOperationName(name);
+	SetProbability(probability);
 }
 
-/// <summary>
-/// 作業テキストの設定
-/// </summary>
-/// <param name="name"></param>
-/// <param name="probability"></param>
-void EntityOperationSummaryUI::SetOperationText(std::string name, int probability[(int)Level::MAX])
+void EntityOperationSummaryUI::SetOperationName(std::string name)
 {
 	_information->SetText(name);
+}
+
+void EntityOperationSummaryUI::SetProbability(int probability[(int)Level::MAX])
+{
 	for (int i = 0; i < (int)Level::MAX; i++)
 	{
 		_successProbability[i]->SetText(std::to_string(probability[i]));
