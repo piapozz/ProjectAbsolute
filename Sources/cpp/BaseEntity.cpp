@@ -5,6 +5,7 @@
 void BaseEntity::Init(LayerSetting layerSetting)
 {
 	BaseCharacter::Init(layerSetting);
+	_groupType = CharacterGroup::ENTITY;
 	// マスターデータからID参照でパラメーターを取得
 	hazardLevel = 0;
 	maxRunawayCount = 3;

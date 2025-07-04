@@ -24,6 +24,7 @@ void OfficerMob::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 void OfficerMob::Proc()
 {
 	BaseOfficer::Proc();
+	pCharacterState->Update(this);
 	pController->UpdateAI();
 }
 

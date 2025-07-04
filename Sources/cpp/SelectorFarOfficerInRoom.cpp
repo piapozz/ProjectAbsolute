@@ -1,12 +1,12 @@
-#include "../header/SelectorFarEntityInRoom.h"
+#include "../header/SelectorFarOfficerInRoom.h"
 #include "../header/BaseCharacter.h"
 #include "../header/StageManager.h"
 #include "../header/OfficerManager.h"
 #include "../header/ObjectManager.h"
 
-std::vector<BaseCharacter*> SelectorFarEntityInRoom::SelectTargets(BaseCharacter* attacker)
+std::vector<BaseCharacter*> SelectorFarOfficerInRoom::SelectTargets(BaseCharacter* attacker)
 {
-	BaseCharacter* farEntity = nullptr;
+	BaseCharacter* farOfficer = nullptr;
 	ObjectManager& objectManager = ObjectManager::Instance();
 
 	Vector2 attackerPos = attacker->GetTransform().position;
@@ -24,7 +24,7 @@ std::vector<BaseCharacter*> SelectorFarEntityInRoom::SelectTargets(BaseCharacter
 		if (character->GetIsDead()) continue;
 
 		CharacterGroup group = character->GetGroup();
-		if (group == CharacterGroup::ENTITY)
+		if (group == CharacterGroup::OFFICER)
 		{
 			targetList.push_back(character);
 		}
@@ -44,10 +44,10 @@ std::vector<BaseCharacter*> SelectorFarEntityInRoom::SelectTargets(BaseCharacter
 		if (dist > maxDist)
 		{
 			maxDist = dist;
-			farEntity = targetList[i];
+			farOfficer = targetList[i];
 		}
 	}
 
-	if (farEntity) return {farEntity};
+	if (farOfficer) return {farOfficer};
 	return {};
 }

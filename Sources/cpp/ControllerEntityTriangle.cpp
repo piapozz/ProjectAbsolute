@@ -51,6 +51,8 @@ void ControllerEntityTriangle::UpdateIdleState()
 		return;
 	}
 
+	return;
+
 	if (!WaitUntilCount()) return;
 
 	Vector2 nextPosition = GetRandomPositionInRoom();

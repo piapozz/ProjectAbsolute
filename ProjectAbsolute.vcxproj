@@ -206,7 +206,9 @@
     <ClCompile Include="Sources\cpp\SectionRoom.cpp" />
     <ClCompile Include="Sources\cpp\SecureRoom.cpp" />
     <ClCompile Include="Sources\cpp\SelectorFarEntityInRoom.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorFarOfficerInRoom.cpp" />
     <ClCompile Include="Sources\cpp\SelectorNearEntityInRoom.cpp" />
+    <ClCompile Include="Sources\cpp\SelectorNearOfficerInRoom.cpp" />
     <ClCompile Include="Sources\cpp\SelectorOutAreaNearOfficer.cpp" />
     <ClCompile Include="Sources\cpp\StageManager.cpp" />
     <ClCompile Include="Sources\cpp\SuitTriangle.cpp" />
@@ -307,7 +309,9 @@
     <ClInclude Include="Sources\header\SectionRoom.h" />
     <ClInclude Include="Sources\header\SecureRoom.h" />
     <ClInclude Include="Sources\header\SelectorFarEntityInRoom.h" />
+    <ClInclude Include="Sources\header\SelectorFarOfficerInRoom.h" />
     <ClInclude Include="Sources\header\SelectorNearEntityInRoom.h" />
+    <ClInclude Include="Sources\header\SelectorNearOfficerInRoom.h" />
     <ClInclude Include="Sources\header\SelectorOutAreaNearOfficer.h" />
     <ClInclude Include="Sources\header\StageManager.h" />
     <ClInclude Include="Sources\header\StateArgs.h" />

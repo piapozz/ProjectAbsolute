@@ -19,6 +19,7 @@ public:
 
 protected:
 	void Init(LayerSetting layerSetting) override;
+	void Proc() override;
 	void EndOperationEvent(int successCount) override;
 };
 

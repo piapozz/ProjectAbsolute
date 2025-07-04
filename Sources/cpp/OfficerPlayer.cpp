@@ -39,6 +39,7 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 positio
 void OfficerPlayer::Proc()
 {
 	BaseOfficer::Proc();
+	pCharacterState->Update(this);
 	pController->UpdateAI();
 }
 
