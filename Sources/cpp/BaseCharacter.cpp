@@ -13,18 +13,16 @@ void BaseCharacter::Init(LayerSetting layerSetting)
 	targetCharacter = nullptr;
 	transform.scale = Vector2(50, 50);
 
+	pCharacterState = CharacterStateFactory::CreateState(CharacterStateID::IDLE);
+
 	isDead = false;
 	isPanic = false;
-
 }
 
 void BaseCharacter::Proc()
 {
 	// アップデート
 	BaseObject::Proc();
-
-	// pCharacterState->Update(this);
-	// pController->UpdateAI();
 }
 
 void BaseCharacter::Draw()

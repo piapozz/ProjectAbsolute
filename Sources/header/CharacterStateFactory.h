@@ -11,8 +11,6 @@
 #include "../header/StateArgs.h"
 #include "../header/Const.h"
 
-class BaseCharacterState;
-
 /*
  * Sein
  * Officerのステートを生成
