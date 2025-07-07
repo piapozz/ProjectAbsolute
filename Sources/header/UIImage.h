@@ -1,9 +1,12 @@
 #pragma once
 #include "BaseUI.h"
-class UIImage:
-    public BaseUI
+
+class UIImage : public BaseUI
 {
 public:
+	static std::string StaticTypeName() {
+		return "UIImage";
+	}
 	UIImage() {
 	}
 	UIImage(Transform setTransform, LayerSetting layerSetting) {
@@ -24,13 +27,12 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
-	static std::string StaticTypeName() {
-		return "UIImage";
-	}
+	void OnCursor() override;
+	void NotOnCursor() override;
+	inline void SetOutLineColor(int color){ _outLineColor = color; }
 
-	void OnCursor() override {
-	};
-	void NotOnCursor() override {
-	};
+private:
+	bool _onCorsor;
+	int _outLineColor;
 };
 

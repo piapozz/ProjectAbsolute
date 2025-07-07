@@ -19,6 +19,7 @@ public:
 
 	void Draw() override;
 	void SetOperation(int setProbability[(int)Type::MAX][(int)Level::MAX]);
+	void SetFontSize(int mainSize, int subSize);
 
 private:
 	UIScreenText* _information;
@@ -28,7 +29,7 @@ private:
 	// 情報フレーム画像
 	const Vector2 _INFORMATION_FRAME_POS = Vector2(0, 0);
 	// 情報テキスト
-	const Vector2 _INFORMATION_POS = Vector2(0, -0.95f);
+	const Vector2 _INFORMATION_POS = Vector2(-0.1f, -0.95f);
 	const std::string _INFORMATION_TEXT = "エンティティ 作業情報";
 	const Vector2 _OPERATION_POS[(int)Type::MAX] =
 	{

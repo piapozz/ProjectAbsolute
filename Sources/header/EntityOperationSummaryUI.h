@@ -15,6 +15,7 @@ public:
 	EntityOperationSummaryUI(Transform setTransform, LayerSetting layerSetting, std::string name, int probability[(int)Level::MAX]);
 	~EntityOperationSummaryUI(){}
 
+	void Draw() override;
 	/// <summary>
 	/// çÏã∆ñºÇÃê›íË
 	/// </summary>
@@ -25,7 +26,7 @@ public:
 	/// </summary>
 	/// <param name="probability"></param>
 	void SetProbability(int probability[(int)Level::MAX]);
-	void Draw() override;
+	void SetFontSize(int setSize);
 
 private:
 	UIScreenImage* _BGImage;

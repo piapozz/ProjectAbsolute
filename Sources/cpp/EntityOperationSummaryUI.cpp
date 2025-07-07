@@ -44,6 +44,11 @@ EntityOperationSummaryUI::EntityOperationSummaryUI(Transform setTransform, Layer
 	SetProbability(probability);
 }
 
+void EntityOperationSummaryUI::SetFontSize(int setSize)
+{
+	_information->SetFontSize(setSize);
+}
+
 void EntityOperationSummaryUI::SetOperationName(std::string name)
 {
 	_information->SetText(name);

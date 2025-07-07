@@ -50,6 +50,7 @@ public:
 	void NotOnCursor() override {
 		_pImage->NotOnCursor();
 	};
+	inline void SetFontSize(int setSize){ _pText->SetFontSize(setSize); }
 
 	/// <summary>
 	/// コールバックの設定

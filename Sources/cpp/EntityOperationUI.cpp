@@ -30,6 +30,15 @@ EntityOperationUI::EntityOperationUI(Transform setTransform, LayerSetting layerS
 	_information->SetText(_INFORMATION_TEXT);
 }
 
+void EntityOperationUI::SetFontSize(int mainSize, int subSize)
+{
+	_information->SetFontSize(mainSize);
+	for (int i = 0; i < (int)Type::MAX; i++)
+	{
+		_summaryUIList[i]->SetFontSize(subSize);
+	}
+}
+
 void EntityOperationUI::Draw()
 {
 	_informationBGImage->Draw();

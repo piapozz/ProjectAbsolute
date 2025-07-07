@@ -93,3 +93,8 @@ void EntityWeaponUI::SetWeapon(Level setLevel, std::string setName, Type setType
 {
 
 }
+
+void EntityWeaponUI::SetFontSize(int mainSize, int subSize)
+{
+	_informationText->SetFontSize(mainSize);
+}

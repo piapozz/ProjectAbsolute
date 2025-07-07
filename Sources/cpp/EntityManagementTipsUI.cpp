@@ -25,6 +25,7 @@ EntityManagementTipsUI::EntityManagementTipsUI(Transform setTransform, LayerSett
 	worldTransform = Transform(_TIPS_TEXT_POS, Vector2::one(), this);
 	_tipsText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_tipsText->SetText(tipsText);
+	_tipsText->SetFontSize(_TIPS_FONT_SIZE);
 }
 
 void EntityManagementTipsUI::Draw()
@@ -44,4 +45,9 @@ void EntityManagementTipsUI::Draw()
 void EntityManagementTipsUI::SetTipsText(std::string setText)
 {
 	_tipsText->SetText(setText);
+}
+
+void EntityManagementTipsUI::SetFontSize(int setSize)
+{
+	_informationText->SetFontSize(setSize);
 }

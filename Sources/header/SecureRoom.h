@@ -74,15 +74,17 @@ private:
 	// メルトダウンのカウント数
 	const int _MELTDOWN_COUNT = 60 * 60;
 	// エンティティのオフセット
-	const float _ENTITY_OFFSET_POS_X = -SECTION_SIZE_X / 4;
-	const float _ENTITY_OFFSET_POS_Y = -SECTION_SIZE_Y / 4;
+	const Vector2 _ENTITY_OFFSET = Vector2(-0.5f, -0.5f);
 	// 職員のオフセット
-	const float _OFFICER_OFFSET_POS_X = SECTION_SIZE_X / 4;
-	const float _OFFICER_OFFSET_POS_Y = -SECTION_SIZE_Y / 4;
-	// UIのサイズ
-	const float _COUNT_UI_SIZE = SECTION_SIZE_X / 10;
-	const float _SCREEN_UI_SIZE_X = WINDOW_WIDTH / 6;
-	const float _SCREEN_UI_SIZE_Y = WINDOW_HEIGHT / 3;
+	const Vector2 _OFFICER_OFFSET = Vector2(0.5f, -1.0f);
+	// カウントUI
+	const Vector2 _MELTDOWN_COUNT_UI_POS = Vector2(-0.9f, 0.8f);
+	const Vector2 _OPERATION__COUNT_UI_POS = Vector2(0.9f, 0.8f);
+	const Vector2 _COUNT_UI_SCALE = Vector2(0.1f, 0.2f);
+	const int _COUNT_UI_FONT_SIZE = 10;
+	// 名前UI
+	const Vector2 _NAME_UI_POS = Vector2(0, 0.8f);
+	const Vector2 _NAME_UI_SCALE = Vector2(0.8f, 0.2f);
 
 	// 収容しているエンティティー
 	BaseEntity* _pEntity;
@@ -104,9 +106,6 @@ private:
 	UIButton* _pInformationUI;
 	UIEntity* _pEntityUI;
 	UIText* _pMeltText;
-	// UIのオフセット
-	Vector2 _operationCountOffset;
-	Vector2 _runawayCountOffset;
 	// 表示するUIを取得するコールバック
 	static std::function<std::vector<OfficerPlayer*>()> _GetUICallback;
 

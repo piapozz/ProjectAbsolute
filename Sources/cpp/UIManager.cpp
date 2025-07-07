@@ -6,7 +6,10 @@
 
 UIManager::UIManager()
 {
-	fontHandle = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", 24, 1);
+	for (int i = 0; i < FONT_SIZE_MAX; i++)
+	{
+		_fontHandle[i] = CreateFontToHandle("ÇlÇr ÉSÉVÉbÉN", i, 1);
+	}
 
 	// ÉIÉtÉZÉbÉgÇèâä˙âª
 	Vector2 uiCenter = Vector2(0, WINDOW_HEIGHT) + Vector2(_OPERATION_SIZE_X / 2, -_OPERATION_SIZE_Y / 2);
@@ -30,6 +33,14 @@ UIManager::UIManager()
 	layerSetting = {false, false, Layer::MIDDLE};
 	Transform trans = Transform(Vector2(WINDOW_WIDTH - (WINDOW_WIDTH / 10), WINDOW_HEIGHT / 5), Vector2(WINDOW_WIDTH / 5, WINDOW_HEIGHT / 2.5f));
 	_pOfficerUI = factory.CreateWithArgs<UIOfficer>(trans, true, layerSetting);
+}
+
+UIManager::~UIManager()
+{
+	for (int i = 0; i < FONT_SIZE_MAX; i++)
+	{
+		DeleteFontToHandle(_fontHandle[i]);
+	}
 }
 
 std::vector<UIScreenButton*> UIManager::GetOperationUIList()
@@ -59,4 +70,11 @@ void UIManager::SetOfficerUI(BaseOfficer* setOfficer)
 {
 	_pOfficerUI->SetOfficer(*setOfficer);
 	SetActiveOfficerUI(true);
+}
+
+int UIManager::GetFontHandle(int size)
+{
+	if (size < 0 || size > FONT_SIZE_MAX) return -1;
+
+	return _fontHandle[size];
 }

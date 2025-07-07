@@ -76,11 +76,18 @@ void EntitySuitUI::SetSuit(Level setLevel, std::string setName, float setDefence
 	_name->SetText(setName);
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
+		std::string setDefenceText;
+		setDefenceText = SetPrecision(setDefence[i]);
 		if (setDefence[i] < 1)
-			_typeDefence[i]->SetText(std::to_string(setDefence[i]) + '(' + _GOOD_DEFENCE + ')');
+			_typeDefence[i]->SetText(setDefenceText + '(' + _GOOD_DEFENCE + ')');
 		else if (setDefence[i] > 1)
-			_typeDefence[i]->SetText(std::to_string(setDefence[i]) + '(' + _BAD_DEFENCE + ')');
+			_typeDefence[i]->SetText(setDefenceText + '(' + _BAD_DEFENCE + ')');
 		else
-			_typeDefence[i]->SetText(std::to_string(setDefence[i]) + '(' + _NORMAL_DEFENCE + ')');
+			_typeDefence[i]->SetText(setDefenceText + '(' + _NORMAL_DEFENCE + ')');
 	}
+}
+
+void EntitySuitUI::SetFontSize(int mainSize, int subSize)
+{
+	_informationText->SetFontSize(mainSize);
 }

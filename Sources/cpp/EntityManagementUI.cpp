@@ -47,3 +47,12 @@ void EntityManagementUI::SetManagement(std::vector<std::string> tipsText, std::v
 		_tipsUIList[i]->SetLock(isLock[i]);
 	}
 }
+
+void EntityManagementUI::SetFontSize(int mainSize, int subSize)
+{
+	_informationText->SetFontSize(mainSize);
+	for (int i = 0, max = _tipsUIList.size(); i < max; i++)
+	{
+		_tipsUIList[i]->SetFontSize(subSize);
+	}
+}

@@ -33,22 +33,21 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	_currentState = State::IDLE;
 
 	// UI生成
-	_operationCountOffset = Vector2(SECTION_SIZE_X / 2 - _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
-	_runawayCountOffset = Vector2(-SECTION_SIZE_X / 2 + _COUNT_UI_SIZE / 2, SECTION_SIZE_Y / 2 - _COUNT_UI_SIZE / 2);
 	ObjectFactory& factory = ObjectFactory::Instance();
-	LayerSetting UILayerSetting = {true, true, Layer::MIDDLE};
-	Transform transformWorld = transform.GetWorldTransform();
-	Vector2 position = transformWorld.position;
-	Transform trans = Transform(position + _operationCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
-	_pOperationCountUI = factory.CreateWithArgs<UIButton>(trans, UILayerSetting);
+	Transform worldTransform = Transform();
+	LayerSetting UILayerSetting = {true, false, Layer::FRONT};
+
+	worldTransform = Transform(_OPERATION__COUNT_UI_POS, _COUNT_UI_SCALE, this);
+	_pOperationCountUI = factory.CreateWithArgs<UIButton>(worldTransform, UILayerSetting);
 	_pOperationCountUI->SetText(std::to_string(0));
-	UILayerSetting = {true, false, Layer::MIDDLE};
-	trans = Transform(position + _runawayCountOffset, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE));
-	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(trans, UILayerSetting);
+	_pOperationCountUI->SetFontSize(_COUNT_UI_FONT_SIZE);
+	worldTransform = Transform(_MELTDOWN_COUNT_UI_POS, _COUNT_UI_SCALE, this);
+	_pRunawayCountUI = factory.CreateWithArgs<UIButton>(worldTransform, UILayerSetting);
 	_pRunawayCountUI->SetText(std::to_string(0));
-	trans = Transform(position, Vector2(_COUNT_UI_SIZE, _COUNT_UI_SIZE) * 6);
-	UILayerSetting = {true, true, Layer::FRONT};
-	_pInformationUI = factory.CreateWithArgs<UIButton>(trans, UILayerSetting);
+	_pRunawayCountUI->SetFontSize(_COUNT_UI_FONT_SIZE);
+	worldTransform = Transform(_NAME_UI_POS, _NAME_UI_SCALE, this);
+	UILayerSetting.m_interact = true;
+	_pInformationUI = factory.CreateWithArgs<UIButton>(worldTransform, UILayerSetting);
 	_pInformationUI->SetCallback([this]()
 	{
 		UIManager::Instance().SetActiveEntityUI(true);
@@ -75,6 +74,11 @@ void SecureRoom::Proc()
 void SecureRoom::Draw()
 {
 	BaseSection::Draw();
+
+	// UIの描画
+	_pOperationCountUI->Draw();
+	_pRunawayCountUI->Draw();
+	_pInformationUI->Draw();
 }
 
 void SecureRoom::Teardown()
@@ -116,8 +120,10 @@ void SecureRoom::SetEntity(BaseEntity* setEntity)
 	_pEntity = setEntity;
 	Transform transformWorld = transform.GetWorldTransform();
 	Vector2 position = transformWorld.position;
-	_pEntity->SetPosition(position + Vector2(_ENTITY_OFFSET_POS_X, _ENTITY_OFFSET_POS_Y));
+	_pEntity->SetPosition(position + GetScale() / 2.0f * _ENTITY_OFFSET);
 	_pEntity->SetRunawayUI(_pRunawayCountUI);
+	// マスターから名前取得
+	_pInformationUI->SetText("Triangle");
 }
 
 void SecureRoom::StartMeltdown()
@@ -168,7 +174,7 @@ void SecureRoom::StartOperation()
 	_currentState = State::INTERACT;
 	Transform transformWorld = transform.GetWorldTransform();
 	Vector2 position = transformWorld.position;
-	_pInteractOfficer->SetPosition(position + Vector2(_OFFICER_OFFSET_POS_X, _OFFICER_OFFSET_POS_Y));
+	_pInteractOfficer->SetPosition(position + GetScale() / 2.0f * _OFFICER_OFFSET);
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
 	_pEntity->SetOperation(_selectOperation);
 	// 作業開始イベントを発生させる
