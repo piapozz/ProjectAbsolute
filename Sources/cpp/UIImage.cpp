@@ -3,6 +3,8 @@
 void UIImage::Init(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUI::Init(setTransform, layerSetting);
+	_outLineColor = COLOR_WHITE;
+	_onCorsor = false;
 }
 
 void UIImage::Proc()
@@ -30,14 +32,28 @@ void UIImage::Draw()
 	VECTOR Pos3 = VGet(x2, y2, 0);
 	VECTOR Pos4 = VGet(x1, y2, 0);
 
-	DrawLine3D(Pos1, Pos2, GetColor(255, 255, 255));
-	DrawLine3D(Pos2, Pos3, GetColor(255, 255, 255));
-	DrawLine3D(Pos3, Pos4, GetColor(255, 255, 255));
-	DrawLine3D(Pos4, Pos1, GetColor(255, 255, 255));
+	// êFê›íË
+	int color = -1;
+	_onCorsor ? color = COLOR_ON_CORSOR : color = _outLineColor;
+
+	DrawLine3D(Pos1, Pos2, color);
+	DrawLine3D(Pos2, Pos3, color);
+	DrawLine3D(Pos3, Pos4, color);
+	DrawLine3D(Pos4, Pos1, color);
 }
 
 void UIImage::Teardown()
 {
 	// îjä¸
 	BaseUI::Teardown();
+}
+
+void UIImage::OnCursor()
+{
+	_onCorsor = true;
+}
+
+void UIImage::NotOnCursor()
+{
+	_onCorsor = false;
 }

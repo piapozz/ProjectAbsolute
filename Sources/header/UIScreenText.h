@@ -8,6 +8,9 @@
 class UIScreenText : public BaseUIScreen
 {
 public:
+	static std::string StaticTypeName() {
+		return "UIScreenText";
+	}
 	UIScreenText() {
 	}
 	UIScreenText(Transform setTransform, LayerSetting layerSetting) {
@@ -29,21 +32,19 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
-	void SetTextColor(int color){
+	inline void SetTextColor(int color){
 		_textColor = color;
 	}
-
-	void SetText(const std::string& setText){
+	inline void SetText(const std::string& setText){
 		_text = setText;
 	}
-
-	static std::string StaticTypeName() {
-		return "UIScreenText";
-	}
-
+	inline void SetFontSize(int setSize){ _fontSize = setSize; }
 	void DrawUIText();
+
 private:
-	int textSize;
 	std::string _text;
 	int _textColor;
+	int _fontSize;
+
+	const int _DEFAULT_FONT_SIZE = 24;
 };

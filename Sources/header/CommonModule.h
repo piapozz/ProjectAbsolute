@@ -1,5 +1,8 @@
 #pragma once
 #include <math.h>
+#include <string>
+#include <sstream>
+#include <iomanip>
 class BaseObject;
 
 // 二次元ベクトル
@@ -213,3 +216,19 @@ public:
 	Transform GetWorldTransform();
 	inline bool IsChild() { return parent != nullptr; }
 };
+
+/// <summary>
+/// 浮動点小数の精度を設定する
+/// </summary>
+/// <returns></returns>
+inline std::string SetPrecision(float value, int precision = 1)
+{
+	std::ostringstream oss;
+	float precisionFactor = powf(10.0f, -precision);
+	if (std::abs(value - static_cast<int>(value)) < precisionFactor)
+		oss << static_cast<int>(value);
+	else
+		oss << std::fixed << std::setprecision(precision) << value;
+
+	return oss.str();
+}

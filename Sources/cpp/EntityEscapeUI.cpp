@@ -32,6 +32,7 @@ EntityEscapeUI::EntityEscapeUI(Transform setTransform, LayerSetting layerSetting
 	worldTransform = Transform(_MELTDOWN_COUNT_POS, Vector2::one(), this);
 	_meltdownCountText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_meltdownCountText->SetText("X");
+	_meltdownCountText->SetFontSize(_MELTDOWN_COUNT_FONT_SIZE);
 	// ñhå‰ëœê´
 	worldTransform = Transform(_DEFENCE_IMAGE_POS, _DEFENCE_IMAGE_SCALE, this);
 	_defenceImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
@@ -44,6 +45,7 @@ EntityEscapeUI::EntityEscapeUI(Transform setTransform, LayerSetting layerSetting
 		_defenceText[i] = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 		_defenceText[i]->SetText(std::to_string(defence[i]));
 		_defenceText[i]->SetTextColor(ToColor((Type)i));
+		_defenceText[i]->SetFontSize(_DEFENCE_FONT_SIZE);
 	}
 }
 
@@ -78,4 +80,11 @@ void EntityEscapeUI::SetEscape(int setMeltdownCount, std::string setDefence[(int
 		_defenceText[i]->SetText(setDefence[i]);
 		_defenceText[i]->SetTextColor(ToColor((Type)i));
 	}
+}
+
+void EntityEscapeUI::SetFontSize(int mainSize, int subSize)
+{
+	_informationText->SetFontSize(mainSize);
+	_meltdownInformation->SetFontSize(subSize);
+	_defenceInformation->SetFontSize(subSize);
 }

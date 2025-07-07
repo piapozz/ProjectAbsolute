@@ -37,6 +37,7 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 	worldTransform = Transform(_TYPE_POS, Vector2::one(), this);
 	_type = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_type->SetText("X");
+	_type->SetFontSize(_TYPE_FONT_SIZE);
 	// ÉGÉlÉãÉMÅ[
 	worldTransform = Transform(_ENERGY_BG_POS, _ENERGY_BG_SCALE, this);
 	_energyBGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, false, layer);
@@ -46,6 +47,7 @@ EntityInformationUI::EntityInformationUI(Transform setTransform, LayerSetting la
 	worldTransform = Transform(_ENERGY_POS, Vector2::one(), this);
 	_energy = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_energy->SetText("X");
+	_energy->SetFontSize(_ENERGY_FONT_SIZE);
 	// äÓëbèÓïÒ
 	worldTransform = Transform(_NAME_POS, Vector2().one(), this);
 	_name = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
@@ -127,4 +129,12 @@ void EntityInformationUI::SetInformation(std::string setName, std::string setID,
 	_normalOperation->SetText(std::to_string(setNormalOperation[0]) + " - " + std::to_string(setNormalOperation[1]));
 	_badOperation->SetText(std::to_string(setBadOperation[0]) + " - " + std::to_string(setBadOperation[1]));
 	_isLock = isLock;
+}
+
+void EntityInformationUI::SetFontSize(int mainItemSize, int subItemSize)
+{
+	_information->SetFontSize(mainItemSize);
+	_typeInformation->SetFontSize(subItemSize);
+	_energyInformation->SetFontSize(subItemSize);
+	_operationInformation->SetFontSize(subItemSize);
 }

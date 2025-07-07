@@ -156,6 +156,9 @@ const int MINIMUM_MENTAL = 0;
 // カーソル
 const int CURSOR_SIZE = 20;
 
+// フォント
+const int FONT_SIZE_MAX = 100;
+
 // 文字列に変換
 inline std::string ToString(Type type)
 {

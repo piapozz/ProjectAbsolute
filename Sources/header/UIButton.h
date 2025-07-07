@@ -37,7 +37,9 @@ public:
 		_pText->SetText(str);
 	}
 
-	void SetActive(bool active) override {
+	inline void SetFontSize(int setSize){ _pText->SetFontSize(setSize); }
+
+	inline void SetActive(bool active) override {
 		BaseObject::SetActive(active);
 		_pImage->SetActive(active);
 		_pText->SetActive(active);
@@ -48,6 +50,13 @@ public:
 	/// </summary>
 	/// <param name="callback"></param>
 	void SetCallback(std::function<void()> callback) {_callback = callback;}
+
+	void OnCursor() override {
+		_pImage->OnCursor();
+	};
+	void NotOnCursor() override {
+		_pImage->NotOnCursor();
+	};
 private:
 	// テキスト
 	UIText* _pText;

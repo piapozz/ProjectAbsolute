@@ -28,8 +28,8 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
-	void OnCursor();
-	void NotOnCursor();
+	void OnCursor() override;
+	void NotOnCursor() override;
 	void DrawUIBox();
 	inline void SetColor(int color){ _color = color; }
 	inline void SetOutLineColor(int color){ _outLineColor = color; }

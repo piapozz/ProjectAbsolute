@@ -6,6 +6,7 @@ void UIText::Init(Transform setTransform, LayerSetting layerSetting) {
 	BaseUI::Init(setTransform, layerSetting);
 	textGraph = MakeScreen(128, 32, TRUE);
 	textSize = 100;
+	fontSize = _DEFAULT_FONT_SIZE;
 }
 
 void UIText::Proc() {
@@ -14,7 +15,7 @@ void UIText::Proc() {
 	{
 		const int padding = 50;
 
-		int fontHandle = UIManager::Instance().fontHandle;
+		int fontHandle = UIManager::Instance().GetFontHandle(fontSize);
 		int w = GetDrawStringWidthToHandle(text.c_str(), static_cast<int>(text.length()), fontHandle);
 		int h = GetFontSizeToHandle(fontHandle);
 

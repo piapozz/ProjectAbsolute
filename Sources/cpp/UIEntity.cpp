@@ -7,8 +7,6 @@
 #include "../header/EntityWeaponUI.h"
 #include "../header/EntitySuitUI.h"
 #include "../header/ObjectFactory.h"
-#include <iomanip> 
-#include <sstream>
 
 UIEntity::UIEntity()
 {
@@ -25,7 +23,7 @@ void UIEntity::Init()
 	LayerSetting layer = LayerSetting(true, false, Layer::MIDDLE);
 	
 	// äÓëb
-	worldTransform = Transform(Vector2().zero(), Vector2().one(), this);
+	worldTransform = Transform(Vector2().zero(), _BG_SCALE, this);
 	_BGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 	_BGImage->SetColor(COLOR_BLACK);
 	worldTransform = Transform(_INFORMATION_TEXT_POS, Vector2().one(), this);
@@ -34,6 +32,7 @@ void UIEntity::Init()
 	// äÓñ{èÓïÒ
 	worldTransform = Transform(_INFORMATION_POS, _INFORMATION_SCALE, this);
 	_entityInformation = factory.CreateWithArgs<EntityInformationUI>(worldTransform, layer);
+	_entityInformation->SetFontSize(_MAIN_ITEM_FONT_SIZE, _SUB_ITEM_FONT_SIZE);
 	// çÏã∆çDä¥ìx
 	worldTransform = Transform(_OPERATION_POS, _OPERATION_SCALE, this);
 	_entityOperation = factory.CreateWithArgs<EntityOperationUI>(worldTransform, layer);
@@ -60,7 +59,18 @@ void UIEntity::Init()
 	_exitButton->SetCallback([this]() { this->SetActive(false); });
 	_exitButton->SetText(_EXIT_BUTTON_TEXT);
 
+	SetFontSize();
 	SetEntityData(-1);
+}
+
+void UIEntity::SetFontSize()
+{
+	_informationText->SetFontSize(_INFORMATION_FONT_SIZE);
+	_entityOperation->SetFontSize(_MAIN_ITEM_FONT_SIZE, _SUB_ITEM_FONT_SIZE);
+	_entityManagement->SetFontSize(_MAIN_ITEM_FONT_SIZE, _SUB_ITEM_FONT_SIZE);
+	_entityEscape->SetFontSize(_MAIN_ITEM_FONT_SIZE, _SUB_ITEM_FONT_SIZE);
+	_entityWeapon->SetFontSize(_MAIN_ITEM_FONT_SIZE, _SUB_ITEM_FONT_SIZE);
+	_entitySuit->SetFontSize(_MAIN_ITEM_FONT_SIZE, _SUB_ITEM_FONT_SIZE);
 }
 
 void UIEntity::Draw()
@@ -108,21 +118,7 @@ void UIEntity::SetEntityData(int setID)
 	std::string defenceText[4];
 	for (int i = 0; i < static_cast<int>(Type::MAX); ++i)
 	{
-		if (defence[i])
-		{
-			float value = defence[i];
-			std::ostringstream oss;
-			if (std::abs(value - static_cast<int>(value)) < 0.01f)
-			{
-				oss << static_cast<int>(value);
-			}
-			else
-			{
-				oss << std::fixed << std::setprecision(1) << value;
-			}
-			Type type = (Type)i;
-			defenceText[i] = oss.str();
-		}
+		defenceText[i] = SetPrecision(defence[i]);
 	}
 	_entityEscape->SetEscape(3, defenceText);
 	// ïêäÌèÓïÒ

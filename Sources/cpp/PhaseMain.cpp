@@ -61,17 +61,25 @@ void PhaseMain::OnCursorProc(Vector2 pos)
 		onCursorObj->NotOnCursor();
 	}
 
+	// スクリーンUI
+	// UIの取得
+	BaseObject* screenUI = ObjectManager::Instance().FindPosObject(pos);
+	if (screenUI != nullptr)
+	{
+		screenUI->OnCursor();
+		InputManager::Instance().SetOnCursorObject(screenUI);
+		return;
+	}
+
+	// ステージオブジェクト
 	// ワールド座標に変更
 	Camera* camera = Camera::instance;
 	Vector2 worldPos =  GetScreen2StagePos(pos, camera->GetHeight(), camera->GetPosition());
-
-	// スクリーンUI
-	// UIの取得
-	BaseObject* ScreenUI = ObjectManager::Instance().FindPosObject(pos);
-	if (ScreenUI != nullptr)
+	BaseObject* stageObject = ObjectManager::Instance().FindPosObject(worldPos);
+	if (stageObject != nullptr)
 	{
-		ScreenUI->OnCursor();
-		InputManager::Instance().SetOnCursorObject(ScreenUI);
+		stageObject->OnCursor();
+		InputManager::Instance().SetOnCursorObject(stageObject);
 		return;
 	}
 }
