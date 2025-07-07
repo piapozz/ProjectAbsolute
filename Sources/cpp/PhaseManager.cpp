@@ -3,7 +3,7 @@
 
 void PhaseManager::Init()
 {
-	ChangePhase(PhaseName::MAIN);
+	ChangePhase(PhaseName::STANDBY);
 }
 
 void PhaseManager::Teardown()
