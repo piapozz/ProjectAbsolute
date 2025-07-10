@@ -33,6 +33,16 @@ public:
 	/// <param name="list"></param>
 	void SetOfficerList(std::vector<BaseOfficer*> list) { officerList = list; }
 
+	/// <summary>
+	/// オフィサーリストの設定
+	/// </summary>
+	/// <param name="list"></param>
+	void SetOfficerList(BaseOfficer* officer) {
+		Transform trans = officer->GetTransform();
+		officer->SetParent(this);
+		officerList.push_back(officer);
+	}
+
 private:
 	void DrawOfficerList();
 	std::vector<BaseOfficer*> officerList;
