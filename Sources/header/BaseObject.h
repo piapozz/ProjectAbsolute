@@ -65,6 +65,7 @@ public:
 	inline void SetSize(Vector2 setSize){ transform.scale = setSize; }
 	virtual void SetActive(bool setActive){ active = setActive; }
 	inline void SetInteract(bool setInteract){ interactable = setInteract; }
+	inline void SetParent(BaseObject* parent) { transform.parent = parent; }
 
 	/// <summary>
 	/// オブジェクトが重なっているかどうか
