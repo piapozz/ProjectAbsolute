@@ -108,3 +108,24 @@ bool InputManager::IsRightClick(Vector2 pos)
 	float distanceClick = (pos - _oldRClickScreenPos).size();
 	return distanceClick <= _CLICK_MARGIN;
 }
+
+void InputManager::Teardown()
+{
+	_OnCursorAction = nullptr;
+	_LPushAction = nullptr;
+	_RPushAction = nullptr;
+	_LDrackAction = nullptr;
+	_RDrackAction = nullptr;
+	_LReleaseAction = nullptr;
+	_RReleaseAction = nullptr;
+	_WheelRotAction = nullptr;
+	_EscapePushAction = nullptr;
+	_isLPressed = false;
+	_isRPressed = false;
+	_oldLClickScreenPos = Vector2::zero();
+	_oldRClickScreenPos = Vector2::zero();
+	_LClickState = -1;
+	_RClickState = -1;
+	_cursorObject = nullptr;
+	_onCursorObject = nullptr;
+}
