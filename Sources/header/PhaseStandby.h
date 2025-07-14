@@ -1,6 +1,7 @@
 #pragma once
 #include "BasePhase.h"
 
+class Camera;
 /*
  * Sakakura
  * スタンバイフェーズ
@@ -15,8 +16,19 @@ public:
 	void Teardown() override {};
 
 protected:
+	void OnCursorProc(Vector2 pos) override;
+	void LPushInputProc(Vector2 pos) override;
+	void RPushInputProc(Vector2 pos) override;
+	void LDrackInputProc(Vector2 pos, Vector2 oldPos) override;
+	void RDrackInputProc(Vector2 pos, Vector2 oldPos) override;
+	void LReleaseInputProc(Vector2 pos, Vector2 oldPos) override;
+	void RReleaseInputProc(Vector2 pos, Vector2 oldPos) override;
+	void WheelRotInputProc(Vector2 pos, int rot) override;
+	void EscapeInputProc() override;
 
 private:
+
+	Camera* _pCamera;
 
 	// 座標,サイズ(相対割合)
 
