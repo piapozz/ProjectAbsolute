@@ -18,7 +18,7 @@ public:
 	OfficerManager();
 	~OfficerManager();
 
-	void Init(StageManager* stageManager);
+	void Init();
 	void Proc();
 	void Teardown();
 

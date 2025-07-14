@@ -13,9 +13,12 @@ public:
 	BaseController(){
 	};
 	BaseController(BaseCharacter* character): character(character){
+		isFreeze = true;
 	};
 	~BaseController(){
 	};
+
+	bool isFreeze;
 
 	virtual void UpdateAI() = 0;
 	/// <summary>
@@ -32,6 +35,5 @@ protected:
 	BaseCharacter* character;
 
 private:
-
 
 };

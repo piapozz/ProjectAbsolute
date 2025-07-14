@@ -12,6 +12,7 @@ void OfficerMob::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 	_officerType = OfficerType::MOB;
 	layer = Layer::MIDDLE;
 	pController = new OfficerController(this);
+	pController->isFreeze = false;
 
 	AttackAction* normalAttack = new AttackAction();
 	normalAttack->targetSelector = new SelectorFarEntityInRoom();

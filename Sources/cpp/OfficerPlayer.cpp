@@ -27,11 +27,12 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 positio
 
 	SetImpossible(true);
 	pController = new OfficerController(this);
-	
+	pController->isFreeze = false;
+
 	AttackAction* normalAttack = new AttackAction();
 	normalAttack->targetSelector = new SelectorNearEntityInRoom();
 	normalAttack->characterAttack = new AttackSingle();
-	normalAttack->attackRange = 25;
+	normalAttack->attackRange = 10;
 
 	attackActions.push_back(normalAttack);
 }
@@ -55,7 +56,8 @@ void OfficerPlayer::Draw()
 
 	Vector2 pos(position.x, position.y + (scale.y / 2));
 	slider->SetPos(pos + Vector2(0, scale.y));
-	slider->SetValue((float)(health / maxHealth));
+	float value = (float)health / (float)maxHealth;
+	slider->SetValue(value);
 }
 
 void OfficerPlayer::Teardown()

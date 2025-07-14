@@ -15,6 +15,11 @@ public:
 	// ステージデータ
 	static std::vector<std::vector<int>> _stageData;
 
+	static StageManager& Instance() {
+		static StageManager instance;
+		return instance;
+	}
+
 	StageManager() {
 		Init();
 	}

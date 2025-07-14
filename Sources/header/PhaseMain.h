@@ -15,7 +15,7 @@ class UIScreenButton;
 class PhaseMain : public BasePhase
 {
 public:
-	PhaseMain() {}
+	PhaseMain(){ };
 	~PhaseMain() {};
 
 	void Init() override;
@@ -35,7 +35,6 @@ protected:
 	void EscapeInputProc() override;
 
 private:
-	StageManager* _pStageManager;
 	UIManager* _pUIManager;
 	Camera* _pCamera;
 	OfficerManager* _pOfficerManager;
