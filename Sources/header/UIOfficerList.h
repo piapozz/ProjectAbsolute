@@ -2,6 +2,8 @@
 #include "UIScreen.h"
 #include "BaseOfficer.h"
 
+class UIOfficerIcon;
+
 class UIOfficerList: public BaseUIScreen
 {
 public:
@@ -46,6 +48,7 @@ public:
 private:
 	void DrawOfficerList();
 	std::vector<BaseOfficer*> officerList;
+	std::vector<UIOfficerIcon*> officerIcons;
 	UIScreenImage* backgroundImage;
 };
 

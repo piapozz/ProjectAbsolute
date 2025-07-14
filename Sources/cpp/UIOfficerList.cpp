@@ -1,5 +1,6 @@
 #include "../header/UIOfficerList.h"
 #include "../header/ObjectFactory.h"
+#include "../header/UIOfficerIcon.h"
 
 void UIOfficerList::Init(Transform setTrasnform, LayerSetting layerSetting)
 {
@@ -23,4 +24,18 @@ void UIOfficerList::Draw()
 void UIOfficerList::Teardown()
 {
 
+}
+
+void UIOfficerList::DrawOfficerList()
+{
+	for (BaseOfficer* officer : officerList)
+	{
+		if (officer == nullptr) continue;
+
+		Transform trans = Transform(Vector2(0, 0), Vector2(1, 1));
+		LayerSetting layer = {true, true, Layer::MIDDLE};
+		UIOfficerIcon* icon = ObjectFactory::Instance().CreateWithArgs<UIOfficerIcon>(
+		);
+		icon->SetOfficer(officer);
+	}
 }
