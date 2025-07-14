@@ -37,6 +37,7 @@ public:
 	Vector2 GetCursorScreenPos();
 	bool IsLeftClick(Vector2 pos);
 	bool IsRightClick(Vector2 pos);
+	void Teardown();
 
 	inline void SetOnCursorCallback(std::function<void(Vector2 pos)> Callback){ _OnCursorAction = Callback; }
 	inline void SetLPushCallback(std::function<void(Vector2 pos)> Callback){ _LPushAction = Callback; }

@@ -1,9 +1,11 @@
 #include "../header/PhaseManager.h"
 #include "../header/ObjectManager.h"
+#include "../header/EntityManager.h"
+#include "../header/InputManager.h"
 
 void PhaseManager::Init()
 {
-	ChangePhase(PhaseName::STANDBY);
+	ChangePhase(PhaseName::MAIN);
 }
 
 void PhaseManager::Teardown()
@@ -16,6 +18,9 @@ void PhaseManager::ChangePhase(PhaseName nextPhase)
 	if (nextPhase == PhaseName::INVALID) return;
 	// 現在のシーンが空じゃなかったら、シーンの情報を破棄する
 	delete(_currentPhase);
+
+	ObjectManager::Instance().AllClear();
+	InputManager::Instance().Teardown();
 
 	// 引数のシーンに切り替える
 	switch (nextPhase)
@@ -38,4 +43,5 @@ void PhaseManager::ChangePhase(PhaseName nextPhase)
 	_currentPhase->Init();
 	// コールバックを設定
 	_currentPhase->SetChangePhaseCallback([this](PhaseName nextPhase) { this->ChangePhase(nextPhase); });
+	InputManager::Instance().Init();
 }

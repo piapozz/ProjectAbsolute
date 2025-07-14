@@ -163,6 +163,7 @@
     <ClCompile Include="Sources\cpp\EntityEscapeUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityInformationUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityManagementTipsUI.cpp" />
+    <ClCompile Include="Sources\cpp\EntityManager.cpp" />
     <ClCompile Include="Sources\cpp\EntityOperationSummaryUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityOperationUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityManagementUI.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="Sources\header\EntityEscapeUI.h" />
     <ClInclude Include="Sources\header\EntityInformationUI.h" />
     <ClInclude Include="Sources\header\EntityManagementTipsUI.h" />
+    <ClInclude Include="Sources\header\EntityManager.h" />
     <ClInclude Include="Sources\header\EntityOperationSummaryUI.h" />
     <ClInclude Include="Sources\header\EntityOperationUI.h" />
     <ClInclude Include="Sources\header\EntityManagementUI.h" />

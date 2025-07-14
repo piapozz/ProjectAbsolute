@@ -4,6 +4,8 @@
 #include "PhaseStandby.h"
 #include "PhaseMain.h"
 #include "PhaseResult.h"
+
+class EntityManager;
 class ObjectManager;
 /*
  * Sakakura
