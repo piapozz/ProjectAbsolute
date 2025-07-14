@@ -8,6 +8,9 @@ void BaseEgoEntity::Init(LayerSetting layerSetting)
 	Transform trans = Transform(Vector2::zero(), Vector2::one(), this);
 	LayerSetting setting = { false, false , Layer::MIDDLE};
 	text = ObjectFactory::Instance().CreateWithArgs<UIText>(trans, setting);
+
+	health = 100;
+	maxHealth = health;
 }
 
 void BaseEgoEntity::Proc()

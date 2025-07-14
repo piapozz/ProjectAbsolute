@@ -29,14 +29,13 @@ void PhaseMain::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
-	_pStageManager = new StageManager();
-	_pStageManager->SetStageData(_stageData);
-	_pStageManager->CreateStage();
+	StageManager::Instance().SetStageData(_stageData);
+	StageManager::Instance().CreateStage();
 	_pOfficerManager = new OfficerManager();
-	_pOfficerManager->Init(_pStageManager);
+	_pOfficerManager->Init();
 	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
 	BaseEntity* addEntity = ObjectFactory::Instance().CreateWithArgs<Entity_E000>(layerSetting);
-	_pStageManager->SetEntity(addEntity, 0);
+	StageManager::Instance().SetEntity(addEntity, 0);
 	EventManager::Instance().Init();
 	SecureRoom::EndOperationEvent = [this](int successCount)
 	{
@@ -140,7 +139,7 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 			return;
 		}
 		// ステージ外をクリック
-		if (!_pStageManager->CheckPosOnStage(worldPos))
+		if (!StageManager::Instance().CheckPosOnStage(worldPos))
 		{
 			_pSelectOfficerList.clear();
 			_pUIManager->SetActiveOperationUI(false);

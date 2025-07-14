@@ -4,8 +4,8 @@
 #include "../header/SelectorNearEntityInRoom.h"
 
 void OfficerController::UpdateAI()
-{
-	DecideState();
+{	
+	BaseController::UpdateAI();
 }
 
 void OfficerController::DecideState()

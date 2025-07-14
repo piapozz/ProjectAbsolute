@@ -11,6 +11,7 @@ public:
 	Entity_E000(){ }
 	Entity_E000(LayerSetting layerSetting)
 		: BaseEgoEntity(layerSetting) {
+		Init(layerSetting);
 	}
 	virtual ~Entity_E000(){}
 	static std::string StaticTypeName() {
@@ -21,5 +22,9 @@ protected:
 	void Init(LayerSetting layerSetting) override;
 	void Proc() override;
 	void EndOperationEvent(int successCount) override;
+
+private:
+	void RunawayEvent() override;
+
 };
 

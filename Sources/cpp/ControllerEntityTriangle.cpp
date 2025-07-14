@@ -51,8 +51,6 @@ void ControllerEntityTriangle::UpdateIdleState()
 		return;
 	}
 
-	return;
-
 	if (!WaitUntilCount()) return;
 
 	Vector2 nextPosition = GetRandomPositionInRoom();
@@ -79,9 +77,6 @@ void ControllerEntityTriangle::UpdateMoveState()
 	}
 
 	if (!character->pCharacterState->IsEndState()) return;
-
-	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
-	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
 
 	if (character->GetIsFight())
 	{

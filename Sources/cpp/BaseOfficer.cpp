@@ -114,7 +114,7 @@ void BaseOfficer::TakeDamage(int strength, Type damageType)
 			DecreaseMental(damage);
 			break;
 		case Type::PALE:
-			int paleDamage = health * (damage / 100);
+			float paleDamage = health * (damage / 100.0f);
 			DecreaseHealth(ceil(paleDamage));
 			break;
 	}

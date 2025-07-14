@@ -3,7 +3,7 @@
 
 void BaseController::UpdateAI()
 {
-	DecideState();
+	if(!isFreeze) DecideState();
 }
 
 void BaseController::DecideState()

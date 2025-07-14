@@ -2,18 +2,27 @@
 #include "../header/ControllerEntityTriangle.h"
 #include "../header/SelectorNearOfficerInRoom.h"
 #include "../header/AttackSingle.h"
+#include "../header/StageManager.h"
 
 void Entity_E000::Init(LayerSetting layerSetting)
 {
 	BaseEgoEntity::Init(layerSetting);
+	_groupType = CharacterGroup::ENTITY;
 	pController = new ControllerEntityTriangle(this);
 
 	AttackAction* normalAttack = new AttackAction();
 	normalAttack->targetSelector = new SelectorNearOfficerInRoom();
 	normalAttack->characterAttack = new AttackSingle();
-	normalAttack->attackRange = 500;
-
+	normalAttack->attackRange = 25;
 	attackActions.push_back(normalAttack);
+
+	for (int i = 0;i < (int)Type::MAX;i++)
+	{
+		defenseRatio[i] = 1.0f;
+	}
+
+	_attackStatus.attack = 20;
+	_attackStatus.damageType = Type::RED;
 
 	Transform trans = Transform(Vector2::zero(), Vector2::one(), this);
 }
@@ -32,4 +41,14 @@ void Entity_E000::EndOperationEvent(int successCount)
 
 	// 暴走カウンターを減らす
 	DecreaseRunawayCount();
+}
+
+void Entity_E000::RunawayEvent()
+{
+	pController->isFreeze = false;
+
+	StageManager& stageManager = StageManager::Instance();
+	BaseSection* randomSection = stageManager.GetRandomSection();
+
+	ChangeMoveState(randomSection);
 }
