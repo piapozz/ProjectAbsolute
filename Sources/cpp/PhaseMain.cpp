@@ -34,6 +34,7 @@ void PhaseMain::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
+	StageManager::Instance().Init();
 	StageManager::Instance().SetStageData(_stageData[GetDay()]);
 	StageManager::Instance().CreateStage();
 	OfficerManager::Instance().Init();

@@ -45,7 +45,7 @@ void PhaseResult::Init()
 	nextButton->SetText("NEXT");
 	nextButton->SetCallback([this]() {
 		this->ChangePhase(PhaseName::SELECT);
-		DataManager::Instance().SetMoney(DataManager::Instance().GetEnergy());
+		DataManager::Instance().AddMoney(DataManager::Instance().GetEnergy());
 	});
 
 	// ƒJƒƒ‰¶¬

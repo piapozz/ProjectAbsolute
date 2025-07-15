@@ -44,11 +44,17 @@ public:
 	void SetOfficerData(std::vector<OfficerInitData> data){
 		_officerData = data;
 	}
+	void SetBackupOfficerData(std::vector<OfficerInitData> data){
+		_backupOfficerData = data;
+	}
 	void SetMoney(int money) {
 		_money = money;
 	}
 	void SetEnergy(int energy) {
 		_energy = energy;
+	}
+	void AddMoney(int money){
+		_money += money;
 	}
 
 	/// <summary>
@@ -62,6 +68,12 @@ public:
 	/// </summary>
 	std::vector<OfficerInitData> GetOfficerData() const {
 		return _officerData;
+	}
+	/// <summary>
+	/// 控えオフィサーのデータを取得
+	/// </summary>
+	std::vector<OfficerInitData> GetBackupOfficerData() const {
+		return _backupOfficerData;
 	}
 
 	/// <summary>
@@ -77,6 +89,7 @@ public:
 private:
 	std::vector<EntityManagementData> _entityData;
 	std::vector<OfficerInitData> _officerData;
+	std::vector<OfficerInitData> _backupOfficerData;
 
 	int _money;
 	int _energy;

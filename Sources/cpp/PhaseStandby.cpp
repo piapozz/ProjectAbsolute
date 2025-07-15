@@ -52,6 +52,13 @@ void PhaseStandby::Init()
 			datas.push_back(officer->GetOfficerInitData());
 		}
 		DataManager::Instance().SetOfficerData(datas);
+		// T‚¦
+		officers = uiOfficerList->GetOfficerList();
+		datas.clear();
+		for (BaseOfficer* officer : officers){
+			datas.push_back(officer->GetOfficerInitData());
+		}
+		DataManager::Instance().SetBackupOfficerData(datas);
 
 		this->ChangePhase(PhaseName::MAIN);
 	});
@@ -130,6 +137,13 @@ void PhaseStandby::Init()
 	{
 		BaseOfficer* officer = OfficerManager::Instance().AddOfficer(data.type, data, Vector2::zero());
 		uiDivisuinList->AddOfficer(officer);
+	}
+	// T‚¦
+	datas = DataManager::Instance().GetBackupOfficerData();
+	for (const OfficerInitData& data : datas)
+	{
+		BaseOfficer* officer = OfficerManager::Instance().AddOfficer(data.type, data, Vector2::zero());
+		uiOfficerList->AddOfficer(officer);
 	}
 }
 
