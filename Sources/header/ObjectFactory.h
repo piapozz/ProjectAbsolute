@@ -44,7 +44,11 @@ public:
 	template<typename T>
 	void Destroy(T* obj)
 	{
-		const std::string key = T::StaticTypeName();
+		if (!obj || _destroyedObjects.count(obj)) return;
+
+		_destroyedObjects.insert(obj);
+		const std::string key = obj->StaticTypeName();
+
 		auto it = _allocators.find(key);
 		if (it != _allocators.end())
 		{
@@ -55,6 +59,11 @@ public:
 		}
 	}
 
+	void ClearDestroyedCache()
+	{
+		_destroyedObjects.clear();
+	}
+
 private:
 	template<typename T>
 	void Register(const std::string& key = T::StaticTypeName())
@@ -63,6 +72,7 @@ private:
 	}
 
 	std::unordered_map<std::string, std::unique_ptr<BaseAllocatorWrapper>> _allocators;
+	std::unordered_set<BaseObject*> _destroyedObjects;
 };
 
 class BaseAllocatorWrapper

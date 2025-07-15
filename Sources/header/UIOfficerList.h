@@ -29,6 +29,10 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
+	static std::string StaticTypeName() {
+		return "UIOfficerList";
+	}
+
 	/// <summary>
 	/// オフィサーリストの設定
 	/// </summary>

@@ -2,6 +2,7 @@
 #include "Const.h"
 #include <vector>
 #include <functional>
+#include <unordered_set>
 #include "BaseObject.h"
 
 using namespace std;
@@ -64,6 +65,11 @@ public:
 	/// オブジェクトの検索(全部)
 	/// </summary>
 	/// <returns></returns>
+	vector<BaseObject*> FindPosAllObject(Vector2 pos, ObjectType type);
+	/// <summary>
+	/// オブジェクトの検索(全部)
+	/// </summary>
+	/// <returns></returns>
 	vector<BaseObject*> FindRectAllObject(Vector2 pos, Vector2 size, ObjectType type);
 	/// <summary>
 	/// ゲーム速度の変更
@@ -75,6 +81,7 @@ public:
 private:
 	// オブジェクトのリスト
 	vector<vector<vector<BaseObject*>>> _objectList;
+	std::unordered_set<BaseObject*> _removedObjects;
 	// ゲームスピード
 	int _gameSpeed;
 };

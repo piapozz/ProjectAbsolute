@@ -15,19 +15,25 @@ void ObjectManager::Init()
 
 void ObjectManager::Update()
 {
+	std::vector<BaseObject*> tempObjects;
+
+	ForEachObject([&](BaseObject* obj) {
+		tempObjects.push_back(obj);
+	});
+
 	for (int i = 0; i < _gameSpeed; i++)
 	{
-		ForEachObject([](BaseObject* obj) {
-			obj->Proc();
-		});
+		for (BaseObject* obj : tempObjects)
+		{
+			if (obj && obj->GetActive()) obj->Proc();
+		}
 	}
+
 	for (int layer = 0; layer < (int)Layer::MAX; layer++)
 	{
 		for (BaseObject* obj : _objectList[(int)ObjectType::SCREEN_UI][layer])
 		{
-			if (obj == nullptr) continue;
-			if (!obj->GetActive()) continue;
-			obj->Proc();
+			if (obj && obj->GetActive()) obj->Proc();
 		}
 	}
 }
@@ -75,18 +81,22 @@ void ObjectManager::AddObject(BaseObject* obj)
 
 void ObjectManager::RemoveObject(BaseObject* obj)
 {
-	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	if (!obj || _removedObjects.find(obj) != _removedObjects.end()) return;
+
+	_removedObjects.insert(obj);
+	obj->Teardown();
+
+	for (int i = 0; i < (int)ObjectType::MAX; i++)
 	{
-		for (int j = 0, max = (int)Layer::MAX; j < max; j++)
+		for (int j = 0; j < (int)Layer::MAX; j++)
 		{
-			for (auto it = _objectList[i][j].begin(); it != _objectList[i][j].end(); ++it)
+			auto& list = _objectList[i][j];
+			auto it = std::find(list.begin(), list.end(), obj);
+			if (it != list.end())
 			{
-				if (*it == obj)
-				{
-					ObjectFactory::Instance().Destroy(obj);
-					_objectList[i][j].erase(it);
-					return;
-				}
+				list.erase(it);
+				ObjectFactory::Instance().Destroy(obj);
+				return;
 			}
 		}
 	}
@@ -94,19 +104,29 @@ void ObjectManager::RemoveObject(BaseObject* obj)
 
 void ObjectManager::AllClear()
 {
-	for (int i = 0, max = (int)ObjectType::MAX; i < max; i++)
+	std::vector<BaseObject*> tempList;
+
+	for (int i = 0; i < (int)ObjectType::MAX; i++)
 	{
-		for (int j = 0, max = (int)Layer::MAX; j < max; j++)
+		for (int j = 0; j < (int)Layer::MAX; j++)
 		{
 			for (BaseObject* obj : _objectList[i][j])
 			{
-				if (obj == nullptr) continue;
-				ObjectFactory::Instance().Destroy(obj);
+				if (obj)
+				{
+					_removedObjects.insert(obj);
+					obj->Teardown();
+					ObjectFactory::Instance().Destroy(obj);
+				}
 			}
 		}
 	}
+
 	_objectList.clear();
+	_removedObjects.clear();
+	ObjectFactory::Instance().ClearDestroyedCache();
 }
+
 
 BaseObject* ObjectManager::FindPosObject(Vector2 pos)
 {
@@ -119,6 +139,24 @@ BaseObject* ObjectManager::FindPosObject(Vector2 pos)
 		}
 	}
 	return nullptr;
+}
+
+std::vector<BaseObject*> ObjectManager::FindPosAllObject(Vector2 pos, ObjectType type)
+{
+	std::vector<BaseObject*> objs;
+	for (int i = (int)Layer::FRONT; i >=0 ; i--)
+	{
+		for (BaseObject* obj : _objectList[(int)type][i])
+		{
+			if (obj == nullptr) continue;
+			if (!obj->GetActive() || !obj->GetInteract()) continue;
+			if (obj->IsSamePos(pos))
+			{
+				objs.push_back(obj);
+			}
+		}
+	}
+	return objs;
 }
 
 BaseObject* ObjectManager::FindPosObject(Vector2 pos, ObjectType type)

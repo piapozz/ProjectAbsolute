@@ -15,11 +15,6 @@ std::vector<SecureRoom*> StageManager::_secureRoomList;
 
 StageManager::~StageManager() 
 {
-	//収容所データの解放
-	for (BaseObject* secure : _secureRoomList)
-	{		
-		ObjectFactory::Instance().Destroy(secure);
-	}
 	_secureRoomList.clear();
 }
 

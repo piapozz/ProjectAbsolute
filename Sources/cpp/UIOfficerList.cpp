@@ -70,6 +70,17 @@ void UIOfficerList::RemoveOfficer(BaseOfficer* officer)
 		icon->Teardown();
 		officerIcons.erase(iconIt);
 	}
+
+	// ”z—ñ‚ð‹l‚ß‚é
+	for (size_t i = 0; i < officerIcons.size(); ++i)
+	{
+		if (officerIcons[i] == nullptr)
+		{
+			officerIcons.erase(officerIcons.begin() + i);
+			--i; // ’²®
+		}
+	}
+
 	SetIconPosition();
 }
 

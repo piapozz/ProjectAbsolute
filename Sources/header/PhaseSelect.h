@@ -12,7 +12,6 @@ public:
 	~PhaseSelect() {};
 
 	void Init() override;
-	void Teardown() override {};
 
 protected:
 	void OnCursorProc(Vector2 pos) override;

@@ -1,6 +1,7 @@
 #pragma once
 #include "BasePhase.h"
 
+class UIScreenText;
 class Camera;
 class UIOfficerList;
 /*
@@ -14,7 +15,6 @@ public:
 	~PhaseStandby() {};
 
 	void Init() override;
-	void Teardown() override {};
 
 protected:
 	void OnCursorProc(Vector2 pos) override;
@@ -29,10 +29,16 @@ protected:
 
 private:
 
+	// 金
+	int _money = 1000; 
+	// 雇用金額
+	const int HIRE_COST = 100;
+
 	Camera* _pCamera;
 
 	UIOfficerList* uiDivisuinList;
 	UIOfficerList* uiOfficerList;
+	UIScreenText* uiMoney;
 
 	std::vector<BaseObject*> drackingObjects;
 
@@ -43,6 +49,12 @@ private:
 	// 開始ボタン
 	const Vector2 START_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
 	const Vector2 START_POS =  Vector2(WIN_X - (START_SIZE.x / 2.0f), (START_SIZE.y / 2.0f));
+	// 雇用ボタン
+	const Vector2 HIRE_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
+	const Vector2 HIRE_POS =  Vector2(WIN_X - (HIRE_SIZE.x / 2.0f), (HIRE_SIZE.y / 2.0f) + START_SIZE.y);
+	// 所持金
+	const Vector2 MONEY_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
+	const Vector2 MONEY_POS =  Vector2(WIN_X - (MONEY_SIZE.x / 2.0f), (MONEY_SIZE.y / 2.0f)+ START_SIZE.y + HIRE_SIZE.y);
 	// 控え職員
 	const Vector2 OFFICERLIST_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (12.0f / 20.0f));
 	const Vector2 OFFICERLIST_POS =  Vector2(WIN_X - (OFFICERLIST_SIZE.x / 2.0f), WIN_Y - (OFFICERLIST_SIZE.y / 2.0f));
@@ -52,11 +64,5 @@ private:
 	// 部門
 	const Vector2 DIVISION_SIZE = Vector2(WIN_X * (12.0f / 20.0f), WIN_Y * (18.0f / 20.0f));
 	const Vector2 DIVISION_POS =  Vector2((DIVISION_SIZE.x / 2.0f), (DIVISION_SIZE.y / 2.0f));
-	// 所持金
-	const Vector2 MONEY_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
-	const Vector2 MONEY_POS =  Vector2((MONEY_SIZE.x / 2.0f), WIN_Y - (MONEY_SIZE.y / 2.0f));
-	// 雇用ボタン
-	const Vector2 HIRE_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
-	const Vector2 HIRE_POS =  Vector2(WIN_X - (HIRE_SIZE.x / 2.0f), (HIRE_SIZE.y / 2.0f) + START_SIZE.y);
 };
 
