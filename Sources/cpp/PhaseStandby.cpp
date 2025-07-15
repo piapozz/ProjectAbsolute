@@ -27,16 +27,16 @@ void PhaseStandby::Init()
 	LayerSetting layer = {false , false , Layer::MIDDLE};
 	UIOfficer* uiOfficer = ObjectFactory::Instance().CreateWithArgs<UIOfficer>(trans, true, layer);
 	// 所持金UI(入力なし)
-	UIScreenText* uiMoney = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(MONEY_POS, MONEY_SIZE), LayerSetting{true, false, Layer::MIDDLE});
-	uiMoney->SetText("所持金: 1000G");
+	uiMoney = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(MONEY_POS, MONEY_SIZE), LayerSetting{true, false, Layer::MIDDLE});
+	uiMoney->SetText(std::to_string(_money) + "GG");
 	// 区画に生成するキャラクターUI
 	trans = Transform(DIVISION_POS, DIVISION_SIZE);
-	layer = {true, false, Layer::BACK};
-	UIOfficerList* uiDivisuinList = ObjectFactory::Instance().CreateWithArgs<UIOfficerList>(trans, layer);
+	layer = {true, true, Layer::BACK};
+	uiDivisuinList = ObjectFactory::Instance().CreateWithArgs<UIOfficerList>(trans, layer);
 	// 控えキャラクターUI
 	trans = Transform(OFFICERLIST_POS, OFFICERLIST_SIZE);
-	layer = {true, false, Layer::BACK};
-	UIOfficerList* uiOfficerList = ObjectFactory::Instance().CreateWithArgs<UIOfficerList>(trans, layer);
+	layer = {true, true, Layer::BACK};
+	uiOfficerList = ObjectFactory::Instance().CreateWithArgs<UIOfficerList>(trans, layer);
 	// 開始ボタン
 	trans = Transform(START_POS, START_SIZE);
 	layer = {true, true, Layer::BACK};
@@ -49,8 +49,15 @@ void PhaseStandby::Init()
 	trans = Transform(HIRE_POS, HIRE_SIZE);
 	layer = {true, true, Layer::BACK};
 	UIScreenButton* hireButton = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(trans, true, layer);
-	hireButton->SetText("雇用");
-	hireButton->SetCallback([this]() {
+	std::string hireText = "雇用(" + std::to_string(HIRE_COST) + "GG" + ")";
+	hireButton->SetText(hireText);
+	hireButton->SetCallback([this]() 
+	{
+		// 所持金が足りない場合は何もしない
+		if (_money < HIRE_COST) return; 
+		_money -= HIRE_COST;
+		// 雇用ボタンのテキスト更新
+		this->uiMoney->SetText(std::to_string(_money));
 		OfficerInitData data;
 		BaseOfficer* newOfficer = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
 		this->uiOfficerList->AddOfficer(newOfficer);
@@ -81,42 +88,50 @@ void PhaseStandby::Init()
 	UIOfficerIcon::endDrackCallback = [](UIOfficerIcon* icon) {
 		// ドロップ位置に応じて処理
 		Vector2 dropPos = icon->GetTransform().GetWorldTransform().position;
-		// ドロップ先のオブジェクトを取得
-		BaseObject* dropObject = ObjectManager::Instance().FindPosObject(dropPos);
 
-		if (dropObject != nullptr) {
-			UIOfficerList* officerList = dynamic_cast<UIOfficerList*>(dropObject);
+		// ドロップ先のオブジェクト群を取得
+		std::vector<BaseObject*> dropObjects = ObjectManager::Instance().FindPosAllObject(dropPos, ObjectType::SCREEN_UI);
+
+		// UIOfficerList を見つけたかどうか
+		bool added = false;
+
+		for (BaseObject* obj : dropObjects) {
+			UIOfficerList* officerList = dynamic_cast<UIOfficerList*>(obj);
 			if (officerList != nullptr) {
-				// 所属リストに追加
 				officerList->AddOfficer(icon->GetOfficer());
-			} else {
-				// ドロップ先がUIOfficerListでない場合は元の位置に戻す
-				UIOfficerList* list = icon->GetOfficerList();
-				list->AddOfficer(icon->GetOfficer());
+				added = true;
+				break; // 最初に見つけたリストに追加したら終わり
 			}
-		} else {
-			// ドロップ先がない場合は元の位置に戻す
-			UIOfficerList* list = icon->GetOfficerList();
-			list->AddOfficer(icon->GetOfficer());
 		}
 
-		// アイコンをオブジェクトマネージャから削除
+		if (!added) {
+			// 見つからなかったので元のリストに戻す
+			UIOfficerList* originalList = icon->GetOfficerList();
+			if (originalList != nullptr) {
+				originalList->AddOfficer(icon->GetOfficer());
+			}
+		}
+
+		// アイコンを削除
 		ObjectManager::Instance().RemoveObject(icon);
 	};
-
 
 	// オフィサーの初期化
 	std::vector<BaseOfficer*> officers;
 	// ここでオフィサーを生成する
 	OfficerInitData data;
+	data.name = "Player1"; // 名前を変更
 	BaseOfficer* officer1 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
-	/*BaseOfficer* officer2 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
+	data.name = "Player2"; // 名前を変更
+	BaseOfficer* officer2 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
+	data.name = "Player3"; // 名前を変更
 	BaseOfficer* officer3 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
-	BaseOfficer* officer4 = OfficerManager::Instance().AddOfficer(OfficerType::MOB, data, Vector2(0, 0));*/
-	officers.push_back(officer1);/*
+	data.name = "Player4"; // 名前を変更
+	BaseOfficer* officer4 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
+	officers.push_back(officer1);
 	officers.push_back(officer2);
 	officers.push_back(officer3);
-	officers.push_back(officer4);*/
+	officers.push_back(officer4);
 	for (BaseOfficer* officer : officers)
 	{
 		uiOfficerList->AddOfficer(officer);
@@ -156,6 +171,7 @@ void PhaseStandby::LPushInputProc(Vector2 pos)
 		drackingObjects.push_back(object);
 		return;
 	}
+
 }
 
 void PhaseStandby::RPushInputProc(Vector2 pos)
@@ -184,10 +200,7 @@ void PhaseStandby::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	{
 		object->EndDrack();
 	}
-	drackingObjects.erase(
-		std::remove_if(drackingObjects.begin(), drackingObjects.end(),
-			[](BaseObject* obj) { return obj == nullptr; }),
-		drackingObjects.end());
+	drackingObjects.clear();
 
 	// クリックが離されたなら
 	if (InputManager::Instance().IsLeftClick(pos))

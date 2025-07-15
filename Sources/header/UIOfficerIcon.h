@@ -34,6 +34,10 @@ public:
 	void Draw() override;
 	void Teardown() override;
 
+	static std::string StaticTypeName() {
+		return "UIOfficerIcon";
+	}
+
 	void SetOfficer(BaseOfficer* officer) {
 		if (officer == nullptr) return;
 		_officer = officer;
