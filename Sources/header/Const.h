@@ -145,6 +145,22 @@ struct EntityManagementData
 	bool isLockSuit;
 };
 
+// 職員のデータ
+struct OfficerInitData
+{
+	std::string name = "papapa";
+	Vector2 position = Vector2(0, 0);
+	int health = 100;
+	int mental = 100;
+
+	int suitID = -1;
+	int weaponID = -1;
+	OfficerType type = OfficerType::NONE;
+	int param[(int)Type::MAX] ={
+		10, 10, 10, 10
+	};
+};
+
 // ステージ
 const int SECTION_SIZE_X = 150;
 const int SECTION_SIZE_Y = 100;

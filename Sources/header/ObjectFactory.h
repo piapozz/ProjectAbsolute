@@ -57,6 +57,8 @@ public:
 		{
 			delete obj;
 		}
+
+		obj = nullptr;
 	}
 
 	void ClearDestroyedCache()

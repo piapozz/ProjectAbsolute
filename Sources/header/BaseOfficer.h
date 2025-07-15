@@ -35,6 +35,21 @@ public:
 	int GetMental(){ return _mental; }
 	std::string GetName(){ return _officerName; }
 	int* GetParameter() { return _parameter; }
+	OfficerInitData GetOfficerInitData()
+	{
+		OfficerInitData data;
+		data.name = _officerName;
+		data.health = health;
+		data.mental = _mental;
+		data.suitID = _suitID;
+		data.weaponID = _weaponID;
+		data.type = _officerType;
+		for (int i = 0; i < (int)Type::MAX; ++i)
+		{
+			data.param[i] = _parameter[i];
+		}
+		return data;
+	}
 	void SetOfficerID(int officerID){ _officerID = officerID; }
 	void SetOfficerType(OfficerType type){ _officerType = type; }
 	void SetSuit(BaseSuit* baseSuit){ suit = baseSuit; }

@@ -55,6 +55,20 @@ void UIOfficerList::AddOfficer(BaseOfficer* officer)
 	SetIconPosition();
 }
 
+void UIOfficerList::AddOfficer(UIOfficerIcon* icon)
+{
+	// オフィサーを非表示
+	officerList.push_back(icon->GetOfficer());
+	icon->SetParent(this);
+	icon->SetOfficerList(this);
+
+	// オフィサーアイコンを生成
+	officerIcons.push_back(icon);
+
+	// アイコンの位置を設定
+	SetIconPosition();
+}
+
 void UIOfficerList::RemoveOfficer(BaseOfficer* officer)
 {
 	auto it = std::find(officerList.begin(), officerList.end(), officer);
