@@ -51,10 +51,10 @@ void UIEntity::Init()
 	// çÏã∆âÒêî
 	worldTransform = Transform(_OPERATION_COUNT_TEXT_POS, Vector2().one(), this);
 	_operationCountText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
-	_operationCountText->SetText(_OPERATION_COUNT_TEXT);
+	_operationCountText->SetText(_OPERATION_COUNT_TEXT + '0');
 	// ñﬂÇÈÉ{É^Éì
 	worldTransform = Transform(_EXIT_BUTTON_POS, _EXIT_BUTTON_SCALE, this);
-	layer = LayerSetting(true, true, Layer::MIDDLE);
+	layer = LayerSetting(false, true, Layer::MIDDLE);
 	_exitButton = factory.CreateWithArgs<UIScreenButton>(worldTransform, true, layer);
 	_exitButton->SetCallback([this]() { this->SetActive(false); });
 	_exitButton->SetText(_EXIT_BUTTON_TEXT);
@@ -126,4 +126,10 @@ void UIEntity::SetEntityData(int setID)
 	// ñhãÔèÓïÒ
 	float suitDefence[4] = {0.8f, 0.8f, 0.8f, 1.5f};
 	_entitySuit->SetSuit(Level::I, "úâ˜", suitDefence);
+}
+
+void UIEntity::SetActive(bool setActive)
+{
+	active = setActive;
+	_exitButton->SetActive(setActive);
 }

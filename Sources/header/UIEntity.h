@@ -24,6 +24,7 @@ public:
 	void Init();
 	void Draw() override;
 	void SetEntityData(int setID);
+	void SetActive(bool setActive) override;
 
 private:
 	UIScreenImage* _BGImage;
@@ -42,7 +43,7 @@ private:
 	const Transform _TRANSFORM = Transform(_CENTER_POS, _WINDOW_SCALE);
 	const LayerSetting _DEFAULT_LAYER = LayerSetting(false, false, Layer::MIDDLE);
 	const Vector2 _BG_SCALE = Vector2(1.0f, 1.0f);
-	const Vector2 _INFORMATION_TEXT_POS = Vector2(-1.0f, -1.0f);
+	const Vector2 _INFORMATION_TEXT_POS = Vector2(0.0f, -1.0f);
 	const std::string _INFORMATION_TEXT = "エンティティ 情報";
 	// 基本情報
 	const Vector2 _INFORMATION_POS = Vector2(-0.65f, -0.4f);
@@ -63,8 +64,8 @@ private:
 	const Vector2 _SUIT_POS = Vector2(0.8f, 0.25f);
 	const Vector2 _SUIT_SCALE = Vector2(0.15f, 0.5f);
 	// 作業回数
-	const Vector2 _OPERATION_COUNT_TEXT_POS = Vector2(0.4f, 0.85f);
-	const std::string _OPERATION_COUNT_TEXT = "作業回数 : %d";
+	const Vector2 _OPERATION_COUNT_TEXT_POS = Vector2(0.6f, 0.85f);
+	const std::string _OPERATION_COUNT_TEXT = "作業回数 : ";
 	// 戻る
 	const Vector2 _EXIT_BUTTON_POS = Vector2(0.9f, 0.9f);
 	const Vector2 _EXIT_BUTTON_SCALE = Vector2(0.1f, 0.1f);

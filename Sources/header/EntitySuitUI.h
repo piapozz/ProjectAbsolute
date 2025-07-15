@@ -32,32 +32,32 @@ private:
 	UIScreenText* _typeDefence[(int)Type::MAX];
 	bool _isLock;
 
-	const Vector2 _INFORMATION_TEXT_POS = Vector2(-0.8f, -0.95f);
+	const Vector2 _INFORMATION_TEXT_POS = Vector2(0.0f, -0.95f);
 	const std::string _INFORMATION_TEXT = "エンティティ 防具";
-	const Vector2 _LOCK_TEXT_POS = Vector2(-0.8f, 0.0f);
+	const Vector2 _LOCK_TEXT_POS = Vector2(0.0f, 0.0f);
 	const std::string _LOCK_TEXT = "規定作業回数で解除";
 	const Vector2 _LOCK_IMAGE_POS = Vector2(0.0f, 0.05f);
 	const Vector2 _LOCK_IMAGE_SCALE = Vector2(0.95f, 0.9f);
 	const Vector2 _IMAGE_POS = Vector2(0.0f, -0.5f);
 	const Vector2 _IMAGE_SCALE = Vector2(0.95f, 0.3f);
-	const Vector2 _RANK_TEXT_POS = Vector2(-0.1f, -0.05f);
-	const Vector2 _NAME_TEXT_POS = Vector2(-0.1f, 0.1f);
+	const Vector2 _RANK_TEXT_POS = Vector2(0.0f, -0.05f);
+	const Vector2 _NAME_TEXT_POS = Vector2(0.0f, 0.1f);
 	const std::string _GOOD_DEFENCE = "耐性";
 	const std::string _NORMAL_DEFENCE = "普通";
 	const std::string _BAD_DEFENCE = "脆弱";
 	const Vector2 _DEFENCE_INFORMATION_TEXT_POS[(int)Type::MAX] =
 	{
-		Vector2(-0.75f, 0.25f),
-		Vector2(-0.75f, 0.4f),
-		Vector2(-0.75f, 0.55f),
-		Vector2(-0.75f, 0.7f)
+		Vector2(-0.5f, 0.25f),
+		Vector2(-0.5f, 0.4f),
+		Vector2(-0.5f, 0.55f),
+		Vector2(-0.5f, 0.7f)
 	};
 	const Vector2 _DEFENCE_TEXT_POS[(int)Type::MAX] =
 	{
-		Vector2(0.15f, 0.25f),
-		Vector2(0.15f, 0.4f),
-		Vector2(0.15f, 0.55f),
-		Vector2(0.15f, 0.7f)
+		Vector2(0.5f, 0.25f),
+		Vector2(0.5f, 0.4f),
+		Vector2(0.5f, 0.55f),
+		Vector2(0.5f, 0.7f)
 	};
 };
 

@@ -29,6 +29,7 @@ public:
 
 	BaseOfficer* AddOfficer(OfficerType type, OfficerInitData data, Vector2 position);
 	void MoveSelectedPlayer(std::vector<int> officerNumber);
+	vector<OfficerInitData> GetAliveOfficerData();
 
 	std::vector<BaseOfficer*> GetOfficerList() { return _officerList; }
 

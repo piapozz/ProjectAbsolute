@@ -107,3 +107,17 @@ void OfficerManager::MoveSelectedPlayer(std::vector<int> officerNumber)
 
 	}
 }
+
+vector<OfficerInitData> OfficerManager::GetAliveOfficerData()
+{
+	vector<OfficerInitData> aliveOfficerData;
+	for (int i = 0, max = _officerList.size(); i < max; i++)
+	{
+		BaseOfficer* officer = _officerList[i];
+		if (officer->GetIsDead()) continue;
+
+		aliveOfficerData.push_back(officer->GetOfficerInitData());
+	}
+
+	return aliveOfficerData;
+}

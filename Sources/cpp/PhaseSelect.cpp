@@ -31,9 +31,9 @@ void PhaseSelect::Init()
 		UIScreenButton* button = factory.CreateWithArgs<UIScreenButton>(worldTransform, true, layer);
 		button->SetCallback([this, i]() {
 			// エンティティーを選択する
-			this->SelectEntity(i);
+			this->SelectEntity(_selectEntityIDList[i]);
 		});
-		//button->SetText("Entity " + std::to_string(i + 1));
+		button->SetText("Entity_E000");
 	}
 }
 

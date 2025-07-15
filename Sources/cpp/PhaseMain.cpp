@@ -227,5 +227,7 @@ void PhaseMain::EscapeInputProc()
 void PhaseMain::ChangeResultPhase(int value)
 {
 	DataManager::Instance().SetEnergy(value);
+	// 生存職員をデータに記録
+	DataManager::Instance().SetOfficerData(OfficerManager::Instance().GetAliveOfficerData());
 	ChangePhase(PhaseName::RESULT);
 }
