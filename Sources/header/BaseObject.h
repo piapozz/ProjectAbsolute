@@ -49,6 +49,9 @@ public:
 	virtual void ClickEvent(){}
 	virtual void OnCursor(){}
 	virtual void NotOnCursor(){}
+	virtual void StartDrack(){}
+	virtual void OnDrack(){}
+	virtual void EndDrack(){}
 
 	static std::string StaticTypeName() {
 		return "BaseObject";
