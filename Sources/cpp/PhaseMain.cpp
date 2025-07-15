@@ -15,6 +15,7 @@
 #include "../header/UIEntity.h"
 #include "../header/UIOfficer.h"
 #include "../header/DataManager.h"
+#include "../header/ContinueResultUI.h"
 
 std::vector<OfficerPlayer*>& PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
@@ -49,6 +50,8 @@ void PhaseMain::Init()
 	{
 		// 作業が終了したら、エネルギーを追加
 		EventManager::Instance().AddEnergy(successCount);
+		if (EventManager::Instance().IsMaxEnergy())
+			_pResultUI->SetActive(true);
 	};
 	// UI
 	ObjectFactory& factory = ObjectFactory::Instance();
@@ -71,6 +74,11 @@ void PhaseMain::Init()
 	{
 		return _pOfficerUI;
 	};
+	_pResultUI = factory.CreateWithArgs<ContinueResultUI>();
+	_pResultUI->SetCallback([this]()
+	{
+		ChangeResultPhase(EventManager::Instance().GetEnergy());
+	});
 	// カメラ生成
 	_pCamera = new Camera();
 	// 各オブジェクトのインタラクト時のコールバック設定
@@ -190,7 +198,8 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		_pSelectOfficerList.clear();
 		for (int i = 0, max = officerList.size(); i < max; i++)
 		{
-			OfficerPlayer* officer = static_cast<OfficerPlayer*>(officerList[i]);
+			OfficerPlayer* officer = dynamic_cast<OfficerPlayer*>(officerList[i]);
+			if (officer == nullptr) continue;
 			// 作業中ならスキップ
 			if (officer->stateID == CharacterStateID::OPERATION) return;
 			_pSelectOfficerList.push_back(officer);
@@ -216,6 +225,6 @@ void PhaseMain::EscapeInputProc()
 
 void PhaseMain::ChangeResultPhase(int value)
 {
-	ChangePhase(PhaseName::RESULT);
 	DataManager::Instance().SetEnergy(value);
+	ChangePhase(PhaseName::RESULT);
 }

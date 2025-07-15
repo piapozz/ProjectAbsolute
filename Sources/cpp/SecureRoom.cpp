@@ -72,8 +72,8 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 
 void SecureRoom::Proc()
 {
-	OperationProc();
 	MeltdownProc();
+	OperationProc();
 }
 
 void SecureRoom::Draw()
@@ -187,9 +187,9 @@ void SecureRoom::OperationProc()
 	_pEntity->EndOperationEvent(successCount);
 	// 職員に終わったことを通知
 	_pInteractOfficer->ChangeMoveState(_pInteractOfficer->GetPastPosition());
+	_pInteractOfficer = nullptr;
 	// タスクを成功分増やす
 	EndOperationEvent(successCount);
-	_pInteractOfficer = nullptr;
 }
 
 void SecureRoom::StartOperation()

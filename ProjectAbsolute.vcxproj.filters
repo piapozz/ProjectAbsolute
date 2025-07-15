@@ -408,6 +408,9 @@
     <ClCompile Include="Sources\cpp\EntityManager.cpp">
       <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\ContinueResultUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -721,6 +724,9 @@
     </ClInclude>
     <ClInclude Include="Sources\header\EntityManager.h">
       <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\ContinueResultUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

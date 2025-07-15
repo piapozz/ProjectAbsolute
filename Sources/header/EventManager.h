@@ -24,6 +24,8 @@ public:
 	/// メルトカウンターの追加
 	/// </summary>
 	void AddMelt();
+	inline bool IsMaxEnergy(){ return _energy >= _MAX_ENERGY; }
+	inline int GetEnergy(){ return _energy; }
 private:
 	// エネルギー最大値
 	const int _MAX_ENERGY = 100;

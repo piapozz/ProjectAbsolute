@@ -37,7 +37,7 @@ private:
 	bool _isLock;
 
 	// 情報テキスト
-	const Vector2 _INFORMATION_POS = Vector2(-0.15f, -0.95f);
+	const Vector2 _INFORMATION_POS = Vector2(0.0f, -0.95f);
 	const std::string _INFORMATION_TEXT = "エンティティ 基本情報";
 	// ロックテキスト
 	const Vector2 _LOCK_TEXT_POS = Vector2(-0.45f, 0.0f);
