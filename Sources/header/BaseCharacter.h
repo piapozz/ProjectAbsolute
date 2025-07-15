@@ -126,6 +126,7 @@ public:
 	inline CharacterGroup GetGroup(){ return _groupType; }
 	inline std::vector<AttackAction*> GetAttackAction(){ return attackActions; }
 	inline int GetSpeed(){ return _moveSpeed; }
+	std::function<void()> GetDeadEventCallBack(){ return _DeadEventCallback; }
 	inline void SetIsDead(bool flag){ isDead = flag; }
 	inline void SetIsPanic(bool flag){ isPanic = flag; }
 	inline void SetIsFight(bool flag){ isFight = flag; }
@@ -135,6 +136,7 @@ public:
 	inline void SetGroup(CharacterGroup groupType){ _groupType = groupType; }
 	inline void SetAttackAction(AttackAction* baseAttack){ attackActions.push_back(baseAttack); }
 	inline void SetSpeed(int value){ _moveSpeed = value; }
+	inline void SetDeadEventCallBack(std::function<void()> Func){ _DeadEventCallback = Func; }
 
 	std::vector<AttackAction*> attackActions;
 	// âﬂãéÇÃà íu
@@ -166,6 +168,7 @@ protected:
 	bool isPanic;
 	// êÌì¨íÜÇ©Ç«Ç§Ç©
 	bool isFight;
+	std::function<void()> _DeadEventCallback;
 private:
 	int _moveSpeed;
 };

@@ -36,6 +36,9 @@ void ControllerEntityTriangle::DecideState()
 		case CharacterStateID::FIGHT:
 			UpdateFightState();
 			break;
+		case CharacterStateID::DEAD:
+			UpdateDeadState();
+			break;
 	}
 
 	return;
@@ -132,6 +135,11 @@ void ControllerEntityTriangle::UpdateFightState()
 	return;
 }
 
+void ControllerEntityTriangle::UpdateDeadState()
+{
+	character->GetDeadEventCallBack();
+}
+
 bool ControllerEntityTriangle::WaitUntilCount()
 {
 	int nowCount = GetNowCount();
@@ -180,3 +188,4 @@ BaseCharacter* ControllerEntityTriangle::CheckHostility()
 
 	return targetList[0];
 }
+

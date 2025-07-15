@@ -1,6 +1,7 @@
 #pragma once
 #include "BasePhase.h"
 
+class Camera;
 /*
  * Sakakura
  * リザルトフェーズ
@@ -15,8 +16,32 @@ public:
 	void Teardown() override {};
 
 protected:
-
+	void OnCursorProc(Vector2 pos) override;
+	void LPushInputProc(Vector2 pos) override;
+	void RPushInputProc(Vector2 pos) override;
+	void LDrackInputProc(Vector2 pos, Vector2 oldPos) override;
+	void RDrackInputProc(Vector2 pos, Vector2 oldPos) override;
+	void LReleaseInputProc(Vector2 pos, Vector2 oldPos) override;
+	void RReleaseInputProc(Vector2 pos, Vector2 oldPos) override;
+	void WheelRotInputProc(Vector2 pos, int rot) override;
+	void EscapeInputProc() override;
 private:
+
+	Camera* _pCamera;
+
+	// 座標,サイズ
+	const float WIN_X = WINDOW_WIDTH;
+	const float WIN_Y = WINDOW_HEIGHT;
+
+	const Vector2 TEXT_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
+	const Vector2 TEXT_POS =  Vector2(WIN_X - (TEXT_SIZE.x / 2.0f), (TEXT_SIZE.y / 2.0f));
+
+	const Vector2 RESTART_SIZE = Vector2(WIN_X * (2.0f / 10.0f), WIN_Y * (2.0f / 20.0f));
+	const Vector2 RESTART_POS = Vector2(WIN_X / 2.0f, WIN_Y - (RESTART_SIZE.y / 2.0f));
+
+	const Vector2 NEXT_SIZE = Vector2(WIN_X * (1.0f / 4.0f), WIN_Y * (1.0f / 20.0f));
+	const Vector2 NEXT_POS =  Vector2((NEXT_SIZE.x / 2.0f), WIN_Y - (NEXT_SIZE.y / 2.0f));
+
 
 };
 
