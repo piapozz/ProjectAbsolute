@@ -10,8 +10,10 @@ void CharacterStateDead::Enter(BaseCharacter* character)
 {
 	character->color = DEAD;
 	character->stateID = CharacterStateID::DEAD;
-	character->DeadEvent();
-
+	
+	std::function<void()> func = character->GetDeadEventCallBack();
+	if (func != NULL) character->DeadEvent();
+	
 	character->SetImpossible(false);
 }
 

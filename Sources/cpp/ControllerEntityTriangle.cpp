@@ -6,7 +6,7 @@
 
 void ControllerEntityTriangle::UpdateAI()
 {
-	DecideState();
+	if(!isFreeze) DecideState();
 }
 
 void ControllerEntityTriangle::DecideState()

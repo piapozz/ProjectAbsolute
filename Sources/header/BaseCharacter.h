@@ -104,6 +104,8 @@ public:
 	/// <param name="nextStateID"></param>
 	void ChangeMoveState(Vector2 targetPosition, CharacterStateID nextStateID = CharacterStateID::IDLE);
 	void ChangeMoveState(BaseCharacter* targetObject);
+	virtual void Respawn(){};
+
 	void SetTargetCharacter(BaseCharacter* target)
 	{
 		targetCharacter = target;
@@ -127,6 +129,7 @@ public:
 	inline std::vector<AttackAction*> GetAttackAction(){ return attackActions; }
 	inline int GetSpeed(){ return _moveSpeed; }
 	inline void DeadEvent(){ _DeadEventCallback(); }
+	inline std::function<void()> GetDeadEventCallBack(){ return _DeadEventCallback; }
 	inline void SetIsDead(bool flag){ isDead = flag; }
 	inline void SetIsPanic(bool flag){ isPanic = flag; }
 	inline void SetIsFight(bool flag){ isFight = flag; }

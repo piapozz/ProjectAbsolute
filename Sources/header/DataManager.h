@@ -17,7 +17,10 @@ public:
 		return instance;
 	}
 
-	DataManager();
+	DataManager(){
+		energy = 0;
+		money = 0;
+	}
 	~DataManager();
 
 	/// <summary>
@@ -33,6 +36,6 @@ public:
 	/// </summary>
 	void SaveFile();
 
-
+	int energy;
 	int money;
 };
