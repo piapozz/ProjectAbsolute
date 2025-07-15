@@ -30,11 +30,19 @@ void UIScreenText::Teardown()
 
 void UIScreenText::DrawUIText()
 {
-	if (_text == "") return;
-	// テキスト
+	if (_text.empty()) return;
+
+	// ワールド座標取得
 	Transform transformWorld = transform.GetWorldTransform();
 	Vector2 position = transformWorld.position;
-	int anchorX = position.x;
+
+	// テキストサイズ取得
+	int fontHandle = UIManager::Instance().GetFontHandle(_fontSize);
+	int textWidth = GetDrawFormatStringWidthToHandle(fontHandle, _text.c_str());
+
+	// 中央揃えのためにx座標を補正
+	int anchorX = position.x - textWidth / 2;
 	int anchorY = position.y;
-	DrawFormatStringToHandle(anchorX, anchorY, _textColor, UIManager::Instance().GetFontHandle(_fontSize), _text.c_str());
+
+	DrawFormatStringToHandle(anchorX, anchorY, _textColor, fontHandle, _text.c_str());
 }
