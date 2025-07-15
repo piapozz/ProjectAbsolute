@@ -33,10 +33,9 @@ void PhaseMain::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
-	StageManager::Instance().SetStageData(_stageData);
+	StageManager::Instance().SetStageData(_stageData[GetDay()]);
 	StageManager::Instance().CreateStage();
-	_pOfficerManager = new OfficerManager();
-	_pOfficerManager->Init();
+	OfficerManager::Instance().Init();
 	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
 	// エンティティの生成
 	vector<BaseEntity*> addEntity = EntityManager::Instance().AddObjectEntity();
@@ -108,6 +107,7 @@ void PhaseMain::OnCursorProc(Vector2 pos)
 		InputManager::Instance().SetOnCursorObject(stageObject);
 		return;
 	}
+	InputManager::Instance().SetOnCursorObject(nullptr);
 }
 
 void PhaseMain::LPushInputProc(Vector2 pos)
@@ -217,5 +217,5 @@ void PhaseMain::EscapeInputProc()
 void PhaseMain::ChangeResultPhase(int value)
 {
 	ChangePhase(PhaseName::RESULT);
-	DataManager::Instance().energy = value;
+	DataManager::Instance().SetEnergy(value);
 }

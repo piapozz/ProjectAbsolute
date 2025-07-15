@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "../header/Const.h"
 
 /*
  * Sein
@@ -18,8 +20,8 @@ public:
 	}
 
 	DataManager(){
-		energy = 0;
-		money = 0;
+		_energy = 0;
+		_money = 0;
 	}
 	~DataManager();
 
@@ -36,6 +38,46 @@ public:
 	/// </summary>
 	void SaveFile();
 
-	int energy;
-	int money;
+	void SetEntityData(std::vector<EntityManagementData> data){
+		_entityData = data;
+	}
+	void SetOfficerData(std::vector<OfficerInitData> data){
+		_officerData = data;
+	}
+	void SetMoney(int money) {
+		_money = money;
+	}
+	void SetEnergy(int energy) {
+		_energy = energy;
+	}
+
+	/// <summary>
+	/// エンティティのデータを取得
+	/// </summary>
+	std::vector<EntityManagementData> GetEntityData() const {
+		return _entityData;
+	}
+	/// <summary>
+	/// オフィサーのデータを取得
+	/// </summary>
+	std::vector<OfficerInitData> GetOfficerData() const {
+		return _officerData;
+	}
+
+	/// <summary>
+	/// 所持金を取得
+	/// </summary>
+	int GetMoney() const {
+		return _money;
+	}
+	int GetEnergy() const {
+		return _energy;
+	}
+
+private:
+	std::vector<EntityManagementData> _entityData;
+	std::vector<OfficerInitData> _officerData;
+
+	int _money;
+	int _energy;
 };

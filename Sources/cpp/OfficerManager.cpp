@@ -1,6 +1,7 @@
 #include "../header/OfficerManager.h"
 #include "../header/OfficerInitData.h"
 #include "../header/ObjectFactory.h"
+#include "../header/DataManager.h"
 
 OfficerManager::OfficerManager()
 {
@@ -14,27 +15,18 @@ OfficerManager::~OfficerManager()
 
 void OfficerManager::Init()
 {
-	OfficerInitData data;
 	Transform sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
 	Vector2 sectionPosition = sectionTransform.position;
 	Vector2 sectionScale = sectionTransform.scale;
 
 	Vector2 position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
-	//AddOfficer(OfficerType::PLAYER, data, position);
+
+	vector<OfficerInitData> officerDataList = DataManager::Instance().GetOfficerData();
+
+	for (int i = 0, max = officerDataList.size(); i < max; i++)
+	{
+		AddOfficer(OfficerType::PLAYER, officerDataList[i], position);
+	}
 
 	//sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
 	//sectionPosition = sectionTransform.position;

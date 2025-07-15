@@ -2,10 +2,13 @@
 #include "../header/ObjectManager.h"
 #include "../header/EntityManager.h"
 #include "../header/InputManager.h"
+#include "../header/DataManager.h"
 
 void PhaseManager::Init()
 {
-	ChangePhase(PhaseName::RESULT);
+	ChangePhase(PhaseName::SELECT);
+	_currentDay = 0;
+	DataManager::Instance().SetMoney(1000);
 }
 
 void PhaseManager::Teardown()
@@ -26,6 +29,7 @@ void PhaseManager::ChangePhase(PhaseName nextPhase)
 	switch (nextPhase)
 	{
 		case PhaseName::SELECT:
+			_currentDay++;
 			_currentPhase = new PhaseSelect();
 			break;
 		case PhaseName::STANDBY:
@@ -39,9 +43,10 @@ void PhaseManager::ChangePhase(PhaseName nextPhase)
 			break;
 		default: break;
 	}
-	// 初期化をしておく
-	_currentPhase->Init();
 	// コールバックを設定
 	_currentPhase->SetChangePhaseCallback([this](PhaseName nextPhase) { this->ChangePhase(nextPhase); });
+	_currentPhase->SetGetDayCallback([this]() { return _currentDay; });
+	// 初期化をしておく
+	_currentPhase->Init();
 	InputManager::Instance().Init();
 }

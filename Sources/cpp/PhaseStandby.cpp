@@ -6,6 +6,7 @@
 #include "../header/Camera.h"
 #include "../header/UIOfficerIcon.h"
 #include "../header/Officermanager.h"
+#include "../header/DataManager.h"
 
 void PhaseStandby::Init()
 {
@@ -27,6 +28,7 @@ void PhaseStandby::Init()
 	LayerSetting layer = {false , false , Layer::MIDDLE};
 	UIOfficer* uiOfficer = ObjectFactory::Instance().CreateWithArgs<UIOfficer>(trans, true, layer);
 	// 所持金UI(入力なし)
+	_money = DataManager::Instance().GetMoney();
 	uiMoney = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(MONEY_POS, MONEY_SIZE), LayerSetting{true, false, Layer::MIDDLE});
 	uiMoney->SetText(std::to_string(_money) + "GG");
 	// 区画に生成するキャラクターUI
@@ -43,6 +45,14 @@ void PhaseStandby::Init()
 	UIScreenButton* startButton = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(trans, true, layer);
 	startButton->SetText("Start");
 	startButton->SetCallback([this]() {
+
+		std::vector<BaseOfficer*> officers = uiDivisuinList->GetOfficerList();
+		std::vector<OfficerInitData> datas;
+		for (BaseOfficer* officer : officers){
+			datas.push_back(officer->GetOfficerInitData());
+		}
+		DataManager::Instance().SetOfficerData(datas);
+
 		this->ChangePhase(PhaseName::MAIN);
 	});
 	// 雇用ボタン
@@ -56,8 +66,9 @@ void PhaseStandby::Init()
 		// 所持金が足りない場合は何もしない
 		if (_money < HIRE_COST) return; 
 		_money -= HIRE_COST;
+		DataManager::Instance().SetMoney(_money);
 		// 雇用ボタンのテキスト更新
-		this->uiMoney->SetText(std::to_string(_money));
+		this->uiMoney->SetText(std::to_string(_money) + "GG");
 		OfficerInitData data;
 		BaseOfficer* newOfficer = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
 		this->uiOfficerList->AddOfficer(newOfficer);
@@ -98,9 +109,9 @@ void PhaseStandby::Init()
 		for (BaseObject* obj : dropObjects) {
 			UIOfficerList* officerList = dynamic_cast<UIOfficerList*>(obj);
 			if (officerList != nullptr) {
-				officerList->AddOfficer(icon->GetOfficer());
+				officerList->AddOfficer(icon);
 				added = true;
-				break; // 最初に見つけたリストに追加したら終わり
+				break; 
 			}
 		}
 
@@ -108,33 +119,17 @@ void PhaseStandby::Init()
 			// 見つからなかったので元のリストに戻す
 			UIOfficerList* originalList = icon->GetOfficerList();
 			if (originalList != nullptr) {
-				originalList->AddOfficer(icon->GetOfficer());
+				originalList->AddOfficer(icon);
 			}
 		}
-
-		// アイコンを削除
-		ObjectManager::Instance().RemoveObject(icon);
 	};
 
-	// オフィサーの初期化
-	std::vector<BaseOfficer*> officers;
 	// ここでオフィサーを生成する
-	OfficerInitData data;
-	data.name = "Player1"; // 名前を変更
-	BaseOfficer* officer1 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
-	data.name = "Player2"; // 名前を変更
-	BaseOfficer* officer2 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
-	data.name = "Player3"; // 名前を変更
-	BaseOfficer* officer3 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
-	data.name = "Player4"; // 名前を変更
-	BaseOfficer* officer4 = OfficerManager::Instance().AddOfficer(OfficerType::PLAYER, data, Vector2(0, 0));
-	officers.push_back(officer1);
-	officers.push_back(officer2);
-	officers.push_back(officer3);
-	officers.push_back(officer4);
-	for (BaseOfficer* officer : officers)
+	std::vector<OfficerInitData> datas = DataManager::Instance().GetOfficerData();
+	for(const OfficerInitData& data : datas)
 	{
-		uiOfficerList->AddOfficer(officer);
+		BaseOfficer* officer = OfficerManager::Instance().AddOfficer(data.type, data, Vector2::zero());
+		uiDivisuinList->AddOfficer(officer);
 	}
 }
 
@@ -156,6 +151,7 @@ void PhaseStandby::OnCursorProc(Vector2 pos)
 		InputManager::Instance().SetOnCursorObject(screenUI);
 		return;
 	}
+
 }
 
 void PhaseStandby::LPushInputProc(Vector2 pos)

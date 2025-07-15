@@ -29,6 +29,7 @@ public:
 private:
 	// フェーズ
 	BasePhase* _currentPhase;
+	int _currentDay;
 
 	inline void ChangePhase(PhaseName nextPhase);
 };

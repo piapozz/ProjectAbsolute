@@ -55,6 +55,7 @@ void PhaseSelect::OnCursorProc(Vector2 pos)
 		InputManager::Instance().SetOnCursorObject(screenUI);
 		return;
 	}
+	InputManager::Instance().SetOnCursorObject(nullptr);
 }
 
 void PhaseSelect::LReleaseInputProc(Vector2 pos, Vector2 oldPos)

@@ -28,7 +28,7 @@ void PhaseResult::Init()
 	uiMessage->SetText("Congratulations!");
 	uiMessage->SetFontSize(50);
 	UIScreenText* uiMoney = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(MONEY_POS, MONEY_SIZE), LayerSetting{true, false, Layer::MIDDLE});
-	int money = DataManager::Instance().energy;
+	int money = DataManager::Instance().GetEnergy();
 	std::string moneyText = "•ñV " + std::to_string(money);
 	uiMoney->SetText(moneyText);
 	uiMoney->SetFontSize(50);
@@ -45,7 +45,7 @@ void PhaseResult::Init()
 	nextButton->SetText("NEXT");
 	nextButton->SetCallback([this]() {
 		this->ChangePhase(PhaseName::SELECT);
-		DataManager::Instance().money += DataManager::Instance().energy;
+		DataManager::Instance().SetMoney(DataManager::Instance().GetEnergy());
 	});
 
 	// ƒJƒƒ‰¶¬

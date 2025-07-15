@@ -38,6 +38,11 @@ public:
 	/// </summary>
 	/// <param name="list"></param>
 	void AddOfficer(BaseOfficer* officer);
+	void AddOfficer(UIOfficerIcon* icon);
+
+	std::vector<BaseOfficer*> GetOfficerList() {
+		return officerList;
+	}
 
 	void RemoveOfficer(BaseOfficer* officer);
 
