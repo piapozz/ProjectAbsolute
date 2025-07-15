@@ -54,7 +54,7 @@ void BaseOperation::SetOperator(OfficerPlayer* setOfficer)
 	_frameCounter = 0;
 	_currentOperationCount = 0;
 	// ì‹Æó‘Ô‚Ì‰Šú‰»
-	operateCount = 100;
+	operateCount = 30;
 	_operationResultList = std::vector<Result>(operateCount, Result::INVALID);
 }
 

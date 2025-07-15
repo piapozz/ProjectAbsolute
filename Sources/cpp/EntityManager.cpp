@@ -10,14 +10,14 @@ void EntityManager::Init()
 
 void EntityManager::AddEntity(int addID)
 {
-	_entityDataList.push_back(EntityManagementData());
+	EntityManagementData data = EntityManagementData();
+	data.ID = addID;
+	data.roomID = _entityDataList.size();
+	_entityDataList.push_back(data);
 }
 
 vector<BaseEntity*> EntityManager::AddObjectEntity()
 {
-	ObjectFactory& factory = ObjectFactory::Instance();
-	Transform worldTransform = Transform(Vector2::zero(), Vector2::one());
-	LayerSetting layer = LayerSetting(true, true, Layer::MIDDLE);
 	int entityCount = _entityDataList.size();
 	vector<BaseEntity*> entityList;
 	for (int i = 0; i < entityCount; i++)

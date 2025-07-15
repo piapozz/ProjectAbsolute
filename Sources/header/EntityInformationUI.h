@@ -80,14 +80,14 @@ private:
 	// 属性
 	const Vector2 _TYPE_BG_POS = Vector2(0.6f, -0.6f);
 	const Vector2 _TYPE_BG_SCALE = Vector2(0.3f, 0.2f);
-	const Vector2 _TYPE_INFORMATION_POS = Vector2(0.6f, -0.8f);
+	const Vector2 _TYPE_INFORMATION_POS = Vector2(0.6f, -0.75f);
 	const Vector2 _TYPE_POS = Vector2(0.6f, -0.6f);
 	const std::string _TYPE_INFORMATION_TEXT = "属性";
 	const int _TYPE_FONT_SIZE = 40;
 	// エネルギー情報
 	const Vector2 _ENERGY_BG_POS = Vector2(0.6f, -0.1f);
 	const Vector2 _ENERGY_BG_SCALE = Vector2(0.3f, 0.2f);
-	const Vector2 _ENERGY_INFORMATION_POS = Vector2(0.6f, -0.3f);
+	const Vector2 _ENERGY_INFORMATION_POS = Vector2(0.6f, -0.25f);
 	const std::string _ENERGY_INFORMATION_TEXT = "エネルギー";
 	const Vector2 _ENERGY_POS = Vector2(0.6f, -0.1f);
 	const int _ENERGY_FONT_SIZE = 40;

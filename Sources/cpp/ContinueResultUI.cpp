@@ -24,7 +24,7 @@ void ContinueResultUI::Init()
 	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_informationText->SetText(_INFORMATION_TEXT);
 	worldTransform = Transform(_CONTINUE_POS, _CONTINUE_SCALE, this);
-	layer = LayerSetting(true, true, Layer::MIDDLE);
+	layer = LayerSetting(false, true, Layer::MIDDLE);
 	_continueButton = factory.CreateWithArgs<UIScreenButton>(worldTransform, true, layer);
 	_continueButton->SetText(_CONTINUE_TEXT);
 }
@@ -39,4 +39,10 @@ void ContinueResultUI::Draw()
 void ContinueResultUI::SetCallback(std::function<void()> setCallback)
 {
 	_continueButton->SetCallback(setCallback);
+}
+
+void ContinueResultUI::SetActive(bool setActive)
+{
+	active = setActive;
+	_continueButton->SetActive(setActive);
 }

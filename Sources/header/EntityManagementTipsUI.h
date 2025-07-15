@@ -26,11 +26,11 @@ private:
 	UIScreenText* _tipsText;
 	bool _isLock;
 
-	const Vector2 _LOCK_TEXT_POS = Vector2(-0.45f, 0);
+	const Vector2 _LOCK_TEXT_POS = Vector2(0.0f, 0);
 	const std::string _LOCK_TEXT = "äYìñéñó·î≠ê∂Ç≈âèú";
-	const Vector2 _INFORMATION_POS = Vector2(-0.2f, -0.95f);
+	const Vector2 _INFORMATION_POS = Vector2(0.0f, -0.95f);
 	const std::string _INFORMATION_TEXT = "ä«óùï˚ñ@";
-	const Vector2 _TIPS_TEXT_POS = Vector2(-0.95f, -0.3f);
+	const Vector2 _TIPS_TEXT_POS = Vector2(0.0f, -0.3f);
 	const int _TIPS_FONT_SIZE = 16;
 };
 
