@@ -9,7 +9,7 @@ public:
 		weaponName = "Triangle";
 		weaponID = 1;
 
-		damage = 5;
+		damage = 50;
 		damageType = Type::RED;
 	}
 };

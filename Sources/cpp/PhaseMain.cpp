@@ -14,6 +14,7 @@
 #include "../header/EntityManager.h"
 #include "../header/UIEntity.h"
 #include "../header/UIOfficer.h"
+#include "../header/DataManager.h"
 
 std::vector<OfficerPlayer*>& PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
@@ -211,4 +212,10 @@ void PhaseMain::WheelRotInputProc(Vector2 pos, int rot)
 void PhaseMain::EscapeInputProc()
 {
 
+}
+
+void PhaseMain::ChangeResultPhase(int value)
+{
+	ChangePhase(PhaseName::RESULT);
+	DataManager::Instance().energy = value;
 }

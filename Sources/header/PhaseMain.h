@@ -23,6 +23,7 @@ public:
 	void Init() override;
 	void Teardown() override {}
 
+	void ChangeResultPhase(int value);
 	static std::vector<OfficerPlayer*>& GetSelectOfficerList();
 
 protected:

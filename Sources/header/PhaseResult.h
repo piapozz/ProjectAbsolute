@@ -34,13 +34,16 @@ private:
 	const float WIN_Y = WINDOW_HEIGHT;
 
 	const Vector2 TEXT_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
-	const Vector2 TEXT_POS =  Vector2(WIN_X - (TEXT_SIZE.x / 2.0f), (TEXT_SIZE.y / 2.0f));
+	const Vector2 TEXT_POS =  Vector2(WIN_X / 2.0f - 200, (TEXT_SIZE.y / 2.0f));
+	const Vector2 MONEY_SIZE = Vector2(WIN_X * (3.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
+	const Vector2 MONEY_POS = Vector2(WIN_X / 2.0f - 100, WIN_Y / 2.0f);
 
-	const Vector2 RESTART_SIZE = Vector2(WIN_X * (2.0f / 10.0f), WIN_Y * (2.0f / 20.0f));
-	const Vector2 RESTART_POS = Vector2(WIN_X / 2.0f, WIN_Y - (RESTART_SIZE.y / 2.0f));
-
-	const Vector2 NEXT_SIZE = Vector2(WIN_X * (1.0f / 4.0f), WIN_Y * (1.0f / 20.0f));
-	const Vector2 NEXT_POS =  Vector2((NEXT_SIZE.x / 2.0f), WIN_Y - (NEXT_SIZE.y / 2.0f));
+	// ÉTÉCÉY
+	const Vector2 RESTART_SIZE = Vector2(WIN_X * (1.0f / 5.0f), WIN_Y * (1.0f / 15.0f));
+	const Vector2 NEXT_SIZE    = Vector2(WIN_X * (1.0f / 4.0f), WIN_Y * (1.0f / 15.0f));
+	const float TOTAL_WIDTH = RESTART_SIZE.x + NEXT_SIZE.x;
+	const Vector2 RESTART_POS = Vector2(WIN_X / 2.0f - (TOTAL_WIDTH / 2.0f) + (RESTART_SIZE.x / 2.0f),WIN_Y - (RESTART_SIZE.y / 2.0f));
+	const Vector2 NEXT_POS = Vector2(WIN_X / 2.0f + (TOTAL_WIDTH / 2.0f) - (NEXT_SIZE.x / 2.0f),WIN_Y - (NEXT_SIZE.y / 2.0f));
 
 
 };

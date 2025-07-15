@@ -22,40 +22,40 @@ void OfficerManager::Init()
 	Vector2 position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
 	AddOfficer(OfficerType::PLAYER, data, position);
 	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
-	AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
+	//AddOfficer(OfficerType::PLAYER, data, position);
 
-	sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
-	sectionPosition = sectionTransform.position;
-	sectionScale = sectionTransform.scale;
+	//sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
+	//sectionPosition = sectionTransform.position;
+	//sectionScale = sectionTransform.scale;
 
-	position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
-	AddOfficer(OfficerType::MOB, data, position);
+	//position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
+	//AddOfficer(OfficerType::MOB, data, position);
 
-	sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
-	sectionPosition = sectionTransform.position;
-	sectionScale = sectionTransform.scale;
+	//sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
+	//sectionPosition = sectionTransform.position;
+	//sectionScale = sectionTransform.scale;
 
-	position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
-	AddOfficer(OfficerType::MOB, data, position);
+	//position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
+	//AddOfficer(OfficerType::MOB, data, position);
 
-	sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
-	sectionPosition = sectionTransform.position;
-	sectionScale = sectionTransform.scale;
+	//sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
+	//sectionPosition = sectionTransform.position;
+	//sectionScale = sectionTransform.scale;
 
-	position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
-	AddOfficer(OfficerType::MOB, data, position);
+	//position = Vector2(sectionPosition.x, sectionPosition.y - SECTION_SIZE_Y / 2);
+	//AddOfficer(OfficerType::MOB, data, position);
 }
 
 void OfficerManager::Proc()

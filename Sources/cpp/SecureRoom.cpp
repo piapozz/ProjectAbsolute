@@ -212,4 +212,5 @@ void SecureRoom::ReplaceEntity()
 {
 	_pEntity->SetPosition(transform.GetWorldTransform().position + GetScale() / 2.0f * _ENTITY_OFFSET);
 	_currentState = State::IDLE;
+	_pEntity->Respawn();
 }

@@ -61,7 +61,11 @@ void EventManager::AddEnergy(int value)
 {
 	// エネルギーを追加
 	_energy += value;
-	if (_energy > _MAX_ENERGY) _energy = _MAX_ENERGY;
+	if (_energy > _MAX_ENERGY)
+	{
+		_energy = _MAX_ENERGY;
+		
+	}
 	if (_energy < 0) _energy = 0;
 	// スライダーの更新
 	_pEnergySlider->SetValue(static_cast<float>(_energy) / static_cast<float>(_MAX_ENERGY));

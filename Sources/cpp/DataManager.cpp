@@ -1,10 +1,5 @@
 #include "../header/DataManager.h"
 
-DataManager::DataManager()
-{
-
-}
-
 DataManager::~DataManager()
 {
 

@@ -21,7 +21,7 @@ void Entity_E000::Init(LayerSetting layerSetting)
 		defenseRatio[i] = 1.0f;
 	}
 
-	_attackStatus.attack = 20;
+	_attackStatus.attack = 50;
 	_attackStatus.damageType = Type::RED;
 
 	Transform trans = Transform(Vector2::zero(), Vector2::one(), this);
@@ -51,4 +51,13 @@ void Entity_E000::RunawayEvent()
 	BaseSection* randomSection = stageManager.GetRandomSection();
 
 	ChangeMoveState(randomSection);
+}
+
+void Entity_E000::Respawn()
+{
+	ChangeState(CharacterStateID::IDLE);
+	targetCharacter = nullptr;
+	pController->isFreeze = false;
+	SetHealth(maxHealth);
+	SetIsDead(false);
 }

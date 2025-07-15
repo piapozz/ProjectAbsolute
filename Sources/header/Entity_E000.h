@@ -17,6 +17,7 @@ public:
 	static std::string StaticTypeName() {
 		return "Entity_E000";
 	}
+	void Respawn() override;
 
 protected:
 	void Init(LayerSetting layerSetting) override;
