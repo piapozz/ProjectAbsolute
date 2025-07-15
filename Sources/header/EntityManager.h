@@ -22,22 +22,9 @@ public:
 	}
 
 	void AddEntity(int addID);
-	void AddObjectEntity();
+	vector<BaseEntity*> AddObjectEntity();
 
 private:
-	struct EntityManagementData
-	{
-		int ID;
-		int roomID;
-		int operationCount;
-		bool isLockInformation;
-		bool isLockOperation[(int)Type::MAX];
-		bool isLockManagement;
-		bool isLockRunaway;
-		bool isLockWeapon;
-		bool isLockSuit;
-	};
-
 	template<typename T>
 	void RegisterEntity(int ID);
 
