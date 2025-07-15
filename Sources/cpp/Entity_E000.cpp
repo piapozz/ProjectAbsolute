@@ -57,7 +57,7 @@ void Entity_E000::Respawn()
 {
 	ChangeState(CharacterStateID::IDLE);
 	targetCharacter = nullptr;
-	pController->isFreeze = false;
+	pController->isFreeze = true;
 	SetHealth(maxHealth);
 	SetIsDead(false);
 }

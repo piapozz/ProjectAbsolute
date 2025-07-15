@@ -18,7 +18,9 @@ void CharacterStateFight::Update(BaseCharacter* character)
 		if (!hasAttacked && nowCount >= _attackHitTiming)
 		{
 			_attack->characterAttack->Attack(character, character->targetCharacter);
+			if (character->targetCharacter->GetIsDead()) character->targetCharacter = nullptr;
 			hasAttacked = true;
+			character->ClearTargetCharacter();
 		}
 
 		if (nowCount >= _attackStartCount + _attackDuration)

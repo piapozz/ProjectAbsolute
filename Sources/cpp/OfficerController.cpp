@@ -56,6 +56,14 @@ void OfficerController::UpdateIdleState()
 		return;
 	}
 
+	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
+	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
+	if (secureRoom && !character->GetIsFight() && character->targetCharacter == nullptr)
+	{
+		character->ChangeState(CharacterStateID::OPERATION);
+		return;
+	}
+
 	if (!WaitUntilCount()) return;
 
 	Vector2 nextPosition = GetRandomPositionInRoom();
@@ -82,15 +90,6 @@ void OfficerController::UpdateMoveState()
 	}
 
 	if (!character->pCharacterState->IsEndState()) return;
-
-	BaseObject* sectionObject = ObjectManager::Instance().FindPosObject(character->GetPosition(), ObjectType::SECTION);
-	SecureRoom* secureRoom = dynamic_cast<SecureRoom*>(sectionObject);
-
-	if (secureRoom)
-	{
-		character->ChangeState(CharacterStateID::OPERATION);
-		return;
-	}
 
 	if (character->GetIsFight())
 	{
@@ -124,7 +123,7 @@ void OfficerController::UpdateFightState()
 	ObjectManager& objectManager = ObjectManager::Instance();
 	BaseObject* mySection = objectManager.FindPosObject(character->GetPosition(), ObjectType::SECTION);
 	BaseObject* targetSection = objectManager.FindPosObject(targetCharacter->GetPosition(), ObjectType::SECTION);
-	if (mySection != targetSection)
+	if (targetCharacter != nullptr && mySection != targetSection)
 	{
 		BaseSection* section = static_cast<BaseSection*>(targetSection);
 		character->ChangeMoveState(section);
