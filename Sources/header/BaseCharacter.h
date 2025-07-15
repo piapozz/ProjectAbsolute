@@ -126,7 +126,7 @@ public:
 	inline CharacterGroup GetGroup(){ return _groupType; }
 	inline std::vector<AttackAction*> GetAttackAction(){ return attackActions; }
 	inline int GetSpeed(){ return _moveSpeed; }
-	std::function<void()> GetDeadEventCallBack(){ return _DeadEventCallback; }
+	inline void DeadEvent(){ _DeadEventCallback(); }
 	inline void SetIsDead(bool flag){ isDead = flag; }
 	inline void SetIsPanic(bool flag){ isPanic = flag; }
 	inline void SetIsFight(bool flag){ isFight = flag; }

@@ -10,6 +10,7 @@ void CharacterStateDead::Enter(BaseCharacter* character)
 {
 	character->color = DEAD;
 	character->stateID = CharacterStateID::DEAD;
+	character->DeadEvent();
 
 	character->SetImpossible(false);
 }

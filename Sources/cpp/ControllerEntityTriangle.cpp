@@ -137,7 +137,7 @@ void ControllerEntityTriangle::UpdateFightState()
 
 void ControllerEntityTriangle::UpdateDeadState()
 {
-	character->GetDeadEventCallBack();
+	
 }
 
 bool ControllerEntityTriangle::WaitUntilCount()
