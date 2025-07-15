@@ -144,15 +144,15 @@ void SecureRoom::MeltdownProc()
 {
 	if (!_isMeltdown) return;
 
-	// メルトダウンカウントを減少させる
-	_meltdownCount--;
-	_pMeltText->SetText("メルトダウン" + std::to_string(_meltdownCount));
 	// 途中で脱走した場合はメルトダウン解除
 	if (_currentState == State::RUNAWAY)
 	{
 		_pMeltText->SetActive(false);
 		_isMeltdown = false;
 	}
+	// メルトダウンカウントを減少させる
+	_meltdownCount--;
+	_pMeltText->SetText("メルトダウン" + std::to_string(_meltdownCount));
 
 	if (_meltdownCount > 0) return;
 	_pMeltText->SetActive(false);
@@ -170,17 +170,17 @@ void SecureRoom::OperationProc()
 	if (_currentState != State::INTERACT) return;
 	// 作業の進行、作業が終了してないなら返す
 	if (!_pOperationList[(int)_selectOperation]->OperationProc()) return;
+	// ステートを変更
+	_currentState = State::IDLE;
 	// 作業が終了したら作業の結果を取得
 	int successCount = _pOperationList[(int)_selectOperation]->GetSuccessCount();
 	// エンティティの作業終了イベントを発生させる
 	_pEntity->EndOperationEvent(successCount);
-	// ステートを変更
-	_currentState = State::IDLE;
 	// 職員に終わったことを通知
 	_pInteractOfficer->ChangeMoveState(_pInteractOfficer->GetPastPosition());
 	// タスクを成功分増やす
 	EndOperationEvent(successCount);
-	//_pInteractOfficer = nullptr;
+	_pInteractOfficer = nullptr;
 }
 
 void SecureRoom::StartOperation()
