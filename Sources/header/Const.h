@@ -131,6 +131,20 @@ typedef struct LayerSetting
 	LayerSetting(bool active, bool interact, Layer layer): m_active(active), m_interact(interact), m_layer(layer){ }
 };
 
+// エンティティの管理データ
+struct EntityManagementData
+{
+	int ID;
+	int roomID;
+	int operationCount;
+	bool isLockInformation;
+	bool isLockOperation[(int)Type::MAX];
+	bool isLockManagement;
+	bool isLockRunaway;
+	bool isLockWeapon;
+	bool isLockSuit;
+};
+
 // ステージ
 const int SECTION_SIZE_X = 150;
 const int SECTION_SIZE_Y = 100;

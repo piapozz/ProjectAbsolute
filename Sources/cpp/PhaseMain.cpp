@@ -11,6 +11,7 @@
 #include "../header/SecureRoom.h"
 #include "../header/ObjectFactory.h"
 #include "../header/CommonModule.h"
+#include "../header/EntityManager.h"
 
 std::vector<OfficerPlayer*>& PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
@@ -33,9 +34,14 @@ void PhaseMain::Init()
 	StageManager::Instance().CreateStage();
 	_pOfficerManager = new OfficerManager();
 	_pOfficerManager->Init();
-	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
-	BaseEntity* addEntity = ObjectFactory::Instance().CreateWithArgs<Entity_E000>(layerSetting);
-	StageManager::Instance().SetEntity(addEntity, 0);
+	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
+	// エンティティの生成
+	vector<BaseEntity*> addEntity = EntityManager::Instance().AddObjectEntity();
+	for (int i = 0, max = addEntity.size(); i < max; i++)
+	{
+		int roomID = addEntity[i]->GetManagementData().roomID;
+		StageManager::Instance().SetEntity(addEntity[i], roomID);
+	}
 	EventManager::Instance().Init();
 	SecureRoom::EndOperationEvent = [this](int successCount)
 	{

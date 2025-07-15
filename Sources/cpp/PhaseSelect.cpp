@@ -33,6 +33,7 @@ void PhaseSelect::Init()
 			// エンティティーを選択する
 			this->SelectEntity(i);
 		});
+		//button->SetText("Entity " + std::to_string(i + 1));
 	}
 }
 
@@ -74,5 +75,5 @@ void PhaseSelect::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 void PhaseSelect::SelectEntity(int selectNum)
 {
 	EntityManager::Instance().AddEntity(selectNum);
-	ChangePhase(PhaseName::STANDBY);
+	ChangePhase(PhaseName::MAIN);
 }

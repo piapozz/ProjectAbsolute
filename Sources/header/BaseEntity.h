@@ -47,19 +47,25 @@ public:
 	/// ツールか否か
 	/// </summary>
 	virtual bool IsTool() = 0;
-	inline void SetOperation(Type setOperation){ _currentOperationType = setOperation; }
+	inline void SetOperation(Type setOperation){ currentOperationType = setOperation; }
 	void SetRunawayUI(UIButton* setUI);
+	inline void SetManagementData(EntityManagementData setData){ managementData = setData; }
+	inline EntityManagementData GetManagementData(){ return managementData; }
+	inline void SetRunawayCallback(std::function<void()> setCallback){ RunawayCallback = setCallback; }
 
 protected:
 	// マスターID
 	int masterID;
+	// 管理データ
+	EntityManagementData managementData;
 	// 危険レベル
 	int hazardLevel;
 	// 暴走カウンター
 	int runawayCount;
 	// 最大暴走カウンター
 	int maxRunawayCount;
-	Type _currentOperationType;
-	UIButton* _pRunawayUI;
+	Type currentOperationType;
+	UIButton* pRunawayUI;
+	std::function<void()> RunawayCallback;
 };
 

@@ -67,8 +67,8 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 
 void SecureRoom::Proc()
 {
-	MeltdownProc();
 	OperationProc();
+	MeltdownProc();
 }
 
 void SecureRoom::Draw()
@@ -124,10 +124,17 @@ void SecureRoom::SetEntity(BaseEntity* setEntity)
 	_pEntity->SetRunawayUI(_pRunawayCountUI);
 	// マスターから名前取得
 	_pInformationUI->SetText("Triangle");
+	_pEntity->SetRunawayCallback([this]()
+	{
+		_currentState = State::RUNAWAY;
+	});
 }
 
 void SecureRoom::StartMeltdown()
 {
+	// 脱走中ならメルトダウンしない
+	if (_currentState == State::RUNAWAY) return;
+
 	_isMeltdown = true;
 	_meltdownCount = _MELTDOWN_COUNT;
 	_pMeltText->SetActive(true);
@@ -140,12 +147,21 @@ void SecureRoom::MeltdownProc()
 	// メルトダウンカウントを減少させる
 	_meltdownCount--;
 	_pMeltText->SetText("メルトダウン" + std::to_string(_meltdownCount));
+	// 途中で脱走した場合はメルトダウン解除
+	if (_currentState == State::RUNAWAY)
+	{
+		_pMeltText->SetActive(false);
+		_isMeltdown = false;
+	}
+
 	if (_meltdownCount > 0) return;
 	_pMeltText->SetActive(false);
 
 	// メルトダウンカウントが0になったら、エンティティーを暴走させる
 	_pEntity->SetRunawayCount(0);
 	_pEntity->RunawayEvent();
+	_currentState = State::RUNAWAY;
+	_isMeltdown = false;
 }
 
 void SecureRoom::OperationProc()

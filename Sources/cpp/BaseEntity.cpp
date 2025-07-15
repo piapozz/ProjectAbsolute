@@ -67,14 +67,15 @@ void BaseEntity::DecreaseRunawayCount()
 		runawayCount = 0;
 		return;
 	}
-	_pRunawayUI->SetText(std::to_string(runawayCount));
+	pRunawayUI->SetText(std::to_string(runawayCount));
 	// 暴走カウンターが0になったら、暴走イベントを発生させる
 	if (runawayCount > 0) return;
+	RunawayCallback;
 	RunawayEvent();
 }
 
 void BaseEntity::SetRunawayUI(UIButton* setUI)
 {
-	_pRunawayUI = setUI;
-	_pRunawayUI->SetText(std::to_string(runawayCount));
+	pRunawayUI = setUI;
+	pRunawayUI->SetText(std::to_string(runawayCount));
 }

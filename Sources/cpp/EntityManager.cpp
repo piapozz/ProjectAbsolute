@@ -13,16 +13,21 @@ void EntityManager::AddEntity(int addID)
 	_entityDataList.push_back(EntityManagementData());
 }
 
-void EntityManager::AddObjectEntity()
+vector<BaseEntity*> EntityManager::AddObjectEntity()
 {
 	ObjectFactory& factory = ObjectFactory::Instance();
 	Transform worldTransform = Transform(Vector2::zero(), Vector2::one());
 	LayerSetting layer = LayerSetting(true, true, Layer::MIDDLE);
-	for (int i = 0, max = _entityDataList.size(); i < max; i++)
+	int entityCount = _entityDataList.size();
+	vector<BaseEntity*> entityList;
+	for (int i = 0; i < entityCount; i++)
 	{
 		int addID = _entityDataList[i].ID;
-		CreateEntity(addID);
+		BaseEntity* addEntity = CreateEntity(addID);
+		addEntity->SetManagementData(_entityDataList[i]);
+		entityList.push_back(addEntity);
 	}
+	return entityList;
 }
 
 template<typename T>
