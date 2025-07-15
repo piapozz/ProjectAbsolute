@@ -30,6 +30,7 @@ public:
 	virtual void UpdateIdleState(){};
 	virtual void UpdateMoveState(){};
 	virtual void UpdateFightState(){};
+	virtual void UpdateDeadState(){};
 
 protected:
 	BaseCharacter* character;

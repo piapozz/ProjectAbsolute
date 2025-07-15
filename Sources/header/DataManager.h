@@ -12,6 +12,11 @@ class DataManager
 {
 public:
 
+	static DataManager& Instance() {
+		static DataManager instance;
+		return instance;
+	}
+
 	DataManager();
 	~DataManager();
 
@@ -28,4 +33,6 @@ public:
 	/// </summary>
 	void SaveFile();
 
+
+	int money;
 };

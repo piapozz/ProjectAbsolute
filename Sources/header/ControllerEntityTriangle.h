@@ -38,5 +38,6 @@ private:
 	void UpdateIdleState() override;
 	void UpdateMoveState() override;
 	void UpdateFightState() override;
+	void UpdateDeadState() override;
 
 };

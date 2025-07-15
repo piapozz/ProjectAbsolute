@@ -5,7 +5,7 @@
 
 void PhaseManager::Init()
 {
-	ChangePhase(PhaseName::SELECT);
+	ChangePhase(PhaseName::RESULT);
 }
 
 void PhaseManager::Teardown()
