@@ -6,6 +6,9 @@
 #include "../header/UIManager.h"
 #include "../header/SelectorNearEntityInRoom.h"
 #include "../header/AttackSingle.h"
+#include "../header/UIOfficer.h"
+
+std::function<UIOfficer*(void)> OfficerPlayer::GetUIOfficerCallback;
 
 void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 {
@@ -70,7 +73,7 @@ void OfficerPlayer::ClickEvent()
 	// 作業中なら何もしない
 	if (stateID == CharacterStateID::OPERATION) return;
 	// UIに渡す
-	UIManager::Instance().SetOfficerUI(this);
+	GetUIOfficerCallback()->SetOfficer(*static_cast<BaseOfficer*>(this));
 	// 選択中にセットする
 	std::vector<OfficerPlayer*>& selectOfficerList = PhaseMain::GetSelectOfficerList();
 	selectOfficerList.clear();

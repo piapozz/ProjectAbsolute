@@ -16,19 +16,8 @@ public:
 	UIManager();
 	~UIManager();
 
-	std::vector<UIScreenButton*> GetOperationUIList();
-	void SetActiveOperationUI(bool active);
-	void SetActiveEntityUI(bool active);
-	void SetActiveOfficerUI(bool active);
-	void SetOfficerUI(BaseOfficer* setOfficer);
 	int GetFontHandle(int size);
 
 private:
-	std::vector<UIScreenButton*> _pOperationUIList;
-	UIEntity* _pEntityUI;
-	UIOfficer* _pOfficerUI;
 	int _fontHandle[FONT_SIZE_MAX];
-
-	const float _OPERATION_SIZE_X = WINDOW_WIDTH / 6;
-	const float _OPERATION_SIZE_Y = WINDOW_HEIGHT / 3;
 };

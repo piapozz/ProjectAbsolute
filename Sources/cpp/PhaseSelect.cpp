@@ -75,5 +75,5 @@ void PhaseSelect::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 void PhaseSelect::SelectEntity(int selectNum)
 {
 	EntityManager::Instance().AddEntity(selectNum);
-	ChangePhase(PhaseName::MAIN);
+	ChangePhase(PhaseName::STANDBY);
 }

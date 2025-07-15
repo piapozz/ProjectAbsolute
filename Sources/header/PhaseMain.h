@@ -2,12 +2,14 @@
 #include "BasePhase.h"
 #include <vector>
 class StageManager;
-class UIManager;
 class Camera;
 class OfficerManager;
 class OfficerPlayer;
 class EventManager;
 class UIScreenButton;
+class SelectOperationUI;
+class UIEntity;
+class UIOfficer;
 /*
  * Sakakura
  * メインフェーズ
@@ -35,12 +37,13 @@ protected:
 	void EscapeInputProc() override;
 
 private:
-	UIManager* _pUIManager;
 	Camera* _pCamera;
 	OfficerManager* _pOfficerManager;
 	static std::vector<OfficerPlayer*> _pSelectOfficerList;
 	UIScreenButton* _pRangeSelect;
-
+	SelectOperationUI* _pSelectOperationUI;
+	UIEntity* _pEntityUI;
+	UIOfficer* _pOfficerUI;
 	std::vector<std::vector<int>> _stageData ={
 		{1, 2, 2, 2, 2, 2, 1}, 
 		{3, 4, 0, 0, 0, 0, 3},

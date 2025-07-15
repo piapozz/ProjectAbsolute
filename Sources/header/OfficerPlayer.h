@@ -1,6 +1,7 @@
 #pragma once
 #include "../header/BaseOfficer.h"
 #include "../header/UISlider.h"
+class UIOfficer;
 
 /*
  * Sein
@@ -22,6 +23,7 @@ public:
 	static std::string StaticTypeName() {
 		return "OfficerPlayer";
 	}
+	static std::function<UIOfficer*(void)> GetUIOfficerCallback;
 
 	void Init(OfficerInitData data, int setOfficerID, Vector2 position) override;
 	void Proc() override;

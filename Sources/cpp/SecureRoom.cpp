@@ -15,8 +15,13 @@
 #include "../header/UIEntity.h"
 #include "../header/UIText.h"
 #include "../header/EventManager.h"
+#include "../header/SelectOperationUI.h"
 
+std::function<void()> SecureRoom::StartOperationEvent;
 std::function<void(int)> SecureRoom::EndOperationEvent;
+// 表示するUIを取得するコールバック
+std::function<UIEntity*(void)> SecureRoom::GetUIEntityCallback;
+std::function<SelectOperationUI*(void)> SecureRoom::GetUIOperationCallback;
 
 void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 {
@@ -50,7 +55,7 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	_pInformationUI = factory.CreateWithArgs<UIButton>(worldTransform, UILayerSetting);
 	_pInformationUI->SetCallback([this]()
 	{
-		UIManager::Instance().SetActiveEntityUI(true);
+		GetUIEntityCallback()->SetActive(true);
 	});
 	UILayerSetting = {false, false, Layer::FRONT};
 	_pMeltText = factory.CreateWithArgs<UIText>(setTransform, UILayerSetting);
@@ -95,23 +100,23 @@ void SecureRoom::ClickEvent()
 	if (PhaseMain::GetSelectOfficerList().empty()) return;
 
 	// 作業UIの表示
-	std::vector<UIScreenButton*> pOperationUIList = UIManager::Instance().GetOperationUIList();
+	SelectOperationUI* operationUI = GetUIOperationCallback();
+	operationUI->SetActive(true);
+	std::vector<UIScreenButton*> operationList = operationUI->GetOperationUIList();
 	for (int i = 0; i < (int)Type::MAX; i++)
 	{
-		pOperationUIList[i]->SetText(_operationNameList[i]);
-		pOperationUIList[i]->SetCallback([this, i, pOperationUIList]()
+		operationList[i]->SetText(_operationNameList[i]);
+		operationList[i]->SetCallback([this, i, operationUI]()
 		{
 			SetInteractOfficer(PhaseMain::GetSelectOfficerList()[0]);
 			_currentState = State::SELECT;
 			// UIを非表示
-			for (int j = 0; j < (int)Type::MAX; j++)
-			{
-				pOperationUIList[j]->SetActive(false);
-			}
+			operationUI->SetActive(false);
+			// 選択された作業を設定
 			_selectOperation = (Type)i;
+			// 作業に向かわせる
 			_pInteractOfficer->ChangeMoveState(this);
 		});
-		pOperationUIList[i]->SetActive(true);
 	}
 }
 
@@ -197,4 +202,9 @@ void SecureRoom::StartOperation()
 	_pEntity->StartOperationEvent();
 	// メルトダウンカウンターを増加させる
 	EventManager::Instance().AddMelt();
+}
+
+void SecureRoom::ReplaceEntity()
+{
+
 }
