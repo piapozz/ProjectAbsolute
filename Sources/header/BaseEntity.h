@@ -53,6 +53,7 @@ public:
 	inline EntityManagementData GetManagementData(){ return managementData; }
 	inline void SetRunawayCallback(std::function<void()> setCallback){ RunawayCallback = setCallback; }
 
+	inline int GetRunawayCountMax(){ return maxRunawayCount;}
 protected:
 	// マスターID
 	int masterID;

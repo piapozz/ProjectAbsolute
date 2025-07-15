@@ -11,4 +11,8 @@ public:
 	void Update(BaseCharacter* character) override;
 	void Enter(BaseCharacter* character) override;
 	void Exit(BaseCharacter* character) override;
+
+private:
+	float _respawnTimer;
+	const float _RESPAWN_COUNT = 3000.0f;
 };

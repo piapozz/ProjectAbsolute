@@ -4,15 +4,19 @@
 void CharacterStateDead::Update(BaseCharacter* character)
 {
 	character->SetHealth(0);
+
+	if (_respawnTimer + _RESPAWN_COUNT <= GetNowCount())
+	{
+		std::function<void()> func = character->GetDeadEventCallBack();
+		if (func != NULL) character->DeadEvent();
+	}
 }
 
 void CharacterStateDead::Enter(BaseCharacter* character)
 {
 	character->color = DEAD;
 	character->stateID = CharacterStateID::DEAD;
-	
-	std::function<void()> func = character->GetDeadEventCallBack();
-	if (func != NULL) character->DeadEvent();
+	_respawnTimer = GetNowCount();
 	
 	character->SetImpossible(false);
 }
