@@ -6,12 +6,14 @@
 #include "../header/Entity_E000.h"
 #include "../header/EventManager.h"
 #include "../header/UIScreenButton.h"
-#include "../header/UIManager.h"
+#include "../header/SelectOperationUI.h"
 #include "../header/BaseOfficer.h"
 #include "../header/SecureRoom.h"
 #include "../header/ObjectFactory.h"
 #include "../header/CommonModule.h"
 #include "../header/EntityManager.h"
+#include "../header/UIEntity.h"
+#include "../header/UIOfficer.h"
 
 std::vector<OfficerPlayer*>& PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
@@ -48,9 +50,27 @@ void PhaseMain::Init()
 		// 作業が終了したら、エネルギーを追加
 		EventManager::Instance().AddEnergy(successCount);
 	};
+	// UI
+	ObjectFactory& factory = ObjectFactory::Instance();
 	layerSetting = {true, false, Layer::FRONT};
-	_pRangeSelect = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
-	_pUIManager = &UIManager::Instance();
+	_pRangeSelect = factory.CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
+	_pSelectOperationUI = factory.CreateWithArgs<SelectOperationUI>();
+	SecureRoom::GetUIOperationCallback = [this]()
+	{
+		return _pSelectOperationUI;
+	};
+	_pEntityUI = factory.CreateWithArgs<UIEntity>();
+	SecureRoom::GetUIEntityCallback = [this]()
+	{
+		return _pEntityUI;
+	};
+	layerSetting = {false, false, Layer::MIDDLE};
+	Transform trans = Transform(Vector2(WINDOW_WIDTH - (WINDOW_WIDTH / 10), WINDOW_HEIGHT / 5), Vector2(WINDOW_WIDTH / 5, WINDOW_HEIGHT / 2.5f));
+	_pOfficerUI = factory.CreateWithArgs<UIOfficer>(trans, true, layerSetting);
+	OfficerPlayer::GetUIOfficerCallback = [this]()
+	{
+		return _pOfficerUI;
+	};
 	// カメラ生成
 	_pCamera = new Camera();
 	// 各オブジェクトのインタラクト時のコールバック設定
@@ -148,7 +168,8 @@ void PhaseMain::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 		if (!StageManager::Instance().CheckPosOnStage(worldPos))
 		{
 			_pSelectOfficerList.clear();
-			_pUIManager->SetActiveOperationUI(false);
+			_pSelectOperationUI->SetActive(false);
+			_pOfficerUI->SetActive(false);
 			return;
 		}
 	}

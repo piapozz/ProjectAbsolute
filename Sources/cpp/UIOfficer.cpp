@@ -87,4 +87,5 @@ void UIOfficer::SetOfficer(BaseOfficer& officer)
 		_pOfficerParam[i]->SetParam(oss.str());
 		_pOfficerParam[i]->SetParamColor(ToColor(type));
 	}
+	SetActive(true);
 }

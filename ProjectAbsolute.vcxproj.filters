@@ -369,12 +369,6 @@
     <ClCompile Include="Sources\cpp\Entity_T000.cpp">
       <Filter>ソース ファイル\Ishihara\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\EntityOperationSummaryUI.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\EntityOperationUI.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\AttackBetweenCharacters.cpp">
       <Filter>ソース ファイル\Sein\Attack</Filter>
     </ClCompile>
@@ -401,6 +395,18 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\UIOfficerIcon.cpp">
       <Filter>ソース ファイル\Ishihara\PackageUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\SelectOperationUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityOperationUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityOperationSummaryUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\EntityManager.cpp">
+      <Filter>ソース ファイル\Sakakura\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -677,12 +683,6 @@
     <ClInclude Include="Sources\header\Entity_T000.h">
       <Filter>ヘッダー ファイル\Ishihara\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\header\EntityOperationSummaryUI.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\EntityOperationUI.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\header\AttackSingle.h">
       <Filter>ヘッダー ファイル\Sein\Attack</Filter>
     </ClInclude>
@@ -709,6 +709,18 @@
     </ClInclude>
     <ClInclude Include="Sources\header\UIOfficerIcon.h">
       <Filter>ヘッダー ファイル\Ishihara\PackageUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\SelectOperationUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityOperationSummaryUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityOperationUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\EntityManager.h">
+      <Filter>ヘッダー ファイル\Sakakura\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

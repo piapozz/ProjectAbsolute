@@ -11,6 +11,7 @@ class UIButton;
 class UIScreenButton;
 class UIEntity;
 class UIText;
+class SelectOperationUI;
 
 /*
  * Sakakura
@@ -23,6 +24,9 @@ public:
 	static std::function<void()> StartOperationEvent;
 	// 作業終了時のコールバック
 	static std::function<void(int)> EndOperationEvent;
+	// 表示するUIを取得するコールバック
+	static std::function<UIEntity*(void)> GetUIEntityCallback;
+	static std::function<SelectOperationUI*(void)> GetUIOperationCallback;
 
 	static std::string StaticTypeName() {
 		return "SecureRoom";
@@ -67,7 +71,6 @@ public:
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return !_isMeltdown; }
-	inline static void SetGetUICallback(std::function<std::vector<OfficerPlayer*>()> Callback){ _GetUICallback = Callback; }
 	inline void SetState(State state){ _currentState = state; }
 
 private:
@@ -106,8 +109,6 @@ private:
 	UIButton* _pInformationUI;
 	UIEntity* _pEntityUI;
 	UIText* _pMeltText;
-	// 表示するUIを取得するコールバック
-	static std::function<std::vector<OfficerPlayer*>()> _GetUICallback;
 
 	/// <summary>
 	/// メルトダウンのカウントをする
@@ -117,5 +118,9 @@ private:
 	/// 作業の処理
 	/// </summary>
 	void OperationProc();
+	/// <summary>
+	/// エンティティの再配置
+	/// </summary>
+	void ReplaceEntity();
 };
 
