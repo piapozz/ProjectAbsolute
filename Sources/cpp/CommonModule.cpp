@@ -26,7 +26,7 @@ Transform Transform::GetWorldTransform()
 	{
 		Transform parentTransform = parent->GetTransform().GetWorldTransform();
 
-		result.position = position / 2 * parentTransform.scale + parentTransform.position;
+		result.position = position * parentTransform.scale / 2 + parentTransform.position;
 		result.scale = scale * parentTransform.scale;
 	}
 	else

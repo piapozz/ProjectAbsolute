@@ -2,6 +2,7 @@
 #include "BasePhase.h"
 
 class Camera;
+class UIOfficerList;
 /*
  * Sakakura
  * スタンバイフェーズ
@@ -30,8 +31,12 @@ private:
 
 	Camera* _pCamera;
 
-	// 座標,サイズ(相対割合)
+	UIOfficerList* uiDivisuinList;
+	UIOfficerList* uiOfficerList;
 
+	std::vector<BaseObject*> drackingObjects;
+
+	// 座標,サイズ
 	const float WIN_X = WINDOW_WIDTH;
 	const float WIN_Y = WINDOW_HEIGHT;
 

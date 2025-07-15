@@ -48,7 +48,6 @@ public:
 		auto it = _allocators.find(key);
 		if (it != _allocators.end())
 		{
-			ObjectManager::Instance().RemoveObject(obj);
 			it->second->DeallocateBase(obj);
 		} else
 		{

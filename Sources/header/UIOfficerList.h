@@ -33,22 +33,22 @@ public:
 	/// オフィサーリストの設定
 	/// </summary>
 	/// <param name="list"></param>
-	void SetOfficerList(std::vector<BaseOfficer*> list) { officerList = list; }
+	void AddOfficer(BaseOfficer* officer);
 
-	/// <summary>
-	/// オフィサーリストの設定
-	/// </summary>
-	/// <param name="list"></param>
-	void SetOfficerList(BaseOfficer* officer) {
-		Transform trans = officer->GetTransform();
-		officer->SetParent(this);
-		officerList.push_back(officer);
-	}
+	void RemoveOfficer(BaseOfficer* officer);
 
 private:
 	void DrawOfficerList();
+	void SetIconPosition();
 	std::vector<BaseOfficer*> officerList;
 	std::vector<UIOfficerIcon*> officerIcons;
 	UIScreenImage* backgroundImage;
+
+	// 座標,サイズ
+	const float WIN_X = WINDOW_WIDTH;
+	const float WIN_Y = WINDOW_HEIGHT;
+
+	// 職員アイコン
+	const Vector2 OFFICER_ICON_SIZE = Vector2(WIN_X * (1.0f / 20.0f), WIN_Y * (2.0f / 20.0f));
 };
 

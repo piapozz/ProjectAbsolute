@@ -1,13 +1,18 @@
 #include "../header/UIOfficerIcon.h"
 #include "../header/ObjectFactory.h"
+#include "../header/UIOfficerList.h"
+
+std::function<void(UIOfficerIcon*)> UIOfficerIcon::startDrackCallback;
+std::function<void(UIOfficerIcon*)> UIOfficerIcon::onDrackCallback;
+std::function<void(UIOfficerIcon*)> UIOfficerIcon::endDrackCallback;
 
 void UIOfficerIcon::Init(Transform setTrasnform, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTrasnform, layerSetting);
 
-	Transform trans = Transform(Vector2::zero(), Vector2::one(), this);
+	Transform trans = Transform(BACKGROUND_POS, BACKGROUND_SIZE, this);
 	LayerSetting layer = {true, false, Layer::BACK};
-	_backgroundImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, true, layer);
+	_backgroundImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, false, layer);
 	// ƒ‰ƒ“ƒN
 	trans = Transform(RANK_POS, RANK_SIZE, this);
 	_officerRankText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, layer);
