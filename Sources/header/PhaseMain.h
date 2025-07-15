@@ -10,6 +10,8 @@ class UIScreenButton;
 class SelectOperationUI;
 class UIEntity;
 class UIOfficer;
+class ContinueResultUI;
+
 /*
  * Sakakura
  * メインフェーズ
@@ -45,6 +47,7 @@ private:
 	SelectOperationUI* _pSelectOperationUI;
 	UIEntity* _pEntityUI;
 	UIOfficer* _pOfficerUI;
+	ContinueResultUI* _pResultUI;
 	std::vector<std::vector<std::vector<int>>> _stageData =
 	{
 		{

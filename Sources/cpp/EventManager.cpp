@@ -64,7 +64,6 @@ void EventManager::AddEnergy(int value)
 	if (_energy > _MAX_ENERGY)
 	{
 		_energy = _MAX_ENERGY;
-		
 	}
 	if (_energy < 0) _energy = 0;
 	// スライダーの更新
