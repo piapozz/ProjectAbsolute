@@ -8,8 +8,8 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 	int goalX = (int)(goal.x / SECTION_SIZE_X);
 	int goalY = (int)(-goal.y / SECTION_SIZE_Y);
 
-	if (startX < 0 || startX >= STAGE_SIZE || startY < 0 || startY >= STAGE_SIZE ||
-		goalX < 0 || goalX >= STAGE_SIZE || goalY < 0 || goalY >= STAGE_SIZE) 
+	if ( startY < 0 || startY >= stageData.size() || startX < 0 || startX >= stageData[startY].size() ||
+		 goalY < 0 || goalY >= stageData.size() || goalX < 0 || goalX >= stageData[goalY].size())
 	{
 		// 範囲外の場合は空のベクターを返す
 		return std::vector<Vector2>();
@@ -22,7 +22,7 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 		return std::vector<Vector2>{ Vector2(SECTION_SIZE_X / 2 + (startX * SECTION_SIZE_X), (-startY * SECTION_SIZE_Y) - (SECTION_SIZE_Y)) };
 	}
 
-	std::vector<std::vector<Node*>> nodes(STAGE_SIZE, std::vector<Node*>(STAGE_SIZE, nullptr));
+	std::vector<std::vector<Node*>> nodes(stageData.size(), std::vector<Node*>(stageData[0].size(), nullptr));
 	std::priority_queue<Node*, std::vector<Node*>, CompareNode> openSet;
 	std::vector<Vector2> path;
 
@@ -53,9 +53,9 @@ std::vector<Vector2> RouteSearcher::RouteSearch(std::vector<std::vector<int>> st
 			int ny = current->y + dy[i];
 
 			// 範囲外チェック（stageDataアクセス前に必ず行う）
-			if (nx < 0 || nx >= STAGE_SIZE || ny < 0 || ny >= STAGE_SIZE)
+			if ( ny < 0 || ny >= stageData.size() || nx < 0 || nx >= stageData[ny].size())
 				continue;
-			if (current->x < 0 || current->x >= STAGE_SIZE || current->y < 0 || current->y >= STAGE_SIZE)
+			if (current->x < 0 || current->x >= stageData[current->y].size() || current->y < 0 || current->y >= stageData.size())
 				continue;
 
 			int tile = stageData[ny][nx];

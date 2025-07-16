@@ -23,10 +23,15 @@ void OfficerPlayer::Init(OfficerInitData data, int setOfficerID, Vector2 positio
 	
 	Vector2 parentScale = Vector2(transform.GetWorldTransform().scale.x, transform.GetWorldTransform().scale.y);
 	LayerSetting UILayerSetting = {true, false, Layer::FRONT};
-	Transform transformUI = Transform(Vector2(0, 2.5f), Vector2(1.0f, 0.2f), this);
-	slider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transformUI, UILayerSetting);
-	slider->SetActive(true);
-	slider->SetColor(255, 0, 0);
+	Transform transformUI = Transform(Vector2(0, 2.7f), Vector2(1.0f, 0.15f), this);
+	healthSlider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transformUI, UILayerSetting);
+	healthSlider->SetActive(true);
+	healthSlider->SetColor(255, 0, 0);
+
+	transformUI = Transform(Vector2(0, 2.5f), Vector2(1.0f, 0.15f), this);
+	mentalSlider = ObjectFactory::Instance().CreateWithArgs<UISlider>(transformUI, UILayerSetting);
+	mentalSlider->SetActive(true);
+	mentalSlider->SetColor(255, 255, 255);
 
 	SetImpossible(true);
 	pController = new OfficerController(this);
@@ -45,7 +50,8 @@ void OfficerPlayer::Proc()
 	BaseOfficer::Proc();
 	pCharacterState->Update(this);
 	pController->UpdateAI();
-	slider->Proc();
+	healthSlider->Proc();
+	mentalSlider->Proc();
 }
 
 void OfficerPlayer::Draw()
@@ -59,8 +65,11 @@ void OfficerPlayer::Draw()
 	VECTOR screenPos = ConvWorldPosToScreenPos(worldPos);
 
 	float value = (float)health / (float)maxHealth;
-	slider->SetValue(value);
-	slider->Draw();
+	healthSlider->SetValue(value);
+	healthSlider->Draw();
+	value = (float)_mental / (float)_maxMental;
+	mentalSlider->SetValue(value);
+	mentalSlider->Draw();
 }
 
 void OfficerPlayer::Teardown()

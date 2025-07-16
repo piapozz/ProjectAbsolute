@@ -30,17 +30,17 @@ void StageManager::CreateStage()
 	// 使用前に visited を初期化
 	_visited = std::vector<std::vector<bool>>(
 		// _stageData の行数に合わせる
-		STAGE_SIZE,
+		_stageData.size(),
 		// _stageData の列数に合わせる
-		std::vector<bool>(STAGE_SIZE, false) 
+		std::vector<bool>(_stageData[0].size(), false)
 		);
 
 	ObjectFactory& factory = ObjectFactory::Instance();
 
 	// ステージの生成
-	for (int i = 0; i < STAGE_SIZE; ++i)
+	for (int i = 0; i < _stageData.size(); ++i)
 	{
-		for (int j = 0; j < STAGE_SIZE; ++j)
+		for (int j = 0; j < _stageData[i].size(); ++j)
 		{
 			if (_visited[i][j]) continue; 
 			LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
@@ -90,7 +90,7 @@ void StageManager::CreateStage()
 int StageManager::CheckSectionSize(int x, int y, SectionType type)
 {
 	// 範囲外チェック
-	if (y < 0 || y >= STAGE_SIZE || x < 0 || x >= STAGE_SIZE)
+	if (y < 0 || y >= _stageData.size() || x < 0 || x >= _stageData[y].size())
 		return 0;
 	// 既に訪れている or 種類が異なる場合は無視
 	if (_visited[y][x] || _stageData[y][x] != (int)type)
@@ -116,8 +116,8 @@ std::vector<Vector2> StageManager::FindPath(Vector2 start, Vector2 goal)
 bool StageManager::CheckPosOnStage(Vector2 pos)
 {
 	// ステージの範囲外の場合は false を返す
-	if (pos.x < 0 || pos.x >= STAGE_SIZE * SECTION_SIZE_X ||
-		pos.y < -STAGE_SIZE * SECTION_SIZE_Y || pos.y > 0)
+	if (pos.y < -(int)(_stageData.size()) * SECTION_SIZE_Y || pos.y > 0 ||
+		pos.x < 0 || pos.x >= _stageData[0].size() * SECTION_SIZE_X)
 	{
 		return false;
 	}

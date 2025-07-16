@@ -3,8 +3,8 @@
 void UIScreenImage::Init(Transform setTransform, bool fill, LayerSetting layerSetting)
 {
 	BaseUIScreen::Init(setTransform, layerSetting);
-	_color = GetColor(128, 128, 128);
-	_outLineColor = COLOR_WHITE;
+	_color = GetColor(0, 0, 0);
+	_outLineColor = GetColor(205, 133, 63);
 	_fill = fill;
 	_onCorsor = false;
 }
