@@ -23,6 +23,9 @@ void SceneManager::ChangeScene(SceneName scene)
 	// 現在のシーンが空じゃなかったら、シーンの情報を破棄する
 	delete(_scene);
 
+	ObjectManager::Instance().AllClear();
+	InputManager::Instance().Teardown();
+
 	// 引数のシーンに切り替える
 	switch (scene)
 	{
@@ -38,8 +41,9 @@ void SceneManager::ChangeScene(SceneName scene)
 	default:
 		break;
 	}
-	// 初期化をしておく
-	_scene->Init();
 	// コールバックを設定
 	_scene->SetCallback([this](SceneName nextScene) { this->ChangeScene(nextScene); });
+	// 初期化をしておく
+	_scene->Init();
+	InputManager::Instance().Init();
 }

@@ -13,9 +13,7 @@ GameManager::~GameManager()
 
 void GameManager::Init()
 {
-	_gameEnd = false;
 	_pPhaseManager = new PhaseManager();
+	_pPhaseManager->SetCallback(_ChangeScene);
 	_pPhaseManager->Init();
 }
-
-bool GameManager::GetGameEnd() { return _gameEnd; }

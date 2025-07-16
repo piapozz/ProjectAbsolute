@@ -6,8 +6,8 @@
 
 void PhaseManager::Init()
 {
-	ChangePhase(PhaseName::SELECT);
 	_currentDay = 0;
+	ChangePhase(PhaseName::SELECT);
 	DataManager::Instance().SetMoney(1000);
 }
 
@@ -45,6 +45,7 @@ void PhaseManager::ChangePhase(PhaseName nextPhase)
 	}
 	// コールバックを設定
 	_currentPhase->SetChangePhaseCallback([this](PhaseName nextPhase) { this->ChangePhase(nextPhase); });
+	_currentPhase->SetChangeSceneCallback([this](SceneName nextScene) { this->_ChangeScene(nextScene); });
 	_currentPhase->SetGetDayCallback([this]() { return _currentDay; });
 	// 初期化をしておく
 	_currentPhase->Init();

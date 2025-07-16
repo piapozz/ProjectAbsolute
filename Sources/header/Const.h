@@ -189,6 +189,9 @@ const int CURSOR_SIZE = 20;
 // ƒtƒHƒ“ƒg
 const int FONT_SIZE_MAX = 100;
 
+// Å‘å“ú’ö
+const int MAX_DAY = 4;
+
 // •¶š—ñ‚É•ÏŠ·
 inline std::string ToString(Type type)
 {

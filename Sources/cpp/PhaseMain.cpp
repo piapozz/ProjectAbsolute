@@ -35,7 +35,7 @@ void PhaseMain::Init()
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
 	StageManager::Instance().Init();
-	StageManager::Instance().SetStageData(_stageData[GetDay()]);
+	StageManager::Instance().SetStageData(_stageData[GetDay() - 1]);
 	StageManager::Instance().CreateStage();
 	OfficerManager::Instance().Init();
 	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
@@ -226,8 +226,18 @@ void PhaseMain::EscapeInputProc()
 
 void PhaseMain::ChangeResultPhase(int value)
 {
-	DataManager::Instance().SetEnergy(value);
-	// 生存職員をデータに記録
-	DataManager::Instance().SetOfficerData(OfficerManager::Instance().GetAliveOfficerData());
-	ChangePhase(PhaseName::RESULT);
+	int currentDay = GetDay();
+	// ゲームクリア日程なら
+	if (currentDay >= MAX_DAY)
+	{
+		// リザルトシーンに遷移
+		ChangeScene(SceneName::EXIT);
+	}
+	else
+	{
+		DataManager::Instance().SetEnergy(value);
+		// 生存職員をデータに記録
+		DataManager::Instance().SetOfficerData(OfficerManager::Instance().GetAliveOfficerData());
+		ChangePhase(PhaseName::RESULT);
+	}
 }

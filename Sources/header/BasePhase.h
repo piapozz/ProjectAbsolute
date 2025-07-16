@@ -25,6 +25,7 @@ public:
 	/// </summary>
 	/// <param name="callback"></param>
 	inline void SetChangePhaseCallback(std::function<void(PhaseName nextPhase)> callback){ ChangePhase = callback; }
+	inline void SetChangeSceneCallback(std::function<void(SceneName nextScene)> callback){ ChangeScene = callback; }
 	inline void SetGetDayCallback(std::function<int(void)> callback){ GetDay = callback; }
 
 protected:
@@ -75,6 +76,6 @@ protected:
 	virtual void EscapeInputProc(){};
 
 	std::function<void(PhaseName nextPhase)> ChangePhase;
+	std::function<void(SceneName nextScene)> ChangeScene;
 	std::function<int(void)> GetDay;
-
 };

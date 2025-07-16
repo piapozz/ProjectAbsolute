@@ -9,12 +9,12 @@ SceneMain::SceneMain()
 
 SceneMain::~SceneMain()
 {
-	ObjectFactory::Instance();
-	delete _pGamemanager;
+	delete _pGameManager;
 }
 
 void SceneMain::Init()
 {
-	_pGamemanager = new GameManager();
-	_pGamemanager->Init();
+	_pGameManager = new GameManager();
+	_pGameManager->SetChangeSceneCallback(ChangeScene);
+	_pGameManager->Init();
 }

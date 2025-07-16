@@ -17,6 +17,6 @@ public:
     void Init();
 
 private:
-	GameManager* _pGamemanager;
+	GameManager* _pGameManager;
 };
 
