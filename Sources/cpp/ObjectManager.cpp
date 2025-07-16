@@ -125,6 +125,7 @@ void ObjectManager::AllClear()
 	_objectList.clear();
 	_removedObjects.clear();
 	ObjectFactory::Instance().ClearDestroyedCache();
+	Init();
 }
 
 

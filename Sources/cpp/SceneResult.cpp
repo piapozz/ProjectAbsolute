@@ -1,19 +1,21 @@
-#include "../header/SceneTitle.h"
+#include "../header/SceneResult.h"
 #include "../header/ObjectFactory.h"
 #include "../header/UIScreenText.h"
 #include "../header/UIScreenButton.h"
+#include "../header/DataManager.h"
 #include "../header/Camera.h"
 
-SceneTitle::SceneTitle()
+SceneResult::SceneResult()
 {
 
 }
 
-SceneTitle::~SceneTitle()
+SceneResult::~SceneResult()
 {
+
 }
 
-void SceneTitle::Init()
+void SceneResult::Init()
 {
 	InputManager& inputManager = InputManager::Instance();
 	inputManager.SetOnCursorCallback([this](Vector2 pos){ this->OnCursorProc(pos); });
@@ -28,33 +30,28 @@ void SceneTitle::Init()
 
 	Transform trans = Transform(TITLE_POS, TITLE_SIZE);
 
-	LayerSetting layer = {true, false, Layer::MIDDLE};
 	UIScreenText* uiTitle = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(TITLE_POS, TITLE_SIZE), LayerSetting{true, false, Layer::MIDDLE});
-	uiTitle->SetText("Absolute");
+	uiTitle->SetText("ゲームクリア");
 	uiTitle->SetFontSize(TITLE_FONT_SIZE);
+	UIScreenText* uiDays = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(DAYS_POS, DAYS_SIZE), LayerSetting{true, false, Layer::MIDDLE});
+	int days = DataManager::Instance().GetEnergy();
+	std::string daysText = std::to_string(MAX_DAY) + "日目を乗り越えた" ;
+	uiDays->SetText(daysText);
+	uiDays->SetFontSize(50);
 
-	//trans = Transform(CONTINUE_POS, CONTINUE_SIZE);
-	//layer = {true, true, Layer::BACK};
-	//UIScreenButton* continueButton = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(trans, true, layer);
-	//continueButton->SetText("Conitinue");
-
-	trans = Transform(NEW_GAME_POS, NEW_GAME_SIZE);
-	layer = {true, true, Layer::BACK};
-	UIScreenButton* newGameButton = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(trans, true, layer);
-	newGameButton->SetText("New Game");
-	newGameButton->SetCallback([this]() {
-		if (ChangeScene != nullptr) ChangeScene(SceneName::MAIN);
+	trans = Transform(BACK_POS, BACK_SIZE);
+	LayerSetting layer = {true, true, Layer::BACK};
+	UIScreenButton* backButton = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(trans, true, layer);
+	backButton->SetText("タイトルに戻る");
+	backButton->SetCallback([this]() {
+		if (ChangeScene != nullptr) ChangeScene(SceneName::TITLE);
 	});
 
-	trans = Transform(EXIT_POS, EXIT_SIZE);
-	UIScreenButton* exitButtton = ObjectFactory::Instance().CreateWithArgs<UIScreenButton>(trans, true, layer);
-	exitButtton->SetText("Exit");
-	exitButtton->SetCallback([this]() {
-		if (ChangeScene != nullptr) ChangeScene(SceneName::EXIT);
-	});
+	// カメラ生成
+	_pCamera = new Camera();
 }
 
-void SceneTitle::OnCursorProc(Vector2 pos)
+void SceneResult::OnCursorProc(Vector2 pos)
 {
 	// 以前乗っていたオブジェクトを乗っていなくする
 	BaseObject* onCursorObj = InputManager::Instance().GetOnCursorObject();
@@ -74,26 +71,26 @@ void SceneTitle::OnCursorProc(Vector2 pos)
 	}
 }
 
-void SceneTitle::LPushInputProc(Vector2 pos)
+void SceneResult::LPushInputProc(Vector2 pos)
 {
 
 }
 
-void SceneTitle::RPushInputProc(Vector2 pos)
+void SceneResult::RPushInputProc(Vector2 pos)
 {
 
 }
 
-void SceneTitle::LDrackInputProc(Vector2 pos, Vector2 oldPos)
+void SceneResult::LDrackInputProc(Vector2 pos, Vector2 oldPos)
 {
 
 }
 
-void SceneTitle::RDrackInputProc(Vector2 pos, Vector2 oldPos)
+void SceneResult::RDrackInputProc(Vector2 pos, Vector2 oldPos)
 {
 }
 
-void SceneTitle::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
+void SceneResult::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 {
 	// クリックが離されたなら
 	if (InputManager::Instance().IsLeftClick(pos))
@@ -108,17 +105,17 @@ void SceneTitle::LReleaseInputProc(Vector2 pos, Vector2 oldPos)
 	}
 }
 
-void SceneTitle::RReleaseInputProc(Vector2 pos, Vector2 oldPos)
+void SceneResult::RReleaseInputProc(Vector2 pos, Vector2 oldPos)
 {
 
 }
 
-void SceneTitle::WheelRotInputProc(Vector2 pos, int rot)
+void SceneResult::WheelRotInputProc(Vector2 pos, int rot)
 {
 
 }
 
-void SceneTitle::EscapeInputProc()
+void SceneResult::EscapeInputProc()
 {
 
 }

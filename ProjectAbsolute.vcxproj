@@ -202,6 +202,7 @@
     <ClCompile Include="Sources\cpp\RouteSearcher.cpp" />
     <ClCompile Include="Sources\cpp\SceneMain.cpp" />
     <ClCompile Include="Sources\cpp\SceneManager.cpp" />
+    <ClCompile Include="Sources\cpp\SceneResult.cpp" />
     <ClCompile Include="Sources\cpp\SceneTitle.cpp" />
     <ClCompile Include="Sources\cpp\SectionConnect.cpp" />
     <ClCompile Include="Sources\cpp\SectionCorridor.cpp" />
@@ -309,6 +310,7 @@
     <ClInclude Include="Sources\header\RouteSearcher.h" />
     <ClInclude Include="Sources\header\SceneMain.h" />
     <ClInclude Include="Sources\header\SceneManager.h" />
+    <ClInclude Include="Sources\header\SceneResult.h" />
     <ClInclude Include="Sources\header\SceneTitle.h" />
     <ClInclude Include="Sources\header\SectionConnect.h" />
     <ClInclude Include="Sources\header\SectionCorridor.h" />

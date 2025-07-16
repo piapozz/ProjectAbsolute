@@ -23,7 +23,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// シーンマネージャー生成
 	SceneManager* sceneManager = new SceneManager();
-	sceneManager->ChangeScene(SceneName::MAIN);
+	sceneManager->ChangeScene(SceneName::TITLE);
 
 	// 描画先を裏画面にする
 	SetDrawScreen(DX_SCREEN_BACK);

@@ -3,6 +3,7 @@
 
 #include "../header/SceneTitle.h"
 #include "../header/SceneMain.h"
+#include "../header/SceneResult.h"
 
 class InputManager;
 /*
