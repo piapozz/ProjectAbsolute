@@ -25,7 +25,7 @@ void PhaseResult::Init()
 
 	LayerSetting layer = {false, false, Layer::MIDDLE};
 	UIScreenText* uiMessage = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(TEXT_POS, TEXT_SIZE), LayerSetting{true, false, Layer::MIDDLE});
-	uiMessage->SetText("Congratulations!");
+	uiMessage->SetText("ƒmƒ‹ƒ}’B¬");
 	uiMessage->SetFontSize(50);
 	UIScreenText* uiMoney = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(Transform(MONEY_POS, MONEY_SIZE), LayerSetting{true, false, Layer::MIDDLE});
 	int money = DataManager::Instance().GetEnergy();

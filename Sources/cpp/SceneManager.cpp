@@ -35,6 +35,9 @@ void SceneManager::ChangeScene(SceneName scene)
 	case SceneName::MAIN:
 		_scene = new SceneMain();
 		break;
+	case SceneName::RESULT:
+		_scene = new SceneResult();
+		break;
 	case SceneName::EXIT:
 		DxLib_End();
 		return;

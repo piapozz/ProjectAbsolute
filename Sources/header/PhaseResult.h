@@ -45,6 +45,4 @@ private:
 	const Vector2 RESTART_POS = Vector2(WIN_X / 2.0f - (TOTAL_WIDTH / 2.0f) + (RESTART_SIZE.x / 2.0f),WIN_Y - (RESTART_SIZE.y / 2.0f));
 	const Vector2 NEXT_POS = Vector2(WIN_X / 2.0f + (TOTAL_WIDTH / 2.0f) - (NEXT_SIZE.x / 2.0f),WIN_Y - (NEXT_SIZE.y / 2.0f));
 
-
 };
-
