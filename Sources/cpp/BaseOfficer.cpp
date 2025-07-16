@@ -27,6 +27,7 @@ void BaseOfficer::Init(OfficerInitData data, int setOfficerID, Vector2 position)
 	pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(transformPosition, ObjectType::SECTION));
 	health = data.health;
 	maxHealth = health;
+	_maxMental = data.mental;
 
 	_officerName = data.name;
 	_mental = data.mental;
@@ -114,7 +115,7 @@ void BaseOfficer::TakeDamage(int strength, Type damageType)
 			DecreaseMental(damage);
 			break;
 		case Type::PALE:
-			float paleDamage = health * (damage / 100.0f);
+			float paleDamage = maxHealth * (damage / 100.0f);
 			DecreaseHealth(ceil(paleDamage));
 			break;
 	}

@@ -10,8 +10,8 @@ public:
 		suitID = 1;
 
 		suitMultiplier[(int)Type::RED] = 0.5f;
-		suitMultiplier[(int)Type::WHITE] = 2.0f;
-		suitMultiplier[(int)Type::BLACK] = 2.0f;
+		suitMultiplier[(int)Type::WHITE] = 1.0f;
+		suitMultiplier[(int)Type::BLACK] = 1.0f;
 		suitMultiplier[(int)Type::PALE] = 2.0f;
 	}
 };

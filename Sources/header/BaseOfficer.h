@@ -67,6 +67,7 @@ protected:
 	int _suitID;
 	int _weaponID;
 	int _mental;
+	int _maxMental;
 	std::string _officerName;
 	int _parameter[(int)Type::MAX];
 

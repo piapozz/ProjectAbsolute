@@ -22,11 +22,11 @@ public:
 
 private:
 	const int _MIN_HEIGHT_SIZE = 100;
-	const int _MAX_HEIGHT_SIZE = 1000;
+	const int _MAX_HEIGHT_SIZE = 3000;
 	const float _Z_POS_OFFSET = -100.0f;
 	const float _Z_TARGET_FAR = 1000.0f;
 	const float _DEFAULT_POS_X = 500.0f;
-	const float _DEFAULT_POS_Y = 500.0f;
+	const float _DEFAULT_POS_Y = 000.0f;
 
 	Vector2 _prevCursorPos;
 	Vector2 _pushPos;

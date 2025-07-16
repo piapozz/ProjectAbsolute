@@ -33,5 +33,6 @@ public:
 
 private:
 	// スライダー
-	UISlider* slider;
+	UISlider* healthSlider;
+	UISlider* mentalSlider;
 };
