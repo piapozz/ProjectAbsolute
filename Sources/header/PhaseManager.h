@@ -25,12 +25,14 @@ public:
 	/// 破棄
 	/// </summary>
 	void Teardown();
+	inline void SetCallback(const std::function<void(SceneName)>& setCallback){ _ChangeScene = setCallback; }
 
 private:
 	// フェーズ
 	BasePhase* _currentPhase;
 	int _currentDay;
 
-	inline void ChangePhase(PhaseName nextPhase);
+	void ChangePhase(PhaseName nextPhase);
+	std::function<void(SceneName)> _ChangeScene;
 };
 

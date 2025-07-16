@@ -17,10 +17,9 @@ public:
 	/// ‰Šú‰»
 	/// </summary>
 	void Init();
-	bool GetGameEnd ( );
+	inline void SetChangeSceneCallback(std::function<void(SceneName)> setCallback){ _ChangeScene = setCallback; };
 
 private:
 	PhaseManager* _pPhaseManager;
-	// ƒQ[ƒ€‚ªI—¹‚µ‚½‚©‚ğ•Û
-	bool _gameEnd;
+	std::function<void(SceneName)> _ChangeScene;
 };
