@@ -181,7 +181,8 @@ const int STAGE_SIZE = 7;
 // 色
 const int COLOR_BLACK = GetColor(0, 0, 0);
 const int COLOR_WHITE = GetColor(255, 255, 255);
-const int COLOR_ON_CORSOR = GetColor(0, 255, 255);
+const int COLOR_ORANGE = GetColor(205, 133, 63);
+const int COLOR_YELLOW = GetColor(255, 255, 0);
 
 // ウィンドウ
 const int WINDOW_WIDTH = 1920;

@@ -4,7 +4,7 @@ void UIImage::Init(Transform setTransform, LayerSetting layerSetting)
 {
 	BaseUI::Init(setTransform, layerSetting);
 	_outLineColor = COLOR_WHITE;
-	_onCorsor = false;
+	_onCursor = false;
 }
 
 void UIImage::Proc()
@@ -34,7 +34,7 @@ void UIImage::Draw()
 
 	// êFê›íË
 	int color = -1;
-	_onCorsor ? color = COLOR_ON_CORSOR : color = _outLineColor;
+	_onCursor ? color = COLOR_YELLOW : color = _outLineColor;
 
 	DrawLine3D(Pos1, Pos2, color);
 	DrawLine3D(Pos2, Pos3, color);
@@ -50,10 +50,10 @@ void UIImage::Teardown()
 
 void UIImage::OnCursor()
 {
-	_onCorsor = true;
+	_onCursor = true;
 }
 
 void UIImage::NotOnCursor()
 {
-	_onCorsor = false;
+	_onCursor = false;
 }

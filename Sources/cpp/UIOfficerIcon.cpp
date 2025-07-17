@@ -11,10 +11,11 @@ void UIOfficerIcon::Init(Transform setTrasnform, LayerSetting layerSetting)
 	BaseUIScreen::Init(setTrasnform, layerSetting);
 
 	Transform trans = Transform(BACKGROUND_POS, BACKGROUND_SIZE, this);
-	LayerSetting layer = {true, false, Layer::BACK};
+	LayerSetting layer = {true, true, Layer::BACK};
 	_backgroundImage = ObjectFactory::Instance().CreateWithArgs<UIScreenImage>(trans, false, layer);
 	// ƒ‰ƒ“ƒN
 	trans = Transform(RANK_POS, RANK_SIZE, this);
+	layer = {true, false, Layer::BACK};
 	_officerRankText = ObjectFactory::Instance().CreateWithArgs<UIScreenText>(trans, layer);
 	// –¼‘O
 	trans = Transform(NAME_POS, NAME_SIZE, this);
@@ -43,4 +44,14 @@ void UIOfficerIcon::Draw()
 void UIOfficerIcon::Teardown()
 {
 
+}
+
+void UIOfficerIcon::OnCursor()
+{
+	_backgroundImage->OnCursor();
+}
+
+void UIOfficerIcon::NotOnCursor()
+{
+	_backgroundImage->NotOnCursor();
 }

@@ -6,7 +6,8 @@ void UIScreenImage::Init(Transform setTransform, bool fill, LayerSetting layerSe
 	_color = GetColor(0, 0, 0);
 	_outLineColor = GetColor(205, 133, 63);
 	_fill = fill;
-	_onCorsor = false;
+	_onCursor = false;
+	_onCursorColor = COLOR_YELLOW;
 }
 
 void UIScreenImage::Proc()
@@ -39,19 +40,22 @@ void UIScreenImage::DrawUIBox()
 	int x2 = position.x - scale.x / 2;
 	int y2 = position.y - scale.y / 2;
 
+	// êFê›íË
+	int color = -1;
+	_onCursor ? color = _onCursorColor : color = _outLineColor;
+
+	// ì‡ë§
 	DrawBoxAA(x1, y1, x2, y2, _color, _fill);
-	if (_onCorsor)
-		DrawBoxAA(x1, y1, x2, y2, COLOR_ON_CORSOR, FALSE);
-	else
-		DrawBoxAA(x1, y1, x2, y2, _outLineColor, FALSE);
+	// òg
+	DrawBoxAA(x1, y1, x2, y2, color, FALSE);
 }
 
 void UIScreenImage::OnCursor()
 {
-	_onCorsor = true;
+	_onCursor = true;
 }
 
 void UIScreenImage::NotOnCursor()
 {
-	_onCorsor = false;
+	_onCursor = false;
 }

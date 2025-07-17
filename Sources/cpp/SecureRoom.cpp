@@ -207,6 +207,12 @@ void SecureRoom::StartOperation()
 	_pEntity->SetOperation(_selectOperation);
 	// 作業開始イベントを発生させる
 	_pEntity->StartOperationEvent();
+	// メルトダウン中なら終了
+	if (_isMeltdown)
+	{
+		_pMeltText->SetActive(false);
+		_isMeltdown = false;
+	}
 	// メルトダウンカウンターを増加させる
 	EventManager::Instance().AddMelt();
 }

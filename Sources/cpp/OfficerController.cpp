@@ -22,7 +22,7 @@ void OfficerController::DecideState()
 		character->SetIsDead(true);
 		character->ChangeState(CharacterStateID::DEAD);
 		// オフィサー死亡確認
-		if (OfficerManager::Instance().IsAllOfficerDead())
+		if (OfficerManager::Instance().IsAllOfficerRestricted())
 		{
 			OfficerManager::Instance().DisplayGameOverUI();
 		}
@@ -32,6 +32,10 @@ void OfficerController::DecideState()
 	if (officer->GetMental() <= 0)
 	{
 		character->SetIsPanic(true);
+		if (OfficerManager::Instance().IsAllOfficerRestricted())
+		{
+			OfficerManager::Instance().DisplayGameOverUI();
+		}
 	}
 	else character->SetIsPanic(false);
 

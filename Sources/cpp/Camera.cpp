@@ -8,7 +8,7 @@ Camera::Camera()
 {
 	instance = this;
 	// 正射影カメラをセットアップする
-	_heightSize = _MAX_HEIGHT_SIZE;
+	_heightSize = _DEFAULT_HEIGHT_SIZE;
 	SetupCamera_Ortho(_heightSize);
 	// カメラの位置と向きを設定
 	transform.position = Vector2(_DEFAULT_POS_X, _DEFAULT_POS_Y);

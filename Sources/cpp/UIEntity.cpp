@@ -26,6 +26,7 @@ void UIEntity::Init()
 	worldTransform = Transform(Vector2().zero(), _BG_SCALE, this);
 	_BGImage = factory.CreateWithArgs<UIScreenImage>(worldTransform, true, layer);
 	_BGImage->SetColor(COLOR_BLACK);
+	_BGImage->SetOnCursorColor(COLOR_ORANGE);
 	worldTransform = Transform(_INFORMATION_TEXT_POS, Vector2().one(), this);
 	_informationText = factory.CreateWithArgs<UIScreenText>(worldTransform, layer);
 	_informationText->SetText(_INFORMATION_TEXT);
@@ -54,7 +55,7 @@ void UIEntity::Init()
 	_operationCountText->SetText(_OPERATION_COUNT_TEXT + '0');
 	// –ß‚éƒ{ƒ^ƒ“
 	worldTransform = Transform(_EXIT_BUTTON_POS, _EXIT_BUTTON_SCALE, this);
-	layer = LayerSetting(false, true, Layer::MIDDLE);
+	layer = LayerSetting(false, true, Layer::FRONT);
 	_exitButton = factory.CreateWithArgs<UIScreenButton>(worldTransform, true, layer);
 	_exitButton->SetCallback([this]() { this->SetActive(false); });
 	_exitButton->SetText(_EXIT_BUTTON_TEXT);
@@ -131,5 +132,6 @@ void UIEntity::SetEntityData(int setID)
 void UIEntity::SetActive(bool setActive)
 {
 	active = setActive;
+	_BGImage->SetInteract(setActive);
 	_exitButton->SetActive(setActive);
 }

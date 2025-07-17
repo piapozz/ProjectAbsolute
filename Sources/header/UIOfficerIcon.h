@@ -33,6 +33,8 @@ public:
 	void Proc() override;
 	void Draw() override;
 	void Teardown() override;
+	void OnCursor() override;
+	void NotOnCursor() override;
 
 	static std::string StaticTypeName() {
 		return "UIOfficerIcon";
@@ -90,9 +92,7 @@ private:
 	const Vector2 NAME_SIZE = Vector2(1, 0.2f);
 	const Vector2 NAME_POS =  Vector2(0, -0.6f);
 	// ‰æ‘œ
-	const Vector2 IMAGE_SIZE = Vector2(1, 1);
-	const Vector2 IMAGE_POS =  Vector2(0, 0);
-	/*const Vector2 IMAGE_SIZE = Vector2(1, 0.6f);
-	const Vector2 IMAGE_POS =  Vector2(0, 0.4f);*/
+	const Vector2 IMAGE_SIZE = Vector2(0.9f, 0.6f);
+	const Vector2 IMAGE_POS =  Vector2(0.0f, 0.4f);
 };
 

@@ -29,7 +29,7 @@ void OfficerManager::Init()
 	}
 
 	// 職員がいない場合はゲームオーバー
-	if (IsAllOfficerDead())
+	if (IsAllOfficerRestricted())
 		DisplayGameOverUI();
 
 	//sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
@@ -126,11 +126,11 @@ vector<OfficerInitData> OfficerManager::GetAliveOfficerData()
 	return aliveOfficerData;
 }
 
-bool OfficerManager::IsAllOfficerDead()
+bool OfficerManager::IsAllOfficerRestricted()
 {
 	for (BaseOfficer* officer : _officerList)
 	{
-		if (officer && !officer->GetIsDead()) return false;
+		if (officer && (!officer->GetIsRestricted())) return false;
 	}
 	return true;
 }
