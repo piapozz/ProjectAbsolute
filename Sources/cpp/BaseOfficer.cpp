@@ -123,5 +123,7 @@ void BaseOfficer::TakeDamage(int strength, Type damageType)
 
 void BaseOfficer::DecreaseMental(int decreaseValue)
 {
+	if (_mental <= 0) DecreaseHealth(decreaseValue);
 	_mental -= decreaseValue;
+	if (_mental <= 0) _mental = 0;
 }
