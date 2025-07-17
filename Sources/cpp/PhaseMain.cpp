@@ -16,6 +16,7 @@
 #include "../header/UIOfficer.h"
 #include "../header/DataManager.h"
 #include "../header/ContinueResultUI.h"
+#include "../header/GameOverUI.h"
 
 std::vector<OfficerPlayer*>& PhaseMain::GetSelectOfficerList(){ return _pSelectOfficerList; }
 std::vector<OfficerPlayer*> PhaseMain::_pSelectOfficerList;
@@ -34,27 +35,8 @@ void PhaseMain::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
-	StageManager::Instance().Init();
-	StageManager::Instance().SetStageData(_stageData[GetDay() - 1]);
-	StageManager::Instance().CreateStage();
-	OfficerManager::Instance().Init();
-	LayerSetting layerSetting = {true, true, Layer::MIDDLE};
-	// エンティティの生成
-	vector<BaseEntity*> addEntity = EntityManager::Instance().AddObjectEntity();
-	for (int i = 0, max = addEntity.size(); i < max; i++)
-	{
-		int roomID = addEntity[i]->GetManagementData().roomID;
-		StageManager::Instance().SetEntity(addEntity[i], roomID);
-	}
-	EventManager::Instance().Init();
-	SecureRoom::EndOperationEvent = [this](int successCount)
-	{
-		// 作業が終了したら、エネルギーを追加
-		EventManager::Instance().AddEnergy(successCount);
-		if (EventManager::Instance().IsMaxEnergy())
-			_pResultUI->SetActive(true);
-	};
 	// UI
+	LayerSetting layerSetting = {true, true, Layer::BACK};
 	ObjectFactory& factory = ObjectFactory::Instance();
 	layerSetting = {true, false, Layer::FRONT};
 	_pRangeSelect = factory.CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
@@ -68,7 +50,7 @@ void PhaseMain::Init()
 	{
 		return _pEntityUI;
 	};
-	layerSetting = {false, false, Layer::MIDDLE};
+	layerSetting = {false, false, Layer::BACK};
 	Transform trans = Transform(Vector2(WINDOW_WIDTH - (WINDOW_WIDTH / 10), WINDOW_HEIGHT / 5), Vector2(WINDOW_WIDTH / 5, WINDOW_HEIGHT / 2.5f));
 	_pOfficerUI = factory.CreateWithArgs<UIOfficer>(trans, true, layerSetting);
 	OfficerPlayer::GetUIOfficerCallback = [this]()
@@ -80,10 +62,40 @@ void PhaseMain::Init()
 	{
 		ChangeResultPhase(EventManager::Instance().GetEnergy());
 	});
+	_pGameOverUI = factory.CreateWithArgs<GameOverUI>();
+	_pGameOverUI->SetCallback([this]()
+	{
+		ChangePhase(PhaseName::STANDBY);
+	});
+	OfficerManager::Instance().SetDisplayGameOverUI([this]()
+	{
+		_pGameOverUI->SetActive(true);
+	});
+	// 各マネージャー初期化
+	StageManager::Instance().Init();
+	StageManager::Instance().SetStageData(_stageData[GetDay() - 1]);
+	StageManager::Instance().CreateStage();
+	OfficerManager::Instance().Init();
+	// エンティティの生成
+	vector<BaseEntity*> addEntity = EntityManager::Instance().AddObjectEntity();
+	for (int i = 0, max = addEntity.size(); i < max; i++)
+	{
+		int roomID = addEntity[i]->GetManagementData().roomID;
+		StageManager::Instance().SetEntity(addEntity[i], roomID);
+	}
+	EventManager::Instance().Init();
+	EventManager::Instance().SetResultCallback([this]()
+	{
+		_pResultUI->SetActive(true);
+	});
+	SecureRoom::EndOperationEvent = [this](int successCount)
+	{
+		// 作業が終了したら、エネルギーを追加
+		EventManager::Instance().AddEnergy(successCount);
+	};
 	// カメラ生成
 	_pCamera = new Camera();
-	// 各オブジェクトのインタラクト時のコールバック設定
-
+	EventManager::Instance().AddEnergy(100);
 }
 
 void PhaseMain::OnCursorProc(Vector2 pos)
@@ -231,7 +243,7 @@ void PhaseMain::ChangeResultPhase(int value)
 	if (currentDay >= MAX_DAY)
 	{
 		// リザルトシーンに遷移
-		ChangeScene(SceneName::EXIT);
+		ChangeScene(SceneName::RESULT);
 	}
 	else
 	{

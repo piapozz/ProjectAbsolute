@@ -70,7 +70,7 @@ public:
 	/// </summary>
 	/// <param name="officerID"></param>
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
-	inline bool CanMeltdown(){ return !_isMeltdown; }
+	inline bool CanMeltdown(){ return !_isMeltdown && _pEntity != nullptr; }
 	inline void SetState(State state){ _currentState = state; }
 
 private:

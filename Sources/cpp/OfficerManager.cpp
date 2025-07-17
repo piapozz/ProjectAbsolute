@@ -28,6 +28,10 @@ void OfficerManager::Init()
 		AddOfficer(OfficerType::PLAYER, officerDataList[i], position);
 	}
 
+	// 職員がいない場合はゲームオーバー
+	if (IsAllOfficerDead())
+		DisplayGameOverUI();
+
 	//sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
 	//sectionPosition = sectionTransform.position;
 	//sectionScale = sectionTransform.scale;
@@ -120,4 +124,13 @@ vector<OfficerInitData> OfficerManager::GetAliveOfficerData()
 	}
 
 	return aliveOfficerData;
+}
+
+bool OfficerManager::IsAllOfficerDead()
+{
+	for (BaseOfficer* officer : _officerList)
+	{
+		if (officer && !officer->GetIsDead()) return false;
+	}
+	return true;
 }

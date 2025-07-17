@@ -1,7 +1,7 @@
-#include "../header/ContinueResultUI.h"
+#include "../header/GameOverUI.h"
 #include "../header/UIScreen.h"
 
-ContinueResultUI::ContinueResultUI()
+GameOverUI::GameOverUI()
 {
 	BasePopupUI::Init();
 	informationText->SetText(_INFORMATION_TEXT);
