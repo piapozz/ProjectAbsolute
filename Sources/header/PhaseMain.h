@@ -11,6 +11,7 @@ class SelectOperationUI;
 class UIEntity;
 class UIOfficer;
 class ContinueResultUI;
+class GameOverUI;
 
 /*
  * Sakakura
@@ -48,6 +49,7 @@ private:
 	UIEntity* _pEntityUI;
 	UIOfficer* _pOfficerUI;
 	ContinueResultUI* _pResultUI;
+	GameOverUI* _pGameOverUI;
 	std::vector<std::vector<std::vector<int>>> _stageData =
 	{
 		{

@@ -68,6 +68,7 @@ void SecureRoom::Init(Transform setTransform, LayerSetting layerSetting)
 	_pOperationList[1] = new OperationObserbation(entityID, _pOperationCountUI);
 	_pOperationList[2] = new OperationContact(entityID, _pOperationCountUI);
 	_pOperationList[3] = new OperationInjure(entityID, _pOperationCountUI);
+	_pEntity = nullptr;
 }
 
 void SecureRoom::Proc()
@@ -93,6 +94,8 @@ void SecureRoom::Teardown()
 
 void SecureRoom::ClickEvent()
 {
+	if (_pEntity == nullptr) return;
+
 	// ‘I‘ð‚³‚ê‚Ä‚¢‚é‚È‚ç•Ô‚·
 	if (_currentState != State::IDLE) return;
 

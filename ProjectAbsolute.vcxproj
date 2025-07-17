@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\cpp\BasePopupUI.cpp" />
     <ClCompile Include="Sources\cpp\ContinueResultUI.cpp" />
     <ClCompile Include="Sources\cpp\AttackBetweenCharacters.cpp" />
     <ClCompile Include="Sources\cpp\AttackSingle.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Sources\cpp\Entity_E000.cpp" />
     <ClCompile Include="Sources\cpp\Entity_T000.cpp" />
     <ClCompile Include="Sources\cpp\EventManager.cpp" />
+    <ClCompile Include="Sources\cpp\GameOverUI.cpp" />
     <ClCompile Include="Sources\cpp\OfficerController.cpp" />
     <ClCompile Include="Sources\cpp\OfficerManager.cpp" />
     <ClCompile Include="Sources\cpp\OfficerMob.cpp" />
@@ -238,6 +240,7 @@
     <ClCompile Include="Sources\header\OfficerMobController.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\header\BasePopupUI.h" />
     <ClInclude Include="Sources\header\ContinueResultUI.h" />
     <ClInclude Include="Sources\header\AttackBetweenCharacters.h" />
     <ClInclude Include="Sources\header\AttackSingle.h" />
@@ -277,6 +280,7 @@
     <ClInclude Include="Sources\header\Entity_E000.h" />
     <ClInclude Include="Sources\header\Entity_T000.h" />
     <ClInclude Include="Sources\header\EventManager.h" />
+    <ClInclude Include="Sources\header\GameOverUI.h" />
     <ClInclude Include="Sources\header\ITargetSelector.h" />
     <ClInclude Include="Sources\header\MemoryAllocator.h" />
     <ClInclude Include="Sources\header\ObjectFactory.h" />

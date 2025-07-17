@@ -285,9 +285,6 @@
     <ClCompile Include="Sources\cpp\BaseAttack.cpp">
       <Filter>ソース ファイル\Sein\Attack</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\cpp\BaseUIScreen.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\cpp\UIManager.cpp">
       <Filter>ソース ファイル\Ishihara\UI</Filter>
     </ClCompile>
@@ -413,6 +410,15 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\SceneResult.cpp">
       <Filter>ソース ファイル\Ishihara\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BasePopupUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\BaseUIScreen.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\GameOverUI.cpp">
+      <Filter>ソース ファイル\Sakakura\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -733,6 +739,12 @@
     </ClInclude>
     <ClInclude Include="Sources\header\SceneResult.h">
       <Filter>ヘッダー ファイル\Ishihara\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\BasePopupUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\GameOverUI.h">
+      <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,6 +26,8 @@ public:
 	void AddMelt();
 	inline bool IsMaxEnergy(){ return _energy >= _MAX_ENERGY; }
 	inline int GetEnergy(){ return _energy; }
+	inline void SetResultCallback(std::function<void()> setCallback){ _ContinueResultCallback = setCallback; }
+
 private:
 	// エネルギー最大値
 	const int _MAX_ENERGY = 100;
@@ -49,4 +51,6 @@ private:
 	UIScreenButton* _pNormalSpeedButton;
 	// 倍速再生ボタン
 	UIScreenButton* _pFastSpeedButton;
+	// ゲームオーバーコールバック
+	std::function<void()> _ContinueResultCallback;
 };

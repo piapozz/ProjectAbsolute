@@ -69,6 +69,10 @@ void EventManager::AddEnergy(int value)
 	// スライダーの更新
 	_pEnergySlider->SetValue(static_cast<float>(_energy) / static_cast<float>(_MAX_ENERGY));
 	_pEnergySlider->SetText((std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY)).c_str());
+
+	// エネルギーがマックスならリザルトUIを表示
+	if (IsMaxEnergy())
+		_ContinueResultCallback();
 }
 
 void EventManager::AddMelt()
@@ -86,7 +90,7 @@ void EventManager::AddMelt()
 	_pMeltSlider->SetText((std::to_string(_melt) + "/" + std::to_string(_MELT_MAX)).c_str());
 
 	// 暴走可能なSecureRoomだけを抽出
-	std::vector<SecureRoom*> meltableRooms = StageManager::_secureRoomList;
+	std::vector<SecureRoom*> meltableRooms;
 	for (SecureRoom* room : StageManager::_secureRoomList) 
 	{
 		if (room->CanMeltdown()) 

@@ -2,6 +2,7 @@
 #include "../header/ObjectManager.h"
 #include "../header/SecureRoom.h"
 #include "../header/SelectorNearEntityInRoom.h"
+#include "../header/OfficerManager.h"
 
 void OfficerController::UpdateAI()
 {	
@@ -19,6 +20,11 @@ void OfficerController::DecideState()
 	{
 		character->SetIsDead(true);
 		character->ChangeState(CharacterStateID::DEAD);
+		// オフィサー死亡確認
+		if (OfficerManager::Instance().IsAllOfficerDead())
+		{
+			OfficerManager::Instance().DisplayGameOverUI();
+		}
 		return;
 	}
 
