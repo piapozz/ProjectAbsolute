@@ -156,10 +156,30 @@ struct EntityManagementData
 	bool isLockSuit;
 };
 
+const std::vector<std::string> nameList =
+{
+	"Sakakura",
+	"Toshihiro",
+	"Piapozz",
+	"Saranath",
+	"Kalastathar",
+	"Ansamath",
+	"Valantal",
+	"Jalanal",
+	"Adanathar",
+	"Kavalan",
+};
+
 // Eˆõ‚Ìƒf[ƒ^
 struct OfficerInitData
 {
-	std::string name = "papapa";
+	OfficerInitData()
+	{
+		int index = GetRand(nameList.size() - 1);
+		name = nameList[index];
+	}
+
+	std::string name = "";
 	Vector2 position = Vector2(0, 0);
 	int health = 100;
 	int mental = 100;
