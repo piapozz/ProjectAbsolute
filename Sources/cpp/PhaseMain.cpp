@@ -73,7 +73,7 @@ void PhaseMain::Init()
 	});
 	// 各マネージャー初期化
 	StageManager::Instance().Init();
-	StageManager::Instance().SetStageData(_stageData[GetDay() - 1]);
+	StageManager::Instance().SetStageData(_stageData[(GetDay() - 1) / 6]);
 	StageManager::Instance().CreateStage();
 	OfficerManager::Instance().Init();
 	// エンティティの生成

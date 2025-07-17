@@ -67,6 +67,17 @@ enum class SectionType
 
 	MAX
 };
+// •”–å
+enum class Division
+{
+	INVALID = -1,
+	FIRST,
+	SECOND,
+	THIRD,
+	FOURTH,
+
+	MAX
+};
 // í—Ş
 enum class Type
 {
@@ -190,7 +201,7 @@ const int CURSOR_SIZE = 20;
 const int FONT_SIZE_MAX = 100;
 
 // Å‘å“ú’ö
-const int MAX_DAY = 4;
+const int MAX_DAY = 24;
 
 // •¶š—ñ‚É•ÏŠ·
 inline std::string ToString(Type type)

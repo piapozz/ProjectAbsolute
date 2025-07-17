@@ -44,44 +44,53 @@ void StageManager::CreateStage()
 		{
 			if (_visited[i][j]) continue; 
 			LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
-			// セクションの種類に応じて処理を分岐
-			if (_stageData[i][j] == (int)SectionType::ROOM)
+
+			switch (_stageData[i][j])
 			{
-				// 部屋を生成
-				int size = CheckSectionSize(j, i, SectionType::ROOM);
-				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				SectionRoom* room = factory.CreateWithArgs<SectionRoom>(transform, layerSetting);
-				_roomList.push_back(room);
-			} 
-			else if (_stageData[i][j] == (int)SectionType::CORRIDOR)
-			{
-				// 廊下を生成
-				int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
-				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
-				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
-				SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(transform, layerSetting);
-				_roomList.push_back(corrider);
-			} 
-			else if (_stageData[i][j] == (int)SectionType::CONNECT)
-			{
-				// 接合部を生成
-				int size = CheckSectionSize(j, i, SectionType::CONNECT);
-				Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				Transform transform = Transform(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(transform, layerSetting);
-				_connectList.push_back(connect);
-			} 
-			else if (_stageData[i][j] == (int)SectionType::SECURE)
-			{
-				// 収容所を生成
-				int size = CheckSectionSize(j, i, SectionType::SECURE);
-				Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-				LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
-				Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-				SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(transform, layerSetting);
-				// 収容所のリストに追加
-				_secureRoomList.push_back(secure);
+				case (int)SectionType::ROOM:
+				{
+					// 部屋を生成
+					int size = CheckSectionSize(j, i, SectionType::ROOM);
+					Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+					Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+					SectionRoom* room = factory.CreateWithArgs<SectionRoom>(transform, layerSetting);
+					_roomList.push_back(room);
+					break;
+				}
+				case (int)SectionType::CORRIDOR:
+				{
+					// 廊下を生成
+					int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
+					Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
+					Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
+					SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(transform, layerSetting);
+					break;
+				}
+				case (int)SectionType::CONNECT:
+				{
+					// 接合部を生成
+					int size = CheckSectionSize(j, i, SectionType::CONNECT);
+					Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+					Transform transform = Transform(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+					SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(transform, layerSetting);
+					break;
+				}
+				case (int)SectionType::SECURE + (int)Division::FIRST:
+				case (int)SectionType::SECURE + (int)Division::SECOND:
+				case (int)SectionType::SECURE + (int)Division::THIRD:
+				case (int)SectionType::SECURE + (int)Division::FOURTH:
+				{
+					// 収容所を生成
+					int size = CheckSectionSize(j, i, SectionType::SECURE);
+					Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
+					LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
+					Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
+					SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(transform, layerSetting);
+					// 収容所のリストに追加
+					_secureRoomList.push_back(secure);
+				}
+				default:
+					break;
 			}
 		}
 	}
@@ -126,7 +135,10 @@ bool StageManager::CheckPosOnStage(Vector2 pos)
 	// 区画が存在しない、または接続部、収容所は false
 	if (_stageData[x][y] == (int)SectionType::CONNECT || 
 		_stageData[x][y] == (int)SectionType::NONE ||
-		_stageData[x][y] == (int)SectionType::SECURE)
+		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::FIRST ||
+		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::SECOND ||
+		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::THIRD ||
+		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::FOURTH)
 	{
 		return false;
 	}

@@ -162,6 +162,8 @@
     <ClCompile Include="Sources\cpp\ControllerEntityTriangle.cpp" />
     <ClCompile Include="Sources\cpp\Cursor.cpp" />
     <ClCompile Include="Sources\cpp\DataManager.cpp" />
+    <ClCompile Include="Sources\cpp\Division.cpp" />
+    <ClCompile Include="Sources\cpp\DivisionCreater.cpp" />
     <ClCompile Include="Sources\cpp\EntityEscapeUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityInformationUI.cpp" />
     <ClCompile Include="Sources\cpp\EntityManagementTipsUI.cpp" />
@@ -267,6 +269,8 @@
     <ClInclude Include="Sources\header\ControllerEntityTriangle.h" />
     <ClInclude Include="Sources\header\Cursor.h" />
     <ClInclude Include="Sources\header\DataManager.h" />
+    <ClInclude Include="Sources\header\Division.h" />
+    <ClInclude Include="Sources\header\DivisionCreater.h" />
     <ClInclude Include="Sources\header\EntityController.h" />
     <ClInclude Include="Sources\header\EntityEscapeUI.h" />
     <ClInclude Include="Sources\header\EntityInformationUI.h" />
