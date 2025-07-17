@@ -121,6 +121,12 @@
     <Filter Include="ソース ファイル\Ishihara\Entity">
       <UniqueIdentifier>{1e21b197-f326-4a8f-b95d-be171c086b9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Ishihara\Stage">
+      <UniqueIdentifier>{35542a2f-bcd2-4335-bdea-d45bf3497823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Ishihara\Stage">
+      <UniqueIdentifier>{476dbae0-5b46-4355-989e-5be281531d29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\cpp\Main.cpp">
@@ -230,12 +236,6 @@
     </ClCompile>
     <ClCompile Include="Sources\cpp\SceneTitle.cpp">
       <Filter>ソース ファイル\Ishihara\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\StageManager.cpp">
-      <Filter>ソース ファイル\Ishihara\Section</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\cpp\RouteSearcher.cpp">
-      <Filter>ソース ファイル\Ishihara\Section</Filter>
     </ClCompile>
     <ClCompile Include="Sources\cpp\BaseUI.cpp">
       <Filter>ソース ファイル\Ishihara\UI</Filter>
@@ -420,6 +420,18 @@
     <ClCompile Include="Sources\cpp\GameOverUI.cpp">
       <Filter>ソース ファイル\Sakakura\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\RouteSearcher.cpp">
+      <Filter>ソース ファイル\Ishihara\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\StageManager.cpp">
+      <Filter>ソース ファイル\Ishihara\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\Division.cpp">
+      <Filter>ソース ファイル\Ishihara\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\cpp\DivisionCreater.cpp">
+      <Filter>ソース ファイル\Ishihara\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -519,12 +531,6 @@
       <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\SectionRoom.h">
-      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\StageManager.h">
-      <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\header\RouteSearcher.h">
       <Filter>ヘッダー ファイル\Ishihara\Section</Filter>
     </ClInclude>
     <ClInclude Include="Sources\header\CommonModule.h">
@@ -745,6 +751,18 @@
     </ClInclude>
     <ClInclude Include="Sources\header\GameOverUI.h">
       <Filter>ヘッダー ファイル\Sakakura\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\StageManager.h">
+      <Filter>ヘッダー ファイル\Ishihara\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\RouteSearcher.h">
+      <Filter>ヘッダー ファイル\Ishihara\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\Division.h">
+      <Filter>ヘッダー ファイル\Ishihara\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\DivisionCreater.h">
+      <Filter>ヘッダー ファイル\Ishihara\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
