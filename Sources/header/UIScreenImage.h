@@ -33,10 +33,13 @@ public:
 	void DrawUIBox();
 	inline void SetColor(int color){ _color = color; }
 	inline void SetOutLineColor(int color){ _outLineColor = color; }
+	inline void SetOnCursorColor(int color){ _onCursorColor = color; }
+
 private:
 	bool _fill;
-	bool _onCorsor;
+	bool _onCursor;
 	int _color;
 	int _outLineColor;
+	int _onCursorColor;
 };
 

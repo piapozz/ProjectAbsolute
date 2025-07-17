@@ -36,9 +36,8 @@ void PhaseMain::Init()
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
 	// UI
-	LayerSetting layerSetting = {true, true, Layer::BACK};
 	ObjectFactory& factory = ObjectFactory::Instance();
-	layerSetting = {true, false, Layer::FRONT};
+	LayerSetting layerSetting = {true, false, Layer::FRONT};
 	_pRangeSelect = factory.CreateWithArgs<UIScreenButton>(Transform(), false, layerSetting);
 	_pSelectOperationUI = factory.CreateWithArgs<SelectOperationUI>();
 	SecureRoom::GetUIOperationCallback = [this]()
@@ -83,11 +82,15 @@ void PhaseMain::Init()
 		int roomID = addEntity[i]->GetManagementData().roomID;
 		StageManager::Instance().SetEntity(addEntity[i], roomID);
 	}
-	EventManager::Instance().Init();
 	EventManager::Instance().SetResultCallback([this]()
 	{
 		_pResultUI->SetActive(true);
 	});
+	EventManager::Instance().SetGetDayCallback([this]()
+	{
+		return GetDay();
+	});
+	EventManager::Instance().Init();
 	SecureRoom::EndOperationEvent = [this](int successCount)
 	{
 		// 作業が終了したら、エネルギーを追加
@@ -95,7 +98,6 @@ void PhaseMain::Init()
 	};
 	// カメラ生成
 	_pCamera = new Camera();
-	EventManager::Instance().AddEnergy(100);
 }
 
 void PhaseMain::OnCursorProc(Vector2 pos)

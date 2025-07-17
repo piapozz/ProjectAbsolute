@@ -10,14 +10,15 @@ void EventManager::Init()
 	_energy = 0;
 	_melt = 0;
 	meltLevel = 0;
+	_maxEnergy = std::round((float)(_ADD_ENERGY * _GetDay()) * _FACTOR_ENERGY);
 
 	ObjectFactory& factory = ObjectFactory::Instance();
-	LayerSetting layerSetting = {true, false, Layer::MIDDLE};
+	LayerSetting layerSetting = {true, false, Layer::BACK};
 	Transform transform = Transform(Vector2(400, 100), Vector2(500, 50));
 	_pEnergySlider = factory.CreateWithArgs<UIScreenSlider>(transform, true, layerSetting);
 	_pEnergySlider->SetValue(_energy);
 	_pEnergySlider->SetColor(0, 255, 0);
-	std::string str = std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY);
+	std::string str = std::to_string(_energy) + "/" + std::to_string(_maxEnergy);
 	_pEnergySlider->SetText(str.c_str());
 
 	transform = Transform(Vector2(400, 150), Vector2(500, 50));
@@ -27,7 +28,7 @@ void EventManager::Init()
 	str = std::to_string(_melt) + "/" + std::to_string(_MELT_MAX);
 	_pMeltSlider->SetText(str.c_str());
 
-	layerSetting = {true, true, Layer::MIDDLE};
+	layerSetting = {true, true, Layer::BACK};
 	// 停止ボタン
 	transform = Transform(Vector2(100, 1050), Vector2(200, 50));
 	_pStopButton = factory.CreateWithArgs<UIScreenButton>(transform, true, layerSetting);
@@ -61,18 +62,18 @@ void EventManager::AddEnergy(int value)
 {
 	// エネルギーを追加
 	_energy += value;
-	if (_energy > _MAX_ENERGY)
+	if (_energy > _maxEnergy)
 	{
-		_energy = _MAX_ENERGY;
+		_energy = _maxEnergy;
 	}
 	if (_energy < 0) _energy = 0;
 	// スライダーの更新
-	_pEnergySlider->SetValue(static_cast<float>(_energy) / static_cast<float>(_MAX_ENERGY));
-	_pEnergySlider->SetText((std::to_string(_energy) + "/" + std::to_string(_MAX_ENERGY)).c_str());
+	_pEnergySlider->SetValue(static_cast<float>(_energy) / static_cast<float>(_maxEnergy));
+	_pEnergySlider->SetText((std::to_string(_energy) + "/" + std::to_string(_maxEnergy)).c_str());
 
 	// エネルギーがマックスならリザルトUIを表示
 	if (IsMaxEnergy())
-		_ContinueResultCallback();
+		_DisplayContinueResult();
 }
 
 void EventManager::AddMelt()

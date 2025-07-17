@@ -22,7 +22,7 @@ void Entity_E000::Init(LayerSetting layerSetting)
 	}
 
 	_attackStatus.attack = 10;
-	_attackStatus.damageType = Type::RED;
+	_attackStatus.damageType = Type::WHITE;
 
 	Transform trans = Transform(Vector2::zero(), Vector2::one(), this);
 }

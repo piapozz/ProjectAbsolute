@@ -32,7 +32,6 @@ public:
 	inline void SetOutLineColor(int color){ _outLineColor = color; }
 
 private:
-	bool _onCorsor;
+	bool _onCursor;
 	int _outLineColor;
 };
-

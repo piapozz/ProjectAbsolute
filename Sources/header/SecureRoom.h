@@ -72,6 +72,7 @@ public:
 	inline void SetInteractOfficer(OfficerPlayer* setOfficer){ _pInteractOfficer = setOfficer; }
 	inline bool CanMeltdown(){ return !_isMeltdown && _pEntity != nullptr; }
 	inline void SetState(State state){ _currentState = state; }
+	inline void SetDivisionIndex(int index){ _divisionIndex = index; }
 
 private:
 	// メルトダウンのカウント数
@@ -93,6 +94,8 @@ private:
 	BaseEntity* _pEntity;
 	bool _isMeltdown;
 	int _meltdownCount;
+	// 配属された区画
+	int _divisionIndex;
 	// 作業
 	BaseOperation* _pOperationList[(int)Type::MAX];
 	// インタラクト中の職員

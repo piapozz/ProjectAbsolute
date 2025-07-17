@@ -30,7 +30,11 @@ public:
 	BaseOfficer* AddOfficer(OfficerType type, OfficerInitData data, Vector2 position);
 	void MoveSelectedPlayer(std::vector<int> officerNumber);
 	vector<OfficerInitData> GetAliveOfficerData();
-	bool IsAllOfficerDead();
+	/// <summary>
+	/// ‘SEˆõ‚ªs“®•s‰Â‚©”Û‚©
+	/// </summary>
+	/// <returns></returns>
+	bool IsAllOfficerRestricted();
 	std::vector<BaseOfficer*> GetOfficerList() { return _officerList; }
 	inline void SetDisplayGameOverUI(std::function<void()> setCallback){ DisplayGameOverUI = setCallback; }
 
