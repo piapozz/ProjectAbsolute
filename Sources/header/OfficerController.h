@@ -42,4 +42,6 @@ private:
 	void UpdateMoveState() override;
 	void UpdateFightState() override;
 
+	void UpdatePanicState();
+
 };

@@ -1,6 +1,7 @@
 #include "../header/OfficerController.h"
 #include "../header/ObjectManager.h"
 #include "../header/SecureRoom.h"
+#include "../header/StageManager.h"
 #include "../header/SelectorNearEntityInRoom.h"
 #include "../header/OfficerManager.h"
 
@@ -28,11 +29,11 @@ void OfficerController::DecideState()
 		return;
 	}
 
-	if (stateID != CharacterStateID::PANIC && officer->GetMental() <= 0)
+	if (officer->GetMental() <= 0)
 	{
-		character->ChangeState(CharacterStateID::PANIC);
-		return;
+		character->SetIsPanic(true);
 	}
+	else character->SetIsPanic(false);
 
 	switch (stateID)
 	{
@@ -47,6 +48,10 @@ void OfficerController::DecideState()
 		case CharacterStateID::FIGHT:
 			UpdateFightState();
 			break;
+	
+		case CharacterStateID::PANIC:
+			UpdatePanicState();
+			break;
 	}
 
 	return;
@@ -54,6 +59,12 @@ void OfficerController::DecideState()
 
 void OfficerController::UpdateIdleState()
 {
+	if (character->GetIsPanic())
+	{
+		character->ChangeState(CharacterStateID::PANIC);
+		return;
+	}
+
 	BaseCharacter* checkTarget = CheckHostility();
 	if (checkTarget)
 	{
@@ -96,6 +107,12 @@ void OfficerController::UpdateMoveState()
 	}
 
 	if (!character->pCharacterState->IsEndState()) return;
+
+	if (character->GetIsPanic())
+	{
+		character->ChangeState(CharacterStateID::PANIC);
+		return;
+	}
 
 	if (character->GetIsFight())
 	{
@@ -149,6 +166,16 @@ void OfficerController::UpdateFightState()
 		return;
 	}
 	return;
+}
+
+void OfficerController::UpdatePanicState()
+{
+	if (!character->GetIsPanic()) return;
+
+	if (!WaitUntilCount()) return;
+
+	BaseSection* randomRoom =  StageManager::Instance().GetRandomSection();
+	character->ChangeMoveState(randomRoom);
 }
 
 bool OfficerController::WaitUntilCount()
