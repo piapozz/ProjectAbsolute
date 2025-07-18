@@ -88,3 +88,8 @@ void OfficerPlayer::ClickEvent()
 	selectOfficerList.clear();
 	selectOfficerList.push_back(this);
 }
+
+void OfficerPlayer::UpdateStatus(Type type, int value)
+{
+	_parameter[(int)type] += value;
+}

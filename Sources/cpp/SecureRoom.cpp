@@ -180,6 +180,13 @@ void SecureRoom::OperationProc()
 {
 	// 作業中でないなら返す
 	if (_currentState != State::INTERACT) return;
+	// 作業員が操作不能になったら終了
+	if (_pInteractOfficer->GetIsRestricted())
+	{
+		// ステートを変更
+		_currentState = State::IDLE;
+		return;
+	};
 	// 作業の進行、作業が終了してないなら返す
 	if (!_pOperationList[(int)_selectOperation]->OperationProc()) return;
 	// ステートを変更
@@ -188,6 +195,8 @@ void SecureRoom::OperationProc()
 	int successCount = _pOperationList[(int)_selectOperation]->GetSuccessCount();
 	// エンティティの作業終了イベントを発生させる
 	_pEntity->EndOperationEvent(successCount);
+	// 職員のパラメータ上昇
+	_pInteractOfficer->UpdateStatus(_selectOperation, successCount);
 	// 職員に終わったことを通知
 	_pInteractOfficer->ChangeMoveState(_pInteractOfficer->GetPastPosition());
 	_pInteractOfficer = nullptr;
@@ -204,6 +213,12 @@ void SecureRoom::StartOperation()
 	Vector2 position = transformWorld.position;
 	_pInteractOfficer->SetPosition(position + GetScale() / 2.0f * _OFFICER_OFFSET);
 	_pOperationList[(int)_selectOperation]->SetOperator(_pInteractOfficer);
+	_pOperationList[(int)_selectOperation]->SetFailCallback([this]()
+	{
+		int strength = _pEntity->GetAttackStatus().attack;
+		Type damageType = _pEntity->GetAttackStatus().damageType;
+		_pInteractOfficer->TakeDamage(strength, damageType);
+	});
 	_pEntity->SetOperation(_selectOperation);
 	// 作業開始イベントを発生させる
 	_pEntity->StartOperationEvent();
