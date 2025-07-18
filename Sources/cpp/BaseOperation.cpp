@@ -22,7 +22,7 @@ bool BaseOperation::OperationProc()
 	{
 		// 失敗
 		// ダメージを与える
-
+		_FailCallback();
 		// 失敗を記録
 		_operationResultList[_currentOperationCount - 1] = Result::FAILURE;
 	}
@@ -45,11 +45,10 @@ bool BaseOperation::OperationProc()
 
 void BaseOperation::SetOperator(OfficerPlayer* setOfficer)
 {
-	// 作業者のIDからレベルとパラメーターを取得
-	// 今はベタ打ち
+	// 作業者のレベルとパラメーターを取得
 	_operatorLevel = 1;
-	_operatorParameter = 100;
-	_currentSpeed = _DEFAULT_OPERATE_FRAME - (int)(_DEFAULT_OPERATE_FRAME / 1.5  * _operatorParameter / 100);
+	_operatorParameter = setOfficer->GetParameter()[(int)Type::BLACK];
+	_currentSpeed = _DEFAULT_OPERATE_FRAME - (int)(_DEFAULT_OPERATE_FRAME / 1.5f  * _operatorParameter / 100.0f);
 	_currentProbability = operateDefaultProbability[_operatorLevel - 1] + _OPERATE_PROBABILITY_RATIO * _operatorParameter;
 	_frameCounter = 0;
 	_currentOperationCount = 0;

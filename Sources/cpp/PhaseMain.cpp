@@ -98,6 +98,7 @@ void PhaseMain::Init()
 	};
 	// ƒJƒƒ‰¶¬
 	_pCamera = new Camera();
+	_pSelectOfficerList.clear();
 }
 
 void PhaseMain::OnCursorProc(Vector2 pos)

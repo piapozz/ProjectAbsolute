@@ -31,6 +31,8 @@ public:
 	void Teardown() override;
 	void ClickEvent() override;
 
+	void UpdateStatus(Type type, int value);
+
 private:
 	// スライダー
 	UISlider* healthSlider;

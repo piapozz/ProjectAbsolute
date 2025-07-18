@@ -1,6 +1,7 @@
 #pragma once
 #include "../header/Const.h"
 #include <vector>
+#include <functional>
 class OfficerPlayer;
 class UIButton;
 
@@ -31,6 +32,7 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	int GetSuccessCount();
+	inline void SetFailCallback(std::function<void()> setCallback){ _FailCallback = setCallback; }
 
 protected:
 	// 作業回数
@@ -67,5 +69,7 @@ private:
 	// 現在の作業回数
 	int _currentOperationCount;
 	UIButton* _pOperationUI;
+	// 作業失敗時のコールバック
+	std::function<void()> _FailCallback;
 };
 

@@ -130,7 +130,7 @@ public:
 	inline int GetSpeed(){ return _moveSpeed; }
 	inline void DeadEvent(){ _DeadEventCallback(); }
 	inline std::function<void()> GetDeadEventCallBack(){ return _DeadEventCallback; }
-	inline bool GetIsRestricted() { return !(GetIsDead() || GetIsPanic()); }
+	inline bool GetIsRestricted() { return (GetIsDead() || GetIsPanic()); }
 	inline void SetIsDead(bool flag){ isDead = flag; }
 	inline void SetIsPanic(bool flag){ isPanic = flag; }
 	inline void SetIsFight(bool flag){ isFight = flag; }
