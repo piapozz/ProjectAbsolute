@@ -48,7 +48,7 @@ void Entity_E000::RunawayEvent()
 	pController->isFreeze = false;
 
 	StageManager& stageManager = StageManager::Instance();
-	BaseSection* randomSection = stageManager.GetRandomSection();
+	BaseSection* randomSection = stageManager.GetRandomSection(0);
 
 	ChangeMoveState(randomSection);
 }

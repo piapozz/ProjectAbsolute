@@ -16,7 +16,7 @@ OfficerManager::~OfficerManager()
 void OfficerManager::Init()
 {
 	_officerList.clear();
-	Transform sectionTransform = StageManager::Instance().GetRandomSection()->GetTransform();
+	Transform sectionTransform = StageManager::Instance().GetRespawnSection(0)->GetTransform();
 	Vector2 sectionPosition = sectionTransform.position;
 	Vector2 sectionScale = sectionTransform.scale;
 

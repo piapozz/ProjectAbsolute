@@ -2,18 +2,17 @@
 #include "Const.h"
 #include <vector>
 #include "RouteSearcher.h"
-#include "SecureRoom.h"
 #include "BaseEntity.h"
+#include "DivisionCreater.h"
 class Vector2;
 /*
-* Ishihara
-* ステージの生成
+生成アンカーの設定
+配列の結合
+区画の保持
 */
 class StageManager
 {
 public:
-	// ステージデータ
-	static std::vector<std::vector<int>> _stageData;
 
 	static StageManager& Instance() {
 		static StageManager instance;
@@ -29,25 +28,14 @@ public:
 	/// 初期化
 	/// </summary>
 	void Init();
-	/// <summary>
-	/// ステージ生成
-	/// </summary>
-	void CreateStage();
-	/// <summary>
-	/// 区画がつながっているかどうか
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <param name="type"></param>
-	/// <returns></returns>
-	int CheckSectionSize(int x, int y, SectionType type);
+
 	/// <summary>
 	/// A* アルゴリズムで経路を探索する
 	/// </summary>
 	/// <param name="start">スタート位置（ワールド座標）</param>
 	/// <param name="goal">ゴール位置（ワールド座標）</param>
 	/// <returns>Node* の経路リスト（ゴールからスタート方向）</returns>
-	static std::vector<Vector2> FindPath(Vector2 start, Vector2 goal);
+	std::vector<Vector2> FindPath(Vector2 start, Vector2 goal);
 	/// <summary>
 	/// ステージのデータを取得
 	/// </summary>
@@ -61,21 +49,56 @@ public:
 	/// <param name="pos"></param>
 	/// <returns></returns>
 	bool CheckPosOnStage(Vector2 pos);
-	/// <summary>
-	/// 敵の設定
-	/// </summary>
-	/// <param name="entity"></param>
-	/// <param name="index"></param>
-	void SetEntity(BaseEntity* entity, int index){
-		_secureRoomList[index]->SetEntity(entity);
-	}
-	static std::vector<SecureRoom*> _secureRoomList;
 
-	BaseSection* GetRandomSection();
-	std::vector<BaseSection*> GetRoomList();
+	// ステージ生成
+	void CreateStage(int divisionCount);
+
+	void SetEntity(std::vector<BaseEntity*> entityList)
+	{
+		for (int i = 0; i < entityList.size(); i++)
+		{
+			if (entityList[i] == nullptr) continue;
+
+			_divisionList[0]->SetEntity(entityList[i], i);
+		}
+	}
+
+	BaseSection* GetRandomSection(int divisionIndex)
+	{
+		return _divisionList[divisionIndex]->GetRandomSection();
+	}
+
+	std::vector<SecureRoom*> GetSecureRoom(int divisionIndex)
+	{
+		return _divisionList[divisionIndex]->GetSecureRoomList();
+	}
+
+	BaseSection* GetRespawnSection(int divisionIndex)
+	{
+		return _divisionList[divisionIndex]->GetRespawnPoint();
+	}
+
 private:
-	// 事前に初期化された訪問フラグ
-	std::vector<std::vector<bool>> _visited;
-	std::vector<BaseSection*> _roomList;
-	std::vector<BaseSection*> _connectList;
+	std::vector<Division*> _divisionList;
+	// ステージデータ
+	std::vector<std::vector<int>> _stageData;
+
+	// 拡張情報
+	std::vector<Vector2> _anchorList = {
+		Vector2(0, 0),
+		Vector2(SECTION_SIZE_X * 7, 0),
+		Vector2(0, -SECTION_SIZE_Y * 7),
+		Vector2(SECTION_SIZE_X * 7, -SECTION_SIZE_Y * 7)
+	};
+	// プリセット
+	std::vector<std::vector<int>> _divisionPreset =
+	{
+		{2, 3, 3, 3, 3, 3, 2},
+		{4, 5, 0, 0, 0, 5, 4},
+		{4, 0, 0, 5, 0, 0, 4},
+		{2, 3, 3, 1, 3, 3, 2},
+		{4, 0, 0, 5, 0, 0, 4},
+		{4, 5, 0, 0, 0, 5, 4},
+		{2, 3, 3, 3, 3, 3, 2}
+	};
 };

@@ -60,21 +60,11 @@ enum class SectionType
 {
 	INVALID = -1,
 	NONE,
+	RESPAWN,
 	ROOM,
 	CORRIDOR,
 	CONNECT,
 	SECURE,
-
-	MAX
-};
-// •”–å
-enum class Division
-{
-	INVALID = -1,
-	FIRST,
-	SECOND,
-	THIRD,
-	FOURTH,
 
 	MAX
 };

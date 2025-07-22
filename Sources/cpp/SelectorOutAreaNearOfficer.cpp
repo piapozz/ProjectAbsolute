@@ -46,7 +46,7 @@ std::vector<BaseCharacter*> SelectorOutAreaNearOfficer::SelectTargets(BaseCharac
 	for (int i = 0;i < officerList.size();i++)
 	{
 		Vector2 targetPos = officerList[i]->GetPosition();
-		std::vector<Vector2> playerToRoute = StageManager::FindPath(attackerPos, targetPos);
+		std::vector<Vector2> playerToRoute = StageManager::Instance().FindPath(attackerPos, targetPos);
 
 		int routeCount = playerToRoute.size();
 
