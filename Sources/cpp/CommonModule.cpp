@@ -36,3 +36,65 @@ Transform Transform::GetWorldTransform()
 	}
 	return result;
 }
+
+void Attach2DArray(std::vector<std::vector<int>>& base,
+				   const std::vector<std::vector<int>>& patch,
+				   AttachDirection direction,
+				   Align align)
+{
+	if (base.empty() || patch.empty()) return;
+
+	size_t baseRows = base.size();
+	size_t baseCols = base[0].size();
+	size_t patchRows = patch.size();
+	size_t patchCols = patch[0].size();
+
+	if (direction == AttachDirection::Top || direction == AttachDirection::Bottom) {
+		size_t newCols = std::max<size_t>(baseCols, patchCols);
+		for (auto& row : base) row.resize(newCols, 0);
+
+		std::vector<std::vector<int>> patchResized(patch.size(), std::vector<int>(newCols, 0));
+		for (size_t y = 0; y < patch.size(); ++y) {
+			size_t offset = 0;
+			if (align == Align::Center && patchCols < newCols)
+				offset = (newCols - patchCols) / 2;
+			for (size_t x = 0; x < patch[y].size(); ++x) {
+				patchResized[y][x + offset] = patch[y][x];
+			}
+		}
+
+		if (direction == AttachDirection::Top) {
+			base.insert(base.begin(), patchResized.begin(), patchResized.end());
+		} else {
+			base.insert(base.end(), patchResized.begin(), patchResized.end());
+		}
+	} else {
+		size_t newRows = std::max<size_t>(baseRows, patchRows);
+		if (baseRows < newRows)
+			base.resize(newRows, std::vector<int>(baseCols, 0));
+
+		std::vector<std::vector<int>> patchResized(newRows, std::vector<int>(patchCols, 0));
+		for (size_t y = 0; y < patch.size(); ++y) {
+			patchResized[y] = patch[y];
+		}
+
+		if (align == Align::Center && patchRows < newRows) {
+			size_t offset = (newRows - patchRows) / 2;
+			patchResized = std::vector<std::vector<int>>(newRows, std::vector<int>(patchCols, 0));
+			for (size_t y = 0; y < patch.size(); ++y) {
+				patchResized[y + offset] = patch[y];
+			}
+		}
+
+		if (direction == AttachDirection::Left) {
+			for (size_t i = 0; i < newRows; ++i) {
+				patchResized[i].insert(patchResized[i].end(), base[i].begin(), base[i].end());
+				base[i] = patchResized[i];
+			}
+		} else {
+			for (size_t i = 0; i < newRows; ++i) {
+				base[i].insert(base[i].end(), patchResized[i].begin(), patchResized[i].end());
+			}
+		}
+	}
+}

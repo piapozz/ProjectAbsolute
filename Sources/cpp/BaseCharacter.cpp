@@ -3,6 +3,7 @@
 #include "../header/BaseCharacterState.h"
 #include "../header/CharacterStateFactory.h"
 #include "../header/StageManager.h"
+#include "../header/SecureRoom.h"
 
 void BaseCharacter::Init(LayerSetting layerSetting)
 {
@@ -69,7 +70,7 @@ void BaseCharacter::ChangeMoveState(BaseSection* targetSection, CharacterStateID
 	Vector2 position = transformWorld.position;
 	Vector2 startPos = ObjectManager::Instance().FindPosObject(position, ObjectType::SECTION)->GetPosition();
 
-	routeList = StageManager::FindPath(startPos, targetPos);
+	routeList = StageManager::Instance().FindPath(startPos, targetPos);
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;
 
@@ -103,7 +104,7 @@ void BaseCharacter::ChangeMoveState(BaseCharacter* targetObject)
 	std::vector<Vector2> routeList;
 	Vector2 nowPositon = GetTransform().position;
 	Vector2 targetPosition = targetObject->GetTransform().position;
-	routeList = StageManager::FindPath(nowPositon, targetPosition);
+	routeList = StageManager::Instance().FindPath(nowPositon, targetPosition);
 
 	StateArgs* args = new StateArgs();
 	args->targetPosList = routeList;

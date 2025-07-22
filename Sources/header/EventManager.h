@@ -1,4 +1,5 @@
 #pragma once
+#include "SecureRoom.h" 
 #include "UIScreenSlider.h"
 #include "UIScreenButton.h"
 /*

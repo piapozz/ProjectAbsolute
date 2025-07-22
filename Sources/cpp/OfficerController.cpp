@@ -178,7 +178,7 @@ void OfficerController::UpdatePanicState()
 
 	if (!WaitUntilCount()) return;
 
-	BaseSection* randomRoom =  StageManager::Instance().GetRandomSection();
+	BaseSection* randomRoom =  StageManager::Instance().GetRandomSection(0);
 	character->ChangeMoveState(randomRoom);
 }
 

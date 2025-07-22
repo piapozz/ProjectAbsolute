@@ -10,110 +10,53 @@
 #include "../header/UIButton.h"
 #include "../header/ObjectFactory.h"
 
-std::vector<std::vector<int>> StageManager::_stageData;
-std::vector<SecureRoom*> StageManager::_secureRoomList;
-
 StageManager::~StageManager() 
 {
-	_secureRoomList.clear();
+
 }
 
 void StageManager::Init()
-{  
-	_secureRoomList.clear();
-	_roomList.clear();
-	_connectList.clear();
-}
-  
-void StageManager::CreateStage()
 {
-	// 使用前に visited を初期化
-	_visited = std::vector<std::vector<bool>>(
-		// _stageData の行数に合わせる
-		_stageData.size(),
-		// _stageData の列数に合わせる
-		std::vector<bool>(_stageData[0].size(), false)
-		);
 
-	ObjectFactory& factory = ObjectFactory::Instance();
+}
 
-	// ステージの生成
-	for (int i = 0; i < _stageData.size(); ++i)
+void StageManager::CreateStage(int divisionCount)
+{
+	DivisionCreater creater = DivisionCreater::Instance();
+	for(int i = 0; i < divisionCount + 1; i++)
 	{
-		for (int j = 0; j < _stageData[i].size(); ++j)
-		{
-			if (_visited[i][j]) continue; 
-			LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
+		// 区画プリセットの設定
+		creater.SetDivisionPreset(_divisionPreset);
+		Vector2 anchorPos = _anchorList[i];
+		Division* division = creater.CreateDivision(anchorPos);
+		// 区画番号の設定
+		division->SetDivisionIndex(i);
 
-			switch (_stageData[i][j])
-			{
-				case (int)SectionType::ROOM:
-				{
-					// 部屋を生成
-					int size = CheckSectionSize(j, i, SectionType::ROOM);
-					Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-					Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-					SectionRoom* room = factory.CreateWithArgs<SectionRoom>(transform, layerSetting);
-					_roomList.push_back(room);
-					break;
-				}
-				case (int)SectionType::CORRIDOR:
-				{
-					// 廊下を生成
-					int size = CheckSectionSize(j, i, SectionType::CORRIDOR);
-					Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + 1 / 2.0f) * SECTION_SIZE_Y);
-					Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, 1 * SECTION_SIZE_Y));
-					SectionCorridor* corrider = factory.CreateWithArgs<SectionCorridor>(transform, layerSetting);
-					break;
-				}
-				case (int)SectionType::CONNECT:
-				{
-					// 接合部を生成
-					int size = CheckSectionSize(j, i, SectionType::CONNECT);
-					Vector2 pos = Vector2((j + 1 / 2.0f)* SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-					Transform transform = Transform(pos, Vector2(1 * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-					SectionConnect* connect = factory.CreateWithArgs<SectionConnect>(transform, layerSetting);
-					break;
-				}
-				case (int)SectionType::SECURE + (int)Division::FIRST:
-				case (int)SectionType::SECURE + (int)Division::SECOND:
-				case (int)SectionType::SECURE + (int)Division::THIRD:
-				case (int)SectionType::SECURE + (int)Division::FOURTH:
-				{
-					// 収容所を生成
-					int size = CheckSectionSize(j, i, SectionType::SECURE);
-					Vector2 pos = Vector2((j + size / 2.0f) * SECTION_SIZE_X, -(i + size / 2.0f) * SECTION_SIZE_Y);
-					LayerSetting layerSetting = LayerSetting(true, true, Layer::BACK);
-					Transform transform = Transform(pos, Vector2(size * SECTION_SIZE_X, size * SECTION_SIZE_Y));
-					SecureRoom* secure =  factory.CreateWithArgs<SecureRoom>(transform, layerSetting);
-					// 収容所のリストに追加
-					_secureRoomList.push_back(secure);
-				}
-				default:
-					break;
-			}
+		_divisionList.push_back(division);
+
+		// アンカーから結合方向を決定
+		AttachDirection direction = AttachDirection::Right;
+		anchorPos.normalize();
+
+		if (anchorPos.x > 0 && anchorPos.y == 0) {
+			direction = AttachDirection::Right;
+		} else if (anchorPos.x < 0 && anchorPos.y == 0) {
+			direction = AttachDirection::Left;
+		} else if (anchorPos.x == 0 && anchorPos.y < 0) {
+			direction = AttachDirection::Top;
+		}
+		else if (anchorPos.x == 0 && anchorPos.y > 0) {
+			direction = AttachDirection::Bottom;
+		}
+
+		// ステージデータに結合
+		if (_stageData.size() == 0){
+			_stageData = _divisionPreset;
+		}
+		else{
+			Attach2DArray(_stageData, _divisionPreset, AttachDirection::Bottom, Align::Center);
 		}
 	}
-}
-
-int StageManager::CheckSectionSize(int x, int y, SectionType type)
-{
-	// 範囲外チェック
-	if (y < 0 || y >= _stageData.size() || x < 0 || x >= _stageData[y].size())
-		return 0;
-	// 既に訪れている or 種類が異なる場合は無視
-	if (_visited[y][x] || _stageData[y][x] != (int)type)
-		return 0;
-	_visited[y][x] = true;
-
-	int count = 1;
-	// 上下左右に再帰
-	count += CheckSectionSize(x, y - 1, type);
-	count += CheckSectionSize(x, y + 1, type);
-	count += CheckSectionSize(x - 1, y, type);
-	count += CheckSectionSize(x + 1, y, type);
-
-	return count;
 }
 
 std::vector<Vector2> StageManager::FindPath(Vector2 start, Vector2 goal)
@@ -135,37 +78,9 @@ bool StageManager::CheckPosOnStage(Vector2 pos)
 	// 区画が存在しない、または接続部、収容所は false
 	if (_stageData[x][y] == (int)SectionType::CONNECT || 
 		_stageData[x][y] == (int)SectionType::NONE ||
-		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::FIRST ||
-		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::SECOND ||
-		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::THIRD ||
-		_stageData[x][y] == (int)SectionType::SECURE + (int)Division::FOURTH)
+		_stageData[x][y] == (int)SectionType::SECURE)
 	{
 		return false;
 	}
 	return true;
-}
-
-BaseSection* StageManager::GetRandomSection()
-{
-	std::vector<BaseSection*> _room = GetRoomList();
-	int size = _room.size();
-
-	int rand = GetRand(size - 1);
-
-	return _room[rand];
-}
-
-std::vector<BaseSection*> StageManager::GetRoomList()
-{
-	std::vector<BaseSection*> result;
-
-	for (BaseSection* section : _roomList)
-	{
-		if (section->GetSectionType() == SectionType::CONNECT ||
-			section->GetSectionType() == SectionType::SECURE)
-			continue;
-		result.push_back(section);
-	}
-
-	return result;
 }

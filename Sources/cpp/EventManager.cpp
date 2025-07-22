@@ -92,7 +92,8 @@ void EventManager::AddMelt()
 
 	// –\‘–‰Â”\‚ÈSecureRoom‚¾‚¯‚ğ’Šo
 	std::vector<SecureRoom*> meltableRooms;
-	for (SecureRoom* room : StageManager::_secureRoomList) 
+	std::vector<SecureRoom*> secureRoomList = StageManager::Instance().GetSecureRoom(0);
+	for (SecureRoom* room : secureRoomList)
 	{
 		if (room->CanMeltdown()) 
 		{

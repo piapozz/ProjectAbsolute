@@ -3,6 +3,9 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 class BaseObject;
 
 // “ñŽŸŒ³ƒxƒNƒgƒ‹
@@ -232,3 +235,20 @@ inline std::string SetPrecision(float value, int precision = 1)
 
 	return oss.str();
 }
+
+enum class AttachDirection {
+	Top,
+	Bottom,
+	Left,
+	Right
+};
+
+enum class Align {
+	Start,
+	Center
+};
+
+void Attach2DArray(std::vector<std::vector<int>>& base,
+				   const std::vector<std::vector<int>>& patch,
+				   AttachDirection direction,
+				   Align align = Align::Start);
