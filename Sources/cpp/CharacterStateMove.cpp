@@ -15,7 +15,6 @@ void CharacterStateMove::Update(BaseCharacter* character)
 	// もし目的地に到達していたら処理を終了
 	if (_arrayCount >= _routeList.size())
 	{
-
 		// 過去の位置を保存
 		ObjectManager& objectManager = ObjectManager::Instance();
 		character->pastRoom = static_cast<BaseSection*>(objectManager.Instance().FindPosObject(_routeList[_routeList.size() - 1], ObjectType::SECTION));

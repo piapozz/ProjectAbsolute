@@ -72,15 +72,10 @@ void PhaseMain::Init()
 	});
 	// 各マネージャー初期化
 	StageManager::Instance().Init();
-	StageManager::Instance().CreateStage((GetDay() - 1) / 6);
+	StageManager::Instance().CreateStage((GetDay() - 1) / 4);
 	OfficerManager::Instance().Init();
-	// エンティティの生成
-	/*vector<BaseEntity*> addEntity = EntityManager::Instance().AddObjectEntity();
-	for (int i = 0, max = addEntity.size(); i < max; i++)
-	{
-		int roomID = addEntity[i]->GetManagementData().roomID;
-		StageManager::Instance().SetEntity(addEntity[i], roomID);
-	}*/
+	// エンティティの生成、配置
+	EntityManager::Instance().AddEntityObject();
 	EventManager::Instance().SetResultCallback([this]()
 	{
 		_pResultUI->SetActive(true);

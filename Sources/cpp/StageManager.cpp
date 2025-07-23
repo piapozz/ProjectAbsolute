@@ -22,6 +22,8 @@ void StageManager::Init()
 
 void StageManager::CreateStage(int divisionCount)
 {
+	_divisionList.clear();
+	_stageData.clear();
 	DivisionCreater creater = DivisionCreater::Instance();
 	for(int i = 0; i < divisionCount + 1; i++)
 	{
@@ -54,7 +56,7 @@ void StageManager::CreateStage(int divisionCount)
 			_stageData = _divisionPreset;
 		}
 		else{
-			Attach2DArray(_stageData, _divisionPreset, AttachDirection::Bottom, Align::Center);
+			Attach2DArray(_stageData, _divisionPreset, direction, Align::Center);
 		}
 	}
 }
@@ -83,4 +85,14 @@ bool StageManager::CheckPosOnStage(Vector2 pos)
 		return false;
 	}
 	return true;
+}
+
+void StageManager::SetEntity(std::vector<BaseEntity*> entityList, int divisionIndex)
+{
+	for (int i = 0; i < entityList.size(); i++)
+	{
+		if (entityList[i] == nullptr) continue;
+
+		_divisionList[divisionIndex]->SetEntity(entityList[i], i);
+	}
 }

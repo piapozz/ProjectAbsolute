@@ -22,7 +22,7 @@ public:
 	}
 
 	void AddEntity(int addID);
-	vector<BaseEntity*> AddObjectEntity();
+	void AddEntityObject();
 
 private:
 	template<typename T>

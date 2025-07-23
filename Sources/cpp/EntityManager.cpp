@@ -1,6 +1,7 @@
 #include "../header/EntityManager.h"
 #include "../header/ObjectFactory.h"
 #include "../header/Entity_E000.h"
+#include "../header/StageManager.h"
 
 void EntityManager::Init()
 {
@@ -16,9 +17,11 @@ void EntityManager::AddEntity(int addID)
 	_entityDataList.push_back(data);
 }
 
-vector<BaseEntity*> EntityManager::AddObjectEntity()
+void EntityManager::AddEntityObject()
 {
 	int entityCount = _entityDataList.size();
+	int divisionCount = 0;
+	int entityDivisionMax = StageManager::Instance().GetEntityCount(divisionCount);
 	vector<BaseEntity*> entityList;
 	for (int i = 0; i < entityCount; i++)
 	{
@@ -26,8 +29,18 @@ vector<BaseEntity*> EntityManager::AddObjectEntity()
 		BaseEntity* addEntity = CreateEntity(addID);
 		addEntity->SetManagementData(_entityDataList[i]);
 		entityList.push_back(addEntity);
+		// 区画のエンティティを生成したら配属
+		if (i >= entityDivisionMax - 1 || i == (entityCount - 1))
+		{
+			StageManager::Instance().SetEntity(entityList, divisionCount);
+			if (i != (entityCount - 1))
+			{
+				entityList.clear();
+				divisionCount++;
+				entityDivisionMax += StageManager::Instance().GetEntityCount(divisionCount);
+			}
+		}
 	}
-	return entityList;
 }
 
 template<typename T>

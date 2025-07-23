@@ -126,7 +126,7 @@ void SecureRoom::ClickEvent()
 void SecureRoom::SetEntity(BaseEntity* setEntity)
 {
 	if (setEntity == nullptr) return;
-	SetActive(true);
+	this->SetActive(true);
 	_pEntity = setEntity;
 	Transform transformWorld = transform.GetWorldTransform();
 	Vector2 position = transformWorld.position;
