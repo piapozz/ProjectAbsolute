@@ -45,7 +45,7 @@ public:
 		: BaseObject(setLayer,setDrawHandle) {}
 	BaseCharacter(const BaseCharacter& obj)
 		: BaseObject(obj) {}
-	~BaseCharacter() {}
+	virtual ~BaseCharacter() {}
 
 	/// <summary>
 	/// ‰Šú‰»

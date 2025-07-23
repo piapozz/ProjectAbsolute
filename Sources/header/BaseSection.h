@@ -19,7 +19,7 @@ public:
 		: BaseObject(setLayer, setDrawHandle) {}
 	BaseSection(const BaseSection& obj)
 		: BaseObject(obj) {}
-	~BaseSection() {}
+	virtual ~BaseSection() {}
 
 	/// <summary>
 	/// ‰Šú‰»

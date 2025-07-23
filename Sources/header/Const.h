@@ -4,7 +4,8 @@
 #include "DxLib.h"
 #include "CommonModule.h"
 
-enum class ObjectType{
+enum class ObjectType
+{
 	INVALID = -1,
 	SECTION,
 	CHARACTER,
@@ -122,6 +123,29 @@ enum class Level
 	MAX
 };
 
+// BGM
+enum class BGM
+{
+	INVALID = -1,
+	TITLE,
+	MAIN,
+	OTHER,
+
+	MAX
+};
+
+// SE
+enum class SE
+{
+	INVALID = -1,
+	CLICK,
+	ALERT,
+	ATTACK,
+	DEAD,
+
+	MAX
+};
+
 // レイヤー設定構造体
 typedef struct LayerSetting
 {
@@ -213,6 +237,20 @@ const int FONT_SIZE_MAX = 100;
 
 // 最大日程
 const int MAX_DAY = 24;
+
+// BGMのファイルパス
+const std::vector<std::string> BGMFilePath = {
+	"Resources/Sounds/Title.mp3",
+	"Resources/Sounds/Main.mp3",
+	"Resources/Sounds/Other.mp3"
+};
+// SEのファイルパス
+const std::vector<std::string> SEFilePath = {
+	"Resources/Sounds/Decide.mp3",
+	"Resources/Sounds/Warning.mp3",
+	"Resources/Sounds/Attack.mp3",
+	"Resources/Sounds/DeathVoice.mp3",
+};
 
 // 文字列に変換
 inline std::string ToString(Type type)

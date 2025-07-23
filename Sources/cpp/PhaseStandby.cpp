@@ -23,6 +23,8 @@ void PhaseStandby::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
+	AudioManager::Instance().PlayBGM(BGM::OTHER);
+
 	// ƒLƒƒƒ‰‚ÌÚ×UI(“ü—Í‚È‚µ)
 	Transform trans = Transform(OFFICCER_UI_POS, OFFICCER_UI_SIZE);
 	LayerSetting layer = {false , false , Layer::MIDDLE};

@@ -17,7 +17,7 @@ public:
 	BaseUIScreen(const BaseUIScreen& obj)
 		: BaseObject(obj) {
 	}
-	~BaseUIScreen() {}
+	virtual ~BaseUIScreen() {}
 
 	void Init(Transform setTrasnform, LayerSetting layerSetting);
 	void Proc() override;

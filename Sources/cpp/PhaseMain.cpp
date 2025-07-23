@@ -35,6 +35,8 @@ void PhaseMain::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
+	AudioManager::Instance().PlayBGM(BGM::MAIN);
+
 	// UI
 	ObjectFactory& factory = ObjectFactory::Instance();
 	LayerSetting layerSetting = {true, false, Layer::FRONT};

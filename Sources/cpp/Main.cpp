@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "../header/SceneManager.h"
 #include "../header/ObjectManager.h"
+#include "../header/AudioManager.h"
 
 // プログラム開始
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -20,6 +21,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		// エラーが起きたら直ちに終了
 		return -1;
 	}
+
+	AudioManager::Instance().Init();
+	AudioManager::Instance().SetVolume(255);
 
 	// シーンマネージャー生成
 	SceneManager* sceneManager = new SceneManager();
@@ -64,6 +68,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// シーンマネージャーの削除
 	delete sceneManager;
+
+	ObjectManager::Instance().AllClear();	// 全てのオブジェクトを削除
+	AudioManager::Instance().DeleteSound();	// 音の削除
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 
