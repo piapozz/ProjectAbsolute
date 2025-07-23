@@ -9,7 +9,7 @@
 class BaseObject : public AutoTypeNameObject
 {
 public:
-	size_t poolIndex;
+	size_t poolIndex = 0;
 
 	BaseObject(){
 		objectType = ObjectType::INVALID;
@@ -32,7 +32,9 @@ public:
 		: layer(setLayer),drawHandle(setDrawHandle){}
 	BaseObject(const BaseObject& obj)
 		: layer(obj.layer),drawHandle(obj.drawHandle){}
-	~BaseObject(){ }
+	virtual ~BaseObject(){
+		transform.parent = nullptr;
+	}
 
 	/// <summary>
 	/// アップデート

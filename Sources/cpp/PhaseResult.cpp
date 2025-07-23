@@ -21,6 +21,8 @@ void PhaseResult::Init()
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
 
+	AudioManager::Instance().PlayBGM(BGM::OTHER);
+
 	Transform trans = Transform(TEXT_POS, TEXT_SIZE);
 
 	LayerSetting layer = {false, false, Layer::MIDDLE};

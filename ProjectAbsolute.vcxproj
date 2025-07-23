@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\cpp\AudioManager.cpp" />
     <ClCompile Include="Sources\cpp\BasePopupUI.cpp" />
     <ClCompile Include="Sources\cpp\ContinueResultUI.cpp" />
     <ClCompile Include="Sources\cpp\AttackBetweenCharacters.cpp" />
@@ -242,6 +243,7 @@
     <ClCompile Include="Sources\header\OfficerMobController.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\header\AudioManager.h" />
     <ClInclude Include="Sources\header\BasePopupUI.h" />
     <ClInclude Include="Sources\header\ContinueResultUI.h" />
     <ClInclude Include="Sources\header\AttackBetweenCharacters.h" />

@@ -11,6 +11,8 @@ void PhaseSelect::Init()
 	inputManager.SetOnCursorCallback([this](Vector2 pos) { this->OnCursorProc(pos); });
 	inputManager.SetLReleaseCallback([this](Vector2 pos, Vector2 oldPos) { this->LReleaseInputProc(pos, oldPos); });
 
+	AudioManager::Instance().PlayBGM(BGM::OTHER);
+
 	// ‘I‘ğˆ‚ğ‰Šú‰»
 	for (int i = 0; i < _MAX_SELECT_ENTITY; i++)
 	{

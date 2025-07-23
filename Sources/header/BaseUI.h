@@ -17,7 +17,7 @@ public:
 		: BaseObject(setLayer,setDrawHandle) {}
 	BaseUI(const BaseUI& obj)
 		: BaseObject(obj) {}
-	~BaseUI() {}
+	virtual ~BaseUI() {}
 
 	/// <summary>
 	/// ‰Šú‰»

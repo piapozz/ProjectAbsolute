@@ -3,6 +3,7 @@
 #include "../header/UIScreenText.h"
 #include "../header/UIScreenButton.h"
 #include "../header/Camera.h"
+#include "../header/AudioManager.h"
 
 SceneTitle::SceneTitle()
 {
@@ -25,6 +26,9 @@ void SceneTitle::Init()
 	inputManager.SetRReleaseCallback([this](Vector2 pos, Vector2 oldPos){ this->RReleaseInputProc(pos, oldPos); });
 	inputManager.SetWheelRotCallback([this](Vector2 pos, int rot){ this->WheelRotInputProc(pos, rot); });
 	inputManager.SetEscapeCallback([this](){ this->EscapeInputProc(); });
+
+	int i = AudioManager::Instance().GetVolume();
+	AudioManager::Instance().PlayBGM(BGM::TITLE);
 
 	Transform trans = Transform(TITLE_POS, TITLE_SIZE);
 

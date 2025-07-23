@@ -1,6 +1,8 @@
 #pragma once
 #include<functional>
 #include "ObjectManager.h"
+#include "AudioManager.h"
+
 class InputManager;
 /*
  * Sakakura

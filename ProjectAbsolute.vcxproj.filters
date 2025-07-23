@@ -432,6 +432,9 @@
     <ClCompile Include="Sources\cpp\DivisionCreater.cpp">
       <Filter>ソース ファイル\Ishihara\Stage</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\cpp\AudioManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\header\ObjectManager.h">
@@ -763,6 +766,9 @@
     </ClInclude>
     <ClInclude Include="Sources\header\DivisionCreater.h">
       <Filter>ヘッダー ファイル\Ishihara\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\header\AudioManager.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
