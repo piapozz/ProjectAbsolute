@@ -49,6 +49,10 @@ public:
 		return _secureRoomList;
 	}
 
+	int GetEntityCount() const {
+		return _secureRoomList.size();
+	}
+
 private:
 	// ‹æ‰æ”Ô†
 	int _divisionIndex;

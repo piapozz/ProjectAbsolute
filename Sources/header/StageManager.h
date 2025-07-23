@@ -53,15 +53,7 @@ public:
 	// ステージ生成
 	void CreateStage(int divisionCount);
 
-	void SetEntity(std::vector<BaseEntity*> entityList)
-	{
-		for (int i = 0; i < entityList.size(); i++)
-		{
-			if (entityList[i] == nullptr) continue;
-
-			_divisionList[0]->SetEntity(entityList[i], i);
-		}
-	}
+	void SetEntity(std::vector<BaseEntity*> entityList, int divisionIndex);
 
 	BaseSection* GetRandomSection(int divisionIndex)
 	{
@@ -76,6 +68,16 @@ public:
 	BaseSection* GetRespawnSection(int divisionIndex)
 	{
 		return _divisionList[divisionIndex]->GetRespawnPoint();
+	}
+
+	/// <summary>
+	/// 1区画のエンティティの数
+	/// </summary>
+	/// <param name="divisionIndex"></param>
+	/// <returns></returns>
+	int GetEntityCount(int divisionIndex)
+	{
+		return _divisionList[divisionIndex]->GetEntityCount();
 	}
 
 private:
@@ -95,9 +97,9 @@ private:
 	{
 		{2, 3, 3, 3, 3, 3, 2},
 		{4, 5, 0, 0, 0, 5, 4},
-		{4, 0, 0, 5, 0, 0, 4},
+		{4, 0, 0, 0, 0, 0, 4},
 		{2, 3, 3, 1, 3, 3, 2},
-		{4, 0, 0, 5, 0, 0, 4},
+		{4, 0, 0, 0, 0, 0, 4},
 		{4, 5, 0, 0, 0, 5, 4},
 		{2, 3, 3, 3, 3, 3, 2}
 	};
